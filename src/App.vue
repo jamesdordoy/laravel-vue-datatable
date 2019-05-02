@@ -1,17 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="container">
+      <data-table
+        url="http://vue-datatable.test/"
+        :per-page="perPage"
+        :columns="columns">
+      </data-table>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import VueDataTable from './components/DataTable.vue'
+import DataTableButtonCell from './components/generic/DataTableButtonCell.vue'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      perPage: ['15', '50', '100'],
+      columns: [
+          {label: 'ID', name: 'id' },
+          {label: 'Name', name: 'name' },
+          {label: 'Email', name: 'email' },
+          {label: '', name: 'view', component: DataTableButtonCell, classes: {'btn': true, 'btn-primary': true } },
+          
+      ]
+    }
+  },
   components: {
-    HelloWorld
+    'data-table': VueDataTable,
+    DataTableButtonCell
   }
 }
 </script>
