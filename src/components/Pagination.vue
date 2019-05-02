@@ -1,9 +1,17 @@
 <template>
     <nav class="row" v-if="!client">
         <div class="col-md-6 text-left">
-            <span>Showing {{ pagination.from }} to {{ pagination.to }} of {{ pagination.total }} Entries</span>
+            <span>
+                &nbsp;Showing&nbsp;
+                    {{pagination.from}}
+                &nbsp;to&nbsp;
+                    {{pagination.to}}
+                &nbsp;of&nbsp;
+                    {{ pagination.total }}
+                &nbsp;Entries&nbsp;
+            </span>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 text-right">
             <button
                 v-if="links.prev"
                 :class="buttonClasses"
@@ -60,7 +68,7 @@
             },
             buttonClasses: {
                 type: String,
-                default: 'btn btn-primary mr-4',
+                default: 'btn btn-primary mr-4 ',
             }
         }
     }

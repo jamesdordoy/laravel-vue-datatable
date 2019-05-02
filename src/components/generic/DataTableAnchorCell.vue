@@ -7,7 +7,8 @@ export default {
     props: {
         data: {},
         name: {},
-        click: {}
+        click: {},
+        classes: {},
     }
 }
 </script>
