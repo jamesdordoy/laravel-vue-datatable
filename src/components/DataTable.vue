@@ -1,55 +1,66 @@
 <template>
-    <div class="row">
-        <div class="col-lg-12">
-            <data-table-filters
-                :tableData="tableData"
-                :per-page="perPage"
-                @getData="getData">
-            </data-table-filters>
-            <vue-table
-                @sort="sortBy"
-                :sortKey="sortKey"
-                :columns="columns"
-                :sortOrders="sortOrders">
-                <tbody
-                    class="">
-                    <tr
-                        :key="item.id"
-                        v-for="item in data.data">
-                        <td 
-                            :key="column.name"
-                            v-for="column in columns"
-                            :class="'text-left w-' + (100 % columns.length)">
-                            <data-table-cell
-                                :value="item"
-                                :name="column.name"
-                                :classes="column.classes"
-                                :click-event="column.click"
-                                :comp="column.component">
-                            </data-table-cell>
-                        </td>
-                    </tr>
-                </tbody>
-            </vue-table>
-
-            <laravel-pagination
-                :data="data"
-                align="right"
-                @pagination-change-page="getData">
-                    <span slot="prev-nav">Previous</span>
-                    <span slot="next-nav">Next</span>
-            </laravel-pagination>
-        </div>
+    <div :class="classes.container">
+        <slot
+            name="filters"
+            v-if="filtersSlot"
+            :table-data="tableData"
+            :per-page="perPage"
+            :url="url">
+        </slot>
+        <data-table-filters
+            v-else
+            :tableData="tableData"
+            :per-page="perPage"
+            @getData="getData">
+        </data-table-filters>
+        <vue-table
+            @sort="sortBy"
+            :sortKey="sortKey"
+            :columns="columns"
+            :sortOrders="sortOrders">
+            <tbody
+                :class="classes['t-head']">
+                <tr
+                    :key="item.id"
+                    v-for="item in data.data">
+                    <td 
+                        :key="column.name"
+                        v-for="column in columns"
+                        :class="defaultTableCellStyle">
+                        <data-table-cell
+                            :value="item"
+                            :name="column.name"
+                            :classes="column.classes"
+                            :click-event="column.click"
+                            :comp="column.component">
+                        </data-table-cell>
+                    </td>
+                </tr>
+            </tbody>
+        </vue-table>
+        <slot
+            name="pagination"
+            v-if="paginationSlot"
+            :links="data.links"
+            :meta="data.meta">
+        </slot>
+        <laravel-pagination
+            v-else
+            :data="data"
+            :align="classes.pagination.align"
+            @pagination-change-page="getData">
+                <span slot="prev-nav">Previous</span>
+                <span slot="next-nav">Next</span>
+        </laravel-pagination>
     </div>
 </template>
 
 <script>
 
-import axios from 'axios'
-import VueTable from './Table.vue'
-import DataTableCell from './DataTableCell.vue'
-import DataTableFilters from './DataTableFilters.vue'
-
+import axios from 'axios';
+import VueTable from './Table.vue';
+import DataTableCell from './DataTableCell.vue';
+import DataTableFilters from './DataTableFilters.vue';
 
 export default {
     created() {
@@ -59,6 +70,19 @@ export default {
         this.columns.forEach((column) => {
            this.sortOrders[column.name] = -1;
         });
+    },
+    watch: {
+        url: {
+            handler: function(newUrl) {
+                this.getData(newUrl);
+            }
+        },
+        tableData: {
+            handler: function(newUrl) {
+                this.getData();
+            },
+            deep: true
+        }
     },
     components: {
         'vue-table': VueTable,
@@ -70,8 +94,8 @@ export default {
             data: {},
             sortKey: 'id',
             sortOrders: {},
+            draw: 0,
             tableData: {
-                draw: 0,
                 length: this.perPage[0],
                 search: '',
                 column: 0,
@@ -95,11 +119,29 @@ export default {
         classes: {
             type: Object,
             default: () => ({
+                'container': {
+
+                },
+                'table-container': {
+                    
+                },
+                'table': {
+                    '': '',
+                },
                 't-head': {
 
                 },
                 't-body': {
+                    
+                },
+                td: {
 
+                },
+                th: {
+                    
+                },
+                'pagination': {
+                    align: 'right'
                 }
             })
         }
@@ -111,12 +153,14 @@ export default {
                 url = this.url + "?page=" + url;
             }
 
-            this.tableData.draw++;
+            this.draw++;
             
             axios.get(url, this.getRequestPayload)
             .then(response => {
                 let data = response.data;
-                if (this.tableData.draw == data.payload.draw) {
+
+                if (this.draw == data.payload.draw) {
+                    
                     this.data = data;
                 }
             })
@@ -138,9 +182,35 @@ export default {
     },
     computed: {
         getRequestPayload() {
+
+            let payload = this.tableData;
+            payload.draw = this.draw;
+
             return {
-                params: this.tableData
+                params: payload
             };
+        },
+        defaultTableCellStyle() {
+
+            if (Object.keys(this.classes.td).length) {
+                return this.classes.td;
+            }
+
+            let width = "w-" + (100 / this.columns.length);
+
+            let classes = {
+                'text-left': true,
+            }
+
+            classes[width] = true;
+            
+            return classes;
+        },
+        paginationSlot() {
+            return this.$scopedSlots.pagination;
+        },
+        filtersSlot() {
+            return this.$scopedSlots.filters;
         }
     }
 }

@@ -3,11 +3,11 @@
         <div class="col-md-6 text-left">
             <span>
                 &nbsp;Showing&nbsp;
-                    {{pagination.from}}
+                    {{meta.from}}
                 &nbsp;to&nbsp;
-                    {{pagination.to}}
+                    {{meta.to}}
                 &nbsp;of&nbsp;
-                    {{ pagination.total }}
+                    {{ meta.total }}
                 &nbsp;Entries&nbsp;
             </span>
         </div>
@@ -15,7 +15,7 @@
             <button
                 v-if="links.prev"
                 :class="buttonClasses"
-                @click="$emit('prev');">
+                @click="$emit('prev', links.prev);">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i>
                 &nbsp;Prev
             </button>
@@ -23,14 +23,14 @@
                 v-else
                 :disabled="true"
                 :class="buttonClasses"
-                @click="$emit('prev');">
+                @click="$emit('prev', links.prev);">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i>
                 &nbsp;Prev
             </button>
             <button
                 v-if="links.next"
                 :class="buttonClasses"
-                @click="$emit('next');">
+                @click="$emit('next', links.next);">
                 Next&nbsp;
                 <i class="fa fa-chevron-right" aria-hidden="true"></i>
             </button>
@@ -48,7 +48,7 @@
 <script>
     export default {
         props: {
-            pagination: {
+            meta: {
                 type: Object,
                 default: () => ({
 

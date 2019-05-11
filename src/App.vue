@@ -21,9 +21,25 @@
             <div class="row">
                   <div class="col-md-12 mt-4 mb-4">
                         <data-table
-                            url="http://vue-datatable.test/ajax"
-                            :per-page="perPage"
-                            :columns="columns">
+                            :url="url"
+                            :columns="columns"
+                            :per-page="perPage">
+
+                            <span slot="" slot-scope="{ tableData, perPage }">
+                                <filters
+                                    :table-data="tableData"
+                                    :per-page="perPage">
+                                </filters>
+                            </span>
+
+                            <span slot="pagination" slot-scope="{ links, meta }">
+                                <pagination 
+                                    @next="updateUrl"
+                                    @prev="updateUrl"
+                                    :meta="meta"
+                                    :links="links">
+                                </pagination>
+                            </span>
                         </data-table>
                   </div>
               </div>
@@ -33,15 +49,21 @@
 
 <script>
 
-    import DataTable from './components/DataTable.vue'
-    import DataTableButtonCell from './components/generic/DataTableButtonCell.vue'
-    import DataTableAnchorCell from './components/generic/DataTableAnchorCell.vue'
+    import DataTable from './components/DataTable.vue';
+    import Pagination from './components/Pagination.vue';
+    import Filters from './components/Filters.vue';
+    import DataTableButtonCell from './components/generic/DataTableButtonCell.vue';
+    import DataTableAnchorCell from './components/generic/DataTableAnchorCell.vue';
 
     export default {
         name: 'app',
         data() {
             return {
+                url: 'http://vue-datatable.test/ajax',
                 perPage: ['10', '25', '50'],
+                tableData: {
+
+                },
                 columns: [
                     {
                         label: 'ID',
@@ -73,13 +95,22 @@
                 ]
             }
         },
+        methods: {
+            updateUrl(url) {
+                this.url = url;
+            }
+        },
         components: {
             // eslint-disable-next-line
             DataTableButtonCell,
             // eslint-disable-next-line
             DataTableAnchorCell,
             // eslint-disable-next-line
-            DataTable
+            DataTable,
+            // eslint-disable-next-line
+            Pagination,
+            // eslint-disable-next-line
+            Filters
         }
     }
 </script>

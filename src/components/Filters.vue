@@ -9,7 +9,7 @@
                     :key="index"
                     :value="records"
                     v-for="(records, index) in perPage">
-                    {{records}}
+                    {{ records }}
                 </option>
             </select>
         </div>
