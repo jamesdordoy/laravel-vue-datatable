@@ -1,7 +1,7 @@
 {
-  "name": "vue-datatable",
-  "version": "0.1.0",
-  "private": true,
+  "name": "laravel-vue-datatable",
+  "version": "0.1.5",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -12,6 +12,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.6.5",
     "jquery": "^3.4.0",
+    "laravel-vue-pagination": "^2.3.0",
     "popper.js": "^1.15.0",
     "vue": "^2.6.10"
   },
@@ -20,10 +21,15 @@
     "@vue/cli-plugin-eslint": "^3.6.0",
     "@vue/cli-service": "^3.6.0",
     "babel-eslint": "^10.0.1",
+    "bili": "^4.7.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.5.21"
+    "rollup-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
   },
+  "files": [
+    "src/*"
+  ],
   "eslintConfig": {
     "root": true,
     "env": {

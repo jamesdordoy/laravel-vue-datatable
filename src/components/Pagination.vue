@@ -68,7 +68,7 @@
             },
             buttonClasses: {
                 type: String,
-                default: 'btn btn-primary mr-4 ',
+                default: 'btn btn-primary mr-4',
             }
         }
     }

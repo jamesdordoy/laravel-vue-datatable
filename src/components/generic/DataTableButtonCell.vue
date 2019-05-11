@@ -1,6 +1,10 @@
 <template>
     <button :class="classes" @click="click(data)" title="Update">
-        <span><i class="fa fa-edit" aria-hidden="true"></i></span>
+        <span>
+            <i class="fa fa-eye" aria-hidden="true"></i>
+        </span>
+        &nbsp;
+        {{ name }}
     </button>
 </template>
 

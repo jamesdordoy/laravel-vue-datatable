@@ -15,7 +15,7 @@
                     class="">
                     <tr
                         :key="item.id"
-                        v-for="item in data">
+                        v-for="item in data.data">
                         <td 
                             :key="column.name"
                             v-for="column in columns"
@@ -31,12 +31,14 @@
                     </tr>
                 </tbody>
             </vue-table>
-            <pagination
-                :links="pagination.links"
-                :pagination="pagination.meta"
-                @prev="getData(pagination.links.prev)"
-                @next="getData(pagination.links.next)">
-            </pagination>
+
+            <laravel-pagination
+                :data="data"
+                align="right"
+                @pagination-change-page="getData">
+                <span slot="prev-nav">Previous</span>
+	            <span slot="next-nav">Next</span>
+            </laravel-pagination>
         </div>
     </div>
 </template>
@@ -45,9 +47,9 @@
 
 import axios from 'axios'
 import VueTable from './Table.vue'
-import Pagination from './Pagination.vue'
 import DataTableCell from './DataTableCell.vue'
 import DataTableFilters from './DataTableFilters.vue'
+
 
 export default {
     created() {
@@ -60,13 +62,12 @@ export default {
     },
     components: {
         'vue-table': VueTable,
-        'pagination': Pagination,
         'data-table-cell': DataTableCell,
-        'data-table-filters': DataTableFilters
+        'data-table-filters': DataTableFilters,
     },
     data() {
         return {
-            data: [],
+            data: {},
             sortKey: 'id',
             sortOrders: {},
             tableData: {
@@ -76,7 +77,6 @@ export default {
                 column: 0,
                 dir: 'asc',
             },
-            pagination: {},
         }
     },
     props: {
@@ -91,18 +91,33 @@ export default {
         perPage: {
             type: Array,
             default: () => ([])
+        },
+        classes: {
+            type: Object,
+            default: () => ({
+                't-head': {
+
+                },
+                't-body': {
+
+                }
+            })
         }
     },
     methods: {
         getData(url = this.url) {
+            
+            if (Number.isInteger(url)) {
+                url = this.url + "?page=" + url;
+            }
+
             this.tableData.draw++;
             
             axios.get(url, this.getRequestPayload)
             .then(response => {
                 let data = response.data;
                 if (this.tableData.draw == data.payload.draw) {
-                    this.data = data.data;
-                    this.pagination = data;
+                    this.data = data;
                 }
             })
             .catch(errors => {
