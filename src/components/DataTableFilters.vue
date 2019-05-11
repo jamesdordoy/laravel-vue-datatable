@@ -16,8 +16,8 @@
         <div class="col-md-3 offset-md-6">
             <input
                 name="name"
-                class="form-control"
                 @input="getData"
+                class="form-control"
                 v-model="tableData.search"
                 placeholder="Search Table">
         </div>
@@ -31,9 +31,16 @@ export default {
             this.$emit("getData");
         }
     },
-    props: [
-        "tableData", "perPage"
-    ]
+    props: {
+        tableData: {
+            type: Object,
+            default: () => ({}),
+        },
+        perPage: {
+            type: Array,
+            default: () => ([]),
+        },
+    }
 }
 </script>
 

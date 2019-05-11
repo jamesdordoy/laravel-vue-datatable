@@ -1,9 +1,0 @@
-{
-    "jest": {
-        "globals": {
-            "vue-jest": {
-                "babelRcFile": "jest.babelrc"
-            }
-        }
-    }
-}

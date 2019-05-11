@@ -29,9 +29,16 @@ export default {
             this.$emit("getData");
         }
     },
-    props: [
-        "tableData", "perPage"
-    ]
+    props: {
+        tableData: {
+            type: Object,
+            default: () => ({}),
+        },
+        perPage: {
+            type: Array,
+            default: () => ([]),
+        },
+    }
 }
 </script>
 

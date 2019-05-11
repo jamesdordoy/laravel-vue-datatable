@@ -1,26 +1,26 @@
 <template>
     <div>
         <slot
+            :url="url"
             name="filters"
             v-if="filtersSlot"
-            :table-data="tableData"
             :per-page="perPage"
-            :url="url">
+            :table-data="tableData">
         </slot>
         <data-table-filters
             v-else
-            :tableData="tableData"
+            @getData="getData"
             :per-page="perPage"
-            @getData="getData">
+            :tableData="tableData">
         </data-table-filters>
         <vue-table
             @sort="sortBy"
             :sortKey="sortKey"
             :columns="columns"
-            :table-container-classes="classes['table-container']"
-            :table-header-classes="classes['t-head']"
+            :sortOrders="sortOrders"
             :table-classes="classes.table"
-            :sortOrders="sortOrders">
+            :table-header-classes="classes['t-head']"
+            :table-container-classes="classes['table-container']">
             <tbody
                 :class="classes['t-body']">
                 <tr
@@ -80,13 +80,13 @@ export default {
         url: {
             handler: function(newUrl) {
                 this.getData(newUrl);
-            }
+            },
         },
         tableData: {
             handler: function() {
                 this.getData();
             },
-            deep: true
+            deep: true,
         }
     },
     components: {
@@ -106,7 +106,7 @@ export default {
                 column: 0,
                 dir: 'asc',
             },
-        }
+        };
     },
     props: {
         url: {
@@ -151,28 +151,22 @@ export default {
             default: () => ({
                 align: 'right',
             })
-        }
+        },
     },
     methods: {
         getData(url = this.url) {
-            
-            if (Number.isInteger(url)) {
-                url = this.url + "?page=" + url;
-            }
-
-            this.draw++;
+            url = this.checkUrlForPagination(url);
+            this.incrementDraw();
             
             axios.get(url, this.getRequestPayload)
             .then(response => {
                 let data = response.data;
-
-                if (this.draw == data.payload.draw) {
+                if (this.checkTableDraw(data.payload.draw)) {
                     this.data = data;
                 }
             })
             .catch(errors => {
-                /* eslint-disable no-console */
-                console.log(errors);
+                alert(errors);
             });
         },
         sortBy(key) {
@@ -185,10 +179,26 @@ export default {
         getIndex(array, key, value) {
             return array.findIndex(i => i[key] == value)
         },
+        incrementDraw() {
+            this.draw++;
+        },
+        checkTableDraw(draw) {
+            if (this.draw == draw) {
+                return true;
+            }
+            return false;
+        },
+        checkUrlForPagination(url) {
+            if (Number.isInteger(url)) {
+                url = this.url + "?page=" + url;
+                return url;
+            }
+            return url;
+        }
     },
     computed: {
         getRequestPayload() {
-
+            //Cache Locally
             let payload = this.tableData;
             payload.draw = this.draw;
 

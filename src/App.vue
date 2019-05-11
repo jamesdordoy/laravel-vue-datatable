@@ -25,8 +25,8 @@
 
                         <span slot="" slot-scope="{ tableData, perPage }">
                             <filters
-                                :table-data="tableData"
-                                :per-page="perPage">
+                                :per-page="perPage"
+                                :table-data="tableData">
                             </filters>
                         </span>
 
@@ -46,9 +46,10 @@
 </template>
 
 <script>
+
+    import Filters from './components/Filters.vue';
     import DataTable from './components/DataTable.vue';
     import Pagination from './components/Pagination.vue';
-    import Filters from './components/Filters.vue';
     import DataTableButtonCell from './components/generic/DataTableButtonCell.vue';
     import DataTableAnchorCell from './components/generic/DataTableAnchorCell.vue';
 
@@ -80,8 +81,8 @@
                         label: '',
                         name: 'View',
                         filterable: false,
-                        component: DataTableButtonCell,
                         click: this.alertMe,
+                        component: DataTableButtonCell,
                         classes: { 
                             'btn': true,
                             'btn-primary': true,

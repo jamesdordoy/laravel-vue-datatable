@@ -27,8 +27,8 @@ export default {
         if (this.comp) {
             return createElement(this.comp, {
                 props: {
-                    data: this.value,
                     name: this.name,
+                    data: this.value,
                     click: this.clickEvent,
                 },
                 attrs: {

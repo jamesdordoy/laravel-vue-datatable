@@ -1,5 +1,5 @@
 <template>
-    <nav class="row" v-if="!client">
+    <nav class="row">
         <div class="col-md-6 text-left">
             <span>
                 &nbsp;Showing&nbsp;
@@ -50,21 +50,11 @@
         props: {
             meta: {
                 type: Object,
-                default: () => ({
-
-                })
+                default: () => ({})
             },
             links: {
                 type: Object,
-                default: () => ({
-
-                })
-            },
-            client: {
-
-            }, 
-            filtered: {
-
+                default: () => ({})
             },
             buttonClasses: {
                 type: String,
