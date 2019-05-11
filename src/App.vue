@@ -1,10 +1,7 @@
 <template>
     <div style="background: #5e717d;">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <!-- Brand/logo -->
             <a class="navbar-brand" href="#">Logo</a>
-            
-            <!-- Links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link 1</a>
@@ -19,32 +16,32 @@
         </nav>
         <div class="container-fluid">
             <div class="row">
-                  <div class="col-md-12 mt-4 mb-4">
-                        <data-table
-                            :url="url"
-                            :columns="columns"
-                            :per-page="perPage"
-                            :pagination="pagination">
+                <div class="col-md-12 mt-4 mb-4">
+                    <data-table
+                        :url="url"
+                        :columns="columns"
+                        :per-page="perPage"
+                        :pagination="pagination">
 
-                            <span slot="" slot-scope="{ tableData, perPage }">
-                                <filters
-                                    :table-data="tableData"
-                                    :per-page="perPage">
-                                </filters>
-                            </span>
+                        <span slot="" slot-scope="{ tableData, perPage }">
+                            <filters
+                                :table-data="tableData"
+                                :per-page="perPage">
+                            </filters>
+                        </span>
 
-                            <span slot="" slot-scope="{ links, meta }">
-                                <pagination 
-                                    @next="updateUrl"
-                                    @prev="updateUrl"
-                                    :meta="meta"
-                                    :links="links">
-                                </pagination>
-                            </span>
-                        </data-table>
-                  </div>
-              </div>
-          </div>
+                        <span slot="" slot-scope="{ links, meta }">
+                            <pagination 
+                                @next="updateUrl"
+                                @prev="updateUrl"
+                                :meta="meta"
+                                :links="links">
+                            </pagination>
+                        </span>
+                    </data-table>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

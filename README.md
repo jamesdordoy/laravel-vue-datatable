@@ -272,3 +272,17 @@ export default {
     </span>
 </data-table>
 ```
+
+## Development
+
+To work on the library locally, run the following command:
+
+```bash
+npm run serve
+```
+
+To run the tests:
+
+```bash
+npm run test
+```
