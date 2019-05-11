@@ -29,7 +29,7 @@
                     <td 
                         :key="column.name"
                         v-for="column in columns"
-                        :class="defaultTableCellStyle">
+                        :class="classes.td">
                         <data-table-cell
                             :value="item"
                             :name="column.name"
@@ -51,6 +51,8 @@
             v-else
             :data="data"
             :align="pagination.align"
+            :limit="pagination.limit"
+            :size="pagination.size"
             @pagination-change-page="getData">
                 <span slot="prev-nav">Previous</span>
                 <span slot="next-nav">Next</span>
@@ -193,24 +195,6 @@ export default {
             return {
                 params: payload
             };
-        },
-        defaultTableCellStyle() {
-
-            if (Object.keys(this.classes).length) {
-                if (this.classes.td) {
-                    return this.classes.td;
-                }
-            }
-
-            let width = "w-" + (100 / this.columns.length);
-
-            let classes = {
-                'text-left': true,
-            }
-
-            classes[width] = true;
-            
-            return classes;
         },
         paginationSlot() {
             return this.$scopedSlots.pagination;

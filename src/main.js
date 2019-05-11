@@ -1,10 +1,11 @@
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
-
 import Vue from 'vue'
 import App from './App.vue'
 
-Vue.component('laravel-pagination', require('laravel-vue-pagination'));
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import DataTable from './plugin.js';
+Vue.use(DataTable);
 
 Vue.config.productionTip = false
 

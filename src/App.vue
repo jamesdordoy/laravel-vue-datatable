@@ -23,7 +23,8 @@
                         <data-table
                             :url="url"
                             :columns="columns"
-                            :per-page="perPage">
+                            :per-page="perPage"
+                            :pagination="pagination">
 
                             <span slot="" slot-scope="{ tableData, perPage }">
                                 <filters
@@ -48,7 +49,6 @@
 </template>
 
 <script>
-
     import DataTable from './components/DataTable.vue';
     import Pagination from './components/Pagination.vue';
     import Filters from './components/Filters.vue';
@@ -59,13 +59,14 @@
         name: 'app',
         data() {
             return {
-                url: 'http://vue-datatable.test/ajax',
-                perPage: ['10', '25', '50'],
+                url: 'http://packages.test/ajax',
+                perPage: ['5', '25', '50'],
                 columns: [
                     {
                         label: 'ID',
                         name: 'id',
                         filterable: true,
+                        width: 10,
                     },
                     {
                         label: 'Name',
@@ -90,7 +91,12 @@
                             'btn-sm': true,
                         } 
                     },
-                ]
+                ],
+                pagination:{
+                    limit: 1,
+                    align: "right",
+                    size: "small"
+                }
             }
         },
         methods: {

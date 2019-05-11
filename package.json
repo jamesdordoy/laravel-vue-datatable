@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-datatable",
-  "version": "0.1.15",
+  "version": "0.1.17",
   "description": "Vue.js datatable made with Laravel and Bootstrap in mind",
   "author": "James Dordoy <jamesdordoy@gmail.com>",
   "homepage": "https://github.com/jamesdordoy/vue-datatable",
@@ -19,18 +19,10 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib src/index.js",
+    "build": "vue-cli-service build --target lib src/plugin.js",
     "lint": "vue-cli-service lint"
   },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "bootstrap": "^4.3.1",
-    "core-js": "^2.6.5",
-    "jquery": "^3.4.0",
-    "laravel-vue-pagination": "^2.3.0",
-    "popper.js": "^1.15.0",
-    "vue": "^2.6.10"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.6.0",
     "@vue/cli-plugin-eslint": "^3.6.0",
@@ -40,7 +32,15 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "rollup-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "core-js": "^2.6.5",
+    "jquery": "^3.4.0",
+    "laravel-vue-pagination": "^2.3.0",
+    "popper.js": "^1.15.0",
+    "vue": "^2.6.10"
   },
   "files": [
     "dist/*",

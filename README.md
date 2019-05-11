@@ -26,16 +26,14 @@ See details https://github.com/jamesdordoy/Laravel-Vue-Datatables
 npm install laravel-vue-datatable
 ```
 
-## Usage
-
-Register the plugin:
+## Register the Plugin
 
 ```javascript
 import DataTable from 'laravel-vue-datatable';
 Vue.use(DataTable);
 ```
 
-Use the component:
+## Basic Example 
 
 ```html
 <data-table
@@ -78,7 +76,6 @@ export default {
 }
 ```
 
-
 ## API
 
 ### Datatable Props
@@ -86,10 +83,10 @@ export default {
 | Name | Type | Default | Description  
 | --- | --- | --- | --- |
 | `url ` | String | "/" | The JSON url |
-| `columns` | Array | [ '10', '25', '50' ] | The table columns |
-| `per-page` | Array | [ '10', '25', '50' ] | Amount to be displayed |
-| `classes` | Object | See Below | Table classes |
-| `pagination` | Object | {}  | (optional) props for gilbitron/laravel-vue-pagination |
+| `columns` | Array | [] | The table columns |
+| `per-page` | Array | [ '10', '25', '50' ] | (optional) Amount to be displayed |
+| `classes` | Object | See Below | (optional) Table classes |
+| `pagination` | Object | {}  | (optional) props for [gilbitron/laravel-vue-pagination](https://github.com/gilbitron/laravel-vue-pagination#props) |
 
 ### Default Classes
 ```json
@@ -121,9 +118,10 @@ export default {
 | Name | Type | Default | Description  
 | --- | --- | --- | --- |
 | `label ` | String | "" | The JSON url |
-| `name` | String | "" | The table columns |
-| `filterable` | Boolean | false | Is Column filterable |
-| `component` | Component | null | a dynamic component that can be injected |
+| `name` | String | "" | The table column header name |
+| `width` | Number | 0 | The table column width |
+| `filterable` | Boolean | false | Is the column filterable |
+| `component` | Component | null | A dynamic component that can be injected |
 | `classes` | Object | {} | Component classes to parse |
 
 
@@ -161,46 +159,46 @@ export default {
 import ExampleButton './ExampleButton.vue';
 
 export default {
-	data() {
-	    return {
-	        url: 'http://vue-datatable.test/ajax',
-	        perPage: ['10', '25', '50'],
-	        columns: [
-	            {
-	                label: 'ID',
-	                name: 'id',
-	                filterable: true,
-	            },
-	            {
-	                label: 'Name',
-	                name: 'name',
-	                filterable: true,
-	            },
-	            {
-                    label: 'Email',
-                    name: 'email',
-                    filterable: true,
-                }
-	            {
-	                label: '',
-	                name: 'View',
-	                filterable: false,
-	                component: ExampleButton,
-	                click: this.alertMe,
-	                classes: { 
-	                    'btn': true,
-	                    'btn-primary': true,
-	                    'btn-sm': true,
-	                } 
-	            },
-	        ]
-	    }
-	},
-	components: {
-	    // eslint-disable-next-line
-	    ExampleButton,
-	},
-	methods: {
+    data() {
+        return {
+            url: 'http://vue-datatable.test/ajax',
+            perPage: ['10', '25', '50'],
+            columns: [
+            {
+                label: 'ID',
+                name: 'id',
+                filterable: true,
+            },
+            {
+                label: 'Name',
+                 name: 'name',
+                filterable: true,
+            },
+            {
+                label: 'Email',
+                name: 'email',
+                filterable: true,
+            }
+            {
+                label: '',
+                name: 'View',
+                filterable: false,
+                component: ExampleButton,
+                click: this.alertMe,
+                classes: { 
+                    'btn': true,
+                    'btn-primary': true,
+                    'btn-sm': true,
+                } 
+            },
+            ]
+        }
+    },
+    components: {
+        // eslint-disable-next-line
+        ExampleButton,
+    },
+    methods: {
         alertMe(data) {
             alert("hey");
         }
@@ -208,21 +206,23 @@ export default {
 }
 ```
 
-## Overriding Filters &amp; Pagination:
+## Overriding the Filters &amp; Pagination Components:
 If the included pagination or filters do not meet your requirements or if the styling is incorrect, they can be over-written using scoped slots.
+
+### DataTable
 
 ```html
 <data-table
     :url="url"
-    :per-page="perPage"
-    :columns="columns">
+    :columns="columns"
+    :per-page="perPage">
 
     <span slot="pagination" slot-scope="{ links, meta }">
         <paginator 
-            @next="updateUrl"
-            @prev="updateUrl"
             :meta="meta"
-            :links="links">
+            :links="links"
+            @next="updateUrl"
+            @prev="updateUrl">
         </paginator>
     </span>
 </data-table>
@@ -230,32 +230,45 @@ If the included pagination or filters do not meet your requirements or if the st
 
 Once the URL has been updated by your customer paginator or filters, the table will re-render. Alterativly, if updating the URL is troublesome, different table filters can be manipulated by your filters using the v-model directive:
 
+### Example filter (DataTableFilter.vue)
+This example filter will control the length of the table manipulating the tableData.length property using v-model.
+
+```html
+<template>
+    <select
+        class="form-control"
+        v-model="tableData.length">
+        <option
+            :key="index"
+            :value="records"
+            v-for="(records, index) in perPage">
+            {{ records }}
+        </option>
+    </select>
+</template>
+```
+
+```javascript
+export default {
+    props: [
+        "tableData", "perPage"
+    ]
+}
+```
+
+### DataTable
+
 ```html
 <data-table
     :url="url"
-    :per-page="perPage"
-    :columns="columns">
+    :columns="columns"
+    :per-page="perPage">
 
     <span slot="filters" slot-scope="{ tableData, perPage }">
         <data-table-filters
-            :table-data="tableData"
-            :per-page="perPage">
+            :per-page="perPage"
+            :table-data="tableData">
         </data-table-filters>
     </span>
 </data-table>
 ```
-
-
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

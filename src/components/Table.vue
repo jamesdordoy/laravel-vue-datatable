@@ -4,10 +4,11 @@
             <thead :class="tableHeaderClasses">
                 <tr class="">
                     <th
-                        :class="headerClasses(column)"
                         scope="col"
                         :key="column.name"
                         v-for="column in columns"
+                        :class="headerClasses(column)"
+                        :style="'width: ' + column.width + '%'"
                         @click="column.filterable  ? $emit('sort', column.name) : null">
                         <i v-if="column.filterable" class="fa fa-sort" aria-hidden="true"></i>
                         {{ column.label }}
@@ -41,7 +42,10 @@
             },
             tableHeaderClasses: {
                 type: Object,
-                default: () => ({})
+                default: () => ({
+                    'p-3': true,
+                    'text-left': true,
+                })
             },
             tableContainerClasses: {
                 type: Object,
@@ -50,17 +54,8 @@
         },
         methods: {
             headerClasses(column) {
-
-                let columnSize = 'text-left ' + (12 / this.columns.length);
-
-                let classes = {
-                    'table-header-sorting': column.filterable,
-                    'p-3': true,
-                    'w-25': true,
-                };
-
-                classes[columnSize] = true;
-
+                let classes = this.tableHeaderClasses;
+                classes['table-header-sorting'] = column.filterable;
                 return classes;
             }
         },
