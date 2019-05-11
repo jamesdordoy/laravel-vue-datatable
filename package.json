@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-datatable",
-  "version": "0.1.11",
+  "version": "0.1.15",
   "private": false,
   "main": "./dist/laravel-vue-datatable.common.js",
   "bundleDependencies": false,

@@ -197,7 +197,9 @@ export default {
         defaultTableCellStyle() {
 
             if (Object.keys(this.classes).length) {
-                return this.classes.td;
+                if (this.classes.td) {
+                    return this.classes.td;
+                }
             }
 
             let width = "w-" + (100 / this.columns.length);
