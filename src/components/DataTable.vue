@@ -117,7 +117,7 @@ export default {
         },
         perPage: {
             type: Array,
-            default: () => ([])
+            default: () => ([ '10', '25', '50' ])
         },
         classes: {
             type: Object,

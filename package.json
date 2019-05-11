@@ -1,9 +1,22 @@
 {
   "name": "laravel-vue-datatable",
   "version": "0.1.15",
+  "description": "Vue.js datatable made with Laravel and Bootstrap in mind",
+  "author": "James Dordoy <jamesdordoy@gmail.com>",
+  "homepage": "https://github.com/jamesdordoy/vue-datatable",
   "private": false,
   "main": "./dist/laravel-vue-datatable.common.js",
   "bundleDependencies": false,
+  "keywords": [
+    "vue",
+    "component",
+    "bootstrap",
+    "laravel"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jamesdordoy/vue-datatable.git"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib src/index.js",
@@ -31,7 +44,8 @@
   },
   "files": [
     "dist/*",
-    "src/*"
+    "src/*",
+    "public/*"
   ],
   "eslintConfig": {
     "root": true,
