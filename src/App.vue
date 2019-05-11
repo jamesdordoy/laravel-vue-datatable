@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="background: #5e717d;">
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
             <!-- Brand/logo -->
             <a class="navbar-brand" href="#">Logo</a>
