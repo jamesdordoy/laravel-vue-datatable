@@ -36,8 +36,8 @@
                 :data="data"
                 align="right"
                 @pagination-change-page="getData">
-                <span slot="prev-nav">Previous</span>
-	            <span slot="next-nav">Next</span>
+                    <span slot="prev-nav">Previous</span>
+                    <span slot="next-nav">Next</span>
             </laravel-pagination>
         </div>
     </div>
