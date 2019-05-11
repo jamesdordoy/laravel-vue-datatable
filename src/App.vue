@@ -61,9 +61,6 @@
             return {
                 url: 'http://vue-datatable.test/ajax',
                 perPage: ['10', '25', '50'],
-                tableData: {
-
-                },
                 columns: [
                     {
                         label: 'ID',
