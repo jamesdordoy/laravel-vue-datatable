@@ -127,6 +127,91 @@ export default {
 | `classes` | Object | {} | Component classes to parse |
 
 
+## Using dynamic components
+You can also inject your own components into the table such as buttons. Your buttons, links etc can also listen for events.
+
+### Example button component (ExampleButton.vue)
+
+```html
+<template>
+    <button :class="classes" @click="click(data)" title="Update">
+        <span>
+            <i class="fa fa-eye" aria-hidden="true"></i>
+        </span>
+        &nbsp;
+        {{ name }}
+    </button>
+</template>
+```
+
+```javascript
+export default {
+    props: {
+        data: {},
+        name: {},
+        click: {},
+        classes: {},
+    }
+}
+```
+
+### Datatable Columns (UserDataTable.vue)
+```javascript
+
+import ExampleButton './ExampleButton.vue';
+
+export default {
+	data() {
+	    return {
+	        url: 'http://vue-datatable.test/ajax',
+	        perPage: ['10', '25', '50'],
+	        tableData: {
+	
+	        },
+	        columns: [
+	            {
+	                label: 'ID',
+	                name: 'id',
+	                filterable: true,
+	            },
+	            {
+	                label: 'Name',
+	                name: 'name',
+	                filterable: true,
+	            },
+	            {
+	                label: 'Email',
+	                name: 'email',
+	                filterable: true,
+	                click: this.alertMe,
+	                component: DataTableAnchorCell
+	            },
+	            {
+	                label: '',
+	                name: 'View',
+	                filterable: false,
+	                component: DataTableButtonCell,
+	                classes: { 
+	                    'btn': true,
+	                    'btn-primary': true,
+	                    'btn-sm': true,
+	                } 
+	            },
+	        ]
+	    }
+	},
+	components: {
+	    // eslint-disable-next-line
+	    ExampleButton,
+	},
+	methods: {
+        alertMe() {
+            alert("hey");
+        }
+    },
+}
+```
+
 ## Overriding Filters &amp; Pagination:
 If the included pagination or filters do not meet your requirements or if the styling is incorrect, they can be over-written using scoped slots.
 

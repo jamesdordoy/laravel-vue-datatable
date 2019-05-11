@@ -86,6 +86,7 @@
                         name: 'View',
                         filterable: false,
                         component: DataTableButtonCell,
+                        click: this.alertMe,
                         classes: { 
                             'btn': true,
                             'btn-primary': true,
@@ -98,6 +99,9 @@
         methods: {
             updateUrl(url) {
                 this.url = url;
+            },
+            alertMe() {
+                alert("hey");
             }
         },
         components: {
