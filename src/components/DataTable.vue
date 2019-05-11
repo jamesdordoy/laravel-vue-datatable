@@ -1,5 +1,5 @@
 <template>
-    <div :class="classes.container">
+    <div>
         <slot
             name="filters"
             v-if="filtersSlot"
@@ -17,9 +17,12 @@
             @sort="sortBy"
             :sortKey="sortKey"
             :columns="columns"
+            :table-container-classes="classes['table-container']"
+            :table-header-classes="classes['t-head']"
+            :table-classes="classes.table"
             :sortOrders="sortOrders">
             <tbody
-                :class="classes['t-head']">
+                :class="classes['t-body']">
                 <tr
                     :key="item.id"
                     v-for="item in data.data">
@@ -47,7 +50,7 @@
         <laravel-pagination
             v-else
             :data="data"
-            :align="classes.pagination.align"
+            :align="pagination.align"
             @pagination-change-page="getData">
                 <span slot="prev-nav">Previous</span>
                 <span slot="next-nav">Next</span>
@@ -119,14 +122,13 @@ export default {
         classes: {
             type: Object,
             default: () => ({
-                'container': {
-
-                },
                 'table-container': {
-                    
+                    'table-responsive': true,
                 },
                 'table': {
-                    '': '',
+                    'table': true,
+                    'table-striped': true,
+                    'table-dark': true,
                 },
                 't-head': {
 
@@ -140,9 +142,12 @@ export default {
                 th: {
                     
                 },
-                'pagination': {
-                    align: 'right'
-                }
+            })
+        },
+        pagination: {
+            type: Object,
+            default: () => ({
+                align: 'right',
             })
         }
     },
@@ -160,7 +165,6 @@ export default {
                 let data = response.data;
 
                 if (this.draw == data.payload.draw) {
-                    
                     this.data = data;
                 }
             })
@@ -192,7 +196,7 @@ export default {
         },
         defaultTableCellStyle() {
 
-            if (Object.keys(this.classes.td).length) {
+            if (Object.keys(this.classes).length) {
                 return this.classes.td;
             }
 

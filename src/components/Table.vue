@@ -1,7 +1,7 @@
 <template>
-    <div class="table-responsive">
-        <table class="table table-striped table-dark">
-            <thead class="">
+    <div :class="tableContainerClasses">
+        <table :class="tableClasses">
+            <thead :class="tableHeaderClasses">
                 <tr class="">
                     <th
                         :class="headerClasses(column)"
@@ -32,6 +32,18 @@
                 default: ''
             },
             sortOrders :{
+                type: Object,
+                default: () => ({})
+            },
+            tableClasses: {
+                type: Object,
+                default: () => ({})
+            },
+            tableHeaderClasses: {
+                type: Object,
+                default: () => ({})
+            },
+            tableContainerClasses: {
                 type: Object,
                 default: () => ({})
             }

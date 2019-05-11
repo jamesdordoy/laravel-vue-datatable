@@ -22,6 +22,12 @@
                   <div class="col-md-12 mt-4 mb-4">
                         <data-table
                             :url="url"
+                            :classes="{
+                                table: {
+                                    'table': true,
+                                    'table-striped': true,
+                                }
+                            }"
                             :columns="columns"
                             :per-page="perPage">
 
