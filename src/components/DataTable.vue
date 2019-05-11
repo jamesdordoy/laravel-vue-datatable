@@ -78,7 +78,7 @@ export default {
             }
         },
         tableData: {
-            handler: function(newUrl) {
+            handler: function() {
                 this.getData();
             },
             deep: true

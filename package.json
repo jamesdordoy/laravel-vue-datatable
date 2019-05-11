@@ -1,10 +1,12 @@
 {
   "name": "laravel-vue-datatable",
-  "version": "0.1.6",
+  "version": "0.1.11",
   "private": false,
+  "main": "./dist/laravel-vue-datatable.common.js",
+  "bundleDependencies": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib src/index.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -28,6 +30,7 @@
     "vue-template-compiler": "^2.6.10"
   },
   "files": [
+    "dist/*",
     "src/*"
   ],
   "eslintConfig": {

@@ -32,7 +32,7 @@
                                 </filters>
                             </span>
 
-                            <span slot="pagination" slot-scope="{ links, meta }">
+                            <span slot="" slot-scope="{ links, meta }">
                                 <pagination 
                                     @next="updateUrl"
                                     @prev="updateUrl"
