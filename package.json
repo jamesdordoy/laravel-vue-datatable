@@ -6,7 +6,6 @@
   "homepage": "https://github.com/jamesdordoy/vue-datatable",
   "private": false,
   "main": "./dist/laravel-vue-datatable.common.js",
-  "bundleDependencies": false,
   "keywords": [
     "vue",
     "component",
