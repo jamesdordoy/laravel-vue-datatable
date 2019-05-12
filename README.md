@@ -286,6 +286,14 @@ You can edit the style of the datatable by overriding the classes prop. A exampl
 
 ### Tailwind Config (mixins/tailwind.js)
 
+Custom Class
+
+```css
+  .stripped-table:nth-child(even) {
+    @apply bg-black;
+  }
+```
+
 ```javascript
 export default {
     data() {
@@ -319,7 +327,8 @@ export default {
                     
                 },
                 "t-body-tr": {
-                    'stripped-table': true
+                    'stripped-table': true,
+                    'bg-grey-darkest': true,
                 },
                 "td": {
                     'py-4': true,
