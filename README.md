@@ -363,7 +363,6 @@ export default {
     :per-page="perPage">
     <span slot="filters" slot-scope="{ tableData, perPage }">
         <data-table-filters
-            :classes="classes"
             :table-data="tableData"
             :per-page="perPage">
         </data-table-filters>
