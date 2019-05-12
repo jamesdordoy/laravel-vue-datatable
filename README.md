@@ -12,7 +12,7 @@ This package makes use of the Laravel Vue Pagination component https://github.co
 
 ## Demo
 
-See 
+See [https://jamesdordoy.github.io/vue-datatable/](https://jamesdordoy.github.io/vue-datatable/)
 
 ## Example
 ![Image description](https://www.jamesdordoy.co.uk/images/datatable.png?a=a)
