@@ -65,9 +65,7 @@
                 return classes;
             }
         },
-        computed: {
-            
-        }
+        computed: {}
     }
 </script>
 
