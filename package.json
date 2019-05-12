@@ -5,6 +5,7 @@
   "author": "James Dordoy <jamesdordoy@gmail.com>",
   "homepage": "https://github.com/jamesdordoy/vue-datatable",
   "private": false,
+  "bundleDependencies": false,
   "main": "./dist/laravel-vue-datatable.common.js",
   "keywords": [
     "vue",
