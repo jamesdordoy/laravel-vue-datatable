@@ -58,7 +58,7 @@
         data() {
             return {
                 url: 'http://packages.test/ajax',
-                perPage: ['5', '25', '50'],
+                perPage: ['10', '25', '50'],
                 columns: [
                     {
                         label: 'ID',
@@ -70,12 +70,26 @@
                         label: 'Name',
                         name: 'name',
                         filterable: true,
+                        width: 20,
                     },
                     {
                         label: 'Email',
                         name: 'email',
                         filterable: true,
-                        component: DataTableAnchorCell
+                        component: DataTableAnchorCell,
+                        width: 20,
+                    },
+                    {
+                        label: 'Create On',
+                        name: 'created_at',
+                        filterable: true,
+                        width: 20,
+                    },
+                    {
+                        label: 'Last Updated',
+                        name: 'updated_at',
+                        filterable: true,
+                        width: 20,
                     },
                     {
                         label: '',
@@ -87,7 +101,8 @@
                             'btn': true,
                             'btn-primary': true,
                             'btn-sm': true,
-                        } 
+                        },
+                        width: 10,
                     },
                 ],
                 pagination:{

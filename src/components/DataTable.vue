@@ -218,8 +218,5 @@ export default {
 
 <style>
 
-tr {
-    border-bottom: 1px solid grey;
-}
 
 </style>

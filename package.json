@@ -20,6 +20,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib src/plugin.js",
+    "build-demo": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "jest"
   },
