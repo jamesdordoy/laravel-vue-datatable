@@ -1,5 +1,6 @@
-// const path = require("path");
+const path = require("path");
 
-// module.exports = {
-//   outputDir: path.resolve(__dirname, "./demo")
-// }
+module.exports = {
+    publicPath: `<laravel-vue-datatable>`,
+    // outputDir: path.resolve(__dirname, "./docs")
+}
