@@ -2,7 +2,7 @@
     <div :class="tableContainerClasses">
         <table :class="tableClasses">
             <thead :class="tableHeaderClasses">
-                <tr class="">
+                <tr :class="tableRowClasses">
                     <th
                         scope="col"
                         :key="column.name"
@@ -45,6 +45,11 @@
                 default: () => ({
                     'p-3': true,
                     'text-left': true,
+                })
+            },
+            tableRowClasses: {
+                type: Object,
+                default: () => ({
                 })
             },
             tableContainerClasses: {

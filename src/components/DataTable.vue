@@ -20,11 +20,13 @@
             :sortOrders="sortOrders"
             :table-classes="classes.table"
             :table-header-classes="classes['t-head']"
+            :table-row-classes="classes['t-head-tr']"
             :table-container-classes="classes['table-container']">
             <tbody
                 :class="classes['t-body']">
                 <tr
                     :key="item.id"
+                    :class="classes['t-body-tr']"
                     v-for="item in data.data">
                     <td 
                         :key="column.name"

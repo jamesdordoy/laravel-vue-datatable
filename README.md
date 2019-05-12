@@ -105,6 +105,12 @@ export default {
     "t-body": {
         
     },
+    "t-head-tr": {
+
+    },
+    "t-body-tr": {
+        
+    },
     "td": {
 
     },
