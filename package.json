@@ -25,7 +25,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "vue-jest": "^3.0.4"
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "laravel-vue-pagination": "^2.3.0",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -34,21 +38,17 @@
     "@vue/cli-service": "^3.7.0",
     "@vue/server-test-utils": "^1.0.0-beta.29",
     "@vue/test-utils": "^1.0.0-beta.29",
-    "axios": "^0.18.0",
+    "vue-jest": "^3.0.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.8.0",
     "bili": "^4.7.4",
-    "bootstrap": "^4.3.1",
     "core-js": "^2.6.5",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "jest": "^24.8.0",
-    "jquery": "^3.4.1",
-    "laravel-vue-pagination": "^2.3.0",
     "popper.js": "^1.15.0",
     "rollup-plugin-vue": "^5.0.0",
-    "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   },
   "files": [
