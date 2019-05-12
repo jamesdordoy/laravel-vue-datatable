@@ -15,7 +15,7 @@ This package makes use of the Laravel Vue Pagination component https://github.co
 See [https://jamesdordoy.github.io/vue-datatable/](https://jamesdordoy.github.io/vue-datatable/)
 
 ## Example
-![Image description](https://www.jamesdordoy.co.uk/images/datatable.png?a=a)
+![Image description](https://www.jamesdordoy.co.uk/images/projects/bootstrap-datatable.png)
 
 ## Package Installation
 See details https://github.com/jamesdordoy/Laravel-Vue-Datatables
@@ -277,6 +277,116 @@ export default {
         </data-table-filters>
     </span>
 </data-table>
+```
+
+## Styling the Datatable
+You can edit the style of the datatable by overriding the classes prop. A example mixin config can be found be below for Tailwind:
+
+![Image description](https://www.jamesdordoy.co.uk/images/projects/tailwind-datatable.png)
+
+### Tailwind Config (mixins/tailwind.js)
+
+```javascript
+export default {
+    data() {
+        return {
+            classes: { 
+                'table-container': {
+                    'justify-center': true,
+                    'w-full': true,
+                    'flex': true,
+                    'rounded': true,
+                    'mb-6': true,
+                    'shadow-md': true,
+                },
+                table: {
+                    'text-left': true,
+                    'w-full': true,
+                    'border-collapse': true,
+                },
+                't-head': {
+                    'text-grey-dark': true,
+                    'bg-black': true,
+                    'border-grey-light': true,
+                    'py-4': true,
+                    'px-6': true,
+                },
+                "t-body": {
+                    'bg-grey-darkest': true,
+                    
+                },
+                "t-head-tr": {
+                    
+                },
+                "t-body-tr": {
+                    'stripped-table': true
+                },
+                "td": {
+                    'py-4': true,
+                    'px-6': true,
+                    'border-b': true,
+                    'border-grey-light': true,
+                    'text-grey-light': true,
+                },
+                "th": {
+                    'py-4': true,
+                    'px-6': true,
+                    'font-bold': true,
+                    'uppercase': true,
+                    'text-sm': true,
+                    'text-grey-dark': true,
+                    'border-b': true,
+                    'border-grey-light': true,
+                },
+            }
+        };
+    },
+}
+```
+
+### Datatable
+
+```html
+<data-table
+    :url="url"
+    :columns="columns"
+    :classes="classes"
+    :per-page="perPage">
+</data-table>
+```
+
+```javascript
+
+import TailwindDatatable from '../mixins/tailwind.js';
+
+export default {
+    data() {
+        return {
+            url: 'http://vue-datatable.test/ajax',
+            perPage: ['10', '25', '50'],
+            columns: [
+            {
+                label: 'ID',
+                name: 'id',
+                filterable: true,
+            },
+            {
+                label: 'Name',
+                 name: 'name',
+                filterable: true,
+            },
+            {
+                label: 'Email',
+                name: 'email',
+                filterable: true,
+            }
+            ]
+        }
+    },
+	mixins: [
+		TailwindDatatable
+	]
+}
 ```
 
 ## Development
