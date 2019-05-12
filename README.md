@@ -361,6 +361,22 @@ export default {
     :columns="columns"
     :classes="classes"
     :per-page="perPage">
+    <span slot="filters" slot-scope="{ tableData, perPage }">
+        <data-table-filters
+            :classes="classes"
+            :table-data="tableData"
+            :per-page="perPage">
+        </data-table-filters>
+    </span>
+
+    <span slot="pagination" slot-scope="{ links, meta }">
+        <paginator 
+            @next="updateUrl"
+            @prev="updateUrl"
+            :meta="meta"
+            :links="links">
+        </paginator>
+    </span>
 </data-table>
 ```
 
