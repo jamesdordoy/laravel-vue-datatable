@@ -50,11 +50,13 @@
         props: {
             meta: {
                 type: Object,
-                default: () => ({})
+                default: () => ({}),
+                required: true,
             },
             links: {
                 type: Object,
-                default: () => ({})
+                default: () => ({}),
+                required: true,
             },
             buttonClasses: {
                 type: String,

@@ -33,10 +33,12 @@ export default {
         tableData: {
             type: Object,
             default: () => ({}),
+            required: true,
         },
         perPage: {
             type: Array,
             default: () => ([]),
+            required: true,
         },
     }
 }

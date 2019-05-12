@@ -16,7 +16,8 @@ export default {
             type: Function,
         },
         classes: {
-
+            type: Object,
+            default: () => ({}),
         }
     },
     data() {

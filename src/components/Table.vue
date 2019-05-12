@@ -26,7 +26,8 @@
         props: {
             columns: {
                 type: Array,
-                default: () => ([])
+                default: () => ([]),
+                required: true,
             },
             sortKey: {
                 type: String,

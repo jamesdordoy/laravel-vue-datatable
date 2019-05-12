@@ -19,21 +19,21 @@ See [https://jamesdordoy.github.io/vue-datatable/](https://jamesdordoy.github.io
 
 ## Package Installation
 See details https://github.com/jamesdordoy/Laravel-Vue-Datatables
-
 ## Component Installation
 
 ```bash
-npm install laravel-vue-datatable
+$ npm install laravel-vue-datatable
 ```
 
-## Register the Plugin
+### Register the Plugin
 
 ```javascript
 import DataTable from 'laravel-vue-datatable';
 Vue.use(DataTable);
 ```
 
-## Basic Example 
+### Basic Example
+> UserDatatable.vue
 
 ```html
 <data-table
@@ -76,9 +76,9 @@ export default {
 }
 ```
 
-## API
+### API
 
-### Datatable Props
+#### Datatable Props
 
 | Name | Type | Default | Description  
 | --- | --- | --- | --- |
@@ -88,7 +88,8 @@ export default {
 | `classes` | Object | See Below | (optional) Table classes |
 | `pagination` | Object | {}  | (optional) props for [gilbitron/laravel-vue-pagination](https://github.com/gilbitron/laravel-vue-pagination#props) |
 
-### Default Classes
+#### Default Classes
+
 ```json
 {
     "table-container": {
@@ -120,7 +121,7 @@ export default {
 }
 ```
 
-### Column Props
+#### Column Props
 | Name | Type | Default | Description  
 | --- | --- | --- | --- |
 | `label ` | String | "" | The JSON url |
@@ -131,10 +132,12 @@ export default {
 | `classes` | Object | {} | Component classes to parse |
 
 
-## Using dynamic components
+## Using Dynamic Components
 You can also inject your own components into the table such as buttons. Your buttons, links etc can also listen for events.
 
-### Example button component (ExampleButton.vue)
+### Example Button Component
+
+> (ExampleButton.vue)
 
 ```html
 <template>
@@ -159,7 +162,10 @@ export default {
 }
 ```
 
-### Datatable Columns (UserDataTable.vue)
+### Dynamic Datatable Columns
+
+> (UserDatatable.vue)
+
 ```javascript
 
 import ExampleButton './ExampleButton.vue';
@@ -212,10 +218,10 @@ export default {
 }
 ```
 
-## Overriding the Filters &amp; Pagination Components:
+## Overriding the Filters and Pagination Components
 If the included pagination or filters do not meet your requirements or if the styling is incorrect, they can be over-written using scoped slots.
 
-### DataTable
+### Paginatior Datatable
 
 ```html
 <data-table
@@ -236,7 +242,10 @@ If the included pagination or filters do not meet your requirements or if the st
 
 Once the URL has been updated by your customer paginator or filters, the table will re-render. Alterativly, if updating the URL is troublesome, different table filters can be manipulated by your filters using the v-model directive:
 
-### Example filter (DataTableFilter.vue)
+### Example Filter
+
+> (DatatableFilter.vue)
+
 This example filter will control the length of the table manipulating the tableData.length property using v-model.
 
 ```html
@@ -262,7 +271,7 @@ export default {
 }
 ```
 
-### DataTable
+### Filter Datatable
 
 ```html
 <data-table
@@ -280,11 +289,13 @@ export default {
 ```
 
 ## Styling the Datatable
-You can edit the style of the datatable by overriding the classes prop. A example mixin config can be found be below for Tailwind:
+You can edit the style of the Datatable by overriding the `classes` prop. A example mixin config can be found be below for Tailwind:
 
 ![Image description](https://www.jamesdordoy.co.uk/images/projects/tailwind-datatable.png)
 
-### Tailwind Config (mixins/tailwind.js)
+### Tailwind Config
+
+> (mixins/tailwind.js)
 
 Custom Class
 
@@ -353,7 +364,7 @@ export default {
 }
 ```
 
-### Datatable
+### Tailwind Datatable
 
 ```html
 <data-table

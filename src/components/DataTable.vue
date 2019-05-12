@@ -113,15 +113,21 @@ export default {
     props: {
         url: {
             type: String,
-            default: "/"
+            default: "/",
+            required: true,
         },
         columns: {
             type: Array,
-            default: () => ([])
+            default: () => ([]),
+            required: true,
         },
         perPage: {
             type: Array,
-            default: () => ([ '10', '25', '50' ])
+            default: () => ([
+                '10',
+                '25',
+                '50'
+            ])
         },
         classes: {
             type: Object,
@@ -134,18 +140,10 @@ export default {
                     'table-striped': true,
                     'table-dark': true,
                 },
-                't-head': {
-
-                },
-                't-body': {
-                    
-                },
-                td: {
-
-                },
-                th: {
-                    
-                },
+                't-head': {},
+                't-body': {},
+                'td': {},
+                'th': {},
             })
         },
         pagination: {
@@ -157,6 +155,7 @@ export default {
     },
     methods: {
         getData(url = this.url) {
+
             url = this.checkUrlForPagination(url);
             this.incrementDraw();
             
@@ -200,7 +199,6 @@ export default {
     },
     computed: {
         getRequestPayload() {
-            //Cache Locally
             let payload = this.tableData;
             payload.draw = this.draw;
 

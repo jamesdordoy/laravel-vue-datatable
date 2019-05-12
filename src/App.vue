@@ -22,22 +22,6 @@
                         :columns="columns"
                         :per-page="perPage"
                         :pagination="pagination">
-
-                        <span slot="" slot-scope="{ tableData, perPage }">
-                            <filters
-                                :per-page="perPage"
-                                :table-data="tableData">
-                            </filters>
-                        </span>
-
-                        <span slot="" slot-scope="{ links, meta }">
-                            <pagination 
-                                @next="updateUrl"
-                                @prev="updateUrl"
-                                :meta="meta"
-                                :links="links">
-                            </pagination>
-                        </span>
                     </data-table>
                 </div>
             </div>
