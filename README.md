@@ -15,7 +15,7 @@ This package makes use of an optional default component, the [Laravel Vue Pagina
 See [https://jamesdordoy.github.io/vue-datatable/](https://jamesdordoy.github.io/vue-datatable/)
 
 ## Example
-![Image description](https://www.jamesdordoy.co.uk/images/projects/bootstrap-datatable.png)
+![Image description](https://www.jamesdordoy.co.uk/images/projects/bootstrap-datatable.png?a=a)
 
 ## Package Installation
 See details https://github.com/jamesdordoy/Laravel-Vue-Datatables
