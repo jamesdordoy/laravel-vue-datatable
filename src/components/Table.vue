@@ -50,8 +50,7 @@
             },
             tableRowClasses: {
                 type: Object,
-                default: () => ({
-                })
+                default: () => ({})
             },
             tableContainerClasses: {
                 type: Object,

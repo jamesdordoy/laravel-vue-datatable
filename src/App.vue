@@ -36,6 +36,7 @@
     import Pagination from './components/Pagination.vue';
     import DataTableButtonCell from './components/generic/DataTableButtonCell.vue';
     import DataTableAnchorCell from './components/generic/DataTableAnchorCell.vue';
+    import DataTableDateCell from './components/generic/DataTableDateCell.vue';
 
     export default {
         name: 'app',
@@ -64,15 +65,17 @@
                         width: 20,
                     },
                     {
-                        label: 'Create On',
+                        label: 'Created On',
                         name: 'created_at',
                         filterable: true,
-                        width: 20,
+                        component: DataTableDateCell,
+                        width: 20,                        
                     },
                     {
                         label: 'Last Updated',
                         name: 'updated_at',
                         filterable: true,
+                        component: DataTableDateCell,
                         width: 20,
                     },
                     {

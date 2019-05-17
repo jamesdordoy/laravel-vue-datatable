@@ -5,7 +5,6 @@
   "author": "James Dordoy <jamesdordoy@gmail.com>",
   "homepage": "https://github.com/jamesdordoy/vue-datatable",
   "private": false,
-
   "main": "./dist/laravel-vue-datatable.common.js",
   "keywords": [
     "vue",
@@ -29,6 +28,7 @@
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "laravel-vue-pagination": "^2.3.0",
+    "moment": "^2.24.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
