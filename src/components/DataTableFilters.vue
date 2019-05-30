@@ -2,7 +2,6 @@
     <div class="row mb-3">
         <div class="col-md-3">
             <select
-                @change="getData"
                 v-model="tableData.length"
                 class="form-control">
                 <option
@@ -16,7 +15,6 @@
         <div class="col-md-3 offset-md-6">
             <input
                 name="name"
-                @input="getData"
                 class="form-control"
                 v-model="tableData.search"
                 placeholder="Search Table">
