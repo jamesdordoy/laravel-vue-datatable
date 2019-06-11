@@ -2,5 +2,5 @@ const path = require("path");
 
 module.exports = {
     publicPath: `/vue-datatable`,
-    outputDir: path.resolve(__dirname, "./example"),
+    outputDir: path.resolve(__dirname, "./demo"),
 }
