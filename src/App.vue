@@ -42,7 +42,7 @@
         name: 'app',
         data() {
             return {
-                url: 'http://packages.test/ajax',
+                url: 'http://laravel-vue-datatable-example.test/users',
                 perPage: ['10', '25', '50'],
                 columns: [
                     {
