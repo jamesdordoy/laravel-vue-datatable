@@ -42,7 +42,7 @@
         name: 'app',
         data() {
             return {
-                url: 'http://laravel-vue-datatable-example.test/users',
+                url: process.env.VUE_APP_DATATABLE_URL,
                 perPage: ['10', '25', '50'],
                 columns: [
                     {
