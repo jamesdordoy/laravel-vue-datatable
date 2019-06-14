@@ -1,15 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import DataTable from '../components/DataTable'
+import App from '../App'
 
-describe('DataTable', () => {
+describe('Laravel Vue Data Tables Demo', () => {
     test('can be mounted cleanly', () => {
-        const wrapper = shallowMount(DataTable, {
-            propsData: {
-              columns: [],
-              url: '',
-            }
-        });
-
+        const wrapper = shallowMount(App);
         expect(wrapper.isVueInstance()).toBeTruthy()
-    })
-})
+    });
+});
