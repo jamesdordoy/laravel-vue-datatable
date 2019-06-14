@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-datatable",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Vue.js datatable made with Laravel and Bootstrap in mind",
   "author": "James Dordoy <jamesdordoy@gmail.com>",
   "homepage": "https://github.com/jamesdordoy/vue-datatable",
@@ -35,7 +35,7 @@
     "@babel/core": "^7.4.5",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
+    "@vue/cli-service": "^3.8.3",
     "@vue/server-test-utils": "^1.0.0-beta.29",
     "@vue/test-utils": "^1.0.0-beta.29",
     "babel-core": "^7.0.0-bridge.0",
