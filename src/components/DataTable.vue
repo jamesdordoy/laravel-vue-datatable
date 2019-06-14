@@ -107,6 +107,7 @@ export default {
                 search: '',
                 column: 0,
                 dir: 'asc',
+                filters: this.filters
             },
         };
     },
@@ -151,6 +152,10 @@ export default {
             default: () => ({
                 align: 'right',
             })
+        },
+        filters: {
+            type: Object,
+            default: () => ({})
         },
     },
     methods: {
@@ -198,9 +203,10 @@ export default {
     },
     computed: {
         getRequestPayload() {
-            let payload = this.tableData;
+            let payload = Object.assign({}, this.tableData);
+            delete payload.filters;
+            payload = Object.assign(payload, this.tableData.filters);
             payload.draw = this.draw;
-
             return {
                 params: payload
             };
