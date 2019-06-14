@@ -19,9 +19,16 @@
                 <div class="col-md-12 mt-4 mb-4">
                     <data-table
                         :url="url"
+                        :filters="filters"
                         :columns="columns"
                         :per-page="perPage"
                         :pagination="pagination">
+                        <span slot="filters" slot-scope="{ tableData, perPage }">
+                            <data-table-filters
+                                :table-data="tableData"
+                                :per-page="perPage">
+                            </data-table-filters>
+                        </span>
                     </data-table>
                 </div>
             </div>
@@ -34,6 +41,7 @@
     import Filters from './components/Filters.vue';
     import DataTable from './components/DataTable.vue';
     import Pagination from './components/Pagination.vue';
+    import DataTableFilters from './components/DataTableFilters.vue';
     import DataTableButtonCell from './components/generic/DataTableButtonCell.vue';
     import DataTableAnchorCell from './components/generic/DataTableAnchorCell.vue';
     import DataTableDateCell from './components/generic/DataTableDateCell.vue';
@@ -92,6 +100,9 @@
                         width: 10,
                     },
                 ],
+                filters: {
+                    isAdmin: '',
+                },
                 pagination:{
                     limit: 1,
                     align: "right",
@@ -117,7 +128,9 @@
             // eslint-disable-next-line
             Pagination,
             // eslint-disable-next-line
-            Filters
+            Filters,
+            // eslint-disable-next-line
+            DataTableFilters
         }
     }
 </script>
