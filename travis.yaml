@@ -2,8 +2,12 @@ language: node_js
 node_js:
 - stable
 
+script:
+  - yarn test
+
 deploy:
   email: jamesdordoy@gmail.com
   on:
     tags: true
+    branch: master
     repo: jamesdordoy/vue-datatable
