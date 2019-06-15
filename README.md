@@ -1,3 +1,4 @@
+https://travis-ci.org/jamesdordoy/vue-datatable.svg?branch=master
 
 # Laravel Vue Datatable
 A Vue.js datatable component for Laravel that works with Bootstrap.
