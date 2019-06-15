@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+- stable
+
+deploy:
+  provider: npm
+  email: jamesdordoy@gmail.com
+  on:
+    tags: true
+    repo: jamesdordoy/vue-datatable
