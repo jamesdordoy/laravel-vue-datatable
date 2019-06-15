@@ -5,7 +5,9 @@ describe('Data Table Filters', () => {
     test('can be mounted cleanly', () => {
         const wrapper = shallowMount(DataTableFilters, {
             propsData: {
-              tableData: {},
+              tableData: {
+                  filters: {}
+              },
               perPage: [],
             }
         });
