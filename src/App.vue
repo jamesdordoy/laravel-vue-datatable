@@ -114,8 +114,8 @@
             updateUrl(url) {
                 this.url = url;
             },
-            alertMe() {
-                alert("hey");
+            alertMe(data) {
+                alert("You have clicked ID: " + data.id);
             }
         },
         components: {
