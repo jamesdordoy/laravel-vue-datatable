@@ -90,7 +90,8 @@
                         label: '',
                         name: 'View',
                         filterable: false,
-                        click: this.alertMe,
+                        event: "click",
+                        handler: this.alertMe,
                         component: DataTableButtonCell,
                         classes: { 
                             'btn': true,
