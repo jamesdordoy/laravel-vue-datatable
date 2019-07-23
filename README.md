@@ -197,7 +197,8 @@ export default {
                 name: 'View',
                 filterable: false,
                 component: ExampleButton,
-                click: this.alertMe,
+                event: "click",
+                handler: this.alertMe,
                 classes: { 
                     'btn': true,
                     'btn-primary': true,
