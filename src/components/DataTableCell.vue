@@ -8,12 +8,17 @@ export default {
             type: String,
             default: '',
         },
+        event: {
+            type: String,
+            default: 'click',
+        },
+        handler: {
+            type: Function,
+            default: () => {}
+        },
         value: {
             type: Object,
             default: () => ({}),
-        },
-        clickEvent: {
-            type: Function,
         },
         classes: {
             type: Object,
@@ -26,12 +31,16 @@ export default {
     render(createElement) {
 
         if (this.comp) {
+
+            let props = {
+                name: this.name,
+                data: this.value,
+            };
+
+            props[this.event] = this.handler;
+
             return createElement(this.comp, {
-                props: {
-                    name: this.name,
-                    data: this.value,
-                    click: this.clickEvent,
-                },
+                props,
                 attrs: {
                     classes: this.classes
                 }

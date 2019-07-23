@@ -36,7 +36,8 @@
                             :value="item"
                             :name="column.name"
                             :classes="column.classes"
-                            :click-event="column.click"
+                            :event="column.event"
+                            :handler="column.handler"
                             :comp="column.component">
                         </data-table-cell>
                     </td>
