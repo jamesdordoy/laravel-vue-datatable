@@ -131,6 +131,7 @@ export default {
 | `filterable` | Boolean | false | Is the column filterable |
 | `component` | Component | null | A dynamic component that can be injected |
 | `classes` | Object | {} | Component classes to parse |
+| `meta` | Object | {} | Additional values that are parsed to component |
 
 
 ## Using Dynamic Components
@@ -158,6 +159,7 @@ export default {
         data: {},
         name: {},
         click: {},
+        meta: {},
         classes: {},
     }
 }
@@ -203,7 +205,10 @@ export default {
                     'btn': true,
                     'btn-primary': true,
                     'btn-sm': true,
-                } 
+                },
+                meta: {
+                    'foo': 'bar',
+                }
             },
             ]
         }

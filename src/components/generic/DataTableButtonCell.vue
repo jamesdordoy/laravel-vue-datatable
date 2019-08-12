@@ -5,7 +5,7 @@
         </span>
         &nbsp;
         {{ name }}
-    </button>
+    </button>    
 </template>
 
 <script>
@@ -15,6 +15,7 @@ export default {
         name: {},
         click: {},
         classes: {},
+        meta: {},
     }
 }
 </script>

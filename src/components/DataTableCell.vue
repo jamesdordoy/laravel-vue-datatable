@@ -4,6 +4,10 @@ export default {
         comp: {
 
         },
+        meta: {
+            type: Object,
+            default: () => ({}),
+        },
         name: {
             type: String,
             default: '',
@@ -35,6 +39,7 @@ export default {
             let props = {
                 name: this.name,
                 data: this.value,
+                meta: this.meta,
             };
 
             props[this.event] = this.handler;

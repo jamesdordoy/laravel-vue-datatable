@@ -35,6 +35,7 @@
                         <data-table-cell
                             :value="item"
                             :name="column.name"
+                            :meta="column.meta"
                             :classes="column.classes"
                             :event="column.event"
                             :handler="column.handler"

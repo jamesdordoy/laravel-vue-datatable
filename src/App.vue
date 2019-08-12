@@ -93,6 +93,9 @@
                         event: "click",
                         handler: this.alertMe,
                         component: DataTableButtonCell,
+                        meta: {
+                            foo: "bar"
+                        },
                         classes: { 
                             'btn': true,
                             'btn-primary': true,
