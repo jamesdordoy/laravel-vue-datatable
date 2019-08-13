@@ -138,7 +138,7 @@ export default {
 
 
 ## Using Dynamic Components
-You can also inject your own components into the table such as buttons. Your buttons, links etc can also listen for events.
+You can also inject your own components into the table such as buttons. Your buttons, links etc can also listen for events. After declaring your event type and setting a handler. You can accept the event type as you would expect in your component, e.g. `click` for click events.
 
 ### Example Button Component
 
@@ -161,8 +161,7 @@ export default {
     props: {
         data: {},
         name: {},
-        event: '',
-        handler: () => {},
+        click: () => {},
         meta: {},
         classes: {},
     }
