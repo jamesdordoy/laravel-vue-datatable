@@ -131,6 +131,9 @@ export default {
 | `filterable` | Boolean | false | Is the column filterable |
 | `component` | Component | null | A dynamic component that can be injected |
 | `classes` | Object | {} | Component classes to parse |
+| `event` | String | "" | Event type to parse to the component e.g. click, focus etc. |
+| `handler` | Function | () => {} | Function to parse for the event handler |
+| `classes` | Object | {} | Component classes to parse |
 | `meta` | Object | {} | Additional values that are parsed to component |
 
 
@@ -158,7 +161,8 @@ export default {
     props: {
         data: {},
         name: {},
-        click: {},
+        event: '',
+        handler: () => {},
         meta: {},
         classes: {},
     }
