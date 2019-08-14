@@ -107,7 +107,7 @@ export default {
             tableData: {
                 length: this.perPage[0],
                 search: '',
-                column: 0,
+                column: this.columns[0].name,
                 dir: 'asc',
                 filters: this.filters
             },
