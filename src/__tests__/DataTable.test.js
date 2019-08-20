@@ -5,7 +5,20 @@ describe('Data Table', () => {
     test('can be mounted cleanly', () => {
         const wrapper = shallowMount(DataTable, {
             propsData: {
-              columns: [],
+              columns: [
+                {
+                    label: 'ID',
+                    name: 'id',
+                    filterable: true,
+                    width: 10,
+                },
+                {
+                    label: 'Name',
+                    name: 'name',
+                    filterable: true,
+                    width: 20,
+                },
+              ],
               url: '',
             }
         });

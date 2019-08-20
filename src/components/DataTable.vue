@@ -23,6 +23,7 @@
             :table-row-classes="classes['t-head-tr']"
             :table-container-classes="classes['table-container']">
             <tbody
+                v-if="!! columns"
                 :class="classes['t-body']">
                 <tr
                     :key="item.id"
@@ -168,9 +169,11 @@ export default {
             
             axios.get(url, this.getRequestPayload)
             .then(response => {
-                let data = response.data;
-                if (this.checkTableDraw(data.payload.draw)) {
-                    this.data = data;
+                if (!! response) {
+                    let data = response.data;
+                    if (this.checkTableDraw(data.payload.draw)) {
+                        this.data = data;
+                    }
                 }
             })
             .catch(errors => {
@@ -214,10 +217,18 @@ export default {
             };
         },
         paginationSlot() {
-            return this.$scopedSlots.pagination;
+            if (!! this.$scopedSlots) {
+                return this.$scopedSlots.pagination;
+            }
+
+            return null;
         },
         filtersSlot() {
-            return this.$scopedSlots.filters;
+            if (!! this.$scopedSlots) {
+                return this.$scopedSlots.filters;
+            }
+
+            return null;
         }
     }
 }
