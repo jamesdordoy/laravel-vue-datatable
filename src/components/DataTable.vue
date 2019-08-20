@@ -23,6 +23,7 @@
             :table-row-classes="classes['t-head-tr']"
             :table-container-classes="classes['table-container']">
             <tbody
+                v-if="!! columns"
                 :class="classes['t-body']">
                 <tr
                     :key="item.id"
@@ -107,7 +108,7 @@ export default {
             tableData: {
                 length: this.perPage[0],
                 search: '',
-                column: 0,
+                column: this.columns[0].name,
                 dir: 'asc',
                 filters: this.filters
             },
@@ -168,9 +169,11 @@ export default {
             
             axios.get(url, this.getRequestPayload)
             .then(response => {
-                let data = response.data;
-                if (this.checkTableDraw(data.payload.draw)) {
-                    this.data = data;
+                if (!! response) {
+                    let data = response.data;
+                    if (this.checkTableDraw(data.payload.draw)) {
+                        this.data = data;
+                    }
                 }
             })
             .catch(errors => {
@@ -180,7 +183,7 @@ export default {
         sortBy(key) {
             this.sortKey = key;
             this.sortOrders[key] = this.sortOrders[key] * -1;
-            this.tableData.column = this.getIndex(this.columns, 'name', key);
+            this.tableData.column = key;
             this.tableData.dir = this.sortOrders[key] === 1 ? 'desc' : 'asc';
         },
         getIndex(array, key, value) {
@@ -214,10 +217,18 @@ export default {
             };
         },
         paginationSlot() {
-            return this.$scopedSlots.pagination;
+            if (!! this.$scopedSlots) {
+                return this.$scopedSlots.pagination;
+            }
+
+            return null;
         },
         filtersSlot() {
-            return this.$scopedSlots.filters;
+            if (!! this.$scopedSlots) {
+                return this.$scopedSlots.filters;
+            }
+
+            return null;
         }
     }
 }
