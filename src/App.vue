@@ -21,6 +21,7 @@
                         :url="url"
                         :filters="filters"
                         :columns="columns"
+                        :add-filters-to-url="true"
                         :per-page="perPage"
                         :pagination="pagination">
                         <span slot="filters" slot-scope="{ tableData, perPage }">
