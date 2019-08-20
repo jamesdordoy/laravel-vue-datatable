@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-datatable",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Vue.js datatable made with Laravel and Bootstrap in mind",
   "author": "James Dordoy <jamesdordoy@gmail.com>",
   "homepage": "https://github.com/jamesdordoy/vue-datatable",
@@ -45,7 +45,9 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "jest": "^24.8.0",
+    "jest-localstorage-mock": "^2.4.0",
     "jest-serializer-vue": "^2.0.2",
+    "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
     "rollup-plugin-vue": "^5.0.0",
     "vue-jest": "^3.0.4",

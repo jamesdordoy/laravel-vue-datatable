@@ -69,22 +69,29 @@
 
 import axios from 'axios';
 import VueTable from './Table.vue';
+import UrlFilters from '../mixins/UrlFilters';
 import DataTableCell from './DataTableCell.vue';
 import DataTableFilters from './DataTableFilters.vue';
 
 export default {
     created() {
         this.getData();
+
+        if (this.addFiltersToUrl) {
+            this.checkParameters(this.tableData);
+        }
     },
     mounted() {
         this.columns.forEach((column) => {
            this.sortOrders[column.name] = -1;
         });
     },
+    mixins: [UrlFilters],
     watch: {
         url: {
             handler: function(newUrl) {
                 this.getData(newUrl);
+                
             },
         },
         tableData: {
@@ -160,6 +167,10 @@ export default {
             type: Object,
             default: () => ({})
         },
+        addFiltersToUrl: {
+            type: Boolean,
+            default: false,
+        }
     },
     methods: {
         getData(url = this.url) {
@@ -169,10 +180,13 @@ export default {
             
             axios.get(url, this.getRequestPayload)
             .then(response => {
-                if (!! response) {
+                if (response) {
                     let data = response.data;
                     if (this.checkTableDraw(data.payload.draw)) {
                         this.data = data;
+                        if (this.addFiltersToUrl) {
+                            this.updateParameters(this.tableData);
+                        }
                     }
                 }
             })
@@ -217,14 +231,14 @@ export default {
             };
         },
         paginationSlot() {
-            if (!! this.$scopedSlots) {
+            if (this.$scopedSlots) {
                 return this.$scopedSlots.pagination;
             }
 
             return null;
         },
         filtersSlot() {
-            if (!! this.$scopedSlots) {
+            if (this.$scopedSlots) {
                 return this.$scopedSlots.filters;
             }
 

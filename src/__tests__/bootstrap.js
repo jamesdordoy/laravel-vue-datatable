@@ -5,4 +5,6 @@ global.Vue = require('vue');
 //https://stackoverflow.com/questions/55088482/jest-not-implemented-window-alert
 window.alert = () => {};
 
+import 'jest-localstorage-mock';
+
 Vue.component('laravel-pagination', require('laravel-vue-pagination'));
