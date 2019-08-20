@@ -1,4 +1,3 @@
-
 export default {
     methods: {
         getURLParameter(name) {
@@ -7,19 +6,18 @@ export default {
         tryParseJSON (jsonString){
             try {
                 var o = JSON.parse(jsonString);
-        
                 if (o && typeof o === "object") {
                     return o;
                 }
-            } catch (e) { }
-        
+            } catch (e) {
+                // eslint-disable-next-line
+                console.log(e);
+            }
             return false;
         },
         checkParameters(tableData) {
-
             if (this.addFiltersToUrl) {
-                
-                let localStorage = window.localStorage;
+                let localStorage = localStorage;
 
                 Object.keys(tableData).forEach(filter => {
                     if (this.getURLParameter(filter)) {

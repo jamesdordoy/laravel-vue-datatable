@@ -68,8 +68,8 @@
 <script>
 
 import axios from 'axios';
-import UrlFilters from '../mixins/UrlFilters';
 import VueTable from './Table.vue';
+import UrlFilters from '../mixins/UrlFilters';
 import DataTableCell from './DataTableCell.vue';
 import DataTableFilters from './DataTableFilters.vue';
 
@@ -180,7 +180,7 @@ export default {
             
             axios.get(url, this.getRequestPayload)
             .then(response => {
-                if (!! response) {
+                if (response) {
                     let data = response.data;
                     if (this.checkTableDraw(data.payload.draw)) {
                         this.data = data;
@@ -231,14 +231,14 @@ export default {
             };
         },
         paginationSlot() {
-            if (!! this.$scopedSlots) {
+            if (this.$scopedSlots) {
                 return this.$scopedSlots.pagination;
             }
 
             return null;
         },
         filtersSlot() {
-            if (!! this.$scopedSlots) {
+            if (this.$scopedSlots) {
                 return this.$scopedSlots.filters;
             }
 

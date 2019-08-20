@@ -5,9 +5,10 @@ module.exports = {
         'vue'
     ],
     'transform': {
-        '^.+\\.js$': '<rootDir>/node_modules/babel-jest',
+        '^.+\\.(js|jsx)?$': '<rootDir>/node_modules/babel-jest',
         '.*\\.(vue)$': '<rootDir>/node_modules/vue-jest'
     },
+    "setupFiles": ["jest-localstorage-mock"],
     "setupFilesAfterEnv": [
         "<rootDir>/src/__tests__/bootstrap.js"
     ],
