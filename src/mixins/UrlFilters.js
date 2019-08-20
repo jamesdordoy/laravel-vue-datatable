@@ -17,7 +17,7 @@ export default {
         },
         checkParameters(tableData) {
             if (this.addFiltersToUrl) {
-                let localStorage = localStorage;
+                let localStorage = window.localStorage;
 
                 Object.keys(tableData).forEach(filter => {
                     if (this.getURLParameter(filter)) {
