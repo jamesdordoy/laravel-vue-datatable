@@ -4,6 +4,22 @@ export default {
         getURLParameter(name) {
             return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
         },
+        tryParseJSON (jsonString){
+            try {
+                var o = JSON.parse(jsonString);
+        
+                // Handle non-exception-throwing cases:
+                // Neither JSON.parse(false) or JSON.parse(1234) throw errors, hence the type-checking,
+                // but... JSON.parse(null) returns null, and typeof null === "object", 
+                // so we must check for that, too. Thankfully, null is falsey, so this suffices:
+                if (o && typeof o === "object") {
+                    return o;
+                }
+            }
+            catch (e) { }
+        
+            return false;
+        },
         checkParameters(tableData) {
 
             if (this.addFiltersToUrl) {
@@ -16,8 +32,8 @@ export default {
 
                         if (! isNaN(value)) {
                             this.tableData[filter] = Number(value);
-                        } else if (typeof value === 'object') {
-                            this.tableData.filters = JSON.stringify(value);
+                        } else if (typeof this.tryParseJSON(value) === 'object') {
+                            this.tableData.filters = JSON.parse(value);
                         } else {
                             this.tableData[filter] = value;
                         }
@@ -27,8 +43,8 @@ export default {
 
                         if (! isNaN(value)) {
                             this.tableData[filter] = Number(value);
-                        } else if (typeof value === 'object') {
-                            this.tableData.filters = JSON.stringify(value);
+                        } else if (typeof this.tryParseJSON(value) === 'object') {
+                            this.tableData.filters = JSON.parse(value);
                         } else {
                             this.tableData[filter] = value;
                         }
