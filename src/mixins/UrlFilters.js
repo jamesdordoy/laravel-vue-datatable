@@ -3,6 +3,14 @@ export default {
         getURLParameter(name) {
             return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search) || [null, ''])[1].replace(/\+/g, '%20')) || null;
         },
+        IsValidJSONString(str) {
+            try {
+                JSON.parse(str);
+            } catch (e) {
+                return false;
+            }
+            return true;
+        },
         tryParseJSON (jsonString){
             try {
                 var o = JSON.parse(jsonString);
@@ -25,7 +33,7 @@ export default {
 
                         if (! isNaN(value)) {
                             this.tableData[filter] = Number(value);
-                        } else if (typeof this.tryParseJSON(value) === 'object') {
+                        } else if (this.IsValidJSONString(value)) {
                             this.tableData.filters = JSON.parse(value);
                         } else {
                             this.tableData[filter] = value;

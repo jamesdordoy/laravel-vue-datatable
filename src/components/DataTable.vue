@@ -75,8 +75,6 @@ import DataTableFilters from './DataTableFilters.vue';
 
 export default {
     created() {
-        this.getData();
-
         if (this.addFiltersToUrl) {
             this.checkParameters(this.tableData);
         }
