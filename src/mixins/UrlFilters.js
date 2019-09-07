@@ -11,18 +11,6 @@ export default {
             }
             return true;
         },
-        tryParseJSON (jsonString){
-            try {
-                var o = JSON.parse(jsonString);
-                if (o && typeof o === "object") {
-                    return o;
-                }
-            } catch (e) {
-                // eslint-disable-next-line
-                console.log(e);
-            }
-            return false;
-        },
         checkParameters(tableData) {
             if (this.addFiltersToUrl) {
                 let localStorage = window.localStorage;
@@ -33,9 +21,11 @@ export default {
 
                         if (! isNaN(value)) {
                             this.tableData[filter] = Number(value);
-                        } else if (this.IsValidJSONString(value)) {
+                        }
+                        else if (this.IsValidJSONString(value)) {
                             this.tableData.filters = JSON.parse(value);
-                        } else {
+                        }
+                        else {
                             this.tableData[filter] = value;
                         }
 
@@ -44,9 +34,11 @@ export default {
 
                         if (! isNaN(value)) {
                             this.tableData[filter] = Number(value);
-                        } else if (typeof this.tryParseJSON(value) === 'object') {
+                        } 
+                        else if (this.IsValidJSONString(value)) {
                             this.tableData.filters = JSON.parse(value);
-                        } else {
+                        }
+                        else {
                             this.tableData[filter] = value;
                         }
                     }
@@ -60,7 +52,7 @@ export default {
             let newFilters = {};
 
             Object.keys(tableData).forEach(filter => {
-                if (typeof this.tableData[filter] === 'object') {
+                if (this.tableData[filter]) {
                     newFilters[filter] = JSON.stringify(this.tableData[filter]);
                 } else {
                     newFilters[filter] = this.tableData[filter];
