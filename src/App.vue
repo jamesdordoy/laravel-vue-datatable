@@ -30,6 +30,25 @@
                                 :per-page="perPage">
                             </data-table-filters>
                         </span>
+                        <tbody slot="body" slot-scope="{ data }">
+                            <tr
+                                :key="item.id"
+                                v-for="item in data">
+                                <td 
+                                    :key="column.name"
+                                    v-for="column in columns">
+                                    <data-table-cell
+                                        :value="item"
+                                        :name="column.name"
+                                        :meta="column.meta"
+                                        :event="column.event"
+                                        :handler="column.handler"
+                                        :comp="column.component"
+                                        :classes="column.classes">
+                                    </data-table-cell>
+                                </td>
+                            </tr>
+                        </tbody>
                     </data-table>
                 </div>
             </div>
@@ -43,6 +62,7 @@
     import DataTable from './components/DataTable.vue';
     import Pagination from './components/Pagination.vue';
     import DataTableFilters from './components/DataTableFilters.vue';
+    import DataTableCell from './components/DataTableCell.vue';
     import DataTableButtonCell from './components/generic/DataTableButtonCell.vue';
     import DataTableAnchorCell from './components/generic/DataTableAnchorCell.vue';
     import DataTableDateCell from './components/generic/DataTableDateCell.vue';
@@ -135,7 +155,9 @@
             // eslint-disable-next-line
             Filters,
             // eslint-disable-next-line
-            DataTableFilters
+            DataTableFilters,
+            // eslint-disable-next-line
+            DataTableCell
         }
     }
 </script>

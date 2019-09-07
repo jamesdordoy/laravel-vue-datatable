@@ -22,29 +22,36 @@
             :table-header-classes="classes['t-head']"
             :table-row-classes="classes['t-head-tr']"
             :table-container-classes="classes['table-container']">
-            <tbody
-                v-if="!! columns"
-                :class="classes['t-body']">
-                <tr
-                    :key="item.id"
-                    :class="classes['t-body-tr']"
-                    v-for="item in data.data">
-                    <td 
-                        :key="column.name"
-                        v-for="column in columns"
-                        :class="classes.td">
-                        <data-table-cell
-                            :value="item"
-                            :name="column.name"
-                            :meta="column.meta"
-                            :classes="column.classes"
-                            :event="column.event"
-                            :handler="column.handler"
-                            :comp="column.component">
-                        </data-table-cell>
-                    </td>
-                </tr>
-            </tbody>
+            <slot
+                name="body"
+                v-if="bodySlot"
+                :data="data.data">
+            </slot>
+            <template v-else>
+                <tbody
+                    v-if="!! columns"
+                    :class="classes['t-body']">
+                    <tr
+                        :key="item.id"
+                        :class="classes['t-body-tr']"
+                        v-for="item in data.data">
+                        <td 
+                            :key="column.name"
+                            v-for="column in columns"
+                            :class="classes.td">
+                            <data-table-cell
+                                :value="item"
+                                :name="column.name"
+                                :meta="column.meta"
+                                :classes="column.classes"
+                                :event="column.event"
+                                :handler="column.handler"
+                                :comp="column.component">
+                            </data-table-cell>
+                        </td>
+                    </tr>
+                </tbody>
+            </template>
         </vue-table>
         <slot
             name="pagination"
@@ -238,6 +245,13 @@ export default {
         filtersSlot() {
             if (this.$scopedSlots) {
                 return this.$scopedSlots.filters;
+            }
+
+            return null;
+        },
+        bodySlot() {
+            if (this.$scopedSlots) {
+                return this.$scopedSlots.body;
             }
 
             return null;

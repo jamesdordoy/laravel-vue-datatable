@@ -391,7 +391,34 @@ $data = $query->paginate($length);
 return new DataTableCollectionResource($data);
 
 ```
- 
+
+## Overriding the Datatable body
+If you want more control over the rendered table rows, you can use the `body` slot to override the default table HTML.
+
+```html
+
+<tbody slot="body" slot-scope="{ data }">
+    <tr
+        :key="item.id"
+        v-for="item in data">
+        <td 
+            :key="column.name"
+            v-for="column in columns">
+            <data-table-cell
+                :value="item"
+                :name="column.name"
+                :meta="column.meta"
+                :event="column.event"
+                :handler="column.handler"
+                :comp="column.component"
+                :classes="column.classes">
+            </data-table-cell>
+        </td>
+    </tr>
+</tbody>
+
+```
+
 
 ## Styling the Datatable
 You can edit the style of the Datatable by overriding the `classes` prop. A example mixin config can be found be below for Tailwind:
