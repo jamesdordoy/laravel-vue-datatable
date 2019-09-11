@@ -2,119 +2,108 @@
 
     <div class="d-flex" id="wrapper">
 
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Laravel Vue Datatable</div>
-      <div class="list-group list-group-flush">
-        <router-link
-            class="list-group-item list-group-item-action bg-light"
-            to="/laravel-vue-datatable/introduction">
-            Introduction
-        </router-link>
-        <router-link
-            class="list-group-item list-group-item-action bg-light"
-            to="/laravel-vue-datatable">
-            Installation
-        </router-link>
-        <a href="#" class="list-group-header list-group-item-action bg-light">Props</a>
-        <router-link
-            class="list-group-item list-group-item-action bg-light indent-1"
-            to="/laravel-vue-datatable/props/table">
-            Table Props
-        </router-link>
-        <router-link
-            class="list-group-item list-group-item-action bg-light indent-1"
-            to="/laravel-vue-datatable/props/column">
-            Column Props
-        </router-link>
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Laravel Vue Datatable</div>
+                <div class="list-group list-group-flush">
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light"
+                        to="/laravel-vue-datatable/introduction">
+                        Introduction
+                    </router-link>
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light"
+                        to="/laravel-vue-datatable">
+                        Installation
+                    </router-link>
+                    <a href="#" class="list-group-header list-group-item-action bg-light">Props</a>
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/props/table">
+                        Table Props
+                    </router-link>
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/props/column">
+                        Column Props
+                    </router-link>
 
-        <a href="#" class="list-group-header list-group-item-action bg-light">Examples</a>
-        <router-link
-            class="list-group-item list-group-item-action bg-light indent-1"
-            to="/laravel-vue-datatable/examples/basic">
-            Basic Example
-        </router-link>
-        <router-link
-            class="list-group-item list-group-item-action bg-light indent-1"
-            to="/laravel-vue-datatable/examples">
-            Injecting Dynamic Components
-        </router-link>
-        <router-link
-            class="list-group-item list-group-item-action bg-light indent-1"
-            to="/laravel-vue-datatable/examples">
-            Overriding the Filter &amp; Pagination Components
-        </router-link>
-            
-        <router-link
-            class="list-group-item list-group-item-action bg-light indent-1"
-            to="/laravel-vue-datatable/examples">
-            Overriding the Table Body
-        </router-link>
-            
-        <router-link
-            class="list-group-item list-group-item-action bg-light indent-1"
-            to="/laravel-vue-datatable/examples">
-            Adding Custom Filters to the table
-        </router-link>
-            
-        <router-link
-            class="list-group-item list-group-item-action bg-light indent-1"
-            to="/laravel-vue-datatable/examples">
-            Styling the Datatable
-        </router-link>
-      </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a
-                            class="nav-link"
-                            target="_blank"
-                            href="https://github.com/jamesdordoy/Laravel-Vue-Datatable">
-                            <font-awesome-icon :icon="['fab', 'vuejs']" />
-                            Component Github Repo
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a
-                            class="nav-link"
-                            target="_blank"
-                            href="https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package">
-                            <font-awesome-icon :icon="['fab', 'php']" />
-                            Laravel Package Github Repo
-                        </a>
-                    </li>
-                </ul>
+                    <a href="#" class="list-group-header list-group-item-action bg-light">Examples</a>
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/examples/basic">
+                        Basic Example
+                    </router-link>
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/examples">
+                        Injecting Dynamic Components
+                    </router-link>
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/examples">
+                        Overriding the Filter &amp; Pagination Components
+                    </router-link>
+                        
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/examples">
+                        Overriding the Table Body
+                    </router-link>
+                        
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/examples">
+                        Adding Custom Filters to the table
+                    </router-link>
+                        
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/examples">
+                        Styling the Datatable
+                    </router-link>
+                </div>
             </div>
-        </nav>
-        <div class="container-fluid">
-            <router-view></router-view>
+
+            <div id="page-content-wrapper">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link"
+                                    target="_blank"
+                                    href="https://github.com/jamesdordoy/Laravel-Vue-Datatable">
+                                    <font-awesome-icon :icon="['fab', 'vuejs']" />
+                                    Component Github Repo
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link"
+                                    target="_blank"
+                                    href="https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package">
+                                    <font-awesome-icon :icon="['fab', 'php']" />
+                                    Laravel Package Github Repo
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            <div class="container-fluid">
+                <router-view></router-view>
+            </div>
         </div>
     </div>
-    <!-- /#page-content-wrapper -->
-
-  </div>
-  <!-- /#wrapper -->
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .container-fluid {
     padding-top: 10px;
 }
 
-/*!
- * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/template-overviews/simple-sidebar)
- * Copyright 2013-2019 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-simple-sidebar/blob/master/LICENSE)
- */
 body {
   overflow-x: hidden;
 }
@@ -173,6 +162,7 @@ body {
 .indent-1 {
     padding-left: 26px;
 }
+
 </style>
 
 <script>

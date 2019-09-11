@@ -84,6 +84,8 @@ export default {
     created() {
         if (this.addFiltersToUrl) {
             this.checkParameters(this.tableData);
+        } else {
+            this.getData();
         }
     },
     mounted() {

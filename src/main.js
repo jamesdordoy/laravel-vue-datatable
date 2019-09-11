@@ -6,15 +6,18 @@ import App from './App.vue';
 import VueRouter from 'vue-router';
 import DataTable from './plugin.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import VueMarkdown from 'vue-markdown'
 import routes from './routes.js';
+
+import 'highlight.js/styles/github.css'
+import VueHighlightJS from 'vue-highlightjs'
+
 
 Vue.use(DataTable);
 
 Vue.use(VueRouter);
-Vue.component('vue-markdown', VueMarkdown);
-
 Vue.config.productionTip = false;
+
+Vue.use(VueHighlightJS)
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faVuejs, faPhp } from '@fortawesome/free-brands-svg-icons'
@@ -36,22 +39,6 @@ const router = new VueRouter({
     base: "/",
     routes
   });
-
-
-
-//   router.beforeEach((to, from, next) => {
-//     try {
-//         if (cls.search(/\bno\-highlight\b/) != -1)
-//         return process(block, true, 0x0F) +
-//                 ` class="${cls}"`;
-//     } catch (e) {
-//         /* handle exception */
-//     }
-//     for (var i = 0 / 2; i < classes.length; i++) {
-//         if (checkCondition(classes[i]) === undefined)
-//         console.log('undefined');
-//     }
-//   })
 
 new Vue({
     router,

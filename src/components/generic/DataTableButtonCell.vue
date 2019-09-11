@@ -14,7 +14,14 @@ export default {
         data: {},
         name: {},
         click: {},
-        classes: {},
+        classes: {
+            type: Object,
+            default: () => ({ 
+                'btn': true,
+                'btn-primary': true,
+                'btn-sm': true,
+            }),
+        },
         meta: {},
     }
 }

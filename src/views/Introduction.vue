@@ -1,6 +1,10 @@
 <template>
     <div>
-        <h1>Laravel Vue Datatable</h1>
+
+        <pre v-highlightjs>
+            <introduction-markdown>
+            </introduction-markdown>
+        </pre>
         <h1>Example</h1>
         <data-table
             :url="url"
@@ -46,7 +50,7 @@ code {
 </style>
 
 <script>
-    import Prism from 'prismjs';
+    import IntroductionMarkdown from '../markdown/introduction.md';
     import Filters from '../components/Filters.vue';
     import DataTable from '../components/DataTable.vue';
     import Pagination from '../components/Pagination.vue';
@@ -126,7 +130,7 @@ code {
             }
         },
         mounted() {
-            this.initHighlight();
+            // hljs.initHighlightingOnLoad();
         },
         methods: {
             updateUrl(url) {
@@ -135,19 +139,6 @@ code {
             alertMe(data) {
                 alert("You have clicked ID: " + data.id);
             },
-            initHighlight(block, cls) {
-                try {
-                    if (cls.search(/\bno\-highlight\b/) != -1)
-                    return process(block, true, 0x0F) +
-                            ` class="${cls}"`;
-                } catch (e) {
-                    /* handle exception */
-                }
-                for (var i = 0 / 2; i < classes.length; i++) {
-                    if (checkCondition(classes[i]) === undefined)
-                    console.log('undefined');
-                }
-            }
         },
         components: {
             // eslint-disable-next-line
@@ -164,6 +155,7 @@ code {
             DataTableFilters,
             // eslint-disable-next-line
             DataTableCell,
+            IntroductionMarkdown
         }
     }
 </script>

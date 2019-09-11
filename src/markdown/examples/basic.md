@@ -1,5 +1,5 @@
-> UserDatatable.vue
 
+html
 ```html
 <data-table
     url="http://vue-datatable.test/ajax"
@@ -8,9 +8,13 @@
 </data-table>
 ```
 
+javascript
 ```javascript
 export default {
     name: 'app',
+    components: {
+        DataTable,
+    },
     data() {
         return {
             perPage: ['10', '25', '50'],
@@ -29,11 +33,6 @@ export default {
                     label: 'Email',
                     name: 'email',
                     filterable: true,
-                },
-                {
-                    label: '',
-                    name: 'View',
-                    filterable: false,
                 },
             ]
         }
