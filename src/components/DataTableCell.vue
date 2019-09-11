@@ -25,7 +25,7 @@ export default {
             default: () => ({}),
         },
         classes: {
-            type: Object,
+            type: [Object, String],
             default: () => ({}),
         }
     },

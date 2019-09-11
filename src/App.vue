@@ -1,41 +1,169 @@
 <template>
-    <div style="background: #5e717d;">
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <a class="navbar-brand" href="#">Logo</a>
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link 1</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link 2</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link 3</a>
-                </li>
-            </ul>
-        </nav>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12 mt-4 mb-4">
-                    <data-table
-                        :url="url"
-                        :filters="filters"
-                        :columns="columns"
-                        :add-filters-to-url="true"
-                        :per-page="perPage"
-                        :pagination="pagination">
-                        <span slot="filters" slot-scope="{ tableData, perPage }">
-                            <data-table-filters
-                                :table-data="tableData"
-                                :per-page="perPage">
-                            </data-table-filters>
-                        </span>
-                    </data-table>
+
+    <div class="d-flex" id="wrapper">
+
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Laravel Vue Datatable</div>
+                <div class="list-group list-group-flush">
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light"
+                        to="/laravel-vue-datatable/introduction">
+                        Introduction
+                    </router-link>
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light"
+                        to="/laravel-vue-datatable">
+                        Installation
+                    </router-link>
+                    <a href="#" class="list-group-header list-group-item-action bg-light">Props</a>
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/props/table">
+                        Table Props
+                    </router-link>
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/props/column">
+                        Column Props
+                    </router-link>
+
+                    <a href="#" class="list-group-header list-group-item-action bg-light">Examples</a>
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/examples/basic">
+                        Basic Example
+                    </router-link>
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/examples">
+                        Injecting Dynamic Components
+                    </router-link>
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/examples">
+                        Overriding the Filter &amp; Pagination Components
+                    </router-link>
+                        
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/examples">
+                        Overriding the Table Body
+                    </router-link>
+                        
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/examples">
+                        Adding Custom Filters to the table
+                    </router-link>
+                        
+                    <router-link
+                        class="list-group-item list-group-item-action bg-light indent-1"
+                        to="/laravel-vue-datatable/examples">
+                        Styling the Datatable
+                    </router-link>
                 </div>
+            </div>
+
+            <div id="page-content-wrapper">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link"
+                                    target="_blank"
+                                    href="https://github.com/jamesdordoy/Laravel-Vue-Datatable">
+                                    <font-awesome-icon :icon="['fab', 'vuejs']" />
+                                    Component Github Repo
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link"
+                                    target="_blank"
+                                    href="https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package">
+                                    <font-awesome-icon :icon="['fab', 'php']" />
+                                    Laravel Package Github Repo
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            <div class="container-fluid">
+                <router-view></router-view>
             </div>
         </div>
     </div>
 </template>
+
+<style lang="scss" scoped>
+.container-fluid {
+    padding-top: 10px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+.list-group-header {
+    padding: 6px 20px;
+    font-size: 0.8em;
+    background: #ccc !important;
+}
+
+.list-group-header:hover {
+    background:#ccc !important;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.indent-1 {
+    padding-left: 26px;
+}
+
+</style>
 
 <script>
 
@@ -43,6 +171,7 @@
     import DataTable from './components/DataTable.vue';
     import Pagination from './components/Pagination.vue';
     import DataTableFilters from './components/DataTableFilters.vue';
+    import DataTableCell from './components/DataTableCell.vue';
     import DataTableButtonCell from './components/generic/DataTableButtonCell.vue';
     import DataTableAnchorCell from './components/generic/DataTableAnchorCell.vue';
     import DataTableDateCell from './components/generic/DataTableDateCell.vue';
@@ -135,7 +264,9 @@
             // eslint-disable-next-line
             Filters,
             // eslint-disable-next-line
-            DataTableFilters
+            DataTableFilters,
+            // eslint-disable-next-line
+            DataTableCell
         }
     }
 </script>
