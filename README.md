@@ -11,9 +11,9 @@ A Vue.js datatable component for Laravel that works with Bootstrap.
 
 This package makes use of an optional default component, the [Laravel Vue Pagination](https://github.com/gilbitron/laravel-vue-pagination)  component created by [gilbitron](https://github.com/gilbitron). If you need a pagination component for other areas of your website and you are using a Laravel API &amp; Bootstrap, i highly suggest using this flexible component.
 
-## Demo
+## Demo & Docs
 
-See [https://jamesdordoy.github.io/vue-datatable/](https://jamesdordoy.github.io/vue-datatable/)
+See [https://jamesdordoy.github.io/Laravel-Vue-Datatable/](https://jamesdordoy.github.io/Laravel-Vue-Datatable/)
 
 ## Example
 ![Image description](https://www.jamesdordoy.co.uk/images/projects/bootstrap-datatable.png?a=a)
@@ -37,11 +37,11 @@ Vue.use(DataTable);
 > UserDatatable.vue
 
 ```html
-<data-table
-    url="http://vue-datatable.test/ajax"
-    :per-page="perPage"
-    :columns="columns">
-</data-table>
+	<data-table
+	    url="http://vue-datatable.test/ajax"
+	    :per-page="perPage"
+	    :columns="columns">
+	</data-table>
 ```
 
 ```javascript
@@ -379,6 +379,8 @@ data() {
 This added "isAdmin" filter for staff type will be send to the Laravel backend and can be used to manipulate the results:
 
 ```php
+
+$isAdmin = $request->input('isAdmin');
 
 $query = User::dataTableQuery($column, $dir, $length, $searchValue);
         
