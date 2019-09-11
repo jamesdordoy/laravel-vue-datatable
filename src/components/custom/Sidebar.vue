@@ -14,7 +14,7 @@
                 to="/laravel-vue-datatable/installation">
                 Installation
             </router-link>
-            <a href="#" class="list-group-header list-group-item-action bg-light">Props</a>
+            <a href="#" class="list-group-header list-group-item-action">Props</a>
             <router-link
                 class="list-group-item list-group-item-action bg-light indent-1"
                 to="/laravel-vue-datatable/props/table">
@@ -26,7 +26,7 @@
                 Column Props
             </router-link>
 
-            <a href="#" class="list-group-header list-group-item-action bg-light">Examples</a>
+            <a href="#" class="list-group-header list-group-item-action">Examples</a>
             <router-link
                 class="list-group-item list-group-item-action bg-light indent-1"
                 to="/laravel-vue-datatable/examples/basic">
@@ -34,7 +34,7 @@
             </router-link>
             <router-link
                 class="list-group-item list-group-item-action bg-light indent-1"
-                to="/laravel-vue-datatable/examples">
+                to="/laravel-vue-datatable/examples/injecting-dynamic-components">
                 Injecting Dynamic Components
             </router-link>
             <router-link
@@ -63,3 +63,62 @@
         </div>
     </div>
 </template>
+
+
+<style>
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+.list-group-header {
+    padding: 6px 20px;
+    font-size: 0.8em;
+    background: #ccc !important;
+}
+
+.list-group-header:hover {
+    background:#ccc !important;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.indent-1 {
+    padding-left: 26px;
+}
+</style>

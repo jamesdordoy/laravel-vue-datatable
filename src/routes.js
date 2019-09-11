@@ -23,4 +23,8 @@ export default [
         path: '/laravel-vue-datatable/examples/basic',
         component: require('./views/examples/Basic.vue').default,
     },
+    {
+        path: '/laravel-vue-datatable/examples/injecting-dynamic-components',
+        component: require('./views/examples/InjectingDynamicComponents.vue').default,
+    },
 ];
