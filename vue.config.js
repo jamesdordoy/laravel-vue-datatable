@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-    publicPath: `/Laravel-Vue-Datatable`,
+    publicPath: `/laravel-vue-datatable`,
     outputDir: path.resolve(__dirname, "./docs"),
     chainWebpack: config => {
         config.module.rule('md')

@@ -13,13 +13,13 @@ This package makes use of an optional default component, the [Laravel Vue Pagina
 
 ## Demo & Docs
 
-See [https://jamesdordoy.github.io/Laravel-Vue-Datatable/](https://jamesdordoy.github.io/Laravel-Vue-Datatable/)
+See [https://jamesdordoy.github.io/laravel-vue-datatable/](https://jamesdordoy.github.io/laravel-vue-datatable/)
 
 ## Example
 ![Image description](https://www.jamesdordoy.co.uk/images/projects/bootstrap-datatable.png?a=a)
 
 ## Package Installation
-See details https://github.com/jamesdordoy/Laravel-Vue-Datatables
+See details https://github.com/jamesdordoy/laravel-vue-datatables
 ## Component Installation
 
 ```bash
