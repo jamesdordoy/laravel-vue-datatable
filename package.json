@@ -3,7 +3,7 @@
   "version": "0.3.7",
   "description": "Vue.js datatable made with Laravel and Bootstrap in mind",
   "author": "James Dordoy <jamesdordoy@gmail.com>",
-  "homepage": "https://github.com/jamesdordoy/vue-datatable",
+  "homepage": "https://github.com/jamesdordoy/Laravel-Vue-Datatable",
   "private": false,
   "main": "./dist/laravel-vue-datatable.common.js",
   "keywords": [
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jamesdordoy/vue-datatable.git"
+    "url": "https://github.com/jamesdordoy/Laravel-Vue-Datatable.git"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
