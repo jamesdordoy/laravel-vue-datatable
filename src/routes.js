@@ -1,11 +1,11 @@
 export default [
     {
         path: '/laravel-vue-datatable',
-        component: require('./views/Home.vue').default,
+        component: require('./views/Introduction.vue').default,
     },
     {
-        path: '/laravel-vue-datatable/introduction',
-        component: require('./views/Introduction.vue').default,
+        path: '/laravel-vue-datatable/installation',
+        component: require('./views/Install.vue').default,
     },
     {
         path: '/laravel-vue-datatable/props/table',

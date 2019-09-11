@@ -1,23 +1,20 @@
-
+//Imports
 import 'bootstrap';
 import Vue from 'vue';
 import moment from 'moment'
 import App from './App.vue';
+import routes from './routes.js';
 import VueRouter from 'vue-router';
 import DataTable from './plugin.js';
+import 'highlight.js/styles/github.css';
+import VueHighlightJS from 'vue-highlightjs';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import routes from './routes.js';
-
-import 'highlight.js/styles/github.css'
-import VueHighlightJS from 'vue-highlightjs'
-
 
 Vue.use(DataTable);
-
 Vue.use(VueRouter);
-Vue.config.productionTip = false;
-
 Vue.use(VueHighlightJS)
+
+Vue.config.productionTip = false;
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faVuejs, faPhp } from '@fortawesome/free-brands-svg-icons'

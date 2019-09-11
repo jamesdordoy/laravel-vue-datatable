@@ -2,17 +2,17 @@
 
     <div class="d-flex" id="wrapper">
 
-        <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="bg-light" id="sidebar-wrapper">
             <div class="sidebar-heading">Laravel Vue Datatable</div>
-                <div class="list-group list-group-flush">
+                <div class="list-group list-group-flush border-right">
                     <router-link
                         class="list-group-item list-group-item-action bg-light"
-                        to="/laravel-vue-datatable/introduction">
+                        to="/laravel-vue-datatable">
                         Introduction
                     </router-link>
                     <router-link
                         class="list-group-item list-group-item-action bg-light"
-                        to="/laravel-vue-datatable">
+                        to="/laravel-vue-datatable/installation">
                         Installation
                     </router-link>
                     <a href="#" class="list-group-header list-group-item-action bg-light">Props</a>
