@@ -1,3 +1,4 @@
+//Imports
 import { shallowMount } from '@vue/test-utils'
 import DataTable from '../components/DataTable'
 

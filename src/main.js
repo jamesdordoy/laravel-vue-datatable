@@ -12,15 +12,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 Vue.use(DataTable);
 Vue.use(VueRouter);
-Vue.use(VueHighlightJS)
+Vue.use(VueHighlightJS);
 
 Vue.config.productionTip = false;
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faVuejs, faPhp } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { faVuejs, faPhp } from '@fortawesome/free-brands-svg-icons';
 
-library.add(faVuejs, faPhp )
+library.add(faVuejs, faPhp );
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
@@ -35,7 +35,7 @@ const router = new VueRouter({
     mode: "history",
     base: "/",
     routes
-  });
+});
 
 new Vue({
     router,

@@ -1,5 +1,6 @@
-import { shallowMount } from '@vue/test-utils'
+//Imports
 import App from '../App'
+import { shallowMount } from '@vue/test-utils'
 
 describe('Laravel Vue Data Tables Demo', () => {
     test('can be mounted cleanly', () => {

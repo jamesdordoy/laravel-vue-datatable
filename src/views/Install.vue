@@ -7,13 +7,6 @@
     </div>
 </template>
 
-<style>
-.wrap-text {
-    overflow-wrap: normal;
-    white-space: normal;
-}
-</style>
-
 <script>
 
     import InstallMarkdown from '../markdown/install.md';
