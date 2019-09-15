@@ -26,6 +26,7 @@
 <script>
 
     import DataTable from '../../components/DataTable.vue';
+    import DataTableButtonCell from '../../components/generic/DataTableButtonCell.vue';
     import DynamicMarkdown from '../../markdown/examples/injecting-dynamic-components.md';
 
     export default {
@@ -35,6 +36,8 @@
             DataTable,
             // eslint-disable-next-line
             DynamicMarkdown,
+            // eslint-disable-next-line
+            DataTableButtonCell,
         },
         data() {
             return {
@@ -57,12 +60,34 @@
                         name: 'email',
                         filterable: true,
                     },
+                    {
+                        label: '',
+                        name: 'View',
+                        filterable: false,
+                        event: "click",
+                        handler: this.alertMe,
+                        component: DataTableButtonCell,
+                        meta: {
+                            foo: "bar"
+                        },
+                        classes: { 
+                            'btn': true,
+                            'btn-primary': true,
+                            'btn-sm': true,
+                        },
+                        width: 10,
+                    },
                 ],
                 pagination:{
                     limit: 1,
                     align: "right",
                     size: "small"
                 }
+            }
+        },
+        methods: {
+            alertMe(data) {
+                alert("hey");
             }
         },
     }
