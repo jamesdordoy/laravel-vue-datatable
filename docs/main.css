@@ -1,0 +1,13 @@
+
+.container-fluid {
+    padding-top: 10px;
+}
+
+p, h1, h2, h3, h4, h5 {
+    overflow-wrap: normal;
+    white-space: normal;
+}
+
+body {
+    overflow-x: hidden;
+}

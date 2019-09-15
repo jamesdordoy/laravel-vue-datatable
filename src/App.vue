@@ -12,23 +12,6 @@
     </div>
 </template>
 
-<style lang="scss">
-
-.container-fluid {
-    padding-top: 10px;
-}
-
-.wrap-text {
-    overflow-wrap: normal;
-    white-space: normal;
-}
-
-body {
-    overflow-x: hidden;
-}
-
-</style>
-
 <script>
     import Navbar from './components/custom/Navbar.vue';
     import Sidebar from './components/custom/Sidebar.vue';
