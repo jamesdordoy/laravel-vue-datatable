@@ -19,10 +19,10 @@ Vue.use(VueHighlightJS);
 
 //Font Awesome
 import { faEye } from '@fortawesome/free-regular-svg-icons';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { faVuejs, faPhp } from '@fortawesome/free-brands-svg-icons';
+import { faInfoCircle, faTable, faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
+import { faVuejs, faPhp, faLaravel } from '@fortawesome/free-brands-svg-icons';
 
-library.add(faVuejs, faPhp, faInfoCircle, faEye );
+library.add(faVuejs, faPhp, faLaravel, faTable, faProjectDiagram, faInfoCircle, faEye );
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 //Filters

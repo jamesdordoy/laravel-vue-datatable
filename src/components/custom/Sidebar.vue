@@ -14,7 +14,10 @@
                 to="/laravel-vue-datatable/installation">
                 Installation
             </router-link>
-            <a href="#" class="list-group-header list-group-item-action">Props</a>
+            <a href="#" class="list-group-header list-group-item-action">
+                <font-awesome-icon :icon="['fas', 'project-diagram']" />&nbsp;
+                Props
+            </a>
             <router-link
                 class="list-group-item list-group-item-action bg-light indent-1"
                 to="/laravel-vue-datatable/props/table">
@@ -26,7 +29,10 @@
                 Column Props
             </router-link>
 
-            <a href="#" class="list-group-header list-group-item-action">Laravel Package</a>
+            <a href="#" class="list-group-header list-group-item-action">
+                <font-awesome-icon :icon="['fab', 'laravel']" />&nbsp;
+                Laravel Package
+            </a>
             <router-link
                 class="list-group-item list-group-item-action bg-light indent-1"
                 to="/laravel-vue-datatable/laravel/installation">
@@ -51,7 +57,10 @@
                 Using the controller resource
             </router-link>
 
-            <a href="#" class="list-group-header list-group-item-action">Examples</a>
+            <a href="#" class="list-group-header list-group-item-action">
+                <font-awesome-icon :icon="['fas', 'table']" />&nbsp;
+                Examples
+            </a>
             <router-link
                 class="list-group-item list-group-item-action bg-light indent-1"
                 to="/laravel-vue-datatable/examples/basic">
