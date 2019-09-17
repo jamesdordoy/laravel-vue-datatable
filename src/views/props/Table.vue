@@ -6,10 +6,13 @@
 </template>
 
 <script>
+
     import TableMarkdown from '../../markdown/props/table.md';
+    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
 
     export default {
         name: 'Table-Props',
+        mixins: [CorrectTextStyling],
         components: {
             TableMarkdown
         },

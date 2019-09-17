@@ -61,7 +61,7 @@ export default {
                 filterable: false,
                 component: ExampleButton,
                 event: "click",
-                handler: this.alertMe,
+                handler: this.displayRow,
                 classes: { 
                     'btn': true,
                     'btn-primary': true,
@@ -79,8 +79,8 @@ export default {
         ExampleButton,
     },
     methods: {
-        alertMe(data) {
-            alert("hey");
+        displayRow(data) {
+            alert(`You clicked row ${data.id}`);
         }
     },
 }

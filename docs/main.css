@@ -1,3 +1,12 @@
+/* Main CSS File */
+html {
+    background: #f8f9fa!important;
+    min-height: 100%;
+}
+
+body {
+    overflow-x: hidden;
+}
 
 .container-fluid {
     padding-top: 10px;
@@ -8,6 +17,7 @@ p, h1, h2, h3, h4, h5 {
     white-space: normal;
 }
 
-body {
-    overflow-x: hidden;
+.wrap-text{
+    overflow-wrap: normal;
+    white-space: normal;
 }

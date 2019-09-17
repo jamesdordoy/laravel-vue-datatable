@@ -7,10 +7,12 @@
 
 <script>
 
+    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
     import ColumnPropsMarkdown from '../../markdown/props/column.md';
 
     export default {
         name: 'home',
+        mixins: [CorrectTextStyling],
         components: {
             ColumnPropsMarkdown
         },

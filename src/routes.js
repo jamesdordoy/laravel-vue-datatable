@@ -16,6 +16,22 @@ export default [
         component: require('./views/props/Column.vue').default,
     },
     {
+        path: '/laravel-vue-datatable/laravel/installation',
+        component: require('./views/laravel/Install.vue').default,
+    },
+    {
+        path: '/laravel-vue-datatable/laravel/options',
+        component: require('./views/laravel/Options.vue').default,
+    },
+    {
+        path: '/laravel-vue-datatable/laravel/trait',
+        component: require('./views/laravel/AddingTrait.vue').default,
+    },
+    {
+        path: '/laravel-vue-datatable/laravel/controller-resource',
+        component: require('./views/laravel/ControllerResource.vue').default,
+    },
+    {
         path: '/laravel-vue-datatable/examples',
         component: require('./views/Example.vue').default,
     },

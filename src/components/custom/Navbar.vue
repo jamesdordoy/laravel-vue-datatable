@@ -27,3 +27,20 @@
         </div>
     </nav>
 </template>
+
+<script>
+export default {
+    methods: {
+        toggleMenu() {
+
+            const wrapper = document.getElementById('sidebar-wrapper');
+
+            if (wrapper.style.marginLeft == "0px") {
+                document.getElementById('sidebar-wrapper').style.marginLeft = "-15rem";
+            } else { 
+                document.getElementById('sidebar-wrapper').style.marginLeft = 0;
+            }     
+        }
+    },
+}
+</script>

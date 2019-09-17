@@ -5,7 +5,7 @@
         <div id="page-content-wrapper">
             <navbar>
             </navbar>
-            <div class="container-fluid">
+            <div class="container-fluid pt-2">
                 <router-view></router-view>
             </div>
         </div>

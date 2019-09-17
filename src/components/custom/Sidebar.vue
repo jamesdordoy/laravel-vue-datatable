@@ -26,6 +26,31 @@
                 Column Props
             </router-link>
 
+            <a href="#" class="list-group-header list-group-item-action">Laravel Package</a>
+            <router-link
+                class="list-group-item list-group-item-action bg-light indent-1"
+                to="/laravel-vue-datatable/laravel/installation">
+                Installation
+            </router-link>
+
+            <router-link
+                class="list-group-item list-group-item-action bg-light indent-1"
+                to="/laravel-vue-datatable/laravel/options">
+                Package Options
+            </router-link>
+
+            <router-link
+                class="list-group-item list-group-item-action bg-light indent-1"
+                to="/laravel-vue-datatable/laravel/trait">
+                Adding the Trait to the model
+            </router-link>
+
+            <router-link
+                class="list-group-item list-group-item-action bg-light indent-1"
+                to="/laravel-vue-datatable/laravel/controller-resource">
+                Using the controller resource
+            </router-link>
+
             <a href="#" class="list-group-header list-group-item-action">Examples</a>
             <router-link
                 class="list-group-item list-group-item-action bg-light indent-1"

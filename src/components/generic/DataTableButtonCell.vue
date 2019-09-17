@@ -1,7 +1,7 @@
 <template>
     <button :class="classes" @click="click(data)" title="Update">
         <span>
-            <i class="fa fa-eye" aria-hidden="true"></i>
+            <font-awesome-icon :icon="['far', 'eye']" />
         </span>
         &nbsp;
         {{ name }}

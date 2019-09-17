@@ -1,9 +1,8 @@
 <template>
     <div>
-        <label>
-            Show Code
-            <input type="checkbox" v-model="code">
-        </label>
+        <code-toggle
+            v-model="code">
+        </code-toggle>
         <pre v-highlightjs v-if="code">
             <basic-markdown>
             </basic-markdown>
@@ -20,8 +19,11 @@
 
 <script>
 
+    
     import DataTable from '../../components/DataTable.vue';
     import BasicMarkdown from '../../markdown/examples/basic.md';
+    import CodeToggle from '../../components/generic/CodeToggle.vue';
+    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
 
     export default {
         name: 'basic',
@@ -29,8 +31,11 @@
             // eslint-disable-next-line
             DataTable,
             // eslint-disable-next-line
+            CodeToggle,
+            // eslint-disable-next-line
             BasicMarkdown,
         },
+        mixins: [CorrectTextStyling],
         data() {
             return {
                 code: false,

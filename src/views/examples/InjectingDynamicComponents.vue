@@ -1,14 +1,11 @@
 <template>
     <div>
-        <label>
-            Show Code
-            <input type="checkbox" v-model="code">
-        </label>
-        <div>
-            <p>
-                You can also inject your own components into the table such as buttons. Your buttons, links etc can also listen for events. After declaring your event type and setting a handler. You can accept the event type as you would expect in your component, e.g. `click` for click events.
-            </p>
-        </div>
+        <code-toggle
+            v-model="code">
+        </code-toggle>
+        <information-alert>
+            You can also inject your own components into the table such as buttons. Your buttons, links etc can also listen for events. After declaring your event type and setting a handler. You can accept the event type as you would expect in your component, e.g. `click` for click events.
+        </information-alert>
         <pre v-highlightjs v-if="code">
             <dynamic-markdown>
             </dynamic-markdown>
@@ -26,11 +23,15 @@
 <script>
 
     import DataTable from '../../components/DataTable.vue';
+    import CodeToggle from '../../components/generic/CodeToggle.vue';
+    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
+    import InformationAlert from '../../components/generic/InformationAlert.vue';
     import DataTableButtonCell from '../../components/generic/DataTableButtonCell.vue';
     import DynamicMarkdown from '../../markdown/examples/injecting-dynamic-components.md';
 
     export default {
-        name: 'basic',
+        name: 'injecting-dyanmic-components',
+        mixins: [CorrectTextStyling],
         components: {
             // eslint-disable-next-line
             DataTable,
@@ -38,6 +39,8 @@
             DynamicMarkdown,
             // eslint-disable-next-line
             DataTableButtonCell,
+            CodeToggle,
+            InformationAlert,
         },
         data() {
             return {
@@ -65,7 +68,7 @@
                         name: 'View',
                         filterable: false,
                         event: "click",
-                        handler: this.alertMe,
+                        handler: this.displayRow,
                         component: DataTableButtonCell,
                         meta: {
                             foo: "bar"
@@ -86,8 +89,8 @@
             }
         },
         methods: {
-            alertMe(data) {
-                alert("hey");
+            displayRow(data) {
+                alert(`You clicked row ${data.id}`);
             }
         },
     }
