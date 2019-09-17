@@ -172,6 +172,6 @@
 }
 
 .indent-2 {
-    padding-left: 52px;
+    padding-left: 38px;
 }
 </style>
