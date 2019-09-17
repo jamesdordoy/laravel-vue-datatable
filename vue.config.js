@@ -14,5 +14,5 @@ module.exports = {
           .options({
             raw: true
         })
-    }
+    },
 }

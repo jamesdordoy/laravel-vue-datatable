@@ -5,12 +5,13 @@
         </div>
         <div class="list-group list-group-flush border-right">
             <router-link
-                class="list-group-item list-group-item-action bg-light"
+                exact
+                class="list-group-item list-group-item-action nav-item-light"
                 to="/laravel-vue-datatable">
                 Introduction
             </router-link>
             <router-link
-                class="list-group-item list-group-item-action bg-light"
+                class="list-group-item list-group-item-action nav-item-light"
                 to="/laravel-vue-datatable/installation">
                 Installation
             </router-link>
@@ -19,12 +20,12 @@
                 Props
             </a>
             <router-link
-                class="list-group-item list-group-item-action bg-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/props/table">
                 Table Props
             </router-link>
             <router-link
-                class="list-group-item list-group-item-action bg-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/props/column">
                 Column Props
             </router-link>
@@ -34,25 +35,25 @@
                 Laravel Package
             </a>
             <router-link
-                class="list-group-item list-group-item-action bg-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/laravel/installation">
                 Installation
             </router-link>
 
             <router-link
-                class="list-group-item list-group-item-action bg-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/laravel/options">
                 Package Options
             </router-link>
 
             <router-link
-                class="list-group-item list-group-item-action bg-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/laravel/trait">
                 Adding the Trait to the model
             </router-link>
 
             <router-link
-                class="list-group-item list-group-item-action bg-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/laravel/controller-resource">
                 Using the controller resource
             </router-link>
@@ -135,6 +136,10 @@
 
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
+}
+
+.nav-item-light {
+    background: #f8f9fa!important;
 }
 
 @media (min-width: 768px) {

@@ -24,7 +24,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@fortawesome/free-regular-svg-icons": "^5.10.2",
     "axios": "^0.18.1",
     "laravel-vue-pagination": "^2.3.0",
     "moment": "^2.24.0",
@@ -34,6 +33,7 @@
     "@babel/core": "^7.4.5",
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
     "@fortawesome/free-brands-svg-icons": "^5.10.2",
+    "@fortawesome/free-regular-svg-icons": "^5.10.2",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
     "@fortawesome/vue-fontawesome": "^0.1.7",
     "@vue/cli-plugin-babel": "^3.8.0",
@@ -54,6 +54,7 @@
     "jest-localstorage-mock": "^2.4.0",
     "jest-serializer-vue": "^2.0.2",
     "jquery": "^3.4.1",
+    "node-sass": "^4.12.0",
     "popper.js": "^1.15.0",
     "rollup-plugin-vue": "^5.0.0",
     "sass-loader": "^8.0.0",
