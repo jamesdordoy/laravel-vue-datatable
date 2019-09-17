@@ -43,7 +43,7 @@
                 Vue Package
             </a>
             <router-link
-                class="list-group-item list-group-item-action nav-item-light"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/installation">
                 Installation
             </router-link>
