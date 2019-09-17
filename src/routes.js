@@ -43,4 +43,20 @@ export default [
         path: '/laravel-vue-datatable/examples/injecting-dynamic-components',
         component: require('./views/examples/InjectingDynamicComponents.vue').default,
     },
+    {
+        path: '/laravel-vue-datatable/examples/override-filters',
+        component: require('./views/examples/OverrideFilters.vue').default,
+    },
+    {
+        path: '/laravel-vue-datatable/examples/override-table-body',
+        component: require('./views/examples/OverrideTableBody.vue').default,
+    },
+    {
+        path: '/laravel-vue-datatable/examples/custom-filters',
+        component: require('./views/examples/CustomFilters.vue').default,
+    },
+    {
+        path: '/laravel-vue-datatable/examples/styling',
+        component: require('./views/examples/Styling.vue').default,
+    },
 ];

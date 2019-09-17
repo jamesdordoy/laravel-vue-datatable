@@ -67,36 +67,42 @@
                 Examples
             </a>
             <router-link
+                exact
                 class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/examples/basic">
                 Basic Example
             </router-link>
             <router-link
+                exact
                 class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/examples/injecting-dynamic-components">
                 Injecting Dynamic Components
             </router-link>
             <router-link
+                exact
                 class="list-group-item list-group-item-action nav-item-light indent-1"
-                to="/laravel-vue-datatable/examples">
+                to="/laravel-vue-datatable/examples/override-filters">
                 Overriding the Filter &amp; Pagination Components
             </router-link>
                 
             <router-link
+                exact
                 class="list-group-item list-group-item-action nav-item-light indent-1"
-                to="/laravel-vue-datatable/examples">
+                to="/laravel-vue-datatable/override-table-body">
                 Overriding the Table Body
             </router-link>
                 
-            <router-link
+            <router-link    
+                exact
                 class="list-group-item list-group-item-action nav-item-light indent-1"
-                to="/laravel-vue-datatable/examples">
+                to="/laravel-vue-datatable/examples/custom-filters">
                 Adding Custom Filters to the table
             </router-link>
                 
             <router-link
+                exact
                 class="list-group-item list-group-item-action nav-item-light indent-1"
-                to="/laravel-vue-datatable/examples">
+                to="/laravel-vue-datatable/examples/styling">
                 Styling the Datatable
             </router-link>
         </div>
