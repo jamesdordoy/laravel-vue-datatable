@@ -1,4 +1,4 @@
-### Use the Controller Resource
+## Use the Controller Resource
 
 <p class="wrap-text">
 The Collection Resource is expecting a paginated collection, so feel free to use your own queries if your require more complex filtering.

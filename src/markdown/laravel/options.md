@@ -1,4 +1,4 @@
-#### Package Options
+## Package Options
 
 ```php
 [

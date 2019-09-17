@@ -10,26 +10,6 @@
                 to="/laravel-vue-datatable">
                 Introduction
             </router-link>
-            <router-link
-                class="list-group-item list-group-item-action nav-item-light"
-                to="/laravel-vue-datatable/installation">
-                Installation
-            </router-link>
-            <a href="#" class="list-group-header list-group-item-action">
-                <font-awesome-icon :icon="['fas', 'project-diagram']" />&nbsp;
-                Props
-            </a>
-            <router-link
-                class="list-group-item list-group-item-action nav-item-light indent-1"
-                to="/laravel-vue-datatable/props/table">
-                Table Props
-            </router-link>
-            <router-link
-                class="list-group-item list-group-item-action nav-item-light indent-1"
-                to="/laravel-vue-datatable/props/column">
-                Column Props
-            </router-link>
-
             <a href="#" class="list-group-header list-group-item-action">
                 <font-awesome-icon :icon="['fab', 'laravel']" />&nbsp;
                 Laravel Package
@@ -59,39 +39,63 @@
             </router-link>
 
             <a href="#" class="list-group-header list-group-item-action">
+                <font-awesome-icon :icon="['fab', 'vuejs']" />&nbsp;
+                Vue Package
+            </a>
+            <router-link
+                class="list-group-item list-group-item-action nav-item-light"
+                to="/laravel-vue-datatable/installation">
+                Installation
+            </router-link>
+            <a href="#" class="list-group-header list-group-item-action">
+                <font-awesome-icon :icon="['fas', 'project-diagram']" />&nbsp;
+                Props
+            </a>
+            <router-link
+                class="list-group-item list-group-item-action nav-item-light indent-1"
+                to="/laravel-vue-datatable/props/table">
+                Table Props
+            </router-link>
+            <router-link
+                class="list-group-item list-group-item-action nav-item-light indent-1"
+                to="/laravel-vue-datatable/props/column">
+                Column Props
+            </router-link>
+
+            <a href="#" class="list-group-header list-group-item-action">
                 <font-awesome-icon :icon="['fas', 'table']" />&nbsp;
                 Examples
             </a>
             <router-link
-                class="list-group-item list-group-item-action bg-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/examples/basic">
                 Basic Example
             </router-link>
             <router-link
-                class="list-group-item list-group-item-action bg-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/examples/injecting-dynamic-components">
                 Injecting Dynamic Components
             </router-link>
             <router-link
-                class="list-group-item list-group-item-action bg-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/examples">
                 Overriding the Filter &amp; Pagination Components
             </router-link>
                 
             <router-link
-                class="list-group-item list-group-item-action bg-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/examples">
                 Overriding the Table Body
             </router-link>
                 
             <router-link
-                class="list-group-item list-group-item-action bg-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/examples">
                 Adding Custom Filters to the table
             </router-link>
                 
             <router-link
-                class="list-group-item list-group-item-action bg-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/examples">
                 Styling the Datatable
             </router-link>

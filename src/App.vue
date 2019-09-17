@@ -49,15 +49,10 @@ p, h1, h2, h3, h4, h5 {
     import Sidebar from './components/custom/Sidebar.vue';
 
     export default {
-        name: 'app',
+        name: 'Documentation',
         components: {
             Navbar,
             Sidebar,
-        },
-        data() {
-            return {
-                url: process.env.VUE_APP_DATATABLE_URL,
-            }
         },
     }
 </script>
