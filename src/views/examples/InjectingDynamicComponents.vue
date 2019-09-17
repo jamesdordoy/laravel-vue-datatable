@@ -6,12 +6,12 @@
         <information-alert>
             You can also inject your own components into the table such as buttons. Your buttons, links etc can also listen for events. After declaring your event type and setting a handler. You can accept the event type as you would expect in your component, e.g. `click` for click events.
         </information-alert>
-        <pre v-highlightjs v-if="code">
+        <pre v-highlightjs v-show="code">
             <dynamic-markdown>
             </dynamic-markdown>
         </pre>
         <data-table
-            v-else
+            v-show="!code"
             :url="url"
             :columns="columns"
             :per-page="perPage"

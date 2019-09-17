@@ -3,12 +3,12 @@
         <code-toggle
             v-model="code">
         </code-toggle>
-        <pre v-highlightjs v-if="code">
+        <pre v-highlightjs v-show="code">
             <basic-markdown>
             </basic-markdown>
         </pre>
         <data-table
-            v-else
+            v-show="!code"
             :url="url"
             :columns="columns"
             :per-page="perPage"

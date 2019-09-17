@@ -47,17 +47,17 @@
                 to="/laravel-vue-datatable/installation">
                 Installation
             </router-link>
-            <a href="#" class="list-group-header list-group-item-action">
+            <a href="#" class="list-group-header list-group-item-action indent-1">
                 <font-awesome-icon :icon="['fas', 'project-diagram']" />&nbsp;
                 Props
             </a>
             <router-link
-                class="list-group-item list-group-item-action nav-item-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-2"
                 to="/laravel-vue-datatable/props/table">
                 Table Props
             </router-link>
             <router-link
-                class="list-group-item list-group-item-action nav-item-light indent-1"
+                class="list-group-item list-group-item-action nav-item-light indent-2"
                 to="/laravel-vue-datatable/props/column">
                 Column Props
             </router-link>
@@ -169,5 +169,9 @@
 
 .indent-1 {
     padding-left: 26px;
+}
+
+.indent-2 {
+    padding-left: 52px;
 }
 </style>
