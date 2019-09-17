@@ -21,7 +21,6 @@ html {
 
 body {
     overflow-x: hidden;
-    background: #ccc;
 }
 
 .container-fluid {
