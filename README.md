@@ -560,10 +560,16 @@ export default {
 
 ## Development
 
-To work on the library locally, run the following command:
+To work on the package locally or to add to the documentation, run the following command:
 
 ```bash
 npm run serve
+```
+
+To deploy documentation to GitHub under a PR. Please run the following after uncommenting the outputDir line in the vue.config.js file:
+
+```bash
+npm run build-docs
 ```
 
 To run the tests:
