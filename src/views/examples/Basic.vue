@@ -1,8 +1,15 @@
 <template>
     <div>
-        <code-toggle
-            v-model="code">
-        </code-toggle>
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="markdown-header">Basic Example</h2>
+            </div>
+            <div class="col-md-6">
+                 <code-toggle
+                    v-model="code">
+                </code-toggle>
+            </div>
+        </div>
         <pre v-highlightjs v-show="code">
             <basic-markdown>
             </basic-markdown>

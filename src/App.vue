@@ -42,6 +42,14 @@ p, h1, h2, h3, h4, h5 {
     border: 1px solid #ccc;
 }
 
+.markdown-header{ 
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 21px;
+}
+
 </style>
 
 <script>

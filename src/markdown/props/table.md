@@ -1,4 +1,4 @@
-#### Datatable Props
+## Datatable Props
 | Name | Type | Default | Description  
 | --- | --- | --- | --- |
 | url | String | "/" | The JSON url |

@@ -6,7 +6,7 @@ composer require jamesdordoy/laravelvuedatatable
 <br>
 
 ## Add Service Provider
-Add the following line to your \App\Providers\AppServiceProvider.php
+Add the following line to your \config\app.php
 
 ```
 JamesDordoy\LaravelVueDatatable\Providers\LaravelVueDatatableServiceProvider::class,

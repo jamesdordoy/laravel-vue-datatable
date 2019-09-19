@@ -3,7 +3,7 @@
         <div class="sidebar-heading">
             Laravel Vue Datatable
         </div>
-        <div class="list-group list-group-flush border-right">
+        <div class="list-group list-group-flush border-right sidebar-menu">
             <router-link
                 exact
                 class="list-group-item list-group-item-action nav-item-light"
@@ -119,6 +119,10 @@
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
   transition: margin .25s ease-out;
+}
+
+.sidebar-menu {
+    overflow-y: scroll;
 }
 
 #sidebar-wrapper .sidebar-heading {

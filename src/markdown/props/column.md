@@ -1,4 +1,4 @@
-#### Column Props
+## Column Props
 | Name | Type | Default | Description  
 | --- | --- | --- | --- |
 | label | String | "" | The JSON url |

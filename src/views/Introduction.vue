@@ -8,8 +8,8 @@
 </template>
 
 <script>
-    import IntroductionMarkdown from '../markdown/introduction.md';
     import CorrectTextStyling from '../mixins/CorrectTextStyling';
+    import IntroductionMarkdown from '../markdown/introduction.md';
     
     export default {
         name: 'home',

@@ -97,8 +97,7 @@ export default {
     watch: {
         url: {
             handler: function(newUrl) {
-                this.getData(newUrl);
-                
+                this.getData(newUrl); 
             },
         },
         tableData: {
