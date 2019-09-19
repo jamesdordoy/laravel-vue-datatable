@@ -16,6 +16,10 @@ export default [
         component: require('./views/props/Column.vue').default,
     },
     {
+        path: '/laravel-vue-datatable/props/cell',
+        component: require('./views/props/Cell.vue').default,
+    },
+    {
         path: '/laravel-vue-datatable/laravel/installation',
         component: require('./views/laravel/Install.vue').default,
     },

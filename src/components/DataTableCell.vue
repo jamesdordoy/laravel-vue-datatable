@@ -48,7 +48,7 @@ export default {
                 props,
                 attrs: {
                     classes: this.classes
-                }
+                },
             })
         }
         

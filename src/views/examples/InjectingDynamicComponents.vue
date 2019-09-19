@@ -18,11 +18,9 @@
             </dynamic-markdown>
         </pre>
         <data-table
-            v-show="!code"
             :url="url"
-            :columns="columns"
-            :per-page="perPage"
-            :pagination="pagination">
+            v-show="!code"
+            :columns="columns">
         </data-table>
     </div>
 </template>
@@ -53,7 +51,6 @@
             return {
                 code: false,
                 url: process.env.VUE_APP_DATATABLE_URL,
-                perPage: ['10', '25', '50'],
                 columns: [
                     {
                         label: 'ID',
@@ -87,12 +84,7 @@
                         },
                         width: 10,
                     },
-                ],
-                pagination:{
-                    limit: 1,
-                    align: "right",
-                    size: "small"
-                }
+                ]
             }
         },
         methods: {

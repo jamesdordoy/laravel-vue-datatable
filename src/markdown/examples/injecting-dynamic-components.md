@@ -37,8 +37,7 @@ import ExampleButton './ExampleButton.vue';
 export default {
     data() {
         return {
-            url: 'http://vue-datatable.test/ajax',
-            perPage: ['10', '25', '50'],
+            url: 'http://example.test/example',
             columns: [
             {
                 label: 'ID',
@@ -67,9 +66,6 @@ export default {
                     'btn-primary': true,
                     'btn-sm': true,
                 },
-                meta: {
-                    'foo': 'bar',
-                }
             },
             ]
         }

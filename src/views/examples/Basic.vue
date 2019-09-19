@@ -17,9 +17,7 @@
         <data-table
             v-show="!code"
             :url="url"
-            :columns="columns"
-            :per-page="perPage"
-            :pagination="pagination">
+            :columns="columns">
         </data-table>
     </div>
 </template>
@@ -64,12 +62,7 @@
                         name: 'email',
                         filterable: true,
                     },
-                ],
-                pagination:{
-                    limit: 1,
-                    align: "right",
-                    size: "small"
-                }
+                ]
             }
         },
     }

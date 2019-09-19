@@ -61,6 +61,11 @@
                 to="/laravel-vue-datatable/props/column">
                 Column Props
             </router-link>
+            <router-link
+                class="list-group-item list-group-item-action nav-item-light indent-2"
+                to="/laravel-vue-datatable/props/cell">
+                Cell Props
+            </router-link>
 
             <a href="#" class="list-group-header list-group-item-action">
                 <font-awesome-icon :icon="['fas', 'table']" />&nbsp;
@@ -88,7 +93,7 @@
             <router-link
                 exact
                 class="list-group-item list-group-item-action nav-item-light indent-1"
-                to="/laravel-vue-datatable/override-table-body">
+                to="/laravel-vue-datatable/examples/override-table-body">
                 Overriding the Table Body
             </router-link>
                 
