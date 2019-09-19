@@ -251,7 +251,7 @@ If the included pagination or filters do not meet your requirements or if the st
 </data-table>
 ```
 
-Once the URL has been updated by your customer paginator or filters, the table will re-render. Alterativly, if updating the URL is troublesome, different table filters can be manipulated by your filters using the v-model directive:
+Once the URL has been updated by your customer paginator or filters, the table will re-render. Alternatively, if updating the URL is troublesome, different table filters can be manipulated by your filters using the v-model directive:
 
 ### Example Filter
 
