@@ -37,11 +37,11 @@ Vue.use(DataTable);
 > UserDatatable.vue
 
 ```html
-	<data-table
-	    url="http://vue-datatable.test/ajax"
-	    :per-page="perPage"
-	    :columns="columns">
-	</data-table>
+<data-table
+    url="http://vue-datatable.test/ajax"
+    :per-page="perPage"
+    :columns="columns">
+</data-table>
 ```
 
 ```javascript
