@@ -166,6 +166,7 @@ export default {
         pagination: {
             type: Object,
             default: () => ({
+                limit: 1,
                 align: 'right',
             })
         },
