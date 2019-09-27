@@ -1,7 +1,6 @@
 //Imports
 import { shallowMount } from '@vue/test-utils'
 import DataTableCell from '../components/DataTableCell'
-
 import ColumnNotFoundException from '../exceptions/ColumnNotFoundException';
 
 describe('Data Table Cell', () => {
@@ -18,19 +17,13 @@ describe('Data Table Cell', () => {
         expect(wrapper.isVueInstance()).toBeTruthy()
     });
 
-    test('can throw exception', () => {
+    test('can throw no column found exception', () => {
         
-
-        let thrownError;
-
         try {
             shallowMount(DataTableCell);
         }
         catch(error) {
-            thrownError = error;
+            expect(error).toBeInstanceOf(ColumnNotFoundException);
         }
-
-        expect(thrownError).toBeInstanceOf(ColumnNotFoundException);
-
     });
 });
