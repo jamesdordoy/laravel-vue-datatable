@@ -19,37 +19,41 @@ See [https://jamesdordoy.github.io/laravel-vue-datatable/](https://jamesdordoy.g
 ![Image description](https://www.jamesdordoy.co.uk/images/projects/bootstrap-datatable.png?a=a)
 
 ## Package Installation
-See details https://github.com/jamesdordoy/laravel-vue-datatables
+See details [https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package](https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Packages)
+
 ## Component Installation
 
 ```bash
 $ npm install laravel-vue-datatable
+
+or
+
+$ yarn add laravel-vue-datatable
 ```
 
 ### Register the Plugin
 
 ```javascript
 import DataTable from 'laravel-vue-datatable';
+
 Vue.use(DataTable);
 ```
 
 ### Basic Example
 > UserDatatable.vue
 
+
 ```html
 <data-table
-    url="http://vue-datatable.test/ajax"
-    :per-page="perPage"
-    :columns="columns">
+    :columns="columns"
+    url="http://example.test/example">
 </data-table>
 ```
 
 ```javascript
 export default {
-    name: 'app',
     data() {
         return {
-            perPage: ['10', '25', '50'],
             columns: [
                 {
                     label: 'ID',
@@ -65,11 +69,6 @@ export default {
                     label: 'Email',
                     name: 'email',
                     filterable: true,
-                },
-                {
-                    label: '',
-                    name: 'View',
-                    filterable: false,
                 },
             ]
         }
