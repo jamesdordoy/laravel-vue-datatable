@@ -1,4 +1,7 @@
 <script>
+
+import ColumnNotFoundException from "../exceptions/ColumnNotFoundException";
+
 export default {
     props: {
         comp: {
@@ -62,6 +65,10 @@ export default {
             }
         } else {
             columnName = this.value[this.name];
+        }
+
+        if (! columnName) {
+            throw new ColumnNotFoundException(`The column ${this.name} was not found`);
         }
         
         return createElement('span', {}, columnName)

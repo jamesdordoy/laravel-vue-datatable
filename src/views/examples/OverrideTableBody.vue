@@ -1,13 +1,8 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <h2 class="markdown-header">Overriding the Datatable body</h2>
-            </div>
-            <div class="col-md-6">
-                 <code-toggle
-                    v-model="code">
-                </code-toggle>
             </div>
         </div>
         <information-alert>
@@ -46,30 +41,24 @@
 
 <script>
 
-    
+    import CodeExample from '../../mixins/CodeExample';
     import DataTable from '../../components/DataTable.vue';
-    import OverrideTableBodyMarkdown from '../../markdown/examples/override-table-body.md';
-
     import InformationAlert from '../../components/generic/InformationAlert.vue';
-    import CodeToggle from '../../components/generic/CodeToggle.vue';
-    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
-
+    import OverrideTableBodyMarkdown from '../../markdown/examples/override-table-body.md';
+    
     export default {
         name: 'Override-Table-Body',
         components: {
             // eslint-disable-next-line
             DataTable,
             // eslint-disable-next-line
-            CodeToggle,
-            // eslint-disable-next-line
             OverrideTableBodyMarkdown,
             // eslint-disable-next-line
             InformationAlert,
         },
-        mixins: [CorrectTextStyling],
+        mixins: [CodeExample],
         data() {
             return {
-                code: false,
                 url: process.env.VUE_APP_DATATABLE_URL,
                 perPage: ['10', '25', '50'],
                 columns: [

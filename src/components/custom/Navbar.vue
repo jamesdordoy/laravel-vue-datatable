@@ -23,12 +23,14 @@
                         Laravel Package Github Repo
                     </a>
                 </li>
-                <!-- <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link">
                         <b>Show Code</b>&nbsp;&nbsp;
-                        <switches v-model="code" @input="codeToggle" style="display: inline-block; margin-bottom: 0;" theme="bootstrap" color="info"></switches>
+                        <vue-switch>
+
+                        </vue-switch>
                     </a>
-                </li> -->
+                </li>
             </ul>
         </div>
     </nav>
@@ -36,24 +38,18 @@
 
 <script>
 
-// import Switches from 'vue-switches';
+import VueSwitch from '../generic/Switch';
 
 export default {
-    // components: {
-    //     Switches
-    // },
+    components: {
+        VueSwitch,
+    },
     data() {
         return {
            code: false,
         };
     },
-    created() {
-        this.code = (localStorage.getItem('showCode') === 'true');
-    },
     methods: {
-        codeToggle(value) {
-            localStorage.setItem('showCode', value);
-        },
         toggleMenu() {
 
             const wrapper = document.getElementById('sidebar-wrapper');

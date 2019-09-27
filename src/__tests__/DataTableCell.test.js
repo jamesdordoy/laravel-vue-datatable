@@ -6,8 +6,10 @@ describe('Data Table Cell', () => {
     test('can be mounted cleanly', () => {
         const wrapper = shallowMount(DataTableCell, {
             propsData: {
-              columns: [],
-              url: '',
+                value:{
+                    name: 'James',
+                },
+              name: 'name'
             }
         });
 

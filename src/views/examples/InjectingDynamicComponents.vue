@@ -1,13 +1,8 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <h2 class="markdown-header">Injecting Dynamic Components</h2>
-            </div>
-            <div class="col-md-6">
-                 <code-toggle
-                    v-model="code">
-                </code-toggle>
             </div>
         </div>
         <information-alert>
@@ -27,16 +22,15 @@
 
 <script>
 
+    import CodeExample from '../../mixins/CodeExample';
     import DataTable from '../../components/DataTable.vue';
-    import CodeToggle from '../../components/generic/CodeToggle.vue';
-    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
     import InformationAlert from '../../components/generic/InformationAlert.vue';
     import DataTableButtonCell from '../../components/generic/DataTableButtonCell.vue';
     import DynamicMarkdown from '../../markdown/examples/injecting-dynamic-components.md';
 
     export default {
         name: 'injecting-dyanmic-components',
-        mixins: [CorrectTextStyling],
+        mixins: [CodeExample],
         components: {
             // eslint-disable-next-line
             DataTable,
@@ -44,12 +38,11 @@
             DynamicMarkdown,
             // eslint-disable-next-line
             DataTableButtonCell,
-            CodeToggle,
+            // eslint-disable-next-line
             InformationAlert,
         },
         data() {
             return {
-                code: false,
                 url: process.env.VUE_APP_DATATABLE_URL,
                 columns: [
                     {

@@ -7,8 +7,6 @@ import VueRouter from 'vue-router';
 //https://stackoverflow.com/questions/55088482/jest-not-implemented-window-alert
 window.alert = () => {};
 
-import 'jest-localstorage-mock';
-
 Vue.use(VueRouter);
 
 Vue.component('laravel-pagination', require('laravel-vue-pagination'));

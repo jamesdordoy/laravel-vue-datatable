@@ -47,15 +47,21 @@ const router = new VueRouter({
 //Turn off production tips
 Vue.config.productionTip = false;
 
+import createPersistedState from 'vuex-persistedstate';
+
 const store = new Vuex.Store({
     state: {
-      count: 0
+      showCode: false
     },
     mutations: {
-      increment (state) {
-        state.count++
+      show (state) {
+        state.showCode = true;
+      },
+      hide (state) {
+        state.showCode = false;
       }
-    }
+    },
+    plugins: [createPersistedState()],
   })
 
 
