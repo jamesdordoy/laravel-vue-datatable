@@ -10,7 +10,7 @@
                         :class="headerClasses(column)"
                         :style="'width: ' + column.width + '%'"
                         @click="column.filterable  ? sort(column.name) : null">
-                        <div class="inline-block">
+                        <div class="inline-block" v-if="column.filterable">
                             <div
                                 class="filter-asc"
                                 :class="{'active-filter-asc': column.filterable && column.name == currentSort && dir == 'asc' }">
