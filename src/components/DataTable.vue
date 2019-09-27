@@ -15,6 +15,7 @@
         </data-table-filters>
         <vue-table
             @sort="sortBy"
+            :dir="tableData.dir"
             :sortKey="sortKey"
             :columns="columns"
             :sortOrders="sortOrders"
@@ -177,7 +178,7 @@ export default {
         addFiltersToUrl: {
             type: Boolean,
             default: false,
-        }
+        },
     },
     methods: {
         getData(url = this.url) {

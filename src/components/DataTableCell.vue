@@ -51,8 +51,20 @@ export default {
                 },
             })
         }
+
+        let columnName;
+        let handle = this.name.split(".");
+
+        if (handle.length > 1) {
+            columnName = this.value;
+            for (let i = 0; i < handle.length; i++) {
+                columnName = columnName[handle[i]];
+            }
+        } else {
+            columnName = this.value[this.name];
+        }
         
-        return createElement('span', {}, this.value[this.name])
+        return createElement('span', {}, columnName)
     }
 }
 </script>

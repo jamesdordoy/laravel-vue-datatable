@@ -17,6 +17,10 @@ Vue.use(DataTable);
 Vue.use(VueRouter);
 Vue.use(VueHighlightJS);
 
+import Vuex from 'vuex'
+
+Vue.use(Vuex)
+
 //Font Awesome
 import { faEye } from '@fortawesome/free-regular-svg-icons';
 import { faInfoCircle, faTable, faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
@@ -43,8 +47,21 @@ const router = new VueRouter({
 //Turn off production tips
 Vue.config.productionTip = false;
 
+const store = new Vuex.Store({
+    state: {
+      count: 0
+    },
+    mutations: {
+      increment (state) {
+        state.count++
+      }
+    }
+  })
+
+
 //App Instance
 new Vue({
+    store,
     router,
     render: h => h(App),
 }).$mount('#app');
