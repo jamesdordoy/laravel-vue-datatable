@@ -1,6 +1,7 @@
 //Imports
 import 'bootstrap';
 import Vue from 'vue';
+import Vuex from 'vuex';
 import moment from 'moment'
 import App from './App.vue';
 import routes from './routes.js';
@@ -9,24 +10,31 @@ import DataTable from './plugin.js';
 import 'highlight.js/styles/github.css';
 import VueHighlightJS from 'vue-highlightjs';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import createPersistedState from 'vuex-persistedstate';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 //Plugin Useage
+Vue.use(Vuex);
 Vue.use(DataTable);
 Vue.use(VueRouter);
 Vue.use(VueHighlightJS);
-
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
 
 //Font Awesome
 import { faEye } from '@fortawesome/free-regular-svg-icons';
 import { faInfoCircle, faTable, faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
 import { faVuejs, faPhp, faLaravel } from '@fortawesome/free-brands-svg-icons';
 
-library.add(faVuejs, faPhp, faLaravel, faTable, faProjectDiagram, faInfoCircle, faEye );
+library.add(
+    faVuejs,
+    faPhp,
+    faLaravel,
+    faTable,
+    faProjectDiagram,
+    faInfoCircle,
+    faEye
+);
+
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 //Filters
@@ -37,7 +45,7 @@ Vue.filter('formatDate', function(value, format='Do MMMM YYYY') {
     return 'N/A'
 });
 
-//Router
+//VueRouter
 const router = new VueRouter({
     mode: "history",
     base: "/",
@@ -47,23 +55,15 @@ const router = new VueRouter({
 //Turn off production tips
 Vue.config.productionTip = false;
 
-import createPersistedState from 'vuex-persistedstate';
+//VueX
+import state from './state';
+import mutations from './mutations';
 
 const store = new Vuex.Store({
-    state: {
-      showCode: false
-    },
-    mutations: {
-      show (state) {
-        state.showCode = true;
-      },
-      hide (state) {
-        state.showCode = false;
-      }
-    },
+    state,
+    mutations,
     plugins: [createPersistedState()],
-  })
-
+});
 
 //App Instance
 new Vue({

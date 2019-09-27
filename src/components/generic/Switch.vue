@@ -19,9 +19,9 @@ export default {
     methods: {
         toggled(e) {
             if (e.target.checked) {
-                this.$store.commit('show');
+                this.$store.commit('showCode');
             } else {
-                this.$store.commit('hide');
+                this.$store.commit('hideCode');
             }
         }
     }
