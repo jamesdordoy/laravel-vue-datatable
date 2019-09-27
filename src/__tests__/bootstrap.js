@@ -7,6 +7,15 @@ import VueRouter from 'vue-router';
 //https://stackoverflow.com/questions/55088482/jest-not-implemented-window-alert
 window.alert = () => {};
 
+//Ignore log and error console messages as exceptions are classed under these.
+global.console = {
+    log: jest.fn(),
+    error: jest.fn(),
+    warn: console.warn,
+    info: console.info,
+    debug: console.debug,
+};
+
 Vue.use(VueRouter);
 
 Vue.component('laravel-pagination', require('laravel-vue-pagination'));
