@@ -36,12 +36,12 @@
 
 <script>
 
-import Switches from 'vue-switches';
+// import Switches from 'vue-switches';
 
 export default {
-    components: {
-        Switches
-    },
+    // components: {
+    //     Switches
+    // },
     data() {
         return {
            code: false,
