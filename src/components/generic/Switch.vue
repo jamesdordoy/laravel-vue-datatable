@@ -1,31 +1,30 @@
 <template>
-    <!-- Rounded switch -->
-        <label class="switch">
-            <input id="toggle" v-model="value" @change="toggled" type="checkbox"> 
-            <span class="slider round"></span>
-        </label>
+    <label class="switch">
+        <input id="toggle" v-model="value" @change="toggled" type="checkbox"> 
+        <span class="slider round"></span>
+    </label>
 </template>
 
 
 <script>
 export default {
-  data() {
-    return {
-      value: false,
-    };
-  },
-  created() {
-    this.value = this.$store.state.showCode;
-  },
-  methods: {
-    toggled(e) {
-      if (e.target.checked) {
-        this.$store.commit('show');
-      } else {
-        this.$store.commit('hide');
-      }
+    data() {
+        return {
+            value: false,
+        };
+    },
+    created() {
+        this.value = this.$store.state.showCode;
+    },
+    methods: {
+        toggled(e) {
+            if (e.target.checked) {
+                this.$store.commit('show');
+            } else {
+                this.$store.commit('hide');
+            }
+        }
     }
-  }
 }
 </script>
 
@@ -37,6 +36,7 @@ export default {
   display: inline-block;
   width: 46px;
   height: 20px;
+  margin-bottom: 0;
 }
 
 /* Hide default HTML checkbox */
