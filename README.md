@@ -19,7 +19,7 @@ See [https://jamesdordoy.github.io/laravel-vue-datatable/](https://jamesdordoy.g
 ![Image description](https://www.jamesdordoy.co.uk/images/projects/bootstrap-datatable.png?a=a)
 
 ## Package Installation
-See details [https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package](https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Packages)
+See details [https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package](https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package)
 
 ## Component Installation
 
