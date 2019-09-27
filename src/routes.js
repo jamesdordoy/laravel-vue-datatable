@@ -36,10 +36,6 @@ export default [
         component: require('./views/laravel/ControllerResource.vue').default,
     },
     {
-        path: '/laravel-vue-datatable/examples',
-        component: require('./views/Example.vue').default,
-    },
-    {
         path: '/laravel-vue-datatable/examples/basic',
         component: require('./views/examples/Basic.vue').default,
     },
@@ -49,7 +45,7 @@ export default [
     },
     {
         path: '/laravel-vue-datatable/examples/override-filters',
-        component: require('./views/examples/OverrideFilters.vue').default,
+        component: require('./views/Soon.vue').default,
     },
     {
         path: '/laravel-vue-datatable/examples/override-table-body',
@@ -57,10 +53,10 @@ export default [
     },
     {
         path: '/laravel-vue-datatable/examples/custom-filters',
-        component: require('./views/examples/CustomFilters.vue').default,
+        component: require('./views/Soon.vue').default,
     },
     {
         path: '/laravel-vue-datatable/examples/styling',
-        component: require('./views/examples/Styling.vue').default,
+        component: require('./views/Soon.vue').default,
     },
 ];

@@ -1,12 +1,15 @@
 
 ```html
-<data-table
-    :columns="columns"
-    url="http://example.test/example">
-</data-table>
+<template>
+    <data-table
+        :columns="columns"
+        url="http://example.test/example">
+    </data-table>
+</template>
 ```
 
 ```javascript
+<script>
 export default {
     data() {
         return {
@@ -30,4 +33,5 @@ export default {
         }
     },
 }
+</script>
 ```

@@ -10,8 +10,8 @@
             If the included pagination or filters do not meet your requirements or if the styling is incorrect, they can be over-written using scoped slots.
         </information-alert>
         <pre v-highlightjs v-show="code">
-            <override-table-body-markdown>
-            </override-table-body-markdown>
+            <override-filters-and-pagination>
+            </override-filters-and-pagination>
         </pre>
         <data-table
             v-show="!code"
@@ -44,7 +44,7 @@
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '../../components/DataTable.vue';
     import InformationAlert from '../../components/generic/InformationAlert.vue';
-    import OverrideTableBodyMarkdown from '../../markdown/examples/override-table-body.md';
+    import OverrideFiltersAndPagination from '../../markdown/examples/override-filters-and-pagination.md';
 
     export default {
         name: 'Override-Table-Body',
@@ -54,7 +54,7 @@
             // eslint-disable-next-line
             InformationAlert,
             // eslint-disable-next-line
-            OverrideTableBodyMarkdown,
+            OverrideFiltersAndPagination,
         },
         mixins: [CodeExample],
         data() {
