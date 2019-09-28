@@ -29,7 +29,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link">
-                    <label>Show Code</label>&nbsp;
+                    <label>Show Example Code</label>&nbsp;
                     <vue-switch>
                     </vue-switch>
                 </a>
@@ -38,11 +38,6 @@
       </div>
     </nav>
 </template>
-
-<style scoped>
-
-
-</style>
 
 <script>
 

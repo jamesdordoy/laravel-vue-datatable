@@ -7,8 +7,8 @@ describe('Table', () => {
     test('can be mounted cleanly', () => {
         const wrapper = shallowMount(Table, {
             propsData: {
-              columns: [],
-              url: '',
+                columns: [],
+                url: '',
             }
         });
 
