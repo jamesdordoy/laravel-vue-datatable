@@ -9,13 +9,14 @@
 
 <script>
 
-    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
     import InstallMarkdown from '../../markdown/laravel/install.md';
+    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
 
     export default {
-        name: 'home',
+        name: 'Laravel-Installation',
         mixins: [CorrectTextStyling],
         components: {
+            // eslint-disable-next-line
             InstallMarkdown
         },
     }

@@ -9,18 +9,14 @@
 
     import TableMarkdown from '../../markdown/props/table.md';
     import CorrectTextStyling from '../../mixins/CorrectTextStyling';
+    import CorrectTableStyling from '../../mixins/CorrectTableStyling';
 
     export default {
         name: 'Table-Props',
-        mixins: [CorrectTextStyling],
+        mixins: [CorrectTextStyling, CorrectTableStyling],
         components: {
+            // eslint-disable-next-line
             TableMarkdown
         },
-        mounted() {
-            document.querySelectorAll("table").forEach(table => {
-                table.classList.add("table");
-                table.classList.add("table-bordered");
-            })
-        }
     }
 </script>

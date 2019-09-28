@@ -47,7 +47,7 @@
     import OverrideFiltersAndPagination from '../../markdown/examples/override-filters-and-pagination.md';
 
     export default {
-        name: 'Override-Table-Body',
+        name: 'Override-Table-Filters-And-Pagination',
         components: {
             // eslint-disable-next-line
             DataTable,

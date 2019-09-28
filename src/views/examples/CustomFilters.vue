@@ -29,7 +29,7 @@
     import CustomFiltersMarkdown from '../../markdown/examples/custom-filters.md';
 
     export default {
-        name: 'injecting-dyanmic-components',
+        name: 'Custom-Filters',
         mixins: [CodeExample],
         components: {
             // eslint-disable-next-line

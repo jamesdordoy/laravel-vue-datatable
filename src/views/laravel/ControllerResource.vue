@@ -13,9 +13,10 @@
     import ControllerResourceMarkdown from '../../markdown/laravel/controller-resource.md';
 
     export default {
-        name: 'Controller Resources',
+        name: 'Laravel-Controller-Resources',
         mixins: [CorrectTextStyling],
         components: {
+            // eslint-disable-next-line
             ControllerResourceMarkdown
         },
     }

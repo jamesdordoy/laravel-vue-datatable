@@ -7,19 +7,16 @@
     </div>
 </template>
 
-<style scoped>
-
-</style>
-
 <script>
 
-    import TraitMarkdown from '../../markdown/laravel/adding-trait.md';
     import CorrectTextStyling from '../../mixins/CorrectTextStyling';
-
+    import TraitMarkdown from '../../markdown/laravel/adding-trait.md';
+    
     export default {
-        name: 'home',
+        name: 'Laravel-Adding-Trait',
         mixins: [CorrectTextStyling],
         components: {
+            // eslint-disable-next-line
             TraitMarkdown
         },
     }

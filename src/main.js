@@ -50,7 +50,10 @@ Vue.filter('formatDate', function(value, format='Do MMMM YYYY') {
 const router = new VueRouter({
     mode: "history",
     base: "/",
-    routes
+    routes,
+    scrollBehavior () {
+        return { x: 0, y: 0 }
+    },
 });
 
 //Turn off production tips

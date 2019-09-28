@@ -24,7 +24,7 @@
     import BasicMarkdown from '../../markdown/examples/basic.md';
     
     export default {
-        name: 'basic',
+        name: 'Basic',
         components: {
             // eslint-disable-next-line
             DataTable,

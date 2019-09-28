@@ -9,19 +9,14 @@
 
     import CorrectTextStyling from '../../mixins/CorrectTextStyling';
     import ColumnPropsMarkdown from '../../markdown/props/column.md';
+    import CorrectTableStyling from '../../mixins/CorrectTableStyling';
 
     export default {
-        name: 'home',
-        mixins: [CorrectTextStyling],
+        name: 'Column-Props',
+        mixins: [CorrectTextStyling, CorrectTableStyling],
         components: {
+            // eslint-disable-next-line
             ColumnPropsMarkdown
         },
-        mounted() {
-            document.querySelectorAll("table").forEach(table => {
-                table.classList.add("table");
-                table.classList.add("table-bordered");
-                table.classList.add("table-striped");
-            })
-        }
     }
 </script>

@@ -29,7 +29,7 @@
     import InformationAlert from '../../components/generic/InformationAlert.vue';
     
     export default {
-        name: 'basic',
+        name: 'Datatable-Styling',
         components: {
             // eslint-disable-next-line
             DataTable,

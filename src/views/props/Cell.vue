@@ -7,20 +7,16 @@
 
 <script>
 
-    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
     import CellPropsMarkdown from '../../markdown/props/cell.md';
+    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
+    import CorrectTableStyling from '../../mixins/CorrectTableStyling';
 
     export default {
-        name: 'Cell Props',
-        mixins: [CorrectTextStyling],
+        name: 'Cell-Props',
+        mixins: [CorrectTextStyling, CorrectTableStyling],
         components: {
-            CellPropsMarkdown
+            // eslint-disable-next-line
+            CellPropsMarkdown,
         },
-        mounted() {
-            document.querySelectorAll("table").forEach(table => {
-                table.classList.add("table");
-                table.classList.add("table-bordered");
-            })
-        }
     }
 </script>
