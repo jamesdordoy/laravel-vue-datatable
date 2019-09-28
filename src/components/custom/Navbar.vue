@@ -29,9 +29,8 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link">
-                    <b>Show Code</b>&nbsp;&nbsp;
+                    <label>Show Code</label>&nbsp;
                     <vue-switch>
-
                     </vue-switch>
                 </a>
             </li>
