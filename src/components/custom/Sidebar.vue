@@ -1,8 +1,5 @@
 <template>
     <div class="bg-light" id="sidebar-wrapper">
-        <div class="sidebar-heading">
-            Laravel Vue Datatable
-        </div>
         <div class="list-group list-group-flush border-right sidebar-menu">
             <router-link
                 exact
@@ -118,7 +115,6 @@
 <style>
 
 #sidebar-wrapper {
-  min-height: 100vh;
   margin-left: -15rem;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;

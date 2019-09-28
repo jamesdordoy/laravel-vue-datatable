@@ -7,6 +7,7 @@ export default {
 
         let paragraphs = document.querySelectorAll("p");
         let h1 = document.querySelectorAll("h1");
+        let td = document.querySelectorAll("td");
         let h2 = document.querySelectorAll("h2");
         let h3 = document.querySelectorAll("h3");
         let h4 = document.querySelectorAll("h4");
@@ -18,5 +19,7 @@ export default {
         h3.forEach(styleingFunction);
         h4.forEach(styleingFunction);
         h5.forEach(styleingFunction);
+
+        td.forEach(styleingFunction);
     }
 }

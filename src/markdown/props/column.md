@@ -2,7 +2,7 @@
 | Name | Type | Default | Description  
 | --- | --- | --- | --- |
 | label | String | "" | The JSON url |
-| name | String | "" | The table column header name |
+| name | String | "" | The table column header name. You can also access nested properties e.g. a query using a with relationship using the dot notation. |
 | width | Number | 0 | The table column width |
 | filterable | Boolean | false | Is the column filterable |
 | component | Component | null | A dynamic component that can be injected |

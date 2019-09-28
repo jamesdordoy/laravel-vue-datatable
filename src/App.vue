@@ -16,11 +16,17 @@
 
 html {
     background: #f8f9fa!important;
-    min-height: 100%;
+    /* height: 100%; */
 }
 
 body {
     overflow-x: hidden;
+    padding-top: 56px;
+    /* height: 100%; */
+}
+
+#wrapper {
+    /* height: 100%; */
 }
 
 .container-fluid {

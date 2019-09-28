@@ -30,7 +30,7 @@
     </div>
 </template>
 
-<style scoped>
+<style>
 
 .filter-asc {
     width: 0;
