@@ -1,10 +1,9 @@
-### Paginatior Datatable
+### Pagination Changed On Datatable
 
 ```html
 <data-table
     :url="url"
-    :columns="columns"
-    :per-page="perPage">
+    :columns="columns">
 
     <div slot="pagination" slot-scope="{ links = {}, meta = {} }">
         <nav class="row">
@@ -52,31 +51,35 @@
 
 Once the URL has been updated by your customer paginator or filters, the table will re-render. Alternatively, if updating the URL is troublesome, different table filters can be manipulated by your filters using the v-model directive:
 
-### Example Filter
+### Filter Changed On Datatable
 
 > (DatatableFilter.vue)
 
 This example filter will control the length of the table manipulating the tableData.length property using v-model and will make use of a custom [select component](https://github.com/sagalbot/vue-select) to make use of predictive results.
 
 ```html
-<div slot="filters" slot-scope="{ tableData, perPage }">
-    <div class="row mb-2">
-        <div class="col-md-6">
-            <select class="form-control" v-model="tableData.length">
-                <option :key="page" v-for="page in perPage">{{ page }}</option>
-            </select>
-        </div>
-        <div class="col-md-6">
-            <v-select
-                label="name"
-                :options="selectOptions"
-                placeholder="Search Users"
-                @input="updateSelectedUser($event, tableData)"
-                @search="searchUsersByName">
-            </v-select>
+<data-table
+    :url="url"
+    :columns="columns">
+    <div slot="filters" slot-scope="{ tableData, perPage }">
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <select class="form-control" v-model="tableData.length">
+                    <option :key="page" v-for="page in perPage">{{ page }}</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <v-select
+                    label="name"
+                    :options="selectOptions"
+                    placeholder="Search Users"
+                    @input="updateSelectedUser($event, tableData)"
+                    @search="searchUsersByName">
+                </v-select>
+            </div>
         </div>
     </div>
-</div>
+</data-table>
 ```
 
 ```javascript
@@ -102,7 +105,7 @@ export default {
             }
         },
         searchUsersByName(term = '') {
-            axios.get("http://example.test?search=" + term)
+            axios.get(this.url + term)
                 .then(response => {
                     this.selectOptions = response.data;
                 });

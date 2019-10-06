@@ -26,9 +26,18 @@ export default {
 }
 ```
 
-### Dynamic Datatable Columns
+### Datatable Button Example
 
 > (UserDatatable.vue)
+
+``` html
+<template>
+    <data-table
+        :columns="columns"
+        url="http://example.test/example">
+    </data-table>
+</template>
+```
 
 ```javascript
 

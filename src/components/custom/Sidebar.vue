@@ -78,7 +78,7 @@
                 exact
                 class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/examples/injecting-dynamic-components">
-                Injecting Dynamic Components
+                Injecting Components
             </router-link>
             <router-link
                 exact

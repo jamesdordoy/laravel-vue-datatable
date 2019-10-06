@@ -53,7 +53,7 @@ export default [
     },
     {
         path: '/laravel-vue-datatable/examples/custom-filters',
-        component: require('./views/Soon.vue').default,
+        component: require('./views/examples/CustomFilters.vue').default,
     },
     {
         path: '/laravel-vue-datatable/examples/styling',

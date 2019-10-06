@@ -2,7 +2,7 @@
     <div>
         <div class="row">
             <div class="col-md-12">
-                <h2 class="markdown-header">Injecting Dynamic Components</h2>
+                <h2 class="markdown-header">Injecting Components</h2>
             </div>
         </div>
         <information-alert>
