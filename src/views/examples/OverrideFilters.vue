@@ -8,7 +8,7 @@
         </div>
 
         <information-alert>
-            If the included pagination or filters do not meet your requirements or if the styling is incorrect, they can be over-written using scoped slots.
+            If the included pagination or filters do not meet your requirements or if the styling is incorrect, they can be overridden using scoped slots.
         </information-alert>
 
         <pre v-highlightjs v-show="code">
