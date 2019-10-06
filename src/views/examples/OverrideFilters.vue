@@ -6,13 +6,16 @@
                 <h2 class="markdown-header">Overriding the Filters and Pagination Components</h2>
             </div>
         </div>
+
         <information-alert>
             If the included pagination or filters do not meet your requirements or if the styling is incorrect, they can be over-written using scoped slots.
         </information-alert>
+
         <pre v-highlightjs v-show="code">
             <override-filters-and-pagination>
             </override-filters-and-pagination>
         </pre>
+
         <data-table
             v-show="!code"
             :url="url"
@@ -40,7 +43,7 @@
                 <nav class="row">
                     <div class="col-md-6 text-left">
                         <span>
-                            Showing {{meta.from}} to {{meta.to}} of {{ meta.total }} Entries
+                            Showing {{ meta.from }} to {{ meta.to }} of {{ meta.total }} Entries
                         </span>
                     </div>
                     <div class="col-md-6 text-right">
@@ -48,41 +51,36 @@
                             v-if="links.prev"
                             class="btn btn-primary"
                             @click="url = links.prev">
-                            <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                            &nbsp;Prev
+                            Prev
                         </button>
                         <button
                             v-else
                             :disabled="true"
                             class="btn btn-primary"
                             @click="url = links.prev">
-                            <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                            &nbsp;Prev
+                            Prev
                         </button>
                         <button
                             v-if="links.next"
                             class="btn btn-primary ml-2"
                             @click="url = links.next">
-                            Next&nbsp;
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            Next
                         </button>
                         <button
                             v-else
                             :disabled="true"
                             class="btn btn-primary ml-2"
                             @click="url = links.next">
-                            Next&nbsp;
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            Next
                         </button>
                     </div>        
                 </nav>
             </div>
-
         </data-table>
     </div>
 </template>
 
-<style >
+<style>
 .vs__search{
     padding: 2px !important;
 }

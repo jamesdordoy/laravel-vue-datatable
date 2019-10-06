@@ -19,7 +19,7 @@ export default {
     props: {
         data: {},
         name: {},
-        click: () => {},
+        click: {},
         meta: {},
         classes: {},
     }
@@ -46,7 +46,6 @@ import ExampleButton './ExampleButton.vue';
 export default {
     data() {
         return {
-            url: 'http://example.test/example',
             columns: [
             {
                 label: 'ID',
@@ -67,14 +66,14 @@ export default {
                 label: '',
                 name: 'View',
                 filterable: false,
-                component: ExampleButton,
-                event: "click",
-                handler: this.displayRow,
                 classes: { 
                     'btn': true,
                     'btn-primary': true,
                     'btn-sm': true,
                 },
+                event: "click",
+                handler: this.displayRow,
+                component: ExampleButton, 
             },
             ]
         }
@@ -86,7 +85,7 @@ export default {
     methods: {
         displayRow(data) {
             alert(`You clicked row ${data.id}`);
-        }
+        },
     },
 }
 ```

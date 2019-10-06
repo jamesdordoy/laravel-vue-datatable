@@ -5,9 +5,11 @@
                 <h2 class="markdown-header">Adding Custom Filters</h2>
             </div>
         </div>
+
         <information-alert>
             You can also add your own custom filters to be sent to the Laravel backend
         </information-alert>
+
         <pre v-highlightjs v-show="code">
             <custom-filters-markdown>
             </custom-filters-markdown>
@@ -93,18 +95,15 @@
                         label: '',
                         name: 'View',
                         filterable: false,
+                        width: 10,
+                        classes: { 
+                            'btn': true,
+                            'btn-sm': true,
+                            'btn-primary': true,
+                        },
                         event: "click",
                         handler: this.displayRow,
                         component: DataTableButtonCell,
-                        meta: {
-                            foo: "bar"
-                        },
-                        classes: { 
-                            'btn': true,
-                            'btn-primary': true,
-                            'btn-sm': true,
-                        },
-                        width: 10,
                     },
                 ]
             }

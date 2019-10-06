@@ -4,7 +4,6 @@
 <data-table
     :url="url"
     :columns="columns">
-
     <div slot="pagination" slot-scope="{ links = {}, meta = {} }">
         <nav class="row">
             <div class="col-md-6 text-left">

@@ -5,6 +5,7 @@
                 <h2 class="markdown-header">Basic Example</h2>
             </div>
         </div>
+
         <pre v-highlightjs v-show="code">
             <basic-markdown>
             </basic-markdown>

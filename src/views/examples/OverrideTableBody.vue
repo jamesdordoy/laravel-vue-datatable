@@ -5,23 +5,25 @@
                 <h2 class="markdown-header">Overriding the Datatable body</h2>
             </div>
         </div>
+
         <information-alert>
             If you want more control over the rendered table rows, you can use the <code>body</code> slot to override the default table HTML.
         </information-alert>
+
         <pre v-highlightjs v-show="code">
             <override-table-body-markdown>
             </override-table-body-markdown>
         </pre>
+
         <data-table
             v-show="!code"
             :url="url"
-            :columns="columns"
-            :per-page="perPage">
+            :columns="columns">
             <tbody slot="body" slot-scope="{ data }">
                 <tr
                     :key="item.id"
-                    @click="showRowNumber(item.id)"
-                    v-for="item in data">
+                    v-for="item in data"
+                    @click="showRowNumber(item.id)">
                     <td 
                         :key="column.name"
                         v-for="column in columns">
@@ -40,7 +42,6 @@
 </template>
 
 <script>
-
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '../../components/DataTable.vue';
     import InformationAlert from '../../components/generic/InformationAlert.vue';
@@ -52,15 +53,14 @@
             // eslint-disable-next-line
             DataTable,
             // eslint-disable-next-line
-            OverrideTableBodyMarkdown,
-            // eslint-disable-next-line
             InformationAlert,
+            // eslint-disable-next-line
+            OverrideTableBodyMarkdown,
         },
         mixins: [CodeExample],
         data() {
             return {
                 url: process.env.VUE_APP_DATATABLE_URL,
-                perPage: ['10', '25', '50'],
                 columns: [
                     {
                         label: 'ID',

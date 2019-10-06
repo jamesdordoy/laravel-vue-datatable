@@ -1,7 +1,4 @@
 
-
-
-
 ### Tailwind Config
 
 > (mixins/tailwind.js)

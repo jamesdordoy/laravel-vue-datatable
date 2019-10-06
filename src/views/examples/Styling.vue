@@ -5,6 +5,7 @@
                 <h2 class="markdown-header">Styling</h2>
             </div>
         </div>
+
         <information-alert>
             You can edit the style of the Datatable by overriding the <code>classes</code> prop. A example mixin config can be found be below for Tailwind:
         </information-alert>
@@ -22,7 +23,6 @@
 </template>
 
 <script>
-
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '../../components/DataTable.vue';
     import StylingMarkdown from '../../markdown/examples/styling.md';

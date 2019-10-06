@@ -5,9 +5,11 @@
                 <h2 class="markdown-header">Injecting Components</h2>
             </div>
         </div>
+
         <information-alert>
             You can also inject your own components into the table such as buttons. Your buttons, links etc can also listen for events. After declaring your event type and setting a handler. You can accept the event type as you would expect in your component, e.g. <code>click</code> for click events.
         </information-alert>
+        
         <pre v-highlightjs v-show="code">
             <dynamic-markdown>
             </dynamic-markdown>

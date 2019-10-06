@@ -5,10 +5,12 @@
                 <h2 class="markdown-header">Modal Example</h2>
             </div>
         </div>
+
         <pre v-highlightjs v-show="code">
             <modal-markdown>
             </modal-markdown>
         </pre>
+        
         <data-table
             v-show="!code"
             :url="url"
