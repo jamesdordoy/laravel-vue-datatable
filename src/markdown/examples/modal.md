@@ -39,13 +39,14 @@ export default {
 > ModalButton.vue
 ```html
 <template>
-    <data-table
-        :columns="columns"
-        url="http://example.test/example">
-    </data-table>
-    <modal
-        :row="selectedRow">
-    </modal>
+    <button
+        type="button"
+        data-toggle="modal"
+        @click="click(data)"
+        class="btn btn-primary"
+        data-target="#exampleModal">
+        View Row {{ data.id }} Modal
+    </button>
 </template>
 ```
 
@@ -58,7 +59,7 @@ export default {
         click: {},
         meta: {},
         classes: {},
-    }
+    },
 }
 </script>
 ```
