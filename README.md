@@ -24,11 +24,11 @@ See details [https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Packag
 ## Component Installation
 
 ```bash
-$ npm install laravel-vue-datatable
+npm install laravel-vue-datatable
 
 or
 
-$ yarn add laravel-vue-datatable
+yarn add laravel-vue-datatable
 ```
 
 ### Register the Plugin
@@ -84,7 +84,7 @@ export default {
 | --- | --- | --- | --- |
 | `url ` | String | "/" | The JSON url |
 | `columns` | Array | [] | The table columns |
-| `per-page` | Array | [ '10', '25', '50' ] | (optional) Amount to be displayed |
+| `per-page` | Array | ['10','25','50'] | (optional) Amount to be displayed |
 | `add-filters-to-url` | Boolean | false | (optional) Will adjust the current url to keep track of used filters and will also store them in local storage. |
 | `classes` | Object | See Below | (optional) Table classes |
 | `pagination` | Object | {}  | (optional) props for [gilbitron/laravel-vue-pagination](https://github.com/gilbitron/laravel-vue-pagination#props) |
@@ -137,10 +137,8 @@ export default {
 | `meta` | Object | {} | Additional values that are parsed to component |
 
 
-## Using Dynamic Components
+## Injecting Components
 You can also inject your own components into the table such as buttons. Your buttons, links etc can also listen for events. After declaring your event type and setting a handler. You can accept the event type as you would expect in your component, e.g. `click` for click events.
-
-### Example Button Component
 
 > (ExampleButton.vue)
 
@@ -161,26 +159,32 @@ export default {
     props: {
         data: {},
         name: {},
-        click: () => {},
+        click: {},
         meta: {},
         classes: {},
     }
 }
 ```
 
-### Dynamic Datatable Columns
+### Datatable Button Example
 
 > (UserDatatable.vue)
 
-```javascript
+``` html
+<template>
+    <data-table
+        :columns="columns"
+        url="http://example.test/example">
+    </data-table>
+</template>
+```
 
+```javascript
 import ExampleButton './ExampleButton.vue';
 
 export default {
     data() {
         return {
-            url: 'http://vue-datatable.test/ajax',
-            perPage: ['10', '25', '50'],
             columns: [
             {
                 label: 'ID',
@@ -201,17 +205,14 @@ export default {
                 label: '',
                 name: 'View',
                 filterable: false,
-                component: ExampleButton,
-                event: "click",
-                handler: this.alertMe,
                 classes: { 
                     'btn': true,
                     'btn-primary': true,
                     'btn-sm': true,
                 },
-                meta: {
-                    'foo': 'bar',
-                }
+                event: "click",
+                handler: this.displayRow,
+                component: ExampleButton, 
             },
             ]
         }
@@ -221,9 +222,9 @@ export default {
         ExampleButton,
     },
     methods: {
-        alertMe(data) {
-            alert("hey");
-        }
+        displayRow(data) {
+            alert(`You clicked row ${data.id}`);
+        },
     },
 }
 ```
@@ -231,71 +232,119 @@ export default {
 ## Overriding the Filters and Pagination Components
 If the included pagination or filters do not meet your requirements or if the styling is incorrect, they can be over-written using scoped slots.
 
-### Paginatior Datatable
+### Pagination Changed On Datatable
 
 ```html
 <data-table
     :url="url"
-    :columns="columns"
-    :per-page="perPage">
-
-    <span slot="pagination" slot-scope="{ links, meta }">
-        <paginator 
-            :meta="meta"
-            :links="links"
-            @next="updateUrl"
-            @prev="updateUrl">
-        </paginator>
-    </span>
+    :columns="columns">
+    <div slot="pagination" slot-scope="{ links = {}, meta = {} }">
+        <nav class="row">
+            <div class="col-md-6 text-left">
+                <span>
+                    Showing {{meta.from}} to {{meta.to}} of {{ meta.total }} Entries
+                </span>
+            </div>
+            <div class="col-md-6 text-right">
+                <button
+                    v-if="links.prev"
+                    class="btn btn-primary"
+                    @click="url = links.prev">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    &nbsp;Prev
+                </button>
+                <button
+                    v-else
+                    :disabled="true"
+                    class="btn btn-primary"
+                    @click="url = links.prev">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                    &nbsp;Prev
+                </button>
+                <button
+                    v-if="links.next"
+                    class="btn btn-primary ml-2"
+                    @click="url = links.next">
+                    Next&nbsp;
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </button>
+                <button
+                    v-else
+                    :disabled="true"
+                    class="btn btn-primary ml-2"
+                    @click="url = links.next">
+                    Next&nbsp;
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>        
+        </nav>
+    </div>
 </data-table>
 ```
 
 Once the URL has been updated by your customer paginator or filters, the table will re-render. Alternatively, if updating the URL is troublesome, different table filters can be manipulated by your filters using the v-model directive:
 
-### Example Filter
+### Filter Changed On Datatable
 
 > (DatatableFilter.vue)
 
-This example filter will control the length of the table manipulating the tableData.length property using v-model.
-
-```html
-<template>
-    <select
-        class="form-control"
-        v-model="tableData.length">
-        <option
-            :key="index"
-            :value="records"
-            v-for="(records, index) in perPage">
-            {{ records }}
-        </option>
-    </select>
-</template>
-```
-
-```javascript
-export default {
-    props: [
-        "tableData", "perPage"
-    ]
-}
-```
-
-### Filter Datatable
+This example filter will control the length of the table manipulating the tableData.length property using v-model and will make use of a custom [select component](https://github.com/sagalbot/vue-select) to make use of predictive results.
 
 ```html
 <data-table
     :url="url"
-    :columns="columns"
-    :per-page="perPage">
-
-    <span slot="filters" slot-scope="{ tableData, perPage }">
-        <data-table-filters
-            :per-page="perPage"
-            :table-data="tableData">
-        </data-table-filters>
-    </span>
+    :columns="columns">
+    <div slot="filters" slot-scope="{ tableData, perPage }">
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <select class="form-control" v-model="tableData.length">
+                    <option :key="page" v-for="page in perPage">{{ page }}</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <v-select
+                    label="name"
+                    :options="selectOptions"
+                    placeholder="Search Users"
+                    @input="updateSelectedUser($event, tableData)"
+                    @search="searchUsersByName">
+                </v-select>
+            </div>
+        </div>
+    </div>
 </data-table>
+```
+
+```javascript
+import vSelect from 'vue-select';
+import 'vue-select/dist/vue-select.css';
+
+export default {
+    data() {
+        return {
+            selectOptions: [],
+        }
+    },
+    components: {
+        // eslint-disable-next-line
+        vSelect,
+    },
+    methods: {
+        updateSelectedUser(row, tableData) {
+            if (row) {
+                tableData.search = row.name;
+            } else {
+                tableData.search = '';
+            }
+        },
+        searchUsersByName(term = '') {
+            axios.get(this.url + term)
+                .then(response => {
+                    this.selectOptions = response.data;
+                });
+        }
+    }
+}
 ```
 
 ## Custom Filters
@@ -303,82 +352,56 @@ You can also add your own custom filters to be sent to the Laravel backend:
 
 ### Datatable
 
-```javascript
+``` html
+<data-table
+    :url="url"
+    :filters="filters"
+    :columns="columns">
+    <div slot="filters" slot-scope="{ tableData, perPage }">
+        <div class="row mb-2">
+            <div class="col-md-4">
+                <select class="form-control" v-model="tableData.length">
+                    <option :key="page" v-for="page in perPage">{{ page }}</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select
+                    v-model="tableData.filters.isAdmin"
+                    class="form-control">
+                    <option value>All</option>
+                    <option value='admin'>Admin</option>
+                    <option value='staff'>Staff</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <input
+                    name="name"
+                    class="form-control"
+                    v-model="tableData.search"
+                    placeholder="Search Table">
+            </div>
+        </div>
+    </div>
+</data-table>
+```
+
+``` javascript
 data() {
     return {
-        url: "/url",
-        perPage: ['10', '25', '50'],
+        url: "http://example.test",
         columns: [
         	...
         ],
         filters: {
             isAdmin: '',
         },
-        pagination:{
-            limit: 1,
-            align: "right",
-            size: "small"
-        }
     }
 },
 ```
 
-```html
-<data-table
-    :url="url"
-    :filters="filters"
-    :columns="columns"
-    :per-page="perPage"
-    :pagination="pagination">
-    <span slot="filters" slot-scope="{ tableData, perPage }">
-        <data-table-filters
-            :table-data="tableData"
-            :per-page="perPage">
-        </data-table-filters>
-    </span>
-</data-table>
-```
-
-### Example Filter
-
-```html
-
-<div class="row mb-3">
-    <div class="col-md-3">
-        <select
-            v-model="tableData.length"
-            class="form-control">
-            <option
-                :key="index"
-                :value="records"
-                v-for="(records, index) in perPage">
-                {{records}}
-            </option>
-        </select>
-    </div>
-    <div class="col-md-3">
-        <select
-            v-model="tableData.filters.isAdmin"
-            class="form-control">
-            <option value>All Staff</option>
-            <option value='admin'>Admin</option>
-            <option value='staff'>Staff</option>
-        </select>
-    </div>
-    <div class="col-md-3 offset-md-3">
-        <input
-            name="name"
-            class="form-control"
-            v-model="tableData.search"
-            placeholder="Search Table">
-    </div>
-</div>
-
-```
-This added "isAdmin" filter for staff type will be send to the Laravel backend and can be used to manipulate the results:
+This added isAdmin filter for staff type will be send to the Laravel backend and can be used to manipulate the results:
 
 ```php
-
 $isAdmin = $request->input('isAdmin');
 
 $query = User::dataTableQuery($column, $dir, $length, $searchValue);
@@ -390,7 +413,6 @@ if (isset($isAdmin) && ! empty($isAdmin)) {
 $data = $query->paginate($length);
 
 return new DataTableCollectionResource($data);
-
 ```
 
 ## Overriding the Datatable body
