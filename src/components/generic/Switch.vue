@@ -24,10 +24,9 @@ export default {
                 this.$store.commit('hideCode');
             }
         }
-    }
+    },
 }
 </script>
-
 
 <style scoped>
 /* The switch - the box around the slider */

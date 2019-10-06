@@ -1,5 +1,5 @@
 <template>
-    <a :href="'mailto:'+data.email">{{ data[name] }}</a>
+    <a :href="'mailto:' + data.email">{{ data[name] }}</a>
 </template>
 
 <script>

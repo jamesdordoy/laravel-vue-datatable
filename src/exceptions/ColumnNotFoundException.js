@@ -3,7 +3,5 @@ export default class ColumnNotFoundException extends Error {
         super(message)
         this.name = 'Column Not Found Exception'
         this.message = message
-  }
+    }
 }
-
-// module.exports = ColumnNotFoundException;

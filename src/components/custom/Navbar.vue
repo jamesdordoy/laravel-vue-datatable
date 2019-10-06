@@ -1,11 +1,27 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top border-bottom">
-      <button class="navbar-toggler" type="button" @click="toggleMenu" data-toggle="toggled" data-target="#sidebar-wrapper" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <button
+        type="button"
+        @click="toggleMenu"
+        aria-expanded="false"
+        data-toggle="toggled"
+        class="navbar-toggler"
+        data-target="#sidebar-wrapper"
+        aria-controls="navbarCollapse"
+        aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">Laravel Vue Datatable</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <font-awesome-icon :icon="['fab', 'github']" />&nbsp;
+      <a href="#" class="navbar-brand">Laravel Vue Datatable</a>
+      <button
+        type="button"
+        aria-expanded="false"
+        data-toggle="collapse"
+        class="navbar-toggler"
+        data-target="#navbarCollapse"
+        aria-label="Toggle navigation"
+        aria-controls="navbarCollapse" >
+        <font-awesome-icon :icon="['fab', 'github']" />
+        &nbsp;
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -30,8 +46,7 @@
             <li class="nav-item">
                 <a class="nav-link">
                     <label>Show Example Code</label>&nbsp;
-                    <vue-switch>
-                    </vue-switch>
+                    <vue-switch></vue-switch>
                 </a>
             </li>
         </ul>
@@ -47,14 +62,8 @@ export default {
     components: {
         VueSwitch,
     },
-    data() {
-        return {
-           code: false,
-        };
-    },
     methods: {
         toggleMenu() {
-
             const wrapper = document.getElementById('sidebar-wrapper');
 
             if (wrapper.style.marginLeft == "0px") {
@@ -64,8 +73,5 @@ export default {
             }     
         }
     },
-    computed: {
-        
-    }
 }
 </script>

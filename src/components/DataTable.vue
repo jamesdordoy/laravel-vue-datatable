@@ -74,7 +74,6 @@
 </template>
 
 <script>
-
 import axios from 'axios';
 import VueTable from './Table.vue';
 import UrlFilters from '../mixins/UrlFilters';
@@ -145,7 +144,7 @@ export default {
                 '10',
                 '25',
                 '50'
-            ])
+            ]),
         },
         classes: {
             type: Object,
@@ -162,18 +161,18 @@ export default {
                 't-body': {},
                 'td': {},
                 'th': {},
-            })
+            }),
         },
         pagination: {
             type: Object,
             default: () => ({
                 limit: 1,
                 align: 'right',
-            })
+            }),
         },
         filters: {
             type: Object,
-            default: () => ({})
+            default: () => ({}),
         },
         addFiltersToUrl: {
             type: Boolean,
@@ -187,20 +186,20 @@ export default {
             this.incrementDraw();
             
             axios.get(url, this.getRequestPayload)
-            .then(response => {
-                if (response) {
-                    let data = response.data;
-                    if (this.checkTableDraw(data.payload.draw)) {
-                        this.data = data;
-                        if (this.addFiltersToUrl) {
-                            this.updateParameters(this.tableData);
+                .then(response => {
+                    if (response) {
+                        let data = response.data;
+                        if (this.checkTableDraw(data.payload.draw)) {
+                            this.data = data;
+                            if (this.addFiltersToUrl) {
+                                this.updateParameters(this.tableData);
+                            }
                         }
                     }
-                }
-            })
-            .catch(errors => {
-                alert(errors);
-            });
+                })
+                .catch(errors => {
+                    alert(errors);
+                });
         },
         sortBy(key) {
             this.sortKey = key;
@@ -209,7 +208,7 @@ export default {
             this.tableData.dir = this.sortOrders[key] === 1 ? 'desc' : 'asc';
         },
         getIndex(array, key, value) {
-            return array.findIndex(i => i[key] == value)
+            return array.findIndex(i => i[key] == value);
         },
         incrementDraw() {
             this.draw++;
@@ -235,28 +234,25 @@ export default {
             payload = Object.assign(payload, this.tableData.filters);
             payload.draw = this.draw;
             return {
-                params: payload
+                params: payload,
             };
         },
         paginationSlot() {
             if (this.$scopedSlots) {
                 return this.$scopedSlots.pagination;
             }
-
             return null;
         },
         filtersSlot() {
             if (this.$scopedSlots) {
                 return this.$scopedSlots.filters;
             }
-
             return null;
         },
         bodySlot() {
             if (this.$scopedSlots) {
                 return this.$scopedSlots.body;
             }
-
             return null;
         }
     }

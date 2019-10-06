@@ -2,8 +2,8 @@
     <div class="row mb-3">
         <div class="col-md-3">
             <select
-                v-model="tableData.length"
-                class="form-control">
+                class="form-control"
+                v-model="tableData.length">
                 <option
                     :key="index"
                     :value="records"
@@ -27,7 +27,7 @@ export default {
     methods: {
         getData() {
             this.$emit("getData");
-        }
+        },
     },
     props: {
         tableData: {
@@ -43,7 +43,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

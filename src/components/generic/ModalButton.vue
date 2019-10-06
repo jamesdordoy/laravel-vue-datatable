@@ -1,8 +1,8 @@
 <template>
     <button
         type="button"
-        @click="click(data)"
         data-toggle="modal"
+        @click="click(data)"
         class="btn btn-primary"
         data-target="#exampleModal">
         View Row {{ data.id }} Modal
@@ -17,6 +17,6 @@ export default {
         click: {},
         meta: {},
         classes: {},
-    }
+    },
 }
 </script>

@@ -1,12 +1,9 @@
 <script>
-
 import ColumnNotFoundException from "../exceptions/ColumnNotFoundException";
 
 export default {
     props: {
-        comp: {
-
-        },
+        comp: {},
         meta: {
             type: Object,
             default: () => ({}),
@@ -21,7 +18,7 @@ export default {
         },
         handler: {
             type: Function,
-            default: () => {}
+            default: () => {},
         },
         value: {
             type: Object,
@@ -30,7 +27,7 @@ export default {
         classes: {
             type: [Object, String],
             default: () => ({}),
-        }
+        },
     },
     data() {
         return {};
@@ -52,7 +49,7 @@ export default {
                 attrs: {
                     classes: this.classes
                 },
-            })
+            });
         }
 
         let columnName;
@@ -71,7 +68,7 @@ export default {
             throw new ColumnNotFoundException(`The column ${this.name} was not found`);
         }
         
-        return createElement('span', {}, columnName)
+        return createElement('span', {}, columnName);
     }
 }
 </script>

@@ -61,70 +61,67 @@
     display: inline-block;
 }
 
+.table-header-sorting {
+    cursor: pointer;
+}
+
 </style>
 
 <script>
-    export default {
-        data() {
-            return {
-                currentSort: '',
-            };
+export default {
+    data() {
+        return {
+            currentSort: '',
+        };
+    },
+    props: {
+        dir: {
+            type: String,
+            default: '',
+        },  
+        columns: {
+            type: Array,
+            default: () => ([]),
+            required: true,
         },
-        props: {
-            dir: {
-                type: String,
-                default: '',
-            },  
-            columns: {
-                type: Array,
-                default: () => ([]),
-                required: true,
-            },
-            sortKey: {
-                type: String,
-                default: ''
-            },
-            sortOrders :{
-                type: Object,
-                default: () => ({})
-            },
-            tableClasses: {
-                type: Object,
-                default: () => ({})
-            },
-            tableHeaderClasses: {
-                type: Object,
-                default: () => ({
-                    'p-3': true,
-                    'text-left': true,
-                })
-            },
-            tableRowClasses: {
-                type: Object,
-                default: () => ({})
-            },
-            tableContainerClasses: {
-                type: Object,
-                default: () => ({})
-            }
+        sortKey: {
+            type: String,
+            default: '',
         },
-        methods: {
-            headerClasses(column) {
-                let classes = this.tableHeaderClasses;
-                classes['table-header-sorting'] = column.filterable;
-                return classes;
-            },
-            sort(name) {
-                this.currentSort = name;
-                this.$emit('sort', name);
-            }
+        sortOrders :{
+            type: Object,
+            default: () => ({}),
         },
-        computed: {}
-    }
+        tableClasses: {
+            type: Object,
+            default: () => ({}),
+        },
+        tableHeaderClasses: {
+            type: Object,
+            default: () => ({
+                'p-3': true,
+                'text-left': true,
+            }),
+        },
+        tableRowClasses: {
+            type: Object,
+            default: () => ({}),
+        },
+        tableContainerClasses: {
+            type: Object,
+            default: () => ({}),
+        },
+    },
+    methods: {
+        headerClasses(column) {
+            let classes = this.tableHeaderClasses;
+            classes['table-header-sorting'] = column.filterable;
+            return classes;
+        },
+        sort(name) {
+            this.currentSort = name;
+            this.$emit('sort', name);
+        },
+    },
+}
 </script>
-
-<style scoped>
-    .table-header-sorting {
-        cursor: pointer;
-    }
-</style>
