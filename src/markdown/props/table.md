@@ -3,7 +3,7 @@
 | --- | --- | --- | --- |
 | url | String | "/" | The JSON url |
 | columns | Array | [] | The table columns |
-| per-page | Array | [ '10', '25', '50' ] | (optional) Amount to be displayed |
+| per-page | Array | ['10','25','50'] | (optional) Amount to be displayed |
 | add-filters-to-url | Boolean | false | <p class="wrap-text"> (optional) Will adjust the current url to keep track of used filters and will also store them in local storage. </p> |
 | classes | Object | See Below | (optional) Table classes |
 | pagination | Object | {}  | (optional) props for [gilbitron/laravel-vue-pagination](https://github.com/gilbitron/laravel-vue-pagination#props) |

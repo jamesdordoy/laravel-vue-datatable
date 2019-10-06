@@ -11,7 +11,6 @@ yarn add laravel-vue-datatable
 ### Register the Plugin
 
 ```javascript
-
 import DataTable from 'laravel-vue-datatable';
 
 Vue.use(DataTable);

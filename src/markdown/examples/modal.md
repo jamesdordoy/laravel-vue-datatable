@@ -43,7 +43,7 @@ export default {
         type="button"
         data-toggle="modal"
         @click="click(data)"
-        class="btn btn-primary"
+        class="btn btn-primary btn-sm"
         data-target="#exampleModal">
         View Row {{ data.id }} Modal
     </button>
