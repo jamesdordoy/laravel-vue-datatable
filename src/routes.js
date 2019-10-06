@@ -45,7 +45,7 @@ export default [
     },
     {
         path: '/laravel-vue-datatable/examples/override-filters',
-        component: require('./views/Soon.vue').default,
+        component: require('./views/examples/OverrideFilters.vue').default,
     },
     {
         path: '/laravel-vue-datatable/examples/override-table-body',
