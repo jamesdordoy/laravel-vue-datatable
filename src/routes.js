@@ -59,4 +59,8 @@ export default [
         path: '/laravel-vue-datatable/examples/styling',
         component: require('./views/Soon.vue').default,
     },
+    {
+        path: '/laravel-vue-datatable/examples/modal',
+        component: require('./views/examples/Modal.vue').default,
+    },
 ];

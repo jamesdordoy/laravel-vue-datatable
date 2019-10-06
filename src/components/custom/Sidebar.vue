@@ -107,6 +107,13 @@
                 to="/laravel-vue-datatable/examples/styling">
                 Styling the Datatable
             </router-link>
+
+            <router-link
+                exact
+                class="list-group-item list-group-item-action nav-item-light indent-1"
+                to="/laravel-vue-datatable/examples/modal">
+                Modal Example
+            </router-link>
         </div>
     </div>
 </template>
