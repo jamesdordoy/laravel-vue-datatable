@@ -84,6 +84,7 @@ export default {
 | --- | --- | --- | --- |
 | `url ` | String | "/" | The JSON url |
 | `columns` | Array | [] | The table columns |
+| `order-dir` | String | "asc" | (optional) The default order by direction |
 | `per-page` | Array | ['10','25','50'] | (optional) Amount to be displayed |
 | `add-filters-to-url` | Boolean | false | (optional) Will adjust the current url to keep track of used filters and will also store them in local storage. |
 | `classes` | Object | See Below | (optional) Table classes |
@@ -136,6 +137,13 @@ export default {
 | `classes` | Object | {} | Component classes to parse |
 | `meta` | Object | {} | Additional values that are parsed to component |
 
+
+## Reloading the table manually
+
+
+If updates have been made to your dataset and you need to reload the table, you can attach a (ref)[] to the table. Once the Vue.JS reference is attached, you are able to access the underlining methods of the component including the getData method.
+
+Alterativly, if you have custom filters applied and you would prefered they are reatained, any adjustment to the url the table is mapped to will reload the table.
 
 ## Injecting Components
 You can also inject your own components into the table such as buttons. Your buttons, links etc can also listen for events. After declaring your event type and setting a handler. You can accept the event type as you would expect in your component, e.g. `click` for click events.

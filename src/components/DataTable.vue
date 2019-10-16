@@ -122,8 +122,8 @@ export default {
                 length: this.perPage[0],
                 search: '',
                 column: this.columns[0].name,
-                dir: 'asc',
-                filters: this.filters
+                dir: this.orderBy,
+                filters: this.filters,
             },
         };
     },
@@ -145,6 +145,10 @@ export default {
                 '25',
                 '50'
             ]),
+        },
+        orderBy: {
+            type: String,
+            default: "asc",
         },
         classes: {
             type: Object,
