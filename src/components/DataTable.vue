@@ -122,7 +122,7 @@ export default {
                 length: this.perPage[0],
                 search: '',
                 column: this.columns[0].name,
-                dir: this.orderBy,
+                dir: this.orderDir,
                 filters: this.filters,
             },
         };
@@ -146,7 +146,7 @@ export default {
                 '50'
             ]),
         },
-        orderBy: {
+        orderDir: {
             type: String,
             default: "asc",
         },
