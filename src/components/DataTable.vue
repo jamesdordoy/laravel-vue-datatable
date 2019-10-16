@@ -149,6 +149,9 @@ export default {
         orderDir: {
             type: String,
             default: "asc",
+            validator: function (value) {
+                return ['asc', 'desc'].indexOf(value) !== -1
+            }
         },
         classes: {
             type: Object,
