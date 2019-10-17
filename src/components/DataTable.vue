@@ -121,7 +121,7 @@ export default {
             tableData: {
                 length: this.perPage[0],
                 search: '',
-                column: this.columns[0].name,
+                column: this.orderBy,
                 dir: this.orderDir,
                 filters: this.filters,
             },
@@ -152,6 +152,10 @@ export default {
             validator: function (value) {
                 return ['asc', 'desc'].indexOf(value) !== -1
             }
+        },
+        orderBy: {
+            type: String,
+            default: "id",
         },
         classes: {
             type: Object,

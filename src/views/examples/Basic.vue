@@ -13,6 +13,7 @@
         <data-table
             v-show="!code"
             :url="url"
+
             :columns="columns">
         </data-table>
     </div>
