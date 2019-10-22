@@ -87,6 +87,12 @@ export default {
         } else {
             this.getData();
         }
+
+        if (this.columns.length) {
+            this.internalOrderBy = this.orderBy.length ? this.orderBy : this.columns[0].name;
+        } else {
+            this.internalOrderBy = 'id';
+        }
     },
     mounted() {
         this.columns.forEach((column) => {
@@ -121,10 +127,11 @@ export default {
             tableData: {
                 length: this.perPage[0],
                 search: '',
-                column: this.orderBy,
+                column: this.internalOrderBy,
                 dir: this.orderDir,
                 filters: this.filters,
             },
+            internalOrderBy: 'id',
         };
     },
     props: {
@@ -155,7 +162,7 @@ export default {
         },
         orderBy: {
             type: String,
-            default: "id",
+            default: '',
         },
         classes: {
             type: Object,
