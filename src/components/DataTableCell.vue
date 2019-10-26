@@ -64,7 +64,7 @@ export default {
             columnName = this.value[this.name];
         }
 
-        if (! columnName) {
+        if (typeof columnName === 'undefined') {
             throw new ColumnNotFoundException(`The column ${this.name} was not found`);
         }
         
