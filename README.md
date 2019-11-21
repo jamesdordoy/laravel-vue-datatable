@@ -144,7 +144,7 @@ export default {
 
 If updates have been made to your dataset and you need to reload the table, you can attach a [ref](https://vuejs.org/v2/api/#vm-refs) to the table. Once the Vue.JS reference is attached, you are able to access the underlining methods of the component including the getData method.
 
-Alternatively, if you have custom filters applied and you would prefered they are reatained, any adjustment to the url the table uses as a prop will reload the table.
+Alternatively, if you have custom filters applied and you would prefered they are retained, any adjustment to the url the table uses as a prop will reload the table.
 
 ## Injecting Components
 You can also inject your own components into the table such as buttons. Your buttons, links etc can also listen for events. After declaring your event type and setting a handler. You can accept the event type as you would expect in your component, e.g. `click` for click events.
