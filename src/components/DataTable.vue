@@ -15,9 +15,9 @@
         </data-table-filters>
         <vue-table
             @sort="sortBy"
-            :dir="tableData.dir"
             :sortKey="sortKey"
             :columns="columns"
+            :dir="tableData.dir"
             :sortOrders="sortOrders"
             :table-classes="classes.table"
             :table-header-classes="classes['t-head']"
@@ -34,20 +34,20 @@
                     :class="classes['t-body']">
                     <tr
                         :key="item.id"
-                        :class="classes['t-body-tr']"
-                        v-for="item in data.data">
+                        v-for="item in data.data"
+                        :class="classes['t-body-tr']">
                         <td 
                             :key="column.name"
-                            v-for="column in columns"
-                            :class="classes.td">
+                            :class="classes.td"
+                            v-for="column in columns">
                             <data-table-cell
                                 :value="item"
                                 :name="column.name"
                                 :meta="column.meta"
-                                :classes="column.classes"
                                 :event="column.event"
-                                :handler="column.handler"
-                                :comp="column.component">
+                                :comp="column.component"
+                                :classes="column.classes"
+                                :handler="column.handler">
                             </data-table-cell>
                         </td>
                     </tr>
@@ -55,17 +55,17 @@
             </template>
         </vue-table>
         <slot
+            :meta="data.meta"
             name="pagination"
-            v-if="paginationSlot"
             :links="data.links"
-            :meta="data.meta">
+            v-if="paginationSlot">
         </slot>
         <laravel-pagination
             v-else
             :data="data"
-            :align="pagination.align"
-            :limit="pagination.limit"
             :size="pagination.size"
+            :limit="pagination.limit"
+            :align="pagination.align"
             @pagination-change-page="getData">
                 <span slot="prev-nav">Previous</span>
                 <span slot="next-nav">Next</span>
@@ -119,13 +119,12 @@ export default {
             sortOrders: {},
             draw: 0,
             tableData: {
-                length: this.perPage[0],
                 search: '',
-                column: this.orderBy,
                 dir: this.orderDir,
+                column: this.orderBy,
                 filters: this.filters,
+                length: this.perPage[0],
             },
-            
         };
     },
     props: {
@@ -134,10 +133,17 @@ export default {
             default: "/",
             required: true,
         },
-        columns: {
-            type: Array,
-            default: () => ([]),
-            required: true,
+        orderBy: {
+            type: String,
+            default: 'id',
+        },
+        filters: {
+            type: Object,
+            default: () => ({}),
+        },
+        addFiltersToUrl: {
+            type: Boolean,
+            default: false,
         },
         perPage: {
             type: Array,
@@ -147,16 +153,24 @@ export default {
                 '50'
             ]),
         },
+        columns: {
+            type: Array,
+            default: () => ([]),
+            required: true,
+        },
+        pagination: {
+            type: Object,
+            default: () => ({
+                limit: 1,
+                align: 'right',
+            }),
+        },
         orderDir: {
             type: String,
             default: "asc",
             validator: function (value) {
                 return ['asc', 'desc'].indexOf(value) !== -1
             }
-        },
-        orderBy: {
-            type: String,
-            default: 'id',
         },
         classes: {
             type: Object,
@@ -174,21 +188,6 @@ export default {
                 'td': {},
                 'th': {},
             }),
-        },
-        pagination: {
-            type: Object,
-            default: () => ({
-                limit: 1,
-                align: 'right',
-            }),
-        },
-        filters: {
-            type: Object,
-            default: () => ({}),
-        },
-        addFiltersToUrl: {
-            type: Boolean,
-            default: false,
         },
     },
     methods: {
@@ -240,15 +239,6 @@ export default {
         }
     },
     computed: {
-        getRequestPayload() {
-            let payload = Object.assign({}, this.tableData);
-            delete payload.filters;
-            payload = Object.assign(payload, this.tableData.filters);
-            payload.draw = this.draw;
-            return {
-                params: payload,
-            };
-        },
         paginationSlot() {
             if (this.$scopedSlots) {
                 return this.$scopedSlots.pagination;
@@ -266,7 +256,16 @@ export default {
                 return this.$scopedSlots.body;
             }
             return null;
-        }
+        },
+        getRequestPayload() {
+            let payload = Object.assign({}, this.tableData);
+            delete payload.filters;
+            payload = Object.assign(payload, this.tableData.filters);
+            payload.draw = this.draw;
+            return {
+                params: payload,
+            };
+        },
     }
 }
 </script>
