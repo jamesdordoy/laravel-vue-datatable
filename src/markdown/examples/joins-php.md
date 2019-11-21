@@ -12,8 +12,8 @@ class UserController extends Controller
     public function index(Request $request)
     {   
         $length = $request->input('length');
-        $column = $request->input('column'); //Index
-        $orderBy = $request->input('dir', 'asc');
+        $column = $request->input('column');
+        $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
         
         $query = User::queryBuilderQuery($column, $orderBy, $searchValue);
