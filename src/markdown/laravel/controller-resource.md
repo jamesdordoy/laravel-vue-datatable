@@ -18,11 +18,11 @@ class UserController extends Controller
     public function index(Request $request)
     {   
         $length = $request->input('length');
-        $column = $request->input('column');
+        $sortBy = $request->input('column');
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
         
-        $query = User::eloquentQuery($column, $orderBy, $searchValue);
+        $query = User::eloquentQuery($sortBy, $orderBy, $searchValue);
         $data = $query->paginate($length);
         
         return new DataTableCollectionResource($data);
@@ -50,11 +50,11 @@ class UserController extends Controller
     public function index(Request $request)
     {   
         $length = $request->input('length');
-        $column = $request->input('column');
+        $sortBy = $request->input('column');
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
         
-        $query = User::queryBuilderQuery($column, $orderBy, $searchValue);
+        $query = User::queryBuilderQuery($sortBy, $orderBy, $searchValue);
 
         $query
             ->join('roles', 'roles.id', '=', 'users.role_id')

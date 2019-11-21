@@ -13,10 +13,10 @@ class UserController extends Controller
     {   
         $length = $request->input('length');
         $column = $request->input('column');
-        $orderBy = $request->input('dir');
+        $sortBy = $request->input('dir');
         $searchValue = $request->input('search');
         
-        $query = User::queryBuilderQuery($column, $orderBy, $searchValue);
+        $query = User::queryBuilderQuery($column, $sortBy, $searchValue);
 
         $query
             ->join('roles', 'roles.id', '=', 'users.role_id')
