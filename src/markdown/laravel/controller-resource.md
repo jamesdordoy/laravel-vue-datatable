@@ -30,7 +30,7 @@ class UserController extends Controller
 }
 ```
 
-## Using Laravels Query Builder
+## Using Laravel's Query Builder
 
 <p class="wrap-text">
 For more complex filtering, it is suggested to use the query builder as you are able to make cross table queries and searches in only a single call to the database. You can add your own joins to the query to add additional data but you will have to reselect the data you want and as previous filters have been applied by the default searching, please use the orWhere function to apply additional filters as using where will clear the previously set search filters.
