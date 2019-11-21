@@ -87,7 +87,6 @@
                         columnName: 'users.name',
                         filterable: true,
                     },
-                    
                     {
                         label: 'Email',
                         name: 'email',
