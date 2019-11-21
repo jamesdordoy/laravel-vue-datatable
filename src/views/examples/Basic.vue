@@ -13,7 +13,6 @@
         <data-table
             v-show="!code"
             :url="url"
-
             :columns="columns">
         </data-table>
     </div>
@@ -36,7 +35,7 @@
         mixins: [CodeExample],
         data() {
             return {
-                url: process.env.VUE_APP_DATATABLE_URL,
+                url: process.env.VUE_APP_ELOQUENT_URL,
                 columns: [
                     {
                         label: 'ID',

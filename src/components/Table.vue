@@ -9,7 +9,7 @@
                         v-for="column in columns"
                         :class="headerClasses(column)"
                         :style="'width: ' + column.width + '%'"
-                        @click="column.filterable  ? sort(column.name) : null">
+                        @click="column.filterable  ? sort(column) : null">
                         <div class="inline-block" v-if="column.filterable">
                             <div
                                 class="filter-asc"
@@ -118,9 +118,9 @@ export default {
             classes['table-header-sorting'] = column.filterable;
             return classes;
         },
-        sort(name) {
-            this.currentSort = name;
-            this.$emit('sort', name);
+        sort(column) {
+            this.currentSort = column.name;
+            this.$emit('sort', column.name, column.columnName);
         },
     },
 }

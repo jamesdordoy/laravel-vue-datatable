@@ -219,10 +219,10 @@ export default {
                     alert(errors);
                 });
         },
-        sortBy(key) {
+        sortBy(key, columnName = null) {
             this.sortKey = key;
             this.sortOrders[key] = this.sortOrders[key] * -1;
-            this.tableData.column = key;
+            this.tableData.column = columnName ? columnName :key;
             this.tableData.dir = this.sortOrders[key] === 1 ? 'desc' : 'asc';
         },
         getIndex(array, key, value) {
@@ -276,8 +276,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-
-</style>

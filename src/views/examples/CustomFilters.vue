@@ -71,7 +71,7 @@
         },
         data() {
             return {
-                url: process.env.VUE_APP_DATATABLE_URL,
+                url: process.env.VUE_APP_ELOQUENT_URL,
                 filters: {
                     isAdmin: '',
                 },

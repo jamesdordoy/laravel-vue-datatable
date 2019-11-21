@@ -63,4 +63,8 @@ export default [
         path: '/laravel-vue-datatable/examples/modal',
         component: require('./views/examples/Modal.vue').default,
     },
+    {
+        path: '/laravel-vue-datatable/examples/joins',
+        component: require('./views/examples/Joins.vue').default,
+    },
 ];
