@@ -11,7 +11,7 @@
         <div v-show="code">
 
             <information-alert>
-                For more complex filtering, it is suggested to use the query builder as you are able to make cross table queries and searches in only a single call to the database. You can add your own joins to the default query provided by the package to add additional data but you will have to reselect the data you want and as previous filters have been applied by the default searching, please use the <code>orWhere</code> method to apply additional filters as using <code>where</code> will clear the previously set search filters.
+                For more complex filtering, it is suggested to use the query builder as you are able to make cross table queries and searches in only a single call to the database. You can add your own joins to the default query but you will have to reselect the data you want. As previous filters have been applied by the default searching, please use the <code>orWhere</code> method to apply additional filters as using <code>where</code> will clear the previously set search filters.
 
                 There is a default method for setting up the datatable query using the builder which can be seen below:
             </information-alert>

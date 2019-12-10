@@ -145,14 +145,6 @@ export default {
             type: Boolean,
             default: false,
         },
-        perPage: {
-            type: Array,
-            default: () => ([
-                '10',
-                '25',
-                '50'
-            ]),
-        },
         columns: {
             type: Array,
             default: () => ([]),
@@ -165,11 +157,22 @@ export default {
                 align: 'right',
             }),
         },
+        perPage: {
+            type: Array,
+            default: () => ([
+                '10',
+                '25',
+                '50'
+            ]),
+        },
         orderDir: {
             type: String,
             default: "asc",
             validator: function (value) {
-                return ['asc', 'desc'].indexOf(value) !== -1
+                return [
+                    'asc',
+                    'desc'
+                ].indexOf(value) !== -1;
             }
         },
         classes: {
