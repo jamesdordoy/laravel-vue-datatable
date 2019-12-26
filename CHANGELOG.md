@@ -24,4 +24,4 @@
 
 
 ### Changed
-- Changed the filterable column prop in the table to orderable as it is a more appropriate name.  ([#2570f00](https://github.com/jamesdordoy/vue-datatable/commit/2570f0004f17cb1d1f220f956c90be4b7f6217c3))
+- Changed the filterable column prop in the table to orderable as it is a more appropriate name.  ([#a521a8](https://github.com/jamesdordoy/vue-datatable/commit/a521a86a4c17dba809a9d26c3d845f5c5b1cae31))
