@@ -64,7 +64,7 @@
                     },
                     {
                         label: 'View',
-                        name: '',
+                        name: 'view',
                         orderable: false,
                         component: ModalButton,
                         event: "click",

@@ -5,7 +5,6 @@
                 <h2 class="markdown-header">Pivot Table Example</h2>
             </div>
         </div>
-
         <information-alert>
             Sadly I couldn't find a clean way to allow for column ordering on pivot table fields.
             It is not currently possible to order data based on related values using the <code>with()</code>
@@ -13,7 +12,6 @@
             It would be possible to create a custom query using the Laravel Query Builder or raw SQL but this will be more complex and is too specific to a project's requirements
             to create a universal solution.
         </information-alert>
-
         <pre v-highlightjs v-show="code">
             <pivot-markdown>
             </pivot-markdown>
