@@ -67,4 +67,8 @@ export default [
         path: '/laravel-vue-datatable/examples/joins',
         component: require('./views/examples/Joins.vue').default,
     },
+    {
+        path: '/laravel-vue-datatable/examples/pivots',
+        component: require('./views/examples/PivotTable.vue').default,
+    },
 ];

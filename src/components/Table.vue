@@ -9,15 +9,15 @@
                         v-for="column in columns"
                         :class="headerClasses(column)"
                         :style="'width: ' + column.width + '%'"
-                        @click="column.filterable  ? sort(column) : null">
-                        <div class="inline-block" v-if="column.filterable">
+                        @click="column.orderable  ? sort(column) : null">
+                        <div class="inline-block" v-if="column.orderable">
                             <div
                                 class="filter-asc"
-                                :class="{'active-filter-asc': column.filterable && column.name == currentSort && dir == 'asc' }">
+                                :class="{'active-filter-asc': column.orderable && column.name == currentSort && dir == 'asc' }">
                             </div>
                             <div
                                 class="filter-desc"
-                                :class="{'active-filter-desc': column.filterable && column.name == currentSort && dir == 'desc' }">
+                                :class="{'active-filter-desc': column.orderable && column.name == currentSort && dir == 'desc' }">
                             </div>
                         </div>
                         {{ column.label }}
@@ -115,7 +115,7 @@ export default {
     methods: {
         headerClasses(column) {
             let classes = this.tableHeaderClasses;
-            classes['table-header-sorting'] = column.filterable;
+            classes['table-header-sorting'] = column.orderable;
             return classes;
         },
         sort(column) {

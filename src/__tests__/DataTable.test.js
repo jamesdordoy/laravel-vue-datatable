@@ -10,13 +10,13 @@ describe('Data Table', () => {
                     {
                         label: 'ID',
                         name: 'id',
-                        filterable: true,
+                        orderable: true,
                         width: 10,
                     },
                     {
                         label: 'Name',
                         name: 'name',
-                        filterable: true,
+                        orderable: true,
                         width: 20,
                     },
                 ],

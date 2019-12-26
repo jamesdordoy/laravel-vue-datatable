@@ -67,30 +67,30 @@
                     {
                         label: 'ID',
                         name: 'id',
-                        filterable: true,
+                        orderable: true,
                     },
                     {
                         label: 'Department Name',
                         name: 'department_name',
                         columnName: 'departments.name',
-                        filterable: true,
+                        orderable: true,
                     },
                     {
                         label: 'Role Name',
                         name: 'role_name',
                         columnName: 'roles.name',
-                        filterable: true,
+                        orderable: true,
                     },
                     {
                         label: 'Name',
                         name: 'user_name',
                         columnName: 'users.name',
-                        filterable: true,
+                        orderable: true,
                     },
                     {
                         label: 'Email',
                         name: 'email',
-                        filterable: true,
+                        orderable: true,
                     },
                 ]
             }

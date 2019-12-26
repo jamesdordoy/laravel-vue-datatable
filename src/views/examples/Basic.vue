@@ -40,17 +40,17 @@
                     {
                         label: 'ID',
                         name: 'id',
-                        filterable: true,
+                        orderable: true,
                     },
                     {
                         label: 'Name',
                         name: 'name',
-                        filterable: true,
+                        orderable: true,
                     },
                     {
                         label: 'Email',
                         name: 'email',
-                        filterable: true,
+                        orderable: true,
                     },
                 ]
             }

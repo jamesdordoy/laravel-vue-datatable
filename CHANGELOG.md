@@ -19,3 +19,9 @@
 
 ### Changed
 - Changed the model trait method in the Laravel Package. Changed method name `dataTableQuery` to `eloquentQuery` as there is now an additional method for using the Laravel Query Builder. ([#2570f00](https://github.com/jamesdordoy/vue-datatable/commit/2570f0004f17cb1d1f220f956c90be4b7f6217c3))
+
+## [v0.5.0 (2019-12-26)]
+
+
+### Changed
+- Changed the filterable column prop in the table to orderable as it is a more appropriate name.  ([#2570f00](https://github.com/jamesdordoy/vue-datatable/commit/2570f0004f17cb1d1f220f956c90be4b7f6217c3))
