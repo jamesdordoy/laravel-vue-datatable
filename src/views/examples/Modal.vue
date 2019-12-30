@@ -1,8 +1,14 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <h2 class="markdown-header">Modal Example</h2>
+            </div>
+            <div class="col-md-4 relative">
+                <div class="show-code-inline">
+                    <label>Show Example Code</label>&nbsp;
+                    <vue-switch></vue-switch>
+                </div>
             </div>
         </div>
 
@@ -27,6 +33,7 @@
     import CodeExample from '../../mixins/CodeExample';
     import Modal from '../../components/generic/Modal';
     import DataTable from '../../components/DataTable.vue';
+    import VueSwitch from '../../components/generic/Switch';
     import ModalMarkdown from '../../markdown/examples/modal.md';
     import ModalButton from '../../components/generic/ModalButton';
     
@@ -37,6 +44,8 @@
             Modal,
             // eslint-disable-next-line
             DataTable,
+            // eslint-disable-next-line
+            VueSwitch,
             // eslint-disable-next-line
             ModalMarkdown,
             // eslint-disable-next-line

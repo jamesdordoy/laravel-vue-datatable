@@ -1,20 +1,25 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <h2 class="markdown-header">
                     Table Joins, Filters &amp; Searching
                 </h2>
             </div>
+            <div class="col-md-4 relative">
+                <div class="show-code-inline">
+                    <label>Show Example Code</label>&nbsp;
+                    <vue-switch></vue-switch>
+                </div>
+            </div>
         </div>
 
+        <information-alert>
+            For more complex filtering, it is suggested to use the query builder as you are able to make cross table queries and searches in only a single call to the database.
+            This will also provide you with the most control over how data is selected and searched upon.
+        </information-alert>
+
         <div v-show="code">
-
-            <information-alert>
-                For more complex filtering, it is suggested to use the query builder as you are able to make cross table queries and searches in only a single call to the database. You can add your own joins to the default query but you will have to reselect the data you want. As previous filters have been applied by the default searching, please use the <code>orWhere</code> method to apply additional filters as using <code>where</code> will clear the previously set search filters.
-
-                There is a default method for setting up the datatable query using the builder which can be seen below:
-            </information-alert>
 
             <pre v-highlightjs>
                 <joins-php-markdown>
@@ -43,6 +48,7 @@
 
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '../../components/DataTable.vue';
+    import VueSwitch from '../../components/generic/Switch';
     import JoinsPhpMarkdown from '../../markdown/examples/joins-php.md';
     import JoinsJsMarkdown from '../../markdown/examples/joins-js.md';
     import InformationAlert from '../../components/generic/InformationAlert.vue';
@@ -52,6 +58,8 @@
         components: {
             // eslint-disable-next-line
             DataTable,
+            // eslint-disable-next-line
+            VueSwitch,
             // eslint-disable-next-line
             JoinsPhpMarkdown,
             // eslint-disable-next-line

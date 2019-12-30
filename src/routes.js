@@ -40,6 +40,22 @@ export default [
         component: require('./views/examples/Basic.vue').default,
     },
     {
+        path: '/laravel-vue-datatable/examples/relationships',
+        component: require('./views/examples/relationships/Introduction.vue').default,
+    },
+    {
+        path: '/laravel-vue-datatable/examples/belongs-to',
+        component: require('./views/examples/relationships/BelongsTo.vue').default,
+    },
+    {
+        path: '/laravel-vue-datatable/examples/has-many',
+        component: require('./views/examples/relationships/HasMany.vue').default,
+    },
+    {
+        path: '/laravel-vue-datatable/examples/belongs-to-many',
+        component: require('./views/examples/relationships/BelongsToMany.vue').default,
+    },
+    {
         path: '/laravel-vue-datatable/examples/injecting-dynamic-components',
         component: require('./views/examples/InjectingDynamicComponents.vue').default,
     },
@@ -66,9 +82,5 @@ export default [
     {
         path: '/laravel-vue-datatable/examples/joins',
         component: require('./views/examples/Joins.vue').default,
-    },
-    {
-        path: '/laravel-vue-datatable/examples/pivots',
-        component: require('./views/examples/PivotTable.vue').default,
     },
 ];

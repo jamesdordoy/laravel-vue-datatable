@@ -22,7 +22,7 @@ Vue.use(VueHighlightJS);
 
 //Font Awesome
 import { faEye } from '@fortawesome/free-regular-svg-icons';
-import { faInfoCircle, faTable, faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faTable, faProjectDiagram, faRestroom, faHammer } from '@fortawesome/free-solid-svg-icons';
 import { faVuejs, faPhp, faLaravel, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
@@ -33,7 +33,9 @@ library.add(
     faTable,
     faProjectDiagram,
     faInfoCircle,
-    faEye
+    faEye,
+    faRestroom,
+    faHammer
 );
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);

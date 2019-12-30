@@ -1,8 +1,14 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <h2 class="markdown-header">Overriding the Datatable body</h2>
+            </div>
+            <div class="col-md-4 relative">
+                <div class="show-code-inline">
+                    <label>Show Example Code</label>&nbsp;
+                    <vue-switch></vue-switch>
+                </div>
             </div>
         </div>
 
@@ -44,6 +50,7 @@
 <script>
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '../../components/DataTable.vue';
+    import VueSwitch from '../../components/generic/Switch';
     import InformationAlert from '../../components/generic/InformationAlert.vue';
     import OverrideTableBodyMarkdown from '../../markdown/examples/override-table-body.md';
     
@@ -52,6 +59,8 @@
         components: {
             // eslint-disable-next-line
             DataTable,
+            // eslint-disable-next-line
+            VueSwitch,
             // eslint-disable-next-line
             InformationAlert,
             // eslint-disable-next-line

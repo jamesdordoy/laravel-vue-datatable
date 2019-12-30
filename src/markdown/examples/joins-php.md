@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\User;
 use Illuminate\Http\Request;
 use JamesDordoy\LaravelVueDatatable\Http\Resources\DataTableCollectionResource;
@@ -11,14 +12,12 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {   
-        $length = $request->input('length');
-        $column = $request->input('column');
-        $sortBy = $request->input('dir');
         $searchValue = $request->input('search');
-        
-        $query = User::queryBuilderQuery($column, $sortBy, $searchValue);
+        $orderBy = $request->input('column');
+        $orderBydir = $request->input("dir");
+        $length = $request->input('length');
 
-        $query
+        $data = DB::table('users')
             ->join('roles', 'roles.id', '=', 'users.role_id')
             ->join('departments', 'departments.id', '=', 'roles.department_id')
             ->select(
@@ -29,14 +28,14 @@ class UserController extends Controller
                 'users.email',
                 'departments.name as department_name'
             )
+            ->where("users.name", "LIKE", "%$searchValue%")
+            ->orWhere('users.email', "LIKE", "%$searchValue%")
             ->orWhere('roles.name', "LIKE", "%$searchValue%")
-            ->orWhere('departments.name', "LIKE", "%$searchValue%");
+            ->orWhere('departments.name', "LIKE", "%$searchValue%")
+            ->orderBy($orderBy, $orderBydir)
+            ->paginate($length);
 
-        $data = $query->paginate($length);
-        
         return new DataTableCollectionResource($data);
     }
 }
 ```
-
-

@@ -26,13 +26,13 @@
             <router-link
                 class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/laravel/trait">
-                Adding the Trait to the model
+                Adding the Trait
             </router-link>
 
             <router-link
                 class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/laravel/controller-resource">
-                Using the controller resource
+                Using the API Resource
             </router-link>
 
             <a href="#" class="list-group-header list-group-item-action">
@@ -66,7 +66,7 @@
 
             <a href="#" class="list-group-header list-group-item-action">
                 <font-awesome-icon :icon="['fas', 'table']" />&nbsp;
-                Examples
+                Table Examples
             </a>
             <router-link
                 exact
@@ -100,33 +100,55 @@
                 to="/laravel-vue-datatable/examples/custom-filters">
                 Adding Custom Filters to the table
             </router-link>
-                
             <router-link
                 exact
                 class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/examples/styling">
                 Styling the Datatable
             </router-link>
-
             <router-link
                 exact
                 class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/examples/modal">
                 Modal Example
             </router-link>
-
+            <a href="#" class="list-group-header list-group-item-action">
+                <font-awesome-icon :icon="['fas', 'restroom']" />&nbsp;
+                Relationships
+            </a>
+            <router-link
+                exact
+                class="list-group-item list-group-item-action nav-item-light indent-1"
+                to="/laravel-vue-datatable/examples/relationships">
+                Introduction
+            </router-link>
+            <router-link
+                exact
+                class="list-group-item list-group-item-action nav-item-light indent-1"
+                to="/laravel-vue-datatable/examples/belongs-to">
+                BelongsTo
+            </router-link>
+            <router-link
+                exact
+                class="list-group-item list-group-item-action nav-item-light indent-1"
+                to="/laravel-vue-datatable/examples/has-many">
+                HasMany
+            </router-link>
+            <router-link
+                exact
+                class="list-group-item list-group-item-action nav-item-light indent-1"
+                to="/laravel-vue-datatable/examples/belongs-to-many">
+                BelongsToMany
+            </router-link>
+            <a href="#" class="list-group-header list-group-item-action">
+                <font-awesome-icon :icon="['fas', 'hammer']" />&nbsp;
+                Query Builder
+            </a>
             <router-link
                 exact
                 class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/examples/joins">
                 Table Joins
-            </router-link>
-
-            <router-link
-                exact
-                class="list-group-item list-group-item-action nav-item-light indent-1"
-                to="/laravel-vue-datatable/examples/pivots">
-                Pivot Tables
             </router-link>
         </div>
     </div>

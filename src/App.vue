@@ -50,6 +50,12 @@ p, h1, h2, h3, h4, h5 {
     margin-top: 21px;
 }
 
+.show-code-inline {
+    position: absolute;
+    bottom: 8px;
+    right: 18px;
+}
+
 </style>
 
 <script>

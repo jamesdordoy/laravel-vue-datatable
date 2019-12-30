@@ -2,8 +2,14 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-md-12">
-                <h2 class="markdown-header">Overriding the Filters and Pagination Components</h2>
+            <div class="col-md-8">
+                <h2 class="markdown-header">Overriding the Filters and Pagination</h2>
+            </div>
+            <div class="col-md-4 relative">
+                <div class="show-code-inline">
+                    <label>Show Example Code</label>&nbsp;
+                    <vue-switch></vue-switch>
+                </div>
             </div>
         </div>
 
@@ -93,6 +99,7 @@
     import 'vue-select/dist/vue-select.css';
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '../../components/DataTable.vue';
+    import VueSwitch from '../../components/generic/Switch';
     import InformationAlert from '../../components/generic/InformationAlert.vue';
     import OverrideFiltersAndPagination from '../../markdown/examples/override-filters-and-pagination.md';
 
@@ -103,6 +110,8 @@
             vSelect,
             // eslint-disable-next-line
             DataTable,
+            // eslint-disable-next-line
+            VueSwitch,
             // eslint-disable-next-line
             InformationAlert,
             // eslint-disable-next-line

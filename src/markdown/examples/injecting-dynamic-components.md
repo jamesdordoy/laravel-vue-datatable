@@ -14,17 +14,24 @@
 </template>
 ```
 
+### Example Image Component
+
+> (ExampleImageComponent.vue)
+
+```html
+<template>
+    <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d.jpg?s=60">
+</template>
+```
+
 ```javascript
 export default {
     props: {
-        data: {},
-        name: {},
-        click: {},
-        meta: {},
-        classes: {},
+        data: {}
     }
 }
 ```
+
 
 ### Datatable Button Example
 
@@ -40,8 +47,8 @@ export default {
 ```
 
 ```javascript
-
 import ExampleButton './ExampleButton.vue';
+import ExampleImageComponent './ExampleImageComponent.vue';
 
 export default {
     data() {
@@ -61,7 +68,13 @@ export default {
                 label: 'Email',
                 name: 'email',
                 orderable: true,
-            }
+            },
+            {
+                label: 'Profile Image',
+                name: 'img',
+                orderable: true,
+                component: ExampleImageComponent,
+            },
             {
                 label: '',
                 name: 'View',

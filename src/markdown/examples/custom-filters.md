@@ -14,11 +14,11 @@
             </div>
             <div class="col-md-4">
                 <select
-                    v-model="tableData.filters.isAdmin"
+                    v-model="tableData.filters.isActive"
                     class="form-control">
                     <option value>All</option>
-                    <option value='admin'>Admin</option>
-                    <option value='staff'>Staff</option>
+                    <option value='1'>Active</option>
+                    <option value='0'>Inactive</option>
                 </select>
             </div>
             <div class="col-md-4">
@@ -41,21 +41,23 @@ data() {
         	...
         ],
         filters: {
-            isAdmin: '',
+            isActive: '',
         },
     }
 },
 ```
 
-This added isAdmin filter for staff type will be send to the Laravel backend and can be used to manipulate the results:
+This added isActive filter will be send to the Laravel backend and can be used to manipulate the results:
 
 ```php
-$isAdmin = $request->input('isAdmin');
+$isActive = $request->input('isActive');
 
 $query = User::dataTableQuery($column, $dir, $length, $searchValue);
         
-if (isset($isAdmin) && ! empty($isAdmin)) {
-    $query->where("type", $isAdmin);
+$isActive = $request->input('isActive');
+        
+if (isset($isActive)) {
+    $query->where("is_active", $isActive);
 }
     
 $data = $query->paginate($length);
