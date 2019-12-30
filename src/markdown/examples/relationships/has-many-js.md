@@ -1,8 +1,31 @@
 #### JS
 
+> ExampleSelectCell.vue
+
+```html
+<template>
+    <ul>
+        <li v-for="number in data[name]" :key="number.id">
+            <a href="#">{{ number.name }}</a>
+        </li>
+    </ul>
+</template>
+```
+
+```js
+export default {
+    props: {
+        data: {},
+        name: {}
+    },
+}
+```
+
 > Datatable.vue
 
 ```js
+import ExampleSelectCell from './ExampleSelectCell';
+
 export default {
     data() {
         return {
@@ -29,7 +52,7 @@ export default {
                     label: 'Telephone Numbers',
                     name: 'telephone_numbers',
                     columnName: 'telephone_numbers.name',
-                    component: DataTableSelectCell,
+                    component: ExampleSelectCell,
                     orderable: true,
                 },
             ]

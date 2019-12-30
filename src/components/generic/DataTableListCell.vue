@@ -6,18 +6,6 @@
     </ul>
 </template>
 
-<style scoped>
-li {
-    padding: 4px;
-    margin: 0;
-}
-
-ul {
-    margin:0;
-    padding:0;
-}
-</style>
-
 <script>
 export default {
     props: {
