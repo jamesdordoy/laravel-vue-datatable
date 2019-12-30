@@ -77,7 +77,7 @@
                     {
                         label: 'Profile Image',
                         name: 'img',
-                        orderable: true,
+                        orderable: false,
                         component: DataTableImageCell,
                     },
                     {
