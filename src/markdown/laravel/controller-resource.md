@@ -22,9 +22,7 @@ class UserController extends Controller
         $orderBy = $request->input('dir');
         $searchValue = $request->input('search');
         
-        $query = User::eloquentQuery($sortBy, $orderBy, $searchValue, [
-            'role',
-        ]);
+        $query = User::eloquentQuery($sortBy, $orderBy, $searchValue);
 
         $data = $query->paginate($length);
         
