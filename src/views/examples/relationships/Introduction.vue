@@ -29,7 +29,7 @@
     import MySqlConfig from '../../../markdown/examples/relationships/mysql-config.md';
     
     export default {
-        name: 'Laravel-Adding-Trait',
+        name: 'Relationships-Introduction',
         mixins: [CorrectTextStyling],
         components: {
             // eslint-disable-next-line

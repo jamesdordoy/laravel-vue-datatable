@@ -22,7 +22,7 @@
     "table": {
         "table": true,
         "table-striped": true,
-        "table-dark": true,
+        "border": true,
     },
     "t-head": {
 

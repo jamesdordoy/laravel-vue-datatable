@@ -69,6 +69,7 @@
         mixins: [CodeExample],
         data() {
             return {
+                name: 'Override-Table-Body',
                 url: process.env.VUE_APP_ELOQUENT_URL,
                 columns: [
                     {

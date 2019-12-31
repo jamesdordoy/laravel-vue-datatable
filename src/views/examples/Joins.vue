@@ -70,6 +70,7 @@
         mixins: [CodeExample],
         data() {
             return {
+                name: 'Joins',
                 url: process.env.VUE_APP_QUERY_BUILDER_URL,
                 columns: [
                     {

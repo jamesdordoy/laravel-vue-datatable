@@ -40,7 +40,7 @@
     import HasManyPhpMarkdown from '../../../markdown/examples/relationships/has-many-php.md';
     
     export default {
-        name: 'Basic',
+        name: 'HasMany-Example',
         components: {
             // eslint-disable-next-line
             DataTable,

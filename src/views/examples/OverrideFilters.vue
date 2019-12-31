@@ -123,6 +123,7 @@
         },
         data() {
             return {
+                name: 'Override-Filters',
                 url: process.env.VUE_APP_ELOQUENT_URL,
                 selectOptions: [],
                 columns: [

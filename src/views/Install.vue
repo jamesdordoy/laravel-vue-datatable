@@ -13,7 +13,7 @@
     import CorrectTextStyling from '../mixins/CorrectTextStyling';
     
     export default {
-        name: 'home',
+        name: 'Component-Install',
         mixins: [CorrectTextStyling],
         components: {
             InstallMarkdown

@@ -38,7 +38,7 @@
     import ModalButton from '../../components/generic/ModalButton';
     
     export default {
-        name: 'Modal Example',
+        name: 'Modal-Example',
         components: {
             // eslint-disable-next-line
             Modal,

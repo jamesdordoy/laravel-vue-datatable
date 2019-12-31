@@ -1,6 +1,6 @@
 <template>
     <select class="form-control">
-        <option v-for="item in data[name]" :key="item.id">
+        <option v-for="(item, key) in data[name]" :key="key">
             {{ item.name }}
         </option>
     </select>
@@ -22,7 +22,8 @@ ul {
 export default {
     props: {
         data: {},
-        name: {}
+        name: {},
+        meta: {}
     },
 }
 </script>

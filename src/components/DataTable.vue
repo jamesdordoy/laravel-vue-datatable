@@ -88,12 +88,8 @@ export default {
             this.getData();
         }
 
-        if (this.theme == "light") {
-            this.classes['table']['table-dark'] = false;
-            this.classes['table']['border'] = true;
-            this.classes['t-head']['border-top'] = true;
-            this.classes['t-head']['border-bottom'] = true;
-            this.classes['table']['table-light'] = true;
+        if (this.theme == "dark") {
+            this.classes['table']['table-dark'] = true;
         }
     },
     mounted() {
@@ -196,18 +192,18 @@ export default {
         classes: {
             type: Object,
             default: () => ({
-                'table-container': {
-                    'table-responsive': true,
+                "table-container": {
+                    "table-responsive": true,
                 },
-                'table': {
-                    'table': true,
-                    'table-striped': true,
-                    'table-dark': true,
+                "table": {
+                    "table": true,
+                    "table-striped": true,
+                    "border": true,
                 },
-                't-head': {},
-                't-body': {},
-                'td': {},
-                'th': {},
+                "t-head": {},
+                "t-body": {},
+                "td": {},
+                "th": {},
             }),
         },
     },

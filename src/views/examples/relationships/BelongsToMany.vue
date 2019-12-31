@@ -60,6 +60,7 @@
         mixins: [CodeExample],
         data() {
             return {
+                name: 'BelongsToMany-Example',
                 url: process.env.VUE_APP_ELOQUENT_URL,
                 columns: [
                     {
@@ -83,7 +84,7 @@
                     {
                         label: 'Departments',
                         name: 'departments',
-                        columnName: 'roles.name',
+                        columnName: 'departments.name',
                         component: DataTableSelectCell,
                         orderable: true,
                     },

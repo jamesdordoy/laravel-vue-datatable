@@ -57,6 +57,7 @@
         },
         data() {
             return {
+                name: 'Injecting-Dynamic-Components',
                 url: process.env.VUE_APP_ELOQUENT_URL,
                 columns: [
                     {
