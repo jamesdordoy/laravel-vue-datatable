@@ -76,6 +76,12 @@ export default {
 }
 ```
 
+## Reloading the table manually
+
+If updates have been made to your dataset and you need to reload the table, you can attach a [ref](https://vuejs.org/v2/api/#vm-refs) to the table. Once the Vue.JS reference is attached, you are able to access the underlining methods of the component including the getData method.
+
+Alternatively, if you have custom filters applied and you would prefered they are retained, any adjustment to the url the table uses as a prop will reload the table.
+
 ### API
 
 #### Datatable Props
@@ -138,150 +144,6 @@ export default {
 | handler | Function | () => {} | (optional) Function to parse for the event handler |
 | classes | Object | {} | (optional) Component classes to parse |
 | meta | Object | {} | (optional) Additional values that are parsed to component |
-
-
-## Reloading the table manually
-
-If updates have been made to your dataset and you need to reload the table, you can attach a [ref](https://vuejs.org/v2/api/#vm-refs) to the table. Once the Vue.JS reference is attached, you are able to access the underlining methods of the component including the getData method.
-
-Alternatively, if you have custom filters applied and you would prefered they are retained, any adjustment to the url the table uses as a prop will reload the table.
-
-
-## Styling the Datatable
-You can edit the style of the Datatable by overriding the `classes` prop. A example mixin config can be found be below for Tailwind:
-
-![Image description](https://www.jamesdordoy.co.uk/images/projects/tailwind-datatable.png)
-
-### Tailwind Config
-
-> (mixins/tailwind.js)
-
-Custom Class
-
-```css
-  .stripped-table:nth-child(even) {
-    @apply bg-black;
-  }
-```
-
-```javascript
-export default {
-    data() {
-        return {
-            classes: { 
-                'table-container': {
-                    'justify-center': true,
-                    'w-full': true,
-                    'flex': true,
-                    'rounded': true,
-                    'mb-6': true,
-                    'shadow-md': true,
-                },
-                table: {
-                    'text-left': true,
-                    'w-full': true,
-                    'border-collapse': true,
-                },
-                't-head': {
-                    'text-grey-dark': true,
-                    'bg-black': true,
-                    'border-grey-light': true,
-                    'py-4': true,
-                    'px-6': true,
-                },
-                "t-body": {
-                    'bg-grey-darkest': true,
-                    
-                },
-                "t-head-tr": {
-                    
-                },
-                "t-body-tr": {
-                    'stripped-table': true,
-                    'bg-grey-darkest': true,
-                },
-                "td": {
-                    'py-4': true,
-                    'px-6': true,
-                    'border-b': true,
-                    'border-grey-light': true,
-                    'text-grey-light': true,
-                },
-                "th": {
-                    'py-4': true,
-                    'px-6': true,
-                    'font-bold': true,
-                    'uppercase': true,
-                    'text-sm': true,
-                    'text-grey-dark': true,
-                    'border-b': true,
-                    'border-grey-light': true,
-                },
-            }
-        };
-    },
-}
-```
-
-### Tailwind Datatable
-
-```html
-<data-table
-    :url="url"
-    :columns="columns"
-    :classes="classes"
-    :per-page="perPage">
-    <span slot="filters" slot-scope="{ tableData, perPage }">
-        <data-table-filters
-            :table-data="tableData"
-            :per-page="perPage">
-        </data-table-filters>
-    </span>
-
-    <span slot="pagination" slot-scope="{ links, meta }">
-        <paginator 
-            @next="updateUrl"
-            @prev="updateUrl"
-            :meta="meta"
-            :links="links">
-        </paginator>
-    </span>
-</data-table>
-```
-
-```javascript
-
-import TailwindDatatable from '../mixins/tailwind.js';
-
-export default {
-    data() {
-        return {
-            url: 'http://vue-datatable.test/ajax',
-            perPage: ['10', '25', '50'],
-            columns: [
-            {
-                label: 'ID',
-                name: 'id',
-                orderable: true,
-            },
-            {
-                label: 'Name',
-                 name: 'name',
-                orderable: true,
-            },
-            {
-                label: 'Email',
-                name: 'email',
-                orderable: true,
-            }
-            ]
-        }
-    },
-	mixins: [
-		TailwindDatatable
-	]
-}
-```
 
 ## Further Examples
 

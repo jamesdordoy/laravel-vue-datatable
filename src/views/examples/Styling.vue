@@ -14,11 +14,11 @@
             <styling-markdown>
             </styling-markdown>
         </pre>
-        <data-table
-            v-show="!code"
-            :url="url"
-            :columns="columns">
-        </data-table>
+        <div class="row" v-show="!code">
+            <div class="col-md-12">
+                <img class="img-fluid" src="https://camo.githubusercontent.com/7180948a51bbf1070479820b5cd7c8abd26239f8/68747470733a2f2f7777772e6a616d6573646f72646f792e636f2e756b2f696d616765732f70726f6a656374732f7461696c77696e642d646174617461626c652e706e67">
+            </div>
+        </div>
     </div>
 </template>
 

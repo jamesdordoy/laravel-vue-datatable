@@ -100,6 +100,12 @@
                 to="/laravel-vue-datatable/examples/custom-filters">
                 Adding Custom Filters to the table
             </router-link>
+            <router-link    
+                exact
+                class="list-group-item list-group-item-action nav-item-light indent-1"
+                to="/laravel-vue-datatable/examples/reload-table">
+                Reloading the table
+            </router-link>
             <router-link
                 exact
                 class="list-group-item list-group-item-action nav-item-light indent-1"

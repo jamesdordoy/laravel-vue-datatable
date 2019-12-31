@@ -72,8 +72,13 @@ export default [
         component: require('./views/examples/CustomFilters.vue').default,
     },
     {
+        path: '/laravel-vue-datatable/examples/reload-table',
+        component: require('./views/examples/ReloadingTheTable.vue').default,
+    },
+    
+    {
         path: '/laravel-vue-datatable/examples/styling',
-        component: require('./views/Soon.vue').default,
+        component: require('./views/examples/Styling.vue').default,
     },
     {
         path: '/laravel-vue-datatable/examples/modal',
