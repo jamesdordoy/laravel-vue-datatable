@@ -37,7 +37,7 @@
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 5px solid white;
+    border-bottom: 5px solid #ccc;
     margin-bottom: 1px;
 }
 
@@ -46,15 +46,15 @@
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid white;
+    border-top: 5px solid #ccc;
     margin-top: 1px;
 }
 
 .active-filter-asc {
-    border-bottom: 5px solid #ccc;
+    border-bottom: 5px solid #a3a3a3;
 }
 .active-filter-desc {
-    border-top: 5px solid #ccc;
+    border-top: 5px solid #a3a3a3;
 }
 
 .inline-block {

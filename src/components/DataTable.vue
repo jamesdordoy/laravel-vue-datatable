@@ -87,6 +87,14 @@ export default {
         } else {
             this.getData();
         }
+
+        if (this.theme == "light") {
+            this.classes['table']['table-dark'] = false;
+            this.classes['table']['border'] = true;
+            this.classes['t-head']['border-top'] = true;
+            this.classes['t-head']['border-bottom'] = true;
+            this.classes['table']['table-light'] = true;
+        }
     },
     mounted() {
         this.columns.forEach((column) => {
@@ -172,6 +180,16 @@ export default {
                 return [
                     'asc',
                     'desc'
+                ].indexOf(value) !== -1;
+            }
+        },
+        theme: {
+            type: String,
+            default: "light",
+            validator: function (value) {
+                return [
+                    'light',
+                    'dark'
                 ].indexOf(value) !== -1;
             }
         },

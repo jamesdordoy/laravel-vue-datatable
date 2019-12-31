@@ -18,7 +18,7 @@ See [https://jamesdordoy.github.io/laravel-vue-datatable/](https://jamesdordoy.g
 ## Example
 ![Image description](https://www.jamesdordoy.co.uk/images/projects/bootstrap-datatable.png?a=a)
 
-## Package Installation
+## Laravel Package Installation
 See details [https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package](https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package)
 
 ## Component Installation
@@ -87,6 +87,7 @@ export default {
 | `order-by` | String | "id" | (optional) The default column to order your data by |
 | `order-dir` | String | "asc" | (optional) The default order by direction |
 | `per-page` | Array | ['10','25','50'] | (optional) Amount to be displayed |
+| `theme` | String | "light" | (optional) Must be dark or light |
 | `add-filters-to-url` | Boolean | false | (optional) Will adjust the current url to keep track of used filters and will also store them in local storage. |
 | `classes` | Object | See Below | (optional) Table classes |
 | `pagination` | Object | {}  | (optional) props for [gilbitron/laravel-vue-pagination](https://github.com/gilbitron/laravel-vue-pagination#props) |
