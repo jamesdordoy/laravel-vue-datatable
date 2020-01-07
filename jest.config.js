@@ -13,7 +13,7 @@ module.exports = {
     },
     transformIgnorePatterns: [
         "node_modules/(?!(babel-jest|jest-vue-preprocessor)/)"
-      ],
+    ],
     "setupFiles": ["jest-localstorage-mock"],
     "setupFilesAfterEnv": [
         "<rootDir>/src/__tests__/bootstrap.js"

@@ -94,9 +94,9 @@ Alternatively, if you have custom filters applied and you would prefered they ar
 | `order-dir` | String | "asc" | (optional) The default order by direction |
 | `per-page` | Array | ['10','25','50'] | (optional) Amount to be displayed |
 | `theme` | String | "light" | (optional) Must be dark or light |
-| `add-filters-to-url` | Boolean | false | (optional) Will adjust the current url to keep track of used filters and will also store them in local storage. |
 | `classes` | Object | See Below | (optional) Table classes |
 | `pagination` | Object | {}  | (optional) props for [gilbitron/laravel-vue-pagination](https://github.com/gilbitron/laravel-vue-pagination#props) |
+| `add-filters-to-url` | Boolean | false | (optional) Will adjust the current url to keep track of used filters and will also store them in local storage. |
 
 #### Default Classes
 
@@ -134,16 +134,16 @@ Alternatively, if you have custom filters applied and you would prefered they ar
 ### Column Props
 | Name | Type | Default | Description  
 | --- | --- | --- | --- |
-| label | String | "" | The table column label to be displayed as the column heading |
-| name | String | "" | The table column header name. You can also access nested properties e.g. a query using a with relationship using the dot notation. |
-| columnName | String | "" | (optional) The backend column name if the provided data keys do not match with the backend database. It may also be required to prefix the column name with the table name e.g. users.name to avoid issues with Integrity constraint violation when joining tables |
-| width | Number | 0 | (optional) The table column width |
-| orderable | Boolean | false | (optional) Is the column orderable in the datatable |
-| component | Component | null | (optional) A dynamic component that can be injected |
-| event | String | "" | (optional) Event type to parse to the component e.g. click, focus etc. |
-| handler | Function | () => {} | (optional) Function to parse for the event handler |
-| classes | Object | {} | (optional) Component classes to parse |
-| meta | Object | {} | (optional) Additional values that are parsed to component |
+| `label` | String | "" | The table column label to be displayed as the column heading |
+| `name` | String | "" | The table column header name. You can also access nested properties e.g. a query using a with relationship using the dot notation. |
+| `columnName` | String | "" | (optional) The backend column name if the provided data keys do not match with the backend database. It may also be required to prefix the column name with the table name e.g. users.name to avoid issues with Integrity constraint violation when joining tables |
+| `width` | Number | 0 | (optional) The table column width |
+| `orderable` | Boolean | false | (optional) Is the column orderable in the datatable |
+| `component` | Component | null | (optional) A dynamic component that can be injected |
+| `event` | String | "" | (optional) Event type to parse to the component e.g. click, focus etc. |
+| `handler` | Function | () => {} | (optional) Function to parse for the event handler |
+| `classes` | Object | {} | (optional) Component classes to parse |
+| `meta` | Object | {} | (optional) Additional values that are parsed to component |
 
 ## Further Examples
 
