@@ -51,13 +51,13 @@ class User extends Authenticatable
 
 protected $dataTableRelationships = [
     "belongsTo" => [
-        'role' => [
+        "role" => [
             "model" => \App\Role::class,
-            'foreign_key' => 'role_id',
-            'columns' => [
-                'name' => [
-                    'searchable' => true,
-                    'orderable' => true,
+            "foreign_key" => "role_id",
+            "columns" => [
+                "name" => [
+                    "searchable" => true,
+                    "orderable" => true,
                 ],
             ],
         ],
@@ -72,13 +72,13 @@ protected $dataTableRelationships = [
 
 protected $dataTableRelationships = [
     "hasMany" => [
-        'telephone_numbers' => [
+        "telephoneNumbers" => [
             "model" => \App\TelephoneNumber::class,
-            'foreign_key' => 'user_id',
-            'columns' => [
-                'value' => [
-                    'searchable' => true,
-                    'orderable' => true,
+            "foreign_key" => "user_id",
+            "columns" => [
+                "name" => [
+                    "searchable" => true,
+                    "orderable" => true,
                 ],
             ],
         ],
@@ -93,23 +93,20 @@ protected $dataTableRelationships = [
 
 protected $dataTableRelationships = [
     "belongsToMany" => [
-        'roles' => [
-            "model" => \App\Role::class,
+        "departments" => [
+            "model" => \App\Department::class,
             "foreign_key" => "role_id",
             "pivot" => [
-                "table_name" => "role_user",
+                "table_name" => "department_user",
                 "primary_key" => "id",
-                "foreign_key" => "role_id",
+                "foreign_key" => "department_id",
                 "local_key" => "user_id",
             ],
-            "subOrder" => [
-                "order_by" => "roles.name",
-                "order_dir" => "asc",
-            ],
-            'columns' => [
-                'name' => [
-                    'searchable' => true,
-                    'orderable' => true,
+            "order_by" => "name",
+            "columns" => [
+                "name" => [
+                    "searchable" => true,
+                    "orderable" => true,
                 ]
             ],
         ],

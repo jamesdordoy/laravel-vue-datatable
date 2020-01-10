@@ -7,7 +7,7 @@
  
 protected $dataTableRelationships = [
     "belongsToMany" => [
-        'departments' => [
+        "departments" => [
             "model" => \App\Department::class,
             "foreign_key" => "role_id",
             "pivot" => [
@@ -16,18 +16,15 @@ protected $dataTableRelationships = [
                 "foreign_key" => "department_id",
                 "local_key" => "user_id",
             ],
-            "subOrder" => [
-                "order_by" => "departments.name",
-                "order_dir" => "asc",
-            ],
-            'columns' => [
-                'name' => [
-                    'searchable' => true,
-                    'orderable' => true,
+            "order_by" => "name",
+            "columns" => [
+                "name" => [
+                    "searchable" => true,
+                    "orderable" => true,
                 ]
             ],
         ],
-    ],
+    ]
 ];
 
 public function departments()
