@@ -128,7 +128,10 @@ export default {
 ```
 
 ```javascript
-<script>
+import DataTableDropdownCell from './DataTableDropdownCell';
+import DataTableIsActiveCell from './DataTableIsActiveCell';
+import DataTableNameAndImageCell from './DataTableNameAndImageCell';
+
 export default {
     data() {
         return {
@@ -223,5 +226,4 @@ export default {
         },
     },
 }
-</script>
 ```
