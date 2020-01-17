@@ -54,32 +54,18 @@
                     </div>
                     <div class="col-md-6 text-right">
                         <button
-                            v-if="links.prev"
+                            :disabled="!links.prev"
                             class="btn btn-primary"
                             @click="url = links.prev">
                             Prev
                         </button>
                         <button
-                            v-else
-                            :disabled="true"
-                            class="btn btn-primary"
-                            @click="url = links.prev">
-                            Prev
-                        </button>
-                        <button
-                            v-if="links.next"
+                           :disabled="!links.next"
                             class="btn btn-primary ml-2"
                             @click="url = links.next">
                             Next
                         </button>
-                        <button
-                            v-else
-                            :disabled="true"
-                            class="btn btn-primary ml-2"
-                            @click="url = links.next">
-                            Next
-                        </button>
-                    </div>        
+                    </div>
                 </nav>
             </div>
         </data-table>

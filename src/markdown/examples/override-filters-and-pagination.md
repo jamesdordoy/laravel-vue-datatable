@@ -13,36 +13,18 @@
             </div>
             <div class="col-md-6 text-right">
                 <button
-                    v-if="links.prev"
+                    :disabled="!links.prev"
                     class="btn btn-primary"
                     @click="url = links.prev">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                    &nbsp;Prev
+                    Prev
                 </button>
                 <button
-                    v-else
-                    :disabled="true"
-                    class="btn btn-primary"
-                    @click="url = links.prev">
-                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                    &nbsp;Prev
-                </button>
-                <button
-                    v-if="links.next"
+                    :disabled="!links.next"
                     class="btn btn-primary ml-2"
                     @click="url = links.next">
-                    Next&nbsp;
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                    Next
                 </button>
-                <button
-                    v-else
-                    :disabled="true"
-                    class="btn btn-primary ml-2"
-                    @click="url = links.next">
-                    Next&nbsp;
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                </button>
-            </div>        
+            </div>      
         </nav>
     </div>
 </data-table>
