@@ -86,7 +86,7 @@
 </template>
 
 
-<style>
+<style scoped>
 @import url("https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css");
 </style>
 
