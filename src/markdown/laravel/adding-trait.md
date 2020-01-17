@@ -18,7 +18,7 @@ class User extends Authenticatable
 {
     use Notifiable, LaravelVueDatatableTrait;
 
-    protected $laravelVueDataTableColumns = [
+    protected $dataTableRelationships = [
         'id' => [
             'searchable' => false,
         ],
@@ -30,7 +30,7 @@ class User extends Authenticatable
         ]
     ];
 
-    protected $laravelVueDataTableRelationship = [
+    protected $dataTableRelationships = [
         //
     ];
 }

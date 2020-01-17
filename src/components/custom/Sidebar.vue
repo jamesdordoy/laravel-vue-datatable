@@ -118,6 +118,12 @@
                 to="/laravel-vue-datatable/examples/modal">
                 Modal Example
             </router-link>
+            <router-link
+                exact
+                class="list-group-item list-group-item-action nav-item-light indent-1"
+                to="/laravel-vue-datatable/examples/tailwind">
+                Tailwind Example
+            </router-link>
             <a href="#" class="list-group-header list-group-item-action">
                 <font-awesome-icon :icon="['fas', 'restroom']" />&nbsp;
                 Relationships

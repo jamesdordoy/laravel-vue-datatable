@@ -1,0 +1,186 @@
+<template>
+    <div class="">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="markdown-header">Tailwind Example</h2>
+            </div>
+            <div class="col-md-4 relative">
+                <div class="show-code-inline">
+                    <label>Show Example Code</label>&nbsp;
+                    <vue-switch></vue-switch>
+                </div>
+            </div>
+        </div>
+
+        <information-alert>
+            I suggest wrapping the datatable component in your own component e.g. TailwindDatatable.vue so that the classes are limited to a single file.
+        </information-alert>
+
+        <pre v-highlightjs v-show="code">
+            <tailwind-markdown>
+            </tailwind-markdown>
+        </pre>
+            
+        <data-table
+            v-show="!code"
+            :url="url"
+            :classes="classes"
+            :columns="columns"
+            :per-page="[5, 10]">
+
+            <!-- Override the top filters -->
+            <div slot="filters" class="flex" slot-scope="{ tableData }">
+                <div class="w-1/3">
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        v-model="tableData.search"
+                        class="block w-full text-gray-700 border rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                </div>
+            </div>
+
+            <!-- Override the bottom pagination -->
+            <div slot="pagination" class="flex py-4 px-3 border-gray border border-t-0 bg-white" slot-scope="{ links = {}, meta = {} }">
+
+                <div class="w-1/2 text-left">
+                    <span>
+                        Showing {{ meta.from }} to {{ meta.to }} of {{ meta.total }} Entries
+                    </span>
+                </div>
+
+                <div class="w-1/2 text-right">
+                    <button
+                        :disabled="!links.prev"
+                        @click="url = links.prev"
+                        :class="{ 'opacity-50': !links.prev, 'cursor-not-allowed': !links.prev }"
+                        class="bg-blue-500 text-white font-bold py-1 px-3 rounded mr-2">
+                        Prev
+                    </button>
+                    <button
+                        :disabled="!links.next"
+                        @click="url = links.next"
+                        :class="{ 'opacity-50': !links.next, 'cursor-not-allowed': !links.next }"
+                        class="bg-blue-500 text-white font-bold py-1 px-3 rounded">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </data-table>
+    </div>
+</template>
+
+<script>
+    import CodeExample from '../../mixins/CodeExample';
+    import InformationAlert from '../../components/generic/InformationAlert.vue';
+    import DataTable from '../../components/DataTable.vue';
+    import VueSwitch from '../../components/generic/Switch';
+    import DataTableDropdownCell from '../../components/generic/DataTableDropdownCell';
+    import DataTableIsActiveCell from '../../components/generic/DataTableIsActiveCell';
+    import DataTableNameAndImageCell from '../../components/generic/DataTableNameAndImageCell';
+    import TailwindMarkdown from '../../markdown/examples/tailwind.md';
+    
+    export default {
+        name: 'Basic',
+        components: {
+            // eslint-disable-next-line
+            DataTable,
+            // eslint-disable-next-line
+            TailwindMarkdown,
+            // eslint-disable-next-line
+            VueSwitch,
+            // eslint-disable-next-line
+            DataTableDropdownCell,
+            // eslint-disable-next-line
+            DataTableIsActiveCell,
+            // eslint-disable-next-line
+            DataTableNameAndImageCell,
+            // eslint-disable-next-line
+            InformationAlert
+        },
+        mixins: [CodeExample],
+        data() {
+            return {
+                url: process.env.VUE_APP_ELOQUENT_URL,
+                columns: [
+                    {
+                        label: 'Name',
+                        name: 'name',
+                        orderable: true,
+                        component: DataTableNameAndImageCell
+                    },
+                    {
+                        label: 'Email',
+                        name: 'email',
+                        orderable: true,
+                    },
+                    {
+                        label: 'Role',
+                        name: 'role.name',
+                        columnName: "roles.name",
+                        orderable: true,
+                    },
+                    {
+                        label: 'Status',
+                        name: 'is_active',
+                        orderable: true,
+                        component: DataTableIsActiveCell,
+                    },
+                    {
+                        label: '',
+                        component: DataTableDropdownCell,
+                    },
+                ],
+                classes: { 
+                    'table-container': {
+                        'justify-center': true,
+                        'w-full': true,
+                        'flex': true,
+                        'rounded': true,
+                        "border-gray-200": true,
+                    },
+                    table: {
+                        'text-left': true,
+                        'w-full': true,
+                        'border': true,
+                        "border-gray-200": true,
+                    },
+                    't-head': {
+                        'text-gray-dark': true,
+                        'border-gray': true,
+                        'py-3': true,
+                        'px-3': true,
+                        'bg-gray-100': true,
+                    },
+                    "t-body": {
+                        'bg-white': true,
+                    },
+                    "t-head-tr": {
+                        'border-b': true,
+                        'border-gray': true,
+                    },
+                    "t-body-tr": {
+                        'stripped-table': true,
+                        'bg-grey-darkest': true,
+                    },
+                    "td": {
+                        'py-4': true,
+                        'px-6': true,
+                        'border-b': true,
+                        'border-grey-light': true,
+                        'text-gray-light': true,
+                    },
+                    "th": {
+                        'py-4': true,
+                        'px-6': true,
+                        'font-bold': true,
+                        'uppercase': true,
+                        'text-sm': true,
+                        'text-grey-dark': true,
+                        'border-b': true,
+                        'border-grey-light': true,
+                    },
+                }
+            }
+        },
+    }
+</script>

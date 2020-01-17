@@ -40,6 +40,10 @@ export default [
         component: require('./views/examples/Basic.vue').default,
     },
     {
+        path: '/laravel-vue-datatable/examples/tailwind',
+        component: require('./views/examples/Tailwind.vue').default,
+    },
+    {
         path: '/laravel-vue-datatable/examples/relationships',
         component: require('./views/examples/relationships/Introduction.vue').default,
     },
