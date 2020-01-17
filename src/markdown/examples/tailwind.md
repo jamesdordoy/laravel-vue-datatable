@@ -87,13 +87,29 @@ export default {
         :per-page="[5, 10]">
 
         <!-- Override the top filters -->
-        <div slot="filters" class="flex" slot-scope="{ tableData }">
+        <div slot="filters" class="flex" slot-scope="{ tableData = {}, perPage = [] }">
+            <div class="w-1/3">
+                <div class="relative">
+                    <select
+                        v-model="tableData.length"
+                        class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded leading-tight" id="grid-state">
+                        <option
+                            :key="index"
+                            :value="records"
+                            v-for="(records, index) in perPage">{{records}}</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="w-1/3"></div>
             <div class="w-1/3">
                 <input
                     type="text"
                     placeholder="Search..."
                     v-model="tableData.search"
-                    class="block w-full text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                    class="block w-full text-gray-700 border rounded py-2 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
             </div>
         </div>
 
