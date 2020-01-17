@@ -50,17 +50,19 @@ data() {
 This added isActive filter will be send to the Laravel backend and can be used to manipulate the results:
 
 ```php
+$query = User::eloquentQuery(
+    $request->input('column'),
+    $request->input('dir'),
+    $request->input('search')
+);
+
 $isActive = $request->input('isActive');
 
-$query = User::dataTableQuery($column, $dir, $length, $searchValue);
-        
-$isActive = $request->input('isActive');
-        
 if (isset($isActive)) {
     $query->where("is_active", $isActive);
 }
-    
-$data = $query->paginate($length);
+
+$data = $query->paginate($request->input('length'));
 
 return new DataTableCollectionResource($data);
 ```
