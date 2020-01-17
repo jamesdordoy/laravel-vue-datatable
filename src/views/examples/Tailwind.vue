@@ -71,16 +71,16 @@
 
 <script>
     import CodeExample from '../../mixins/CodeExample';
-    import InformationAlert from '../../components/generic/InformationAlert.vue';
     import DataTable from '../../components/DataTable.vue';
     import VueSwitch from '../../components/generic/Switch';
+    import TailwindMarkdown from '../../markdown/examples/tailwind.md';
+    import InformationAlert from '../../components/generic/InformationAlert.vue';
     import DataTableDropdownCell from '../../components/generic/DataTableDropdownCell';
     import DataTableIsActiveCell from '../../components/generic/DataTableIsActiveCell';
     import DataTableNameAndImageCell from '../../components/generic/DataTableNameAndImageCell';
-    import TailwindMarkdown from '../../markdown/examples/tailwind.md';
     
     export default {
-        name: 'Basic',
+        name: 'Tailwind',
         components: {
             // eslint-disable-next-line
             DataTable,
