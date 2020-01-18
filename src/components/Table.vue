@@ -13,11 +13,27 @@
                         <div class="inline-block" v-if="column.orderable">
                             <div
                                 class="filter-asc"
-                                :class="{'active-filter-asc': column.orderable && column.name == currentSort && dir == 'asc' }">
+                                style="
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 5px solid transparent;
+                                    border-right: 5px solid transparent;
+                                    border-bottom: ;
+                                    margin-bottom: 1px;"
+                                :class="{'active-filter-asc': column.orderable && column.name == currentSort && dir == 'asc' }"
+                                :style="{borderBottom: column.orderable && column.name == currentSort && dir == 'asc' ? '5px solid #a3a3a3' : '5px solid #ccc' }">
                             </div>
                             <div
                                 class="filter-desc"
-                                :class="{'active-filter-desc': column.orderable && column.name == currentSort && dir == 'desc' }">
+                                style="
+                                    width: 0;
+                                    height: 0;
+                                    border-left: 5px solid transparent;
+                                    border-right: 5px solid transparent;
+                                    border-top: 5px solid #ccc;
+                                    margin-top: 1px;"
+                                :class="{'active-filter-desc': column.orderable && column.name == currentSort && dir == 'desc' }"
+                                :style="{borderTop: column.orderable && column.name == currentSort && dir == 'desc' ? '5px solid #a3a3a3' : '5px solid #ccc' }">
                             </div>
                         </div>
                         {{ column.label }}
@@ -29,43 +45,6 @@
         </table>
     </div>
 </template>
-
-<style>
-
-.filter-asc {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid #ccc;
-    margin-bottom: 1px;
-}
-
-.filter-desc {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #ccc;
-    margin-top: 1px;
-}
-
-.active-filter-asc {
-    border-bottom: 5px solid #a3a3a3;
-}
-.active-filter-desc {
-    border-top: 5px solid #a3a3a3;
-}
-
-.inline-block {
-    display: inline-block;
-}
-
-.table-header-sorting {
-    cursor: pointer;
-}
-
-</style>
 
 <script>
 export default {

@@ -31,7 +31,6 @@
                 </slot>
                 <template v-else>
                     <tbody
-                        style="z-index: 1;"
                         v-if="!! columns"
                         :class="classes['t-body']">
                         <tr
@@ -77,42 +76,8 @@
     </div>
 </template>
 
-
 <style>
 
-.filter-asc {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid #ccc;
-    margin-bottom: 1px;
-}
-
-.filter-desc {
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid #ccc;
-    margin-top: 1px;
-}
-
-.active-filter-asc {
-    border-bottom: 5px solid #a3a3a3;
-}
-
-.active-filter-desc {
-    border-top: 5px solid #a3a3a3;
-}
-
-.inline-block {
-    display: inline-block;
-}
-
-.table-header-sorting {
-    cursor: pointer;
-}
 
 </style>
 
