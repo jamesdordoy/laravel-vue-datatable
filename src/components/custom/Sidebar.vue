@@ -39,11 +39,13 @@
                 <font-awesome-icon :icon="['fab', 'vuejs']" />&nbsp;
                 Vue Package
             </a>
+
             <router-link
                 class="list-group-item list-group-item-action nav-item-light indent-1"
                 to="/laravel-vue-datatable/installation">
                 Installation
             </router-link>
+
             <a href="#" class="list-group-header list-group-item-action indent-1">
                 <font-awesome-icon :icon="['fas', 'project-diagram']" />&nbsp;
                 Props
@@ -62,6 +64,16 @@
                 class="list-group-item list-group-item-action nav-item-light indent-2"
                 to="/laravel-vue-datatable/props/cell">
                 Cell Props
+            </router-link>
+
+            <a href="#" class="list-group-header list-group-item-action indent-1">
+                <font-awesome-icon :icon="['fas', 'project-diagram']" />&nbsp;
+                Events
+            </a>
+            <router-link
+                class="list-group-item list-group-item-action nav-item-light indent-2"
+                to="/laravel-vue-datatable/events/table">
+                Table Events
             </router-link>
 
             <a href="#" class="list-group-header list-group-item-action">

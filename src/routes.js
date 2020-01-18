@@ -20,6 +20,10 @@ export default [
         component: require('./views/props/Cell.vue').default,
     },
     {
+        path: '/laravel-vue-datatable/events/table',
+        component: require('./views/events/Table.vue').default,
+    },
+    {
         path: '/laravel-vue-datatable/laravel/installation',
         component: require('./views/laravel/Install.vue').default,
     },

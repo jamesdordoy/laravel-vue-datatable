@@ -35,6 +35,7 @@
                         :class="classes['t-body']">
                         <tr
                             :key="item.id"
+                            @click="$emit('rowClicked', item)"
                             v-for="item in data.data"
                             :class="classes['t-body-tr']">
                             <td 
@@ -53,7 +54,6 @@
                             </td>
                         </tr>
                     </tbody>
-                    
                 </template>
             </vue-table>
             <slot
