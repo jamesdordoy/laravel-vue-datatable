@@ -1,4 +1,3 @@
-
 ```html
 <template>
     <data-table

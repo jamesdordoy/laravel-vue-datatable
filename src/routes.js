@@ -44,6 +44,10 @@ export default [
         component: require('./views/examples/Tailwind.vue').default,
     },
     {
+        path: '/laravel-vue-datatable/examples/loading-animations',
+        component: require('./views/examples/LoadingAnimations.vue').default,
+    },
+    {
         path: '/laravel-vue-datatable/examples/relationships',
         component: require('./views/examples/relationships/Introduction.vue').default,
     },

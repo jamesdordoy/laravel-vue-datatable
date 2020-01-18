@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-datatable",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "Vue.js datatable made with Laravel and Bootstrap in mind",
   "author": "James Dordoy <jamesdordoy@gmail.com>",
   "homepage": "https://jamesdordoy.github.io/laravel-vue-datatable/",
@@ -61,6 +61,7 @@
     "vue-highlightjs": "^1.3.3",
     "vue-jest": "^3.0.4",
     "vue-loader": "^15.7.1",
+    "vue-loading-overlay": "^3.2.0",
     "vue-markdown-loader": "^2.4.1",
     "vue-router": "^3.1.3",
     "vue-select": "^3.2.0",

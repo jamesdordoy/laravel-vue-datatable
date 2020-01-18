@@ -1,77 +1,120 @@
 <template>
-    <div>
-        <slot
-            :url="url"
-            name="filters"
-            v-if="filtersSlot"
-            :per-page="perPage"
-            :table-data="tableData">
-        </slot>
-        <data-table-filters
-            v-else
-            @getData="getData"
-            :per-page="perPage"
-            :tableData="tableData">
-        </data-table-filters>
-        <vue-table
-            @sort="sortBy"
-            :sortKey="sortKey"
-            :columns="columns"
-            :dir="tableData.dir"
-            :sortOrders="sortOrders"
-            :table-classes="classes.table"
-            :table-header-classes="classes['t-head']"
-            :table-row-classes="classes['t-head-tr']"
-            :table-container-classes="classes['table-container']">
+    <div style="position: relative;">
+        <div style="position: relative;">
             <slot
-                name="body"
-                v-if="bodySlot"
-                :data="data.data">
+                :url="url"
+                name="filters"
+                v-if="filtersSlot"
+                :per-page="perPage"
+                :table-data="tableData">
             </slot>
-            <template v-else>
-                <tbody
-                    v-if="!! columns"
-                    :class="classes['t-body']">
-                    <tr
-                        :key="item.id"
-                        v-for="item in data.data"
-                        :class="classes['t-body-tr']">
-                        <td 
-                            :key="column.name"
-                            :class="classes.td"
-                            v-for="column in columns">
-                            <data-table-cell
-                                :value="item"
-                                :name="column.name"
-                                :meta="column.meta"
-                                :event="column.event"
-                                :comp="column.component"
-                                :classes="column.classes"
-                                :handler="column.handler">
-                            </data-table-cell>
-                        </td>
-                    </tr>
-                </tbody>
-            </template>
-        </vue-table>
-        <slot
-            :meta="data.meta"
-            name="pagination"
-            :links="data.links"
-            v-if="paginationSlot">
-        </slot>
-        <laravel-pagination
-            v-else
-            :data="data"
-            :size="pagination.size"
-            :limit="pagination.limit"
-            :align="pagination.align"
-            @pagination-change-page="getData">
-                <span slot="prev-nav">Previous</span>
-                <span slot="next-nav">Next</span>
-        </laravel-pagination>
+            <data-table-filters
+                v-else
+                @getData="getData"
+                :per-page="perPage"
+                :tableData="tableData">
+            </data-table-filters>
+            <vue-table
+                @sort="sortBy"
+                :sortKey="sortKey"
+                :columns="columns"
+                :dir="tableData.dir"
+                :sortOrders="sortOrders"
+                :table-classes="classes.table"
+                :table-header-classes="classes['t-head']"
+                :table-row-classes="classes['t-head-tr']"
+                :table-container-classes="classes['table-container']">
+                <slot
+                    name="body"
+                    v-if="bodySlot"
+                    :data="data.data">
+                </slot>
+                <template v-else>
+                    <tbody
+                        style="z-index: 1;"
+                        v-if="!! columns"
+                        :class="classes['t-body']">
+                        <tr
+                            :key="item.id"
+                            v-for="item in data.data"
+                            :class="classes['t-body-tr']">
+                            <td 
+                                :key="column.name"
+                                :class="classes.td"
+                                v-for="column in columns">
+                                <data-table-cell
+                                    :value="item"
+                                    :name="column.name"
+                                    :meta="column.meta"
+                                    :event="column.event"
+                                    :comp="column.component"
+                                    :classes="column.classes"
+                                    :handler="column.handler">
+                                </data-table-cell>
+                            </td>
+                        </tr>
+                    </tbody>
+                    
+                </template>
+            </vue-table>
+            <slot
+                :meta="data.meta"
+                name="pagination"
+                :links="data.links"
+                v-if="paginationSlot">
+            </slot>
+            <laravel-pagination
+                v-else
+                :data="data"
+                :size="pagination.size"
+                :limit="pagination.limit"
+                :align="pagination.align"
+                @pagination-change-page="getData">
+                    <span slot="prev-nav">Previous</span>
+                    <span slot="next-nav">Next</span>
+            </laravel-pagination>
+        </div>
     </div>
 </template>
+
+
+<style>
+
+.filter-asc {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #ccc;
+    margin-bottom: 1px;
+}
+
+.filter-desc {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #ccc;
+    margin-top: 1px;
+}
+
+.active-filter-asc {
+    border-bottom: 5px solid #a3a3a3;
+}
+
+.active-filter-desc {
+    border-top: 5px solid #a3a3a3;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.table-header-sorting {
+    cursor: pointer;
+}
+
+</style>
 
 <script>
 import axios from 'axios';
@@ -101,11 +144,13 @@ export default {
     watch: {
         url: {
             handler: function(newUrl) {
+                this.loading = false;
                 this.getData(newUrl); 
             },
         },
         tableData: {
             handler: function() {
+                this.loading = false;
                 this.getData();
             },
             deep: true,
@@ -129,6 +174,7 @@ export default {
                 filters: this.filters,
                 length: this.perPage[0],
             },
+            loading: false,
         };
     },
     props: {
@@ -212,6 +258,8 @@ export default {
 
             url = this.checkUrlForPagination(url);
             this.incrementDraw();
+
+            this.$emit("loading");
             
             axios.get(url, this.getRequestPayload)
                 .then(response => {
@@ -219,6 +267,8 @@ export default {
                         let data = response.data;
                         if (this.checkTableDraw(data.payload.draw)) {
                             this.data = data;
+                            this.loading = true;
+                            this.$emit("finishedLoading");
                             if (this.addFiltersToUrl) {
                                 this.updateParameters(this.tableData);
                             }
