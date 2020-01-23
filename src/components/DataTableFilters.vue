@@ -24,11 +24,6 @@
 
 <script>
 export default {
-    methods: {
-        getData() {
-            this.$emit("getData");
-        },
-    },
     props: {
         tableData: {
             type: Object,

@@ -1,78 +1,81 @@
 <template>
-    <div style="position: relative;">
-        <div style="position: relative;">
+    <div>
+        <!-- Top Filters -->
+        <slot
+            :url="url"
+            name="filters"
+            v-if="filtersSlot"
+            :per-page="perPage"
+            :table-data="tableProps">
+        </slot>
+        <data-table-filters
+            v-else
+            :per-page="perPage"
+            :table-data="tableProps">
+        </data-table-filters>
+        <!-- Table component -->
+        <vue-table
+            @sort="sortBy"
+            :sortKey="sortKey"
+            :columns="columns"
+            :dir="tableProps.dir"
+            :sortOrders="sortOrders"
+            :table-classes="classes.table"
+            :table-head-classes="classes['th']"
+            :table-header-classes="classes['t-head']"
+            :table-row-classes="classes['t-head-tr']"
+            :table-container-classes="classes['table-container']">
+            <!-- Table Body -->
             <slot
-                :url="url"
-                name="filters"
-                v-if="filtersSlot"
-                :per-page="perPage"
-                :table-data="tableData">
+                name="body"
+                v-if="bodySlot"
+                :data="tableData.data">
             </slot>
-            <data-table-filters
-                v-else
-                @getData="getData"
-                :per-page="perPage"
-                :tableData="tableData">
-            </data-table-filters>
-            <vue-table
-                @sort="sortBy"
-                :sortKey="sortKey"
-                :columns="columns"
-                :dir="tableData.dir"
-                :sortOrders="sortOrders"
-                :table-classes="classes.table"
-                :table-header-classes="classes['t-head']"
-                :table-row-classes="classes['t-head-tr']"
-                :table-container-classes="classes['table-container']">
-                <slot
-                    name="body"
-                    v-if="bodySlot"
-                    :data="data.data">
-                </slot>
-                <template v-else>
-                    <tbody
-                        v-if="!! columns"
-                        :class="classes['t-body']">
-                        <tr
-                            :key="item.id"
-                            @click="$emit('rowClicked', item)"
-                            v-for="item in data.data"
-                            :class="classes['t-body-tr']">
-                            <td 
-                                :key="column.name"
-                                :class="classes.td"
-                                v-for="column in columns">
-                                <data-table-cell
-                                    :value="item"
-                                    :name="column.name"
-                                    :meta="column.meta"
-                                    :event="column.event"
-                                    :comp="column.component"
-                                    :classes="column.classes"
-                                    :handler="column.handler">
-                                </data-table-cell>
-                            </td>
-                        </tr>
-                    </tbody>
-                </template>
-            </vue-table>
-            <slot
-                :meta="data.meta"
-                name="pagination"
-                :links="data.links"
-                v-if="paginationSlot">
-            </slot>
-            <laravel-pagination
-                v-else
-                :data="data"
-                :size="pagination.size"
-                :limit="pagination.limit"
-                :align="pagination.align"
-                @pagination-change-page="getData">
-                    <span slot="prev-nav">Previous</span>
-                    <span slot="next-nav">Next</span>
-            </laravel-pagination>
-        </div>
+            <template v-else>
+                <tbody
+                    v-if="!! columns"
+                    :class="classes['t-body']">
+                    <tr
+                        :key="item.id"
+                        @click="$emit('rowClicked', item)"
+                        v-for="item in tableData.data"
+                        :class="classes['t-body-tr']">
+                        <td 
+                            :key="column.name"
+                            :class="classes.td"
+                            v-for="column in columns">
+                            <data-table-cell
+                                :value="item"
+                                :name="column.name"
+                                :meta="column.meta"
+                                :event="column.event"
+                                :comp="column.component"
+                                :classes="column.classes"
+                                :handler="column.handler">
+                            </data-table-cell>
+                        </td>
+                    </tr>
+                </tbody>
+            </template>
+        </vue-table>
+        <!-- Bottom Filters -->
+        <slot
+            :meta="tableData.meta"
+            :page="page"
+            name="pagination"
+            :links="tableData.links"
+            v-if="paginationSlot">
+        </slot>
+        <laravel-pagination
+            v-else
+            :data="tableData"
+            :size="pagination.size"
+            :limit="pagination.limit"
+            :align="pagination.align"
+            @pagination-change-page="paginationChangePage">
+                <span slot="prev-nav">Previous</span>
+                <span slot="next-nav">Next</span>
+        </laravel-pagination>
     </div>
 </template>
 
@@ -90,10 +93,11 @@ import DataTableFilters from './DataTableFilters.vue';
 
 export default {
     created() {
+
         if (this.addFiltersToUrl) {
-            this.checkParameters(this.tableData);
-        } else {
-            this.getData();
+            this.checkParameters(this.tableProps);
+        } else if(this.url) {
+            this.getData(this.url, this.getRequestPayload);
         }
 
         if (this.theme == "dark") {
@@ -110,15 +114,27 @@ export default {
         url: {
             handler: function(newUrl) {
                 this.loading = false;
-                this.getData(newUrl); 
+                this.getData(newUrl, this.getRequestPayload); 
             },
         },
-        tableData: {
+        tableProps: {
             handler: function() {
                 this.loading = false;
-                this.getData();
+
+                if (this.url) {
+                    this.getData(this.url, this.getRequestPayload);
+                } else {
+                    let props = this.tableProps;
+                    props.page = this.page;
+                    this.$emit("onTablePropsChanged", props);
+                }
             },
             deep: true,
+        },
+        data: {
+            handler: function(data) {
+                this.tableData = data;
+            }
         }
     },
     components: {
@@ -128,11 +144,12 @@ export default {
     },
     data() {
         return {
-            data: {},
+            tableData: {},
             sortKey: 'id',
             sortOrders: {},
             draw: 0,
-            tableData: {
+            page: 1,
+            tableProps: {
                 search: '',
                 dir: this.orderDir,
                 column: this.orderBy,
@@ -145,12 +162,15 @@ export default {
     props: {
         url: {
             type: String,
-            default: "/",
-            required: true,
+            default: "",
         },
         orderBy: {
             type: String,
             default: 'id',
+        },
+        data: {
+            type: Object,
+            default: () => ({}),
         },
         filters: {
             type: Object,
@@ -219,23 +239,24 @@ export default {
         },
     },
     methods: {
-        getData(url = this.url) {
+        getData(url = this.url, options = {}) {
 
             url = this.checkUrlForPagination(url);
-            this.incrementDraw();
 
             this.$emit("loading");
             
-            axios.get(url, this.getRequestPayload)
+            axios.get(url, options)
                 .then(response => {
                     if (response) {
                         let data = response.data;
+
                         if (this.checkTableDraw(data.payload.draw)) {
-                            this.data = data;
+                            this.tableData = data;
                             this.loading = true;
                             this.$emit("finishedLoading");
+
                             if (this.addFiltersToUrl) {
-                                this.updateParameters(this.tableData);
+                                this.updateParameters(this.tableProps);
                             }
                         }
                     }
@@ -244,11 +265,14 @@ export default {
                     alert(errors);
                 });
         },
+        addRecord(data) {
+            this.tableData.data.push(data);
+        },
         sortBy(key, columnName = null) {
             this.sortKey = key;
             this.sortOrders[key] = this.sortOrders[key] * -1;
-            this.tableData.column = columnName ? columnName :key;
-            this.tableData.dir = this.sortOrders[key] === 1 ? 'desc' : 'asc';
+            this.tableProps.column = columnName ? columnName :key;
+            this.tableProps.dir = this.sortOrders[key] === 1 ? 'desc' : 'asc';
         },
         getIndex(array, key, value) {
             return array.findIndex(i => i[key] == value);
@@ -268,7 +292,20 @@ export default {
                 return url;
             }
             return url;
-        }
+        },
+        paginationChangePage(page) {
+            this.page = page;
+
+            if (Object.keys(this.data).length) {
+                let props = this.tableProps;
+                props.page = this.page;
+                this.$emit("onTablePropsChanged", props);
+            } else {
+                let url = this.url;
+                url += `?page=${this.page}&search=${this.tableProps.search}&dir=${this.tableProps.dir}&column=${this.tableProps.column}&length=${this.tableProps.length}`;
+                this.getData(url, this.getRequestPayload);
+            }
+        },
     },
     computed: {
         paginationSlot() {
@@ -290,9 +327,10 @@ export default {
             return null;
         },
         getRequestPayload() {
-            let payload = Object.assign({}, this.tableData);
+            let payload = Object.assign({}, this.tableProps);
             delete payload.filters;
-            payload = Object.assign(payload, this.tableData.filters);
+            payload = Object.assign(payload, this.tableProps.filters);
+            payload = Object.assign(payload, this.tableProps.filters);
             payload.draw = this.draw;
             return {
                 params: payload,

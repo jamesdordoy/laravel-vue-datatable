@@ -14,6 +14,13 @@ import createPersistedState from 'vuex-persistedstate';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
+import VueSweetalert2 from 'vue-sweetalert2';
+
+// If you don't need the styles, do not connect
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+Vue.use(VueSweetalert2);
+
 //Plugin Useage
 Vue.use(Vuex);
 Vue.use(DataTable);
@@ -47,6 +54,13 @@ Vue.filter('formatDate', function(value, format='Do MMMM YYYY') {
         return moment(String(value)).format(format)
     }
     return 'N/A'
+});
+
+//Filters
+Vue.filter('padDigit', function(num, padlen, padchar) {
+    var pad_char = typeof padchar !== 'undefined' ? padchar : '0';
+    var pad = new Array(1 + padlen).join(pad_char);
+    return (pad + num).slice(-pad.length);
 });
 
 //VueRouter

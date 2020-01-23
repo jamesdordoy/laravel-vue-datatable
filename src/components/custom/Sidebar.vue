@@ -142,6 +142,18 @@
                 to="/laravel-vue-datatable/examples/loading-animations">
                 Loading Animations
             </router-link>
+            <router-link
+                exact
+                class="list-group-item list-group-item-action nav-item-light indent-1"
+                to="/laravel-vue-datatable/examples/crud">
+                C.R.U.D. Example
+            </router-link>
+            <router-link
+                exact
+                class="list-group-item list-group-item-action nav-item-light indent-1"
+                to="/laravel-vue-datatable/examples/own-data">
+                Using Your Own Data
+            </router-link>
             <a href="#" class="list-group-header list-group-item-action">
                 <font-awesome-icon :icon="['fas', 'restroom']" />&nbsp;
                 Relationships

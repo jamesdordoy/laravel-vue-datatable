@@ -90,10 +90,14 @@ export default {
             type: Object,
             default: () => ({}),
         },
+        tableHeadClasses: {
+            type: Object,
+            default: () => ({}),
+        },
     },
     methods: {
         headerClasses(column) {
-            let classes = this.tableHeaderClasses;
+            let classes = this.tableHeadClasses;
             classes['table-header-sorting'] = column.orderable;
             return classes;
         },

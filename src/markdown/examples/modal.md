@@ -79,7 +79,6 @@ export default {
 ```
 
 ```javascript
-<script>
 
 import Modal from './MyModal';
 import ModalButton from './MyModalButton';
@@ -127,5 +126,4 @@ export default {
         }
     }
 }
-</script>
 ```
