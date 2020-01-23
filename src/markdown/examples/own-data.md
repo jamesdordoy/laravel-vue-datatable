@@ -17,6 +17,8 @@ export default {
             tableProps: {
                 search: '',
                 length: 10,
+                column: 'id',
+                dir: 'asc'
             },
             columns: [
                 {

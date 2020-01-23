@@ -50,6 +50,8 @@
                 tableProps: {
                     search: '',
                     length: 10,
+                    column: 'id',
+                    dir: 'asc'
                 },
                 columns: [
                     {
@@ -71,7 +73,7 @@
             }
         },
         created() {
-            this.getData(process.env.VUE_APP_ELOQUENT_URL);
+            this.getData(this.url);
         },
         methods: {
             getData(url = this.url, options = this.tableProps) {
