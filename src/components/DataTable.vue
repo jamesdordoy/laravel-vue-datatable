@@ -8,13 +8,13 @@
             :per-page="perPage"
             :table-data="tableProps">
         </slot>
-        <data-table-filters
+        <laravel-vue-data-table-filters
             v-else
             :per-page="perPage"
             :table-data="tableProps">
-        </data-table-filters>
+        </laravel-vue-data-table-filters>
         <!-- Table component -->
-        <vue-table
+        <laravel-vue-table
             @sort="sortBy"
             :sortKey="sortKey"
             :columns="columns"
@@ -33,7 +33,7 @@
             </slot>
             <template v-else>
                 <tbody
-                    v-if="!! columns"
+                    v-if="columns"
                     :class="classes['t-body']">
                     <tr
                         :key="item.id"
@@ -44,7 +44,7 @@
                             :key="column.name"
                             :class="classes.td"
                             v-for="column in columns">
-                            <data-table-cell
+                            <laravel-vue-data-table-cell
                                 :value="item"
                                 :name="column.name"
                                 :meta="column.meta"
@@ -52,12 +52,12 @@
                                 :comp="column.component"
                                 :classes="column.classes"
                                 :handler="column.handler">
-                            </data-table-cell>
+                            </laravel-vue-data-table-cell>
                         </td>
                     </tr>
                 </tbody>
             </template>
-        </vue-table>
+        </laravel-vue-table>
         <!-- Bottom Filters -->
         <slot
             :meta="tableData.meta"
@@ -79,12 +79,8 @@
     </div>
 </template>
 
-<style>
-
-
-</style>
-
 <script>
+
 import axios from 'axios';
 import VueTable from './Table.vue';
 import UrlFilters from '../mixins/UrlFilters';
@@ -138,9 +134,9 @@ export default {
         }
     },
     components: {
-        'vue-table': VueTable,
-        'data-table-cell': DataTableCell,
-        'data-table-filters': DataTableFilters,
+        'laravel-vue-table': VueTable,
+        'laravel-vue-data-table-cell': DataTableCell,
+        'laravel-vue-data-table-filters': DataTableFilters,
     },
     data() {
         return {
@@ -159,7 +155,112 @@ export default {
             loading: false,
         };
     },
+    methods: {
+        getData(url = this.url, options = {}) {
+
+            url = this.checkUrlForPagination(url);
+
+            this.$emit("loading");
+            
+            axios.get(url, options)
+                .then(response => {
+                    if (response) {
+                        let data = response.data;
+
+                        if (this.checkTableDraw(data.payload.draw)) {
+                            this.tableData = data;
+                            this.loading = true;
+                            this.$emit("finishedLoading");
+
+                            if (this.addFiltersToUrl) {
+                                this.updateParameters(this.tableProps);
+                            }
+                        }
+                    }
+                })
+                .catch(errors => {
+                    alert(errors);
+                });
+        },
+        addRecord(data) {
+            this.tableData.data.push(data);
+        },
+        sortBy(key, columnName = null) {
+            this.sortKey = key;
+            this.sortOrders[key] = this.sortOrders[key] * -1;
+            this.tableProps.column = columnName ? columnName : key;
+            this.tableProps.dir = this.sortOrders[key] === 1 ? 'desc' : 'asc';
+        },
+        getIndex(array, key, value) {
+            return array.findIndex(i => i[key] == value);
+        },
+        incrementDraw() {
+            this.draw++;
+        },
+        checkTableDraw(draw) {
+            if (this.draw == draw) {
+                return true;
+            }
+            return false;
+        },
+        checkUrlForPagination(url) {
+            if (Number.isInteger(url)) {
+                url = this.url + "?page=" + url;
+                return url;
+            }
+            return url;
+        },
+        paginationChangePage(page) {
+            this.page = page;
+            if (Object.keys(this.data).length) {
+                //Add the users pagination
+                let props = this.tableProps;
+                props.page = this.page;
+                this.$emit("onTablePropsChanged", props);
+            } else {
+                //Add Laravel Vue Pagination
+                let url = this.url;
+                url += `?page=${this.page}`;
+                this.getData(url, this.getRequestPayload);
+            }
+        },
+    },
+    computed: {
+        paginationSlot() {
+            if (this.$scopedSlots) {
+                return this.$scopedSlots.pagination;
+            }
+            return null;
+        },
+        filtersSlot() {
+            if (this.$scopedSlots) {
+                return this.$scopedSlots.filters;
+            }
+            return null;
+        },
+        bodySlot() {
+            if (this.$scopedSlots) {
+                return this.$scopedSlots.body;
+            }
+            return null;
+        },
+        getRequestPayload() {
+            let payload = Object.assign({}, this.tableProps);
+            delete payload.filters;
+            payload = Object.assign(payload, this.tableProps.filters);
+            payload = Object.assign(payload, this.tableProps.filters);
+            payload.draw = this.draw;
+            return {
+                params: payload,
+            };
+        },
+    },
     props: {
+        columns: {
+            type: Array,
+            default: () => ([]),
+            required: true,
+        },
         url: {
             type: String,
             default: "",
@@ -179,11 +280,6 @@ export default {
         addFiltersToUrl: {
             type: Boolean,
             default: false,
-        },
-        columns: {
-            type: Array,
-            default: () => ([]),
-            required: true,
         },
         pagination: {
             type: Object,
@@ -238,104 +334,5 @@ export default {
             }),
         },
     },
-    methods: {
-        getData(url = this.url, options = {}) {
-
-            url = this.checkUrlForPagination(url);
-
-            this.$emit("loading");
-            
-            axios.get(url, options)
-                .then(response => {
-                    if (response) {
-                        let data = response.data;
-
-                        if (this.checkTableDraw(data.payload.draw)) {
-                            this.tableData = data;
-                            this.loading = true;
-                            this.$emit("finishedLoading");
-
-                            if (this.addFiltersToUrl) {
-                                this.updateParameters(this.tableProps);
-                            }
-                        }
-                    }
-                })
-                .catch(errors => {
-                    alert(errors);
-                });
-        },
-        addRecord(data) {
-            this.tableData.data.push(data);
-        },
-        sortBy(key, columnName = null) {
-            this.sortKey = key;
-            this.sortOrders[key] = this.sortOrders[key] * -1;
-            this.tableProps.column = columnName ? columnName :key;
-            this.tableProps.dir = this.sortOrders[key] === 1 ? 'desc' : 'asc';
-        },
-        getIndex(array, key, value) {
-            return array.findIndex(i => i[key] == value);
-        },
-        incrementDraw() {
-            this.draw++;
-        },
-        checkTableDraw(draw) {
-            if (this.draw == draw) {
-                return true;
-            }
-            return false;
-        },
-        checkUrlForPagination(url) {
-            if (Number.isInteger(url)) {
-                url = this.url + "?page=" + url;
-                return url;
-            }
-            return url;
-        },
-        paginationChangePage(page) {
-            this.page = page;
-
-            if (Object.keys(this.data).length) {
-                let props = this.tableProps;
-                props.page = this.page;
-                this.$emit("onTablePropsChanged", props);
-            } else {
-                let url = this.url;
-                url += `?page=${this.page}&search=${this.tableProps.search}&dir=${this.tableProps.dir}&column=${this.tableProps.column}&length=${this.tableProps.length}`;
-                this.getData(url, this.getRequestPayload);
-            }
-        },
-    },
-    computed: {
-        paginationSlot() {
-            if (this.$scopedSlots) {
-                return this.$scopedSlots.pagination;
-            }
-            return null;
-        },
-        filtersSlot() {
-            if (this.$scopedSlots) {
-                return this.$scopedSlots.filters;
-            }
-            return null;
-        },
-        bodySlot() {
-            if (this.$scopedSlots) {
-                return this.$scopedSlots.body;
-            }
-            return null;
-        },
-        getRequestPayload() {
-            let payload = Object.assign({}, this.tableProps);
-            delete payload.filters;
-            payload = Object.assign(payload, this.tableProps.filters);
-            payload = Object.assign(payload, this.tableProps.filters);
-            payload.draw = this.draw;
-            return {
-                params: payload,
-            };
-        },
-    }
 }
 </script>
