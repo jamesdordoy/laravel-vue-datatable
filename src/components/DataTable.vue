@@ -54,7 +54,7 @@
                                 :event="column.event"
                                 :classes="column.classes"
                                 :handler="column.handler"
-                                :component="column.component">
+                                :comp="column.comp">
                             </laravel-vue-data-table-cell>
                         </td>
                     </tr>

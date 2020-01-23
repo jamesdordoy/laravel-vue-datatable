@@ -5,7 +5,7 @@ import ColumnNotFoundException from "../exceptions/ColumnNotFoundException";
 
 export default {
     props: {
-        component: {
+        comp: {
             type: Vue.component,
         },
         meta: {

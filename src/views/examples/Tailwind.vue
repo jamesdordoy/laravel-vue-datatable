@@ -192,16 +192,16 @@ a {
                         label: 'Status',
                         name: 'is_active',
                         orderable: true,
-                        component: DataTableIsActiveCell,
+                        comp: DataTableIsActiveCell,
                     },
                     {
                         label: 'Cost',
                         name: 'cost',
                         orderable: true,
-                        component: DataTableCurrencyCell,
+                        comp: DataTableCurrencyCell,
                     },
                     {
-                        component: DataTableDropdownCell,
+                        comp: DataTableDropdownCell,
                     },
                 ],
                 filters: {
