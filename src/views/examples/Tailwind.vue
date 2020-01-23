@@ -216,7 +216,8 @@ a {
                         'inline-block': true,
                         'min-w-full': true,
                         'rounded-lg': true,
-                        'overflow-hidden': true,
+                        'overflow-x-scroll': true,
+                        
                     },
                     table: {
                         'text-left': true,

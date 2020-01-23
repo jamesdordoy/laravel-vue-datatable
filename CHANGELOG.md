@@ -25,3 +25,8 @@
 
 ### Changed
 - Changed the filterable column prop in the table to orderable as it is a more appropriate name.  ([#a521a8](https://github.com/jamesdordoy/vue-datatable/commit/a521a86a4c17dba809a9d26c3d845f5c5b1cae31))
+
+## [v0.6.0 (2020-01-23)]
+
+### Changed
+- Changed table cell comp prop to component.  ([#a521a8](https://github.com/jamesdordoy/vue-datatable/commit/a521a86a4c17dba809a9d26c3d845f5c5b1cae31))

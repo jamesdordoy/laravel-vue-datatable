@@ -34,24 +34,27 @@
             <template v-else>
                 <tbody
                     v-if="columns"
-                    :class="classes['t-body']">
+                    :class="classes['t-body']"
+                    class="laravel-vue-datatable-tbody">
                     <tr
                         :key="item.id"
-                        @click="$emit('rowClicked', item)"
+                        :class="classes['t-body-tr']"
                         v-for="item in tableData.data"
-                        :class="classes['t-body-tr']">
+                        @click="$emit('rowClicked', item)"
+                        class="laravel-vue-datatable-tbody-tr">
                         <td 
                             :key="column.name"
                             :class="classes.td"
-                            v-for="column in columns">
+                            v-for="column in columns"
+                            class="laravel-vue-datatable-td">
                             <laravel-vue-data-table-cell
                                 :value="item"
                                 :name="column.name"
                                 :meta="column.meta"
                                 :event="column.event"
-                                :comp="column.component"
                                 :classes="column.classes"
-                                :handler="column.handler">
+                                :handler="column.handler"
+                                :component="column.component">
                             </laravel-vue-data-table-cell>
                         </td>
                     </tr>
@@ -60,11 +63,11 @@
         </laravel-vue-table>
         <!-- Bottom Filters -->
         <slot
-            :meta="tableData.meta"
             :page="page"
             name="pagination"
-            :links="tableData.links"
-            v-if="paginationSlot">
+            v-if="paginationSlot"
+            :meta="tableData.meta"
+            :links="tableData.links">
         </slot>
         <laravel-pagination
             v-else

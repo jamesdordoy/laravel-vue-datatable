@@ -1,15 +1,15 @@
 <template>
     <div :class="tableContainerClasses">
-        <table :class="tableClasses">
-            <thead :class="tableHeaderClasses">
-                <tr :class="tableRowClasses">
+        <table :class="tableClasses" class="laravel-vue-datatable">
+            <thead :class="tableHeaderClasses" class="laravel-vue-datatable-thead">
+                <tr :class="tableRowClasses" class="laravel-vue-datatable-thead-tr">
                     <laravel-vue-data-table-th
                         :dir="dir"
                         @sort="sort"
-                        :key="column.name"
                         :column="column"
-                        :classes="tableHeadClasses"
-                        v-for="column in columns">
+                        :key="column.name"
+                        v-for="column in columns"
+                        :classes="tableHeadClasses">
                     </laravel-vue-data-table-th>
                 </tr>
             </thead>

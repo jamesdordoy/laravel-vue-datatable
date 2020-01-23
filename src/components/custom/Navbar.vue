@@ -1,28 +1,28 @@
 <template>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top border-bottom">
-      <button
-        type="button"
-        @click="toggleMenu"
-        aria-expanded="false"
-        data-toggle="toggled"
-        class="navbar-toggler"
-        data-target="#sidebar-wrapper"
-        aria-controls="navbarCollapse"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <a href="#" class="navbar-brand">Laravel Vue Datatable</a>
-      <button
-        type="button"
-        aria-expanded="false"
-        data-toggle="collapse"
-        class="navbar-toggler"
-        data-target="#navbarCollapse"
-        aria-label="Toggle navigation"
-        aria-controls="navbarCollapse" >
-        <font-awesome-icon :icon="['fab', 'github']" />
-        &nbsp;
-      </button>
+        <button
+            type="button"
+            @click="toggleMenu"
+            aria-expanded="false"
+            data-toggle="toggled"
+            class="navbar-toggler"
+            data-target="#sidebar-wrapper"
+            aria-controls="navbarCollapse"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="#" class="navbar-brand">Laravel Vue Datatable</a>
+        <button
+            type="button"
+            aria-expanded="false"
+            data-toggle="collapse"
+            class="navbar-toggler"
+            data-target="#navbarCollapse"
+            aria-label="Toggle navigation"
+            aria-controls="navbarCollapse" >
+            <font-awesome-icon :icon="['fab', 'github']" />
+            &nbsp;
+        </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item">

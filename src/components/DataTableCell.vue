@@ -1,9 +1,13 @@
 <script>
+import Vue from "vue";
+
 import ColumnNotFoundException from "../exceptions/ColumnNotFoundException";
 
 export default {
     props: {
-        comp: {},
+        component: {
+            type: Vue.component,
+        },
         meta: {
             type: Object,
             default: () => ({}),

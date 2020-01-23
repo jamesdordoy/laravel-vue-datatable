@@ -3,6 +3,7 @@
         scope="col"
         :key="column.name"
         :class="headerClasses(column)"
+        class="laravel-vue-datatable-th"
         :style="'width: ' + column.width + '%'"
         @click="column.orderable  ? sort(column) : null">
         <div class="inline-block" v-if="column.orderable">
@@ -11,10 +12,10 @@
                 style="
                     width: 0;
                     height: 0;
+                    margin-bottom: 1px;
+                    border-bottom: 5px solid #ccc;
                     border-left: 5px solid transparent;
-                    border-right: 5px solid transparent;
-                    border-bottom: ;
-                    margin-bottom: 1px;"
+                    border-right: 5px solid transparent;"
                 :class="{'active-filter-asc': column.orderable && column.name == currentSort && dir == 'asc' }"
                 :style="{borderBottom: column.orderable && column.name == currentSort && dir == 'asc' ? '5px solid #a3a3a3' : '5px solid #ccc' }">
             </div>
@@ -23,10 +24,10 @@
                 style="
                     width: 0;
                     height: 0;
-                    border-left: 5px solid transparent;
-                    border-right: 5px solid transparent;
+                    margin-top: 1px;
                     border-top: 5px solid #ccc;
-                    margin-top: 1px;"
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;"
                 :class="{'active-filter-desc': column.orderable && column.name == currentSort && dir == 'desc' }"
                 :style="{borderTop: column.orderable && column.name == currentSort && dir == 'desc' ? '5px solid #a3a3a3' : '5px solid #ccc' }">
             </div>
