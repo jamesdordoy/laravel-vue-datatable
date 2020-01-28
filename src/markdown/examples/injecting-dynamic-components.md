@@ -14,6 +14,27 @@
 </template>
 ```
 
+```javascript
+export default {
+    props: {
+        data: {},
+        name: {},
+        click: {
+            type: Function,
+            default: () => {}
+        },
+        classes: {
+            type: Object,
+            default: () => ({ 
+                'btn': true,
+                'btn-primary': true,
+                'btn-sm': true,
+            }),
+        },
+    }
+}
+```
+
 ### Example Image Component
 
 > (ExampleImageComponent.vue)

@@ -13,7 +13,10 @@ export default {
     props: {
         data: {},
         name: {},
-        click: {},
+        click: {
+            type: Function,
+            default: () => {}
+        },
         classes: {
             type: Object,
             default: () => ({ 
