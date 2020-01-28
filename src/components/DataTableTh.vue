@@ -6,7 +6,7 @@
         class="laravel-vue-datatable-th"
         :style="'width: ' + column.width + '%'"
         @click="column.orderable  ? sort(column) : null">
-        <div class="inline-block" v-if="column.orderable">
+        <div style="display: inline-block;" v-if="column.orderable">
             <div
                 class="filter-asc"
                 style="
