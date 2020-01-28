@@ -85,7 +85,7 @@
                     },
                     {
                         label: '',
-                        name: '',
+                        name: 'View',
                         orderable: false,
                         event: "click",
                         handler: this.displayRow,
