@@ -1,12 +1,11 @@
 <script>
-import Vue from "vue";
 
 import ColumnNotFoundException from "../exceptions/ColumnNotFoundException";
 
 export default {
     props: {
         comp: {
-            type: Vue.component,
+
         },
         meta: {
             type: Object,
@@ -68,7 +67,7 @@ export default {
             columnName = this.value[this.name];
         }
 
-        if (typeof columnName === 'undefined') {
+        if (typeof columnName === 'undefined' && ! this.comp) {
             throw new ColumnNotFoundException(`The column ${this.name} was not found`);
         }
         
