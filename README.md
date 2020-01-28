@@ -21,6 +21,11 @@ See [https://jamesdordoy.github.io/laravel-vue-datatable/](https://jamesdordoy.g
 ## Laravel Package Installation
 See details [https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package](https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package)
 
+## Note: I am looking for co-maintainers!
+If anyone has some experiance with JavaScript, Vue or PHP & Laravel i would love to get some help maintaining this package. Testing and CI is a major concern at the moment and given time, i'd much prefer to maintain this package using TypeScript.
+
+Please email me if you would like to help maintain the package.
+
 ## Component Installation
 
 ```bash
