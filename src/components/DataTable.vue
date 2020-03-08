@@ -159,7 +159,7 @@ export default {
         };
     },
     methods: {
-        getData(url = this.url, options = {}) {
+        getData(url = this.url, options = this.getRequestPayload) {
 
             url = this.checkUrlForPagination(url);
 
