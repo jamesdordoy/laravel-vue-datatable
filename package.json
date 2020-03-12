@@ -26,6 +26,7 @@
   "dependencies": {
     "axios": "^0.18.1",
     "laravel-vue-pagination": "^2.3.0",
+    "lodash": "^4.17.15",
     "vue": "^2.6.10"
   },
   "devDependencies": {
