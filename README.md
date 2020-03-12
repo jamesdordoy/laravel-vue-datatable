@@ -99,6 +99,7 @@ Alternatively, if you have custom filters applied and you would prefered they ar
 | `order-dir` | String | "asc" | (optional) The default order by direction |
 | `per-page` | Array | ['10','25','50'] | (optional) Amount to be displayed |
 | `theme` | String | "light" | (optional) Must be dark or light |
+| `debounce-delay` | Number | 0 | (optional) Adds a debounce delay to the get request when searching |
 | `classes` | Object | See Below | (optional) Table classes |
 | `pagination` | Object | {}  | (optional) props for [gilbitron/laravel-vue-pagination](https://github.com/gilbitron/laravel-vue-pagination#props) |
 | `add-filters-to-url` | Boolean | false | (optional) Will adjust the current url to keep track of used filters and will also store them in local storage. |

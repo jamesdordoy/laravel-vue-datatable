@@ -84,12 +84,12 @@
 
 <script>
 
+import _ from 'lodash';
 import axios from 'axios';
 import VueTable from './Table.vue';
 import UrlFilters from '../mixins/UrlFilters';
 import DataTableCell from './DataTableCell.vue';
 import DataTableFilters from './DataTableFilters.vue';
-import _ from 'lodash'
 
 export default {
     created() {
@@ -104,7 +104,7 @@ export default {
             this.classes['table']['table-dark'] = true;
         }
 
-        this.debouncedGetData = _.debounce(this.getData, this.$attrs.delay_ms ? this.$attrs.delay_ms : 0);
+        this.debounceGetData = _.debounce(this.getData, this.debounceDelay ? this.debounceDelay : 0);
     },
     mounted() {
         this.columns.forEach((column) => {
@@ -116,7 +116,7 @@ export default {
         url: {
             handler: function(newUrl) {
                 this.loading = false;
-                this.debouncedGetData(newUrl, this.getRequestPayload);
+                this.debounceGetData(newUrl, this.getRequestPayload);
             },
         },
         tableProps: {
@@ -124,7 +124,7 @@ export default {
                 this.loading = false;
 
                 if (this.url) {
-                    this.debouncedGetData(this.url, this.getRequestPayload);
+                    this.debounceGetData(this.url, this.getRequestPayload);
                     let props = this.tableProps;
                     props.page = this.page;
                     this.$emit("onTablePropsChanged", props);
@@ -285,6 +285,10 @@ export default {
         addFiltersToUrl: {
             type: Boolean,
             default: false,
+        },
+        debounceDelay: {
+            type: Number,
+            default: 0,
         },
         pagination: {
             type: Object,
