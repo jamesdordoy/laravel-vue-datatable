@@ -25,13 +25,25 @@
             :table-header-classes="classes['t-head']"
             :table-row-classes="classes['t-head-tr']"
             :table-container-classes="classes['table-container']">
+            <!-- Table Header -->
+            <template
+                slot="header"
+                v-if="headerSlot">
+                <slot
+                    name="header"
+                    :table-props="tableProps">
+                </slot>
+            </template>
             <!-- Table Body -->
-            <slot
-                name="body"
-                v-if="bodySlot"
-                :data="tableData.data">
-            </slot>
-            <template v-else>
+            <template
+                slot="body"
+                v-if="bodySlot">
+                <slot
+                    name="body"
+                    :data="tableData.data">
+                </slot>
+            </template>
+            <template slot="body" v-else>
                 <tbody
                     v-if="columns"
                     :class="classes['t-body']"
@@ -93,7 +105,6 @@ import DataTableFilters from './DataTableFilters.vue';
 
 export default {
     created() {
-
         if (this.addFiltersToUrl) {
             this.checkParameters(this.tableProps);
         } else if(this.url) {
@@ -115,16 +126,21 @@ export default {
     watch: {
         url: {
             handler: function(newUrl) {
-                this.loading = false;
-                this.debounceGetData(newUrl, this.getRequestPayload);
+                this.updateCurrentPage(newUrl);
+                this.debounceGetData(newUrl);
             },
         },
         tableProps: {
             handler: function() {
-                this.loading = false;
+                //Reset current page if searching
+                if (this.tableProps.search) {
+                    this.page = 1;
+                }
 
+                //Check if we are using the default request otherwise emit
                 if (this.url) {
-                    this.debounceGetData(this.url, this.getRequestPayload);
+                    this.debounceGetData();
+                } else {
                     let props = this.tableProps;
                     props.page = this.page;
                     this.$emit("onTablePropsChanged", props);
@@ -138,13 +154,9 @@ export default {
             }
         }
     },
-    components: {
-        'laravel-vue-table': VueTable,
-        'laravel-vue-data-table-cell': DataTableCell,
-        'laravel-vue-data-table-filters': DataTableFilters,
-    },
     data() {
         return {
+            debounceGetData: null,
             tableData: {},
             sortKey: 'id',
             sortOrders: {},
@@ -157,24 +169,24 @@ export default {
                 filters: this.filters,
                 length: this.perPage[0],
             },
-            loading: false
         };
     },
     methods: {
         getData(url = this.url, options = this.getRequestPayload) {
 
-            url = this.checkUrlForPagination(url);
-
             this.$emit("loading");
             
-            axios.get(url, options)
+            //Remove any custom query string parameters
+            let baseUrl = url.split("?")[0];
+
+            axios.get(baseUrl, options)
                 .then(response => {
                     if (response) {
-                        let data = response.data;
-
+                        const data = response.data;
+                        
                         if (this.checkTableDraw(data.payload.draw)) {
+                            
                             this.tableData = data;
-                            this.loading = true;
                             this.$emit("finishedLoading");
 
                             if (this.addFiltersToUrl) {
@@ -208,12 +220,13 @@ export default {
             }
             return false;
         },
-        checkUrlForPagination(url) {
-            if (Number.isInteger(url)) {
-                url = this.url + "?page=" + url;
-                return url;
+        updateCurrentPage(url) {
+            const params = (new URL(url)).searchParams;
+            const page = params.get('page');
+
+            if (page) {
+                this.page = page;
             }
-            return url;
         },
         paginationChangePage(page) {
             this.page = page;
@@ -223,12 +236,14 @@ export default {
                 props.page = this.page;
                 this.$emit("onTablePropsChanged", props);
             } else {
-                //Add Laravel Vue Pagination
-                let url = this.url;
-                url += `?page=${this.page}`;
-                this.getData(url, this.getRequestPayload);
+                this.getData();
             }
         },
+    },
+    components: {
+        'laravel-vue-table': VueTable,
+        'laravel-vue-data-table-cell': DataTableCell,
+        'laravel-vue-data-table-filters': DataTableFilters,
     },
     computed: {
         paginationSlot() {
@@ -249,12 +264,19 @@ export default {
             }
             return null;
         },
+        headerSlot() {
+            if (this.$scopedSlots) {
+                return this.$scopedSlots.header;
+            }
+            return null;
+        },
         getRequestPayload() {
             let payload = Object.assign({}, this.tableProps);
             delete payload.filters;
             payload = Object.assign(payload, this.tableProps.filters);
             payload = Object.assign(payload, this.tableProps.filters);
             payload.draw = this.draw;
+            payload.page = this.page;
             return {
                 params: payload,
             };

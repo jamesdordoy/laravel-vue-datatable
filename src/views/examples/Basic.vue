@@ -17,10 +17,9 @@
             </basic-markdown>
         </pre>
         <data-table
-            v-show="!code"
             :url="url"
-            :columns="columns"
-            :delay_ms="2000">
+            v-show="!code"
+            :columns="columns">
         </data-table>
     </div>
 </template>
@@ -35,11 +34,11 @@
         name: 'Basic',
         components: {
             // eslint-disable-next-line
+            VueSwitch,
+            // eslint-disable-next-line
             DataTable,
             // eslint-disable-next-line
             BasicMarkdown,
-            // eslint-disable-next-line
-            VueSwitch,
         },
         mixins: [CodeExample],
         data() {

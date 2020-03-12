@@ -80,6 +80,10 @@ export default [
         component: require('./views/examples/OverrideTableBody.vue').default,
     },
     {
+        path: '/laravel-vue-datatable/examples/override-table-header',
+        component: require('./views/examples/OverrideTableHeader.vue').default,
+    },
+    {
         path: '/laravel-vue-datatable/examples/custom-filters',
         component: require('./views/examples/CustomFilters.vue').default,
     },

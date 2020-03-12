@@ -105,6 +105,13 @@
                 to="/laravel-vue-datatable/examples/override-table-body">
                 Overriding the Table Body
             </router-link>
+
+            <router-link
+                exact
+                class="list-group-item list-group-item-action nav-item-light indent-1"
+                to="/laravel-vue-datatable/examples/override-table-header">
+                Overriding the Table Header
+            </router-link>
                 
             <router-link    
                 exact
