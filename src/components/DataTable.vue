@@ -89,6 +89,7 @@ import VueTable from './Table.vue';
 import UrlFilters from '../mixins/UrlFilters';
 import DataTableCell from './DataTableCell.vue';
 import DataTableFilters from './DataTableFilters.vue';
+import _ from 'lodash'
 
 export default {
     created() {
@@ -102,6 +103,8 @@ export default {
         if (this.theme == "dark") {
             this.classes['table']['table-dark'] = true;
         }
+
+        this.debouncedGetData = _.debounce(this.getData, this.$attrs.delay_ms ? this.$attrs.delay_ms : 0);
     },
     mounted() {
         this.columns.forEach((column) => {
@@ -113,7 +116,7 @@ export default {
         url: {
             handler: function(newUrl) {
                 this.loading = false;
-                this.getData(newUrl, this.getRequestPayload); 
+                this.debouncedGetData(newUrl, this.getRequestPayload);
             },
         },
         tableProps: {
@@ -121,8 +124,7 @@ export default {
                 this.loading = false;
 
                 if (this.url) {
-                    this.getData(this.url, this.getRequestPayload);
-                } else {
+                    this.debouncedGetData(this.url, this.getRequestPayload);
                     let props = this.tableProps;
                     props.page = this.page;
                     this.$emit("onTablePropsChanged", props);
@@ -155,7 +157,7 @@ export default {
                 filters: this.filters,
                 length: this.perPage[0],
             },
-            loading: false,
+            loading: false
         };
     },
     methods: {

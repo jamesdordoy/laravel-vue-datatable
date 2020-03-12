@@ -19,7 +19,8 @@
         <data-table
             v-show="!code"
             :url="url"
-            :columns="columns">
+            :columns="columns"
+            :delay_ms="2000">
         </data-table>
     </div>
 </template>
