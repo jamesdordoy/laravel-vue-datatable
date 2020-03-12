@@ -16,7 +16,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 import VueSweetalert2 from 'vue-sweetalert2';
 
-// If you don't need the styles, do not connect
+import './assets/styles/main.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 Vue.use(VueSweetalert2);
@@ -29,10 +29,11 @@ Vue.use(VueHighlightJS);
 
 //Font Awesome
 import { faEye } from '@fortawesome/free-regular-svg-icons';
-import { faInfoCircle, faTable, faProjectDiagram, faRestroom, faHammer, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faTable, faProjectDiagram, faRestroom, faHammer, faEllipsisV, faBars } from '@fortawesome/free-solid-svg-icons';
 import { faVuejs, faPhp, faLaravel, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
+    faBars,
     faEllipsisV,
     faVuejs,
     faPhp,

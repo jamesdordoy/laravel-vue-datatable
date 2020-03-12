@@ -27,6 +27,7 @@
     "axios": "^0.18.1",
     "laravel-vue-pagination": "^2.3.0",
     "lodash": "^4.17.15",
+    "tailwindcss": "^1.2.0",
     "vue": "^2.6.10"
   },
   "devDependencies": {
@@ -36,6 +37,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.10.2",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
     "@fortawesome/vue-fontawesome": "^0.1.7",
+    "@fullhuman/postcss-purgecss": "^2.1.0",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-service": "^3.8.3",
