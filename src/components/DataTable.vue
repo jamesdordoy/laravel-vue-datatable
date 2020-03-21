@@ -11,7 +11,8 @@
         <laravel-vue-data-table-filters
             v-else
             :per-page="perPage"
-            :table-data="tableProps">
+            :table-data="tableProps"
+            :placeholder-search="translate.placeholderSearch || 'Search Table'">
         </laravel-vue-data-table-filters>
         <!-- Table component -->
         <laravel-vue-table
@@ -88,8 +89,8 @@
             :limit="pagination.limit"
             :align="pagination.align"
             @pagination-change-page="paginationChangePage">
-                <span slot="prev-nav">Previous</span>
-                <span slot="next-nav">Next</span>
+                <span slot="prev-nav">{{translate.previousButton || 'Previous'}}</span>
+                <span slot="next-nav">{{translate.nextButton || 'Next'}}</span>
         </laravel-pagination>
     </div>
 </template>
@@ -364,6 +365,10 @@ export default {
                 "th": {},
             }),
         },
+        translate: {
+            type: Object,
+            default: () => ({})
+        }
     },
 }
 </script>

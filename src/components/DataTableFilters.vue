@@ -17,7 +17,7 @@
                 name="name"
                 class="form-control"
                 v-model="tableData.search"
-                placeholder="Search Table">
+                :placeholder="placeholderSearch">
         </div>
     </div>
 </template>
@@ -35,6 +35,10 @@ export default {
             default: () => ([]),
             required: true,
         },
+        placeholderSearch:{
+            type: String,
+            default: 'Search Table',
+        }
     }
 }
 </script>
