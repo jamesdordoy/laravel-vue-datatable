@@ -7,6 +7,7 @@
 | order-dir | String | "asc" | (optional) The default order by direction |
 | per-page | Array | ['10','25','50'] | (optional) Amount to be displayed |
 | theme | String | "light" | (optional) Must be dark or light |
+| translate | Object | { nextButton: 'Next', previousButton: 'Previous', placeholderSearch: 'Search Table'} | (optional) used to overwrite the default pagination button text and search input placeholder |
 | debounce-delay | Number | 0 | (optional) Adds a debounce delay to the get request when searching |
 | add-filters-to-url | Boolean | false | <p class="wrap-text"> (optional) Will adjust the current url to keep track of used filters and will also store them in local storage. </p> |
 | classes | Object | See Below | (optional) Table classes |
