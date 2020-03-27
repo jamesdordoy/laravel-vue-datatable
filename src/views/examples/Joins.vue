@@ -39,7 +39,43 @@
         <data-table
             v-show="!code"
             :url="url"
+            :filters="filters"
             :columns="columns">
+            <div slot="filters" slot-scope="{ tableData, perPage }">
+                <div class="row mb-2">
+                    <div class="col-md-3">
+                        <select class="form-control" v-model="tableData.length">
+                            <option :key="page" v-for="page in perPage">{{ page }}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select
+                            v-model="tableData.filters.isActive"
+                            class="form-control">
+                            <option value>All</option>
+                            <option value='1'>Active</option>
+                            <option value='0'>Inactive</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select
+                            v-model="tableData.filters.roleId"
+                            class="form-control">
+                            <option value>All</option>
+                            <option value='1'>User</option>
+                            <option value='2'>Staff</option>
+                            <option value="3">Admin</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input
+                            name="name"
+                            class="form-control"
+                            v-model="tableData.search"
+                            placeholder="Search Table">
+                    </div>
+                </div>
+            </div>
         </data-table>
     </div>
 </template>
@@ -71,6 +107,10 @@
         data() {
             return {
                 name: 'Joins',
+                filters: {
+                    isActive: '',
+                    roleId: '',
+                },
                 url: process.env.VUE_APP_QUERY_BUILDER_URL,
                 columns: [
                     {
@@ -94,6 +134,12 @@
                         label: 'Name',
                         name: 'user_name',
                         columnName: 'users.name',
+                        orderable: true,
+                    },
+                    {
+                        label: 'Active',
+                        name: 'is_active',
+                        columnName: 'users.is_active',
                         orderable: true,
                     },
                     {
