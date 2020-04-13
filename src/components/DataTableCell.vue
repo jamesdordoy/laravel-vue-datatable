@@ -4,8 +4,9 @@ import ColumnNotFoundException from "../exceptions/ColumnNotFoundException";
 
 export default {
     props: {
-        comp: {
-
+        comps: {
+            type: Array,
+            default: () => ([]),
         },
         meta: {
             type: Object,
@@ -15,20 +16,8 @@ export default {
             type: String,
             default: '',
         },
-        event: {
-            type: String,
-            default: 'click',
-        },
-        handler: {
-            type: Function,
-            default: () => {},
-        },
         value: {
             type: Object,
-            default: () => ({}),
-        },
-        classes: {
-            type: [Object, String],
             default: () => ({}),
         },
     },
@@ -37,22 +26,28 @@ export default {
     },
     render(createElement) {
 
-        if (this.comp) {
+        if (this.comps.length) {
+            let self = this;
+            return createElement('div', this.comps.map(function (comp) {
+                let props = {
+                    name: comp.name,
+                    data: self.value,
+                    meta: self.meta,
+                    href: comp.href,
+                    method: comp.method,
+                    emit: comp.emit,
+                };
 
-            let props = {
-                name: this.name,
-                data: this.value,
-                meta: this.meta,
-            };
+                props[comp.event] = comp.handler;
 
-            props[this.event] = this.handler;
-
-            return createElement(this.comp, {
-                props,
-                attrs: {
-                    classes: this.classes
-                },
-            });
+                return createElement(comp.component, {
+                    props,
+                    attrs: {
+                        buttonClass: comp.classes.button,
+                        iconClass: comp.classes.icon,
+                    },
+                });
+            }))
         }
 
         let columnName;
@@ -67,7 +62,7 @@ export default {
             columnName = this.value[this.name];
         }
 
-        if (typeof columnName === 'undefined' && ! this.comp && columnName) {
+        if (typeof columnName === 'undefined' && ! this.comp.length && columnName) {
             throw new ColumnNotFoundException(`The column ${this.name} was not found`);
         }
         

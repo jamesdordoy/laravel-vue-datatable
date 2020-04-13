@@ -23,6 +23,7 @@
             :sortOrders="sortOrders"
             :table-classes="classes.table"
             :table-head-classes="classes['th']"
+            :table-head-icon-classes="classes['th-icon']"
             :table-header-classes="classes['t-head']"
             :table-row-classes="classes['t-head-tr']"
             :table-container-classes="classes['table-container']">
@@ -64,10 +65,8 @@
                                 :value="item"
                                 :name="column.name"
                                 :meta="column.meta"
-                                :event="column.event"
-                                :classes="column.classes"
-                                :handler="column.handler"
-                                :comp="column.component">
+                                :comps="column.components"
+                                @changed="getData">
                             </laravel-vue-data-table-cell>
                         </td>
                     </tr>
@@ -118,9 +117,9 @@ export default {
 
         this.debounceGetData = _.debounce(this.getData, this.debounceDelay ? this.debounceDelay : 0);
     },
-    mounted() {
+    updated() {
         this.columns.forEach((column) => {
-           this.sortOrders[column.name] = -1;
+            this.sortOrders[column.name] = this.sortOrders[column.name] ? this.sortOrders[column.name] : false;
         });
     },
     mixins: [UrlFilters],
@@ -205,9 +204,9 @@ export default {
         },
         sortBy(key, columnName = null) {
             this.sortKey = key;
-            this.sortOrders[key] = this.sortOrders[key] * -1;
+            this.sortOrders[key] = !this.sortOrders[key];
             this.tableProps.column = columnName ? columnName : key;
-            this.tableProps.dir = this.sortOrders[key] === 1 ? 'desc' : 'asc';
+            this.tableProps.dir = this.sortOrders[key] === true ? 'desc' : 'asc';
         },
         getIndex(array, key, value) {
             return array.findIndex(i => i[key] == value);
@@ -363,6 +362,10 @@ export default {
                 "t-body": {},
                 "td": {},
                 "th": {},
+                "th-icon": {
+                    "asc": {"fa fa-sort-amount-down-alt": true},
+                    "desc": {"fa fa-sort-amount-down": true}
+                },
             }),
         },
         translate: {
@@ -376,3 +379,8 @@ export default {
     },
 }
 </script>
+<style>
+    .laravel-vue-datatable-th.table-header-sorting {
+        cursor: pointer !important;
+    }
+</style>
