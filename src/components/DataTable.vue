@@ -97,7 +97,6 @@
 
 <script>
 
-import _ from 'lodash';
 import axios from 'axios';
 import VueTable from './Table.vue';
 import UrlFilters from '../mixins/UrlFilters';
@@ -116,7 +115,9 @@ export default {
             this.classes['table']['table-dark'] = true;
         }
 
-        this.debounceGetData = _.debounce(this.getData, this.debounceDelay ? this.debounceDelay : 0);
+        let debounce = require('lodash.debounce');
+
+        this.debounceGetData = debounce(this.getData, this.debounceDelay ? this.debounceDelay : 0);
     },
     mounted() {
         this.columns.forEach((column) => {
