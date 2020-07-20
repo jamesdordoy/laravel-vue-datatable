@@ -53,7 +53,7 @@
                         :key="item.id"
                         :class="classes['t-body-tr']"
                         v-for="item in tableData.data"
-                        @click="$emit('rowClicked', item)"
+                        @click="$emit('row-clicked', item)"
                         class="laravel-vue-datatable-tbody-tr">
                         <td 
                             :key="column.name"
@@ -145,7 +145,7 @@ export default {
                 } else {
                     let props = this.tableProps;
                     props.page = this.page;
-                    this.$emit("onTablePropsChanged", props);
+                    this.$emit("on-table-props-changed", props);
                 }
             },
             deep: true,
@@ -189,7 +189,7 @@ export default {
                         if (this.checkTableDraw(data.payload.draw)) {
                             
                             this.tableData = data;
-                            this.$emit("finishedLoading");
+                            this.$emit("finished-loading");
 
                             if (this.addFiltersToUrl) {
                                 this.updateParameters(this.tableProps);
@@ -236,7 +236,7 @@ export default {
                 //Add the users pagination
                 let props = this.tableProps;
                 props.page = this.page;
-                this.$emit("onTablePropsChanged", props);
+                this.$emit("on-table-props-changed", props);
             } else {
                 this.getData();
             }
