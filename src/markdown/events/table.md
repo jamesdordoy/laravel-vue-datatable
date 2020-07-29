@@ -2,5 +2,5 @@
 | Name | Description  
 | ---  | --- |
 | loading  | The table is loading new data |
-| finishedLoading  | The table has finished loading new data |
-| rowClicked  | The table has had a row clicked |
+| finished-loading  | The table has finished loading new data |
+| row-clicked  | The table has had a row clicked |
