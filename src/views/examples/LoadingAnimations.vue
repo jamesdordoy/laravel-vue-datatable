@@ -23,7 +23,7 @@
             :url="url"
             :columns="columns"
             @loading="isLoading = true"
-            @finishedLoading="isLoading = false">
+            @finished-loading="isLoading = false">
         </data-table>
         <loading 
             :active.sync="isLoading"
