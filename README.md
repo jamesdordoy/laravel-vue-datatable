@@ -104,6 +104,7 @@ Alternatively, if you have custom filters applied and you would prefered they ar
 | `translate` | Object | { nextButton: 'Next', previousButton: 'Previous', placeholderSearch: 'Search Table'} | (optional) used to overwrite the default pagination button text and search input placeholder |
 | `pagination` | Object | {}  | (optional) props for [gilbitron/laravel-vue-pagination](https://github.com/gilbitron/laravel-vue-pagination#props) |
 | `add-filters-to-url` | Boolean | false | (optional) Will adjust the current url to keep track of used filters and will also store them in local storage. |
+| `headers` | Object | {} | Additional headers to pass route e.g. bearer token |
 
 #### Default Classes
 

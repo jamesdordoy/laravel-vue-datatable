@@ -174,32 +174,32 @@ export default {
         };
     },
     methods: {
-        getData(url = this.url, options = this.getRequestPayload) {
+        async getData(url = this.url, options = this.getRequestPayload) {
 
             this.$emit("loading");
             
             //Remove any custom query string parameters
             let baseUrl = url.split("?")[0];
 
-            axios.get(baseUrl, options)
-                .then(response => {
-                    if (response) {
-                        const data = response.data;
-                        
-                        if (this.checkTableDraw(data.payload.draw)) {
-                            
-                            this.tableData = data;
-                            this.$emit("finished-loading");
-
-                            if (this.addFiltersToUrl) {
-                                this.updateParameters(this.tableProps);
-                            }
-                        }
-                    }
-                })
+            let response = await axios.get(baseUrl, options)
                 .catch(errors => {
                     alert(errors);
                 });
+
+            if (response) {
+                
+                if (this.checkTableDraw(response.data.payload.draw)) {
+                    
+                    this.draw++;
+                    this.tableData = response.data;
+                    
+                    if (this.addFiltersToUrl) {
+                        this.updateParameters(this.tableProps);
+                    }
+                    
+                    this.$emit("finished-loading");
+                }
+            }
         },
         addRecord(data) {
             this.tableData.data.push(data);
@@ -217,10 +217,7 @@ export default {
             this.draw++;
         },
         checkTableDraw(draw) {
-            if (this.draw == draw) {
-                return true;
-            }
-            return false;
+            return this.draw == draw;
         },
         updateCurrentPage(url) {
             const params = (new URL(url)).searchParams;
@@ -281,6 +278,7 @@ export default {
             payload.page = this.page;
             return {
                 params: payload,
+                headers: this.headers,
             };
         },
     },
@@ -365,6 +363,10 @@ export default {
                 "td": {},
                 "th": {},
             }),
+        },
+        headers: {
+            type: Object,
+            default: () => ({})
         },
         translate: {
             type: Object,
