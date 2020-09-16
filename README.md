@@ -3,6 +3,8 @@
 # Laravel Vue Datatable
 A Vue.js datatable component for Laravel that works with Bootstrap.
 
+Note: this package will be moving to tailwind in the near future.
+
 ## Requirements
 
 * [Vue.js](https://vuejs.org/) 2.x
