@@ -70,7 +70,7 @@ export default {
             });
         }
         
-        if (this.transform) {
+        if (typeof this.transform === 'function') {
             return createElement('span', {domProps:{innerHTML: transformedValue}})
         }
 
