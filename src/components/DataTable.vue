@@ -52,16 +52,19 @@
                     <tr
                         :key="item.id"
                         :class="classes['t-body-tr']"
-                        v-for="item in tableData.data"
+                        v-for="(item, rowIndex) in tableData.data"
                         @click="$emit('row-clicked', item)"
                         class="laravel-vue-datatable-tbody-tr">
                         <td 
                             :key="column.name"
                             :class="classes.td"
-                            v-for="column in columns"
+                            v-for="(column, columnIndex) in columns"
                             class="laravel-vue-datatable-td">
                             <laravel-vue-data-table-cell
+                                :row="rowIndex"
+                                :column="columnIndex"
                                 :value="item"
+                                :transform="column.transform"
                                 :name="column.name"
                                 :meta="column.meta"
                                 :event="column.event"
