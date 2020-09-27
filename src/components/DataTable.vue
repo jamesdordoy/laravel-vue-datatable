@@ -4,16 +4,15 @@
         <slot
             :url="url"
             name="filters"
-            v-if="filtersSlot"
             :per-page="perPage"
             :table-data="tableProps">
+            <laravel-vue-data-table-filters
+                :per-page="perPage"
+                :table-data="tableProps"
+                :placeholder-search="translate.placeholderSearch">
+            </laravel-vue-data-table-filters>
         </slot>
-        <laravel-vue-data-table-filters
-            v-else
-            :per-page="perPage"
-            :table-data="tableProps"
-            :placeholder-search="translate.placeholderSearch">
-        </laravel-vue-data-table-filters>
+        
         <!-- Table component -->
         <laravel-vue-table
             @sort="sortBy"
@@ -77,24 +76,24 @@
                 </tbody>
             </template>
         </laravel-vue-table>
+
         <!-- Bottom Filters -->
         <slot
             :page="page"
             name="pagination"
-            v-if="paginationSlot"
             :meta="tableData.meta"
             :links="tableData.links">
+            <laravel-pagination
+                :data="tableData"
+                :size="pagination.size"
+                :limit="pagination.limit"
+                :align="pagination.align"
+                @pagination-change-page="paginationChangePage">
+                    <span slot="prev-nav">{{ translate.previousButton }}</span>
+                    <span slot="next-nav">{{ translate.nextButton }}</span>
+            </laravel-pagination>
         </slot>
-        <laravel-pagination
-            v-else
-            :data="tableData"
-            :size="pagination.size"
-            :limit="pagination.limit"
-            :align="pagination.align"
-            @pagination-change-page="paginationChangePage">
-                <span slot="prev-nav">{{ translate.previousButton }}</span>
-                <span slot="next-nav">{{ translate.nextButton }}</span>
-        </laravel-pagination>
+        
     </div>
 </template>
 
@@ -248,18 +247,6 @@ export default {
         'laravel-vue-data-table-filters': DataTableFilters,
     },
     computed: {
-        paginationSlot() {
-            if (this.$scopedSlots) {
-                return this.$scopedSlots.pagination;
-            }
-            return null;
-        },
-        filtersSlot() {
-            if (this.$scopedSlots) {
-                return this.$scopedSlots.filters;
-            }
-            return null;
-        },
         bodySlot() {
             if (this.$scopedSlots) {
                 return this.$scopedSlots.body;

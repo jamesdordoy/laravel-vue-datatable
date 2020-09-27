@@ -61,6 +61,12 @@
                         orderable: true,
                     },
                     {
+                        label: 'Cost (&pound;)',
+                        name: 'cost',
+                        orderable: true,
+                        transform: ({data, name}) => `&pound;${data[name]}`,
+                    },
+                    {
                         label: 'Email',
                         name: 'email',
                         orderable: true,

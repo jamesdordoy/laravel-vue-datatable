@@ -32,7 +32,7 @@
                 :style="{borderTop: column.orderable && column.name == currentSort && dir == 'desc' ? '5px solid #a3a3a3' : '5px solid #ccc' }">
             </div>
         </div>
-        <span v-html="column.label"></span>
+        <span v-html="`&nbsp;${column.label}`"></span>
     </th>
 </template>
 
@@ -64,9 +64,12 @@ export default {
             return classes;
         },
         sort(column) {
-            this.currentSort = column.name;
+            this.setCurrentColumnSort(column.name);
             this.$emit('sort', column);
         },
-    }
+        setCurrentColumnSort(columnName) {
+            this.currentSort = columnName;
+        }
+    },
 }
 </script>
