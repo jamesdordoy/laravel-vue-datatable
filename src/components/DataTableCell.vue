@@ -4,6 +4,15 @@ import ColumnNotFoundException from "../exceptions/ColumnNotFoundException";
 
 export default {
     props: {
+        row: {
+            type: Number,
+        },
+        column: {
+            type: Number,
+        },
+        transform: {
+
+        },
         comp: {
 
         },
@@ -36,13 +45,19 @@ export default {
         return {};
     },
     render(createElement) {
+        let transformedValue;
 
+        if (typeof this.transform === 'function') {
+           transformedValue = this.transform({ row: this.row, column: this.column, name: this.name, data: this.value, meta: this.meta });
+        }
+        
         if (this.comp) {
 
             let props = {
                 name: this.name,
                 data: this.value,
                 meta: this.meta,
+                transformed: transformedValue,
             };
 
             props[this.event] = this.handler;
@@ -53,6 +68,10 @@ export default {
                     classes: this.classes
                 },
             });
+        }
+        
+        if (typeof this.transform === 'function') {
+            return createElement('span', {domProps:{innerHTML: transformedValue}})
         }
 
         let columnName;
@@ -71,7 +90,7 @@ export default {
             throw new ColumnNotFoundException(`The column ${this.name} was not found`);
         }
         
-        return createElement('span', {}, columnName);
+        return createElement('span', {domProps:{innerHTML: columnName}});
     }
 }
 </script>

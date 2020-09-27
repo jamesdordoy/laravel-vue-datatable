@@ -32,7 +32,7 @@
                 :style="{borderTop: column.orderable && column.name == currentSort && dir == 'desc' ? '5px solid #a3a3a3' : '5px solid #ccc' }">
             </div>
         </div>
-        {{ column.label }}
+        <span v-html="column.label"></span>
     </th>
 </template>
 
