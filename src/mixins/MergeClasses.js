@@ -17,7 +17,7 @@ export default {
                   typeof list[`${cls}`] !== "object" &&
                   list[`${cls}`] &&
                   cls !== "!override") {
-                  classes.push(cls);
+                  classes.push(`${cls}`);
                 }
               }
             }
