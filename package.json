@@ -27,6 +27,7 @@
     "axios": "^0.18.1",
     "laravel-vue-pagination": "^2.3.0",
     "lodash.debounce": "^4.0.8",
+    "lodash.defaultsdeep": "^4.6.1",
     "vue": "^2.6.10"
   },
   "devDependencies": {
