@@ -73,7 +73,7 @@ export default {
             return this.mergeClasses(
                 this.tableHeadClasses,
                 {"table-header-sorting": column.orderable},
-                (column.classes || {}).thead || {}
+                (column.columnClasses || {}).thead || {}
             );
         },
         sort(column) {

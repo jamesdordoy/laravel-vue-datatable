@@ -63,10 +63,10 @@ export default {
     methods: {
         headerClasses(column) {
             return this.mergeClasses(
-                typeof column.classes === "object" && column.classes["!override"] ? {} : this.classes,
+                typeof column.columnClasses === "object" && column.columnClasses["!override"] ? {} : this.classes,
                 {"table-header-sorting": column.orderable},
-                column.classes || {}, 
-                (column.classes || {}).th || {}
+                column.columnClasses || {}, 
+                (column.columnClasses || {}).th || {}
             );
         },
         sort(column) {

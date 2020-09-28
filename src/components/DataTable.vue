@@ -262,8 +262,8 @@ export default {
         },
         bodyCellClasses(column) {
             return this.mergeClasses(
-                typeof column.classes === "object" && column.classes["!override"] ? {} : this.computedClasses.td,
-                column.classes || {}, (column.classes || {}).td || {});
+                typeof column.columnClasses === "object" && column.columnClasses["!override"] ? {} : this.computedClasses.td,
+                column.columnClasses || {}, (column.columnClasses || {}).td || {});
         }
     },
     components: {
