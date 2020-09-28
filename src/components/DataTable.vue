@@ -20,11 +20,11 @@
             :columns="columns"
             :dir="tableProps.dir"
             :sortOrders="sortOrders"
-            :table-classes="classes.table"
-            :table-head-classes="classes['th']"
-            :table-header-classes="classes['t-head']"
-            :table-row-classes="classes['t-head-tr']"
-            :table-container-classes="classes['table-container']">
+            :table-classes="computedClasses.table"
+            :table-head-classes="computedClasses['th']"
+            :table-header-classes="computedClasses['t-head']"
+            :table-row-classes="computedClasses['t-head-tr']"
+            :table-container-classes="computedClasses['table-container']">
             <!-- Table Header -->
             <template
                 slot="header"
@@ -46,17 +46,17 @@
             <template slot="body" v-else>
                 <tbody
                     v-if="columns"
-                    :class="classes['t-body']"
+                    :class="computedClasses['t-body']"
                     class="laravel-vue-datatable-tbody">
                     <tr
                         :key="item.id"
-                        :class="classes['t-body-tr']"
+                        :class="computedClasses['t-body-tr']"
                         v-for="(item, rowIndex) in tableData.data"
                         @click="$emit('row-clicked', item)"
                         class="laravel-vue-datatable-tbody-tr">
                         <td 
                             :key="column.name"
-                            :class="classes.td"
+                            :class="bodyCellClasses(column)"
                             v-for="(column, columnIndex) in columns"
                             class="laravel-vue-datatable-td">
                             <laravel-vue-data-table-cell
@@ -102,6 +102,7 @@
 import axios from 'axios';
 import VueTable from './Table.vue';
 import UrlFilters from '../mixins/UrlFilters';
+import MergeClasses from "../mixins/MergeClasses";
 import DataTableCell from './DataTableCell.vue';
 import DataTableFilters from './DataTableFilters.vue';
 
@@ -113,8 +114,26 @@ export default {
             this.getData(this.url, this.getRequestPayload);
         }
 
+        const defaults = require("lodash.defaultsdeep");
+        this.computedClasses = defaults(this.classes,(window.LaravelVueDatatable || {}).classes || {},
+            {
+                "table-container": {
+                "table-responsive": true
+                },
+                table: {
+                table: true,
+                "table-striped": true,
+                border: true
+                },
+                "t-head": {},
+                "t-body": {},
+                td: {},
+                th: {}
+            }
+        );
+
         if (this.theme == "dark") {
-            this.classes['table']['table-dark'] = true;
+            this.computedClasses['table']['table-dark'] = true;
         }
 
         let debounce = require('lodash.debounce');
@@ -126,7 +145,7 @@ export default {
            this.sortOrders[column.name] = -1;
         });
     },
-    mixins: [UrlFilters],
+    mixins: [UrlFilters, MergeClasses],
     watch: {
         url: {
             handler: function(newUrl) {
@@ -173,6 +192,7 @@ export default {
                 filters: this.filters,
                 length: this.perPage[0],
             },
+            computedClasses: {},
         };
     },
     methods: {
@@ -240,6 +260,11 @@ export default {
                 this.getData();
             }
         },
+        bodyCellClasses(column) {
+            return this.mergeClasses(
+                typeof column.classes === "object" && column.classes["!override"] ? {} : this.computedClasses.td,
+                column.classes || {}, (column.classes || {}).td || {});
+        }
     },
     components: {
         'laravel-vue-table': VueTable,
@@ -360,11 +385,11 @@ export default {
         },
         translate: {
             type: Object,
-            default: () => ({
+            default: () => (Object.assign({}, {
                 nextButton: 'Next',
                 previousButton: 'Previous',
                 placeholderSearch: 'Search Table',
-            })
+            }, (window.LaravelVueDatatable || {}).translate || {})
         }
     },
 }

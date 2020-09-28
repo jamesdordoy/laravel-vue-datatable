@@ -37,7 +37,10 @@
 </template>
 
 <script>
+import MergeClasses from "../mixins/MergeClasses";
+
 export default {
+    mixins: [MergeClasses],
     data() {
         return {
             currentSort: '',
@@ -59,9 +62,12 @@ export default {
     },
     methods: {
         headerClasses(column) {
-            let classes = this.classes;
-            classes['table-header-sorting'] = column.orderable;
-            return classes;
+            return this.mergeClasses(
+                typeof column.classes === "object" && column.classes["!override"] ? {} : this.classes,
+                {"table-header-sorting": column.orderable},
+                column.classes || {}, 
+                (column.classes || {}).th || {}
+            );
         },
         sort(column) {
             this.setCurrentColumnSort(column.name);
