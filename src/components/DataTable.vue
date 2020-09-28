@@ -385,7 +385,7 @@ export default {
         },
         translate: {
             type: Object,
-            default: () => (Object.assign({}, {
+            default: () => Object.assign({}, {
                 nextButton: 'Next',
                 previousButton: 'Previous',
                 placeholderSearch: 'Search Table',
