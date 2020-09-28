@@ -13,12 +13,10 @@ export default {
               classes.push(...list);
             } else if (typeof list === "object") {
               for (let cls in list) {
-                if (
-                  list.hasOwnProperty(cls) &&
+                if (list.hasOwnProperty(cls) &&
                   typeof list[`${cls}`] !== "object" &&
                   list[`${cls}`] &&
-                  cls !== "!override"
-                ) {
+                  cls !== "!override") {
                   classes.push(cls);
                 }
               }
