@@ -74,7 +74,8 @@
     "vuex-persistedstate": "^2.5.4"
   },
   "files": [
-    "dist/*"
+    "dist/*",
+    "src/*"
   ],
   "eslintConfig": {
     "root": true,
