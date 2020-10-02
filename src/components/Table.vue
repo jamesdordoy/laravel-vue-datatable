@@ -27,8 +27,10 @@
 <script>
 
 import LaravelVueDataTableTh from './DataTableTh';
+import MergeClasses from "../mixins/MergeClasses";
 
 export default {
+    mixins: [MergeClasses],
     components: {
         LaravelVueDataTableTh
     },
@@ -68,9 +70,11 @@ export default {
     },
     methods: {
         headerClasses(column) {
-            let classes = this.tableHeadClasses;
-            classes['table-header-sorting'] = column.orderable;
-            return classes;
+            return this.mergeClasses(
+                this.tableHeadClasses,
+                {"table-header-sorting": column.orderable},
+                (column.columnClasses || {}).thead || {}
+            );
         },
         sort(column) {
             this.$emit('sort', column.name, column.columnName);
