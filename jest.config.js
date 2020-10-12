@@ -16,10 +16,10 @@ module.exports = {
     ],
     "setupFiles": ["jest-localstorage-mock"],
     "setupFilesAfterEnv": [
-        "<rootDir>/src/__tests__/bootstrap.js"
+        "<rootDir>/__tests__/bootstrap.js"
     ],
     "snapshotSerializers": ["jest-serializer-vue"],
     "testPathIgnorePatterns": [
-        "<rootDir>/src/__tests__/bootstrap.*"
+        "<rootDir>/__tests__/bootstrap.*"
     ]
 }

@@ -1,5 +1,5 @@
 //Imports
-import Table from '../components/Table'
+import Table from '../src/components/Table'
 import { shallowMount } from '@vue/test-utils'
 
 
@@ -9,9 +9,9 @@ describe('Table', () => {
             propsData: {
                 columns: [],
                 url: '',
-            }
+            },
         });
 
-        expect(wrapper.isVueInstance()).toBeTruthy()
+        expect(wrapper.isVueInstance()).toBeTruthy();
     });
 });

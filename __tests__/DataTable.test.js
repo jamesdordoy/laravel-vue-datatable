@@ -1,6 +1,6 @@
 //Imports
 import { shallowMount } from '@vue/test-utils'
-import DataTable from '../components/DataTable'
+import DataTable from '../src/components/DataTable'
 
 describe('Data Table', () => {
     test('can be mounted cleanly', () => {
@@ -24,6 +24,6 @@ describe('Data Table', () => {
             }
         });
 
-        expect(wrapper.isVueInstance()).toBeTruthy()
+        expect(wrapper.isVueInstance()).toBeTruthy();
     });
 });

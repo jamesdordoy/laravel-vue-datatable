@@ -74,6 +74,10 @@
                         </td>
                     </tr>
                 </tbody>
+                <slot
+                    name="footer"
+                    :table-props="tableProps">
+                </slot>
             </template>
         </laravel-vue-table>
 
@@ -115,20 +119,21 @@ export default {
         }
 
         const defaults = require("lodash.defaultsdeep");
+
         this.computedClasses = defaults(this.classes,(window.LaravelVueDatatable || {}).classes || {},
             {
                 "table-container": {
-                "table-responsive": true
+                    "table-responsive": true
                 },
-                table: {
-                table: true,
-                "table-striped": true,
-                border: true
+                "table": {
+                    "table": true,
+                    "table-striped": true,
+                    "border": true
                 },
                 "t-head": {},
                 "t-body": {},
-                td: {},
-                th: {}
+                "td": {},
+                "th": {}
             }
         );
 
@@ -179,7 +184,7 @@ export default {
     },
     data() {
         return {
-            debounceGetData: null,
+            debounceGetData: () => {},
             tableData: {},
             sortKey: 'id',
             sortOrders: {},

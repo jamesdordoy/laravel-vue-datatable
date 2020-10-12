@@ -4,17 +4,19 @@ import ColumnNotFoundException from "../exceptions/ColumnNotFoundException";
 
 export default {
     props: {
+        comp: {
+
+        },
+        transform: {
+            
+        },
         row: {
             type: Number,
+            default: 0,
         },
         column: {
             type: Number,
-        },
-        transform: {
-
-        },
-        comp: {
-
+            default: 0,
         },
         meta: {
             type: Object,
@@ -41,23 +43,33 @@ export default {
             default: () => ({}),
         },
     },
-    data() {
-        return {};
+    computed: {
+        getValueByDotNotation() {
+            let columnData;
+            let handle = this.name.split(".");
+
+            if (handle.length > 1) {
+                columnData = this.value;
+
+                handle.forEach(item => {
+                    columnData = columnData[item];
+                });
+            } else {
+                columnData = this.value[this.name];
+            }
+
+            return columnData;
+        }
     },
     render(createElement) {
-        let transformedValue;
 
-        if (typeof this.transform === 'function') {
-           transformedValue = this.transform({ row: this.row, column: this.column, name: this.name, data: this.value, meta: this.meta });
-        }
-        
+        //If a custom component is being used then just parse the data to the component
         if (this.comp) {
 
             let props = {
                 name: this.name,
                 data: this.value,
                 meta: this.meta,
-                transformed: transformedValue,
             };
 
             props[this.event] = this.handler;
@@ -69,28 +81,29 @@ export default {
                 },
             });
         }
-        
-        if (typeof this.transform === 'function') {
-            return createElement('span', {domProps:{innerHTML: transformedValue}})
+
+        //If we are tranforming the value then just parse data back to callback before rendering
+        if (this.transform) {
+            return createElement('span', {
+                domProps:{
+                    innerHTML: this.transform({ 
+                        row: this.row,
+                        column: this.column,
+                        name: this.name,
+                        data: this.value,
+                        meta: this.meta,
+                    }),
+                },
+            });
         }
 
-        let columnName;
-        let handle = this.name.split(".");
-
-        if (handle.length > 1) {
-            columnName = this.value;
-            for (let i = 0; i < handle.length; i++) {
-                columnName = columnName[handle[i]];
-            }
-        } else {
-            columnName = this.value[this.name];
-        }
-
-        if (typeof columnName === 'undefined' && ! this.comp && columnName) {
+        //If we have no value to present and a custom component isnt being loaded
+        if (! this.getValueByDotNotation && ! this.comp) {
             throw new ColumnNotFoundException(`The column ${this.name} was not found`);
         }
         
-        return createElement('span', {domProps:{innerHTML: columnName}});
+        //Default
+        return createElement('span', {domProps:{innerHTML: this.getValueByDotNotation}});
     }
 }
 </script>
