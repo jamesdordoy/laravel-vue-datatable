@@ -1,8 +1,8 @@
 <template>
-    <div class="row mb-3">
-        <div class="col-md-3">
+    <div :class="containerClasses">
+        <div :class="firstHalfClasses">
             <select
-                class="form-control"
+                :class="selectClasses"
                 v-model="tableData.length">
                 <option
                     :key="index"
@@ -12,10 +12,10 @@
                 </option>
             </select>
         </div>
-        <div class="col-md-3 offset-md-6">
+        <div :class="secondHalfClasses">
             <input
-                name="name"
-                class="form-control"
+                name="table-search"
+                :class="inputClasses"
                 v-model="tableData.search"
                 :placeholder="placeholderSearch">
         </div>
@@ -38,6 +38,49 @@ export default {
         placeholderSearch:{
             type: String,
             default: 'Search Table',
+        },
+        framework: {
+            type: String,
+            default: "bootstrap",
+            validator: function (value) {
+                return [
+                    'bootstrap',
+                    'tailwind',
+                ].indexOf(value) !== -1;
+            }
+        },
+    },
+    computed: {
+        containerClasses() {
+            return  {
+                "mb-3": true,
+                "row": this.framework === "bootstrap",
+                "flex flex-wrap justify-between": this.framework === "tailwind"
+            }
+        },
+        firstHalfClasses() {
+            return  {
+                "col-md-3": this.framework === "bootstrap",
+                "w-1/4" : this.framework === "tailwind"
+            }
+        },
+        secondHalfClasses() {
+            return  {
+                "col-md-3 offset-md-6": this.framework === "bootstrap",
+                "w-1/4 ": this.framework === "tailwind"
+            }
+        },
+        inputClasses() {
+            return  {
+                "form-control": this.framework === "bootstrap",
+                "w-full px-4 py-2 focus:bg-gray-300 max-w-full focus:outline-none border border-gray-200 rounded text-gray-700": this.framework === "tailwind"
+            }
+        },
+        selectClasses() {
+            return  {
+                "form-control": this.framework === "bootstrap",
+                "w-full px-4 py-2 focus:bg-gray-300 max-w-full focus:outline-none border border-gray-200 rounded text-gray-700": this.framework === "tailwind"
+            }
         }
     }
 }

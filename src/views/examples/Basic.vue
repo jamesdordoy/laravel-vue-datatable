@@ -22,6 +22,7 @@
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Credentials": true,  
             }'
+            :framework="framework"
             :url="url"
             v-show="!code"
             :columns="columns">
@@ -49,6 +50,7 @@
         data() {
             return {
                 url: process.env.VUE_APP_ELOQUENT_URL,
+                framework: "tailwind",
                 columns: [
                     {
                         label: 'ID',

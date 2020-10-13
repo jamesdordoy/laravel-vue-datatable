@@ -9,6 +9,11 @@ module.exports = {
     },
     extend: {},
   },
-  variants: {},
+  variants: {
+    opacity: ['disabled'],
+    cursor: ['disabled', 'hover'],
+    zIndex: ['focus'],
+    backgroundColor: ['hover', 'focus', 'even'],
+  },
   plugins: [],
 }

@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div
+        :class="getClasses.container">
         <!-- Top Filters -->
         <slot
             :url="url"
@@ -8,6 +9,7 @@
             :table-data="tableProps">
             <laravel-vue-data-table-filters
                 :per-page="perPage"
+                :framework="framework"
                 :table-data="tableProps"
                 :placeholder-search="translate.placeholderSearch">
             </laravel-vue-data-table-filters>
@@ -20,11 +22,11 @@
             :columns="columns"
             :dir="tableProps.dir"
             :sortOrders="sortOrders"
-            :table-classes="computedClasses.table"
-            :table-head-classes="computedClasses['th']"
-            :table-header-classes="computedClasses['t-head']"
-            :table-row-classes="computedClasses['t-head-tr']"
-            :table-container-classes="computedClasses['table-container']">
+            :table-classes="getClasses.table"
+            :table-head-classes="getClasses['th']"
+            :table-header-classes="getClasses['t-head']"
+            :table-row-classes="getClasses['t-head-tr']"
+            :table-container-classes="getClasses['table-container']">
             <!-- Table Header -->
             <template
                 slot="header"
@@ -46,19 +48,19 @@
             <template slot="body" v-else>
                 <tbody
                     v-if="columns"
-                    :class="computedClasses['t-body']"
+                    :class="getClasses['t-body']"
                     class="laravel-vue-datatable-tbody">
                     <tr
                         :key="item.id"
-                        :class="computedClasses['t-body-tr']"
+                        :class="getClasses['t-body-tr']"
                         v-for="(item, rowIndex) in tableData.data"
                         @click="$emit('row-clicked', item)"
                         class="laravel-vue-datatable-tbody-tr">
                         <td 
                             :key="column.name"
+                            class="laravel-vue-datatable-td"
                             :class="bodyCellClasses(column)"
-                            v-for="(column, columnIndex) in columns"
-                            class="laravel-vue-datatable-td">
+                            v-for="(column, columnIndex) in columns">
                             <laravel-vue-data-table-cell
                                 :row="rowIndex"
                                 :column="columnIndex"
@@ -81,21 +83,23 @@
             </template>
         </laravel-vue-table>
 
+
         <!-- Bottom Filters -->
         <slot
             :page="page"
             name="pagination"
             :meta="tableData.meta"
             :links="tableData.links">
-            <laravel-pagination
+            
+            <tailable-pagination
                 :data="tableData"
+                :translate="translate"
                 :size="pagination.size"
                 :limit="pagination.limit"
-                :align="pagination.align"
-                @pagination-change-page="paginationChangePage">
-                    <span slot="prev-nav">{{ translate.previousButton }}</span>
-                    <span slot="next-nav">{{ translate.nextButton }}</span>
-            </laravel-pagination>
+                :showNumbers="true"
+                :framework="framework"
+                @page-changed="paginationChangePage">
+            </tailable-pagination>
         </slot>
         
     </div>
@@ -104,11 +108,12 @@
 <script>
 
 import axios from 'axios';
-import VueTable from './Table.vue';
+import VueTable from './Table';
+
+import DataTableCell from './DataTableCell';
 import UrlFilters from '../mixins/UrlFilters';
 import MergeClasses from "../mixins/MergeClasses";
-import DataTableCell from './DataTableCell.vue';
-import DataTableFilters from './DataTableFilters.vue';
+import DataTableFilters from './DataTableFilters';
 
 export default {
     created() {
@@ -116,29 +121,6 @@ export default {
             this.checkParameters(this.tableProps);
         } else if(this.url) {
             this.getData(this.url, this.getRequestPayload);
-        }
-
-        const defaults = require("lodash.defaultsdeep");
-
-        this.computedClasses = defaults(this.classes,(window.LaravelVueDatatable || {}).classes || {},
-            {
-                "table-container": {
-                    "table-responsive": true
-                },
-                "table": {
-                    "table": true,
-                    "table-striped": true,
-                    "border": true
-                },
-                "t-head": {},
-                "t-body": {},
-                "td": {},
-                "th": {}
-            }
-        );
-
-        if (this.theme == "dark") {
-            this.computedClasses['table']['table-dark'] = true;
         }
 
         let debounce = require('lodash.debounce');
@@ -197,7 +179,6 @@ export default {
                 filters: this.filters,
                 length: this.perPage[0],
             },
-            computedClasses: {},
         };
     },
     methods: {
@@ -267,7 +248,7 @@ export default {
         },
         bodyCellClasses(column) {
             return this.mergeClasses(
-                typeof column.columnClasses === "object" && column.columnClasses["!override"] ? {} : this.computedClasses.td,
+                typeof column.columnClasses === "object" && column.columnClasses["!override"] ? {} : this.getClasses.td,
                 column.columnClasses || {}, (column.columnClasses || {}).td || {});
         }
     },
@@ -275,6 +256,7 @@ export default {
         'laravel-vue-table': VueTable,
         'laravel-vue-data-table-cell': DataTableCell,
         'laravel-vue-data-table-filters': DataTableFilters,
+
     },
     computed: {
         bodySlot() {
@@ -301,6 +283,59 @@ export default {
                 headers: this.headers,
             };
         },
+        getClasses() {
+            const defaults = require("lodash.defaultsdeep");
+
+            if (this.framework === "tailwind") {
+                return defaults(this.classes, (window.LaravelVueDatatable || {}).classes || {},
+                    {
+                        "container": {
+                            "w-full": true
+                        },
+                        "table-container": {
+                            "w-full overflow-x-auto rounded-t": true
+                        },
+                        "table": {
+                            "min-w-full": true,
+                        },
+                        "t-head": {
+                            "bg-gray-100": true,
+                            "border": true,
+                        },
+                        "t-body": {
+                            "bg-white border-r border-l border-b": true,
+                        },
+                        "t-body-tr": {
+                            "bg-white even:bg-gray-100": true,
+                        },
+                        "td": {
+                            "px-4 py-3 whitespace-no-wrap border-b border-gray-200": true,
+                        },
+                        "th": {
+                            "px-4 py-4 text-xs whitespace-no-wrap hover:cursor-pointer": true,
+                        }
+                    }
+                ); 
+            }
+
+            return defaults(this.classes, (window.LaravelVueDatatable || {}).classes || {},
+                {
+                    "table-container": {
+                        "table-responsive": true
+                    },
+                    "table": {
+                        "table": true,
+                        'table-dark': this.theme == "dark", 
+                        "table-striped": true,
+                        "border": true
+                    },
+                    "t-head": {},
+                    "t-body": {},
+                    "td": {},
+                    "th": {}
+                }
+            ); 
+        }
     },
     props: {
         columns: {
@@ -354,6 +389,16 @@ export default {
                 return [
                     'asc',
                     'desc'
+                ].indexOf(value) !== -1;
+            }
+        },
+        framework: {
+            type: String,
+            default: "bootstrap",
+            validator: function (value) {
+                return [
+                    'bootstrap',
+                    'tailwind',
                 ].indexOf(value) !== -1;
             }
         },

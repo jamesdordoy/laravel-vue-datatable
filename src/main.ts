@@ -19,6 +19,11 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import './assets/styles/main.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
+
+import TailablePagination from 'pagination';
+
+Vue.use(TailablePagination);
+
 Vue.use(VueSweetalert2);
 
 //Plugin Useage
