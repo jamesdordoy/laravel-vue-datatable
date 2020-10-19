@@ -8,7 +8,7 @@ const purgecss = postcssPurgecss({
     // Specify the paths to all of the template files in your project.
     content: [
         './public/**/*.html',
-        './src/**/*.vue',
+        './documentation/**/*.vue',
     ],
     // Include any special characters you're using in this regular expression.
     // See: https://tailwindcss.com/docs/controlling-file-size/#understanding-the-regex

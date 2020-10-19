@@ -60,8 +60,8 @@
     import DataTable from '@/components/DataTable.vue';
     import VueSwitch from '../../example-components/Switch';
     import InformationAlert from '../../example-components/InformationAlert';
-    import DataTableButtonCell from '../../example-components/DataTableButtonCell.vue';
     import CustomFiltersMarkdown from '../../markdown/examples/custom-filters.md';
+    import DataTableButtonCell from '../../example-components/DataTableButtonCell.vue';
 
     export default {
         name: 'Custom-Filters',
@@ -104,6 +104,7 @@
                         label: 'Active',
                         name: 'is_active',
                         orderable: true,
+                        transform: ({data, name}) => data[name] ? "Active" : "Inactive",
                     },
                     {
                         label: '',

@@ -1,15 +1,9 @@
 <script>
 
-import ColumnNotFoundException from "../exceptions/ColumnNotFoundException";
-
 export default {
     props: {
-        comp: {
-
-        },
-        transform: {
-            
-        },
+        comp: {},
+        transform: {},
         row: {
             type: Number,
             default: 0,
@@ -82,7 +76,7 @@ export default {
             });
         }
 
-        //If we are tranforming the value then just parse data back to callback before rendering
+        //If we are transforming the value then just parse data back to callback before rendering
         if (this.transform) {
             return createElement('span', {
                 domProps:{

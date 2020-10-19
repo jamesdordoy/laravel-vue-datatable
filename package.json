@@ -17,7 +17,7 @@
     "url": "https://github.com/jamesdordoy/Laravel-Vue-Datatable.git"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve documentation/main.ts",
     "build": "vue-cli-service build --target lib src/plugin.ts",
     "build-docs": "vue-cli-service build",
     "lint": "vue-cli-service lint",

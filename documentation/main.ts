@@ -16,7 +16,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 //Import Plugin
-import DataTable from './plugin';
+import DataTable from '../src/plugin';
 
 //Import Styles (Tailwind)
 import './assets/styles/main.css';
