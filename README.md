@@ -10,8 +10,7 @@ Note: this package will be moving to tailwind in the near future.
 * [Vue.js](https://vuejs.org/) 2.x
 * [Laravel](http://laravel.com/docs/) 5.x
 * [Bootstrap](http://getbootstrap.com/) 4 (Optional)
-
-This package makes use of an optional default component, the [Laravel Vue Pagination](https://github.com/gilbitron/laravel-vue-pagination)  component created by [gilbitron](https://github.com/gilbitron). If you need a pagination component for other areas of your website and you are using a Laravel API &amp; Bootstrap, i highly suggest using this flexible component.
+* [Tailwind](https://tailwindcss.com/) 1.* (Optional)
 
 ## Demo & Docs
 
@@ -22,11 +21,6 @@ See [https://jamesdordoy.github.io/laravel-vue-datatable/](https://jamesdordoy.g
 
 ## Laravel Package Installation
 See details [https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package](https://github.com/jamesdordoy/Laravel-Vue-Datatable_Laravel-Package)
-
-## Note: I am looking for co-maintainers!
-If anyone has some experiance with JavaScript, Vue or PHP & Laravel i would love to get some help maintaining this package. Testing and CI is a major concern at the moment and given time, i'd much prefer to maintain this package using TypeScript.
-
-Please email me if you would like to help maintain the package.
 
 ## Component Installation
 
@@ -152,6 +146,7 @@ Alternatively, if you have custom filters applied and you would prefered they ar
 | `component` | Component | null | (optional) A dynamic component that can be injected |
 | `event` | String | "" | (optional) Event type to parse to the component e.g. click, focus etc. |
 | `handler` | Function | () => {} | (optional) Function to parse for the event handler |
+| `transform` | Function | () => {} | (optional) Function to parse to manipulate the result. e.g. add currency symbol |
 | `classes` | Object | {} | (optional) Component classes to parse |
 | `meta` | Object | {} | (optional) Additional values that are parsed to component |
 
