@@ -31,11 +31,11 @@
 <script>
 
     import CodeExample from '../../mixins/CodeExample';
-    import Modal from '@/components/generic/Modal';
+    import Modal from '../../example-components/Modal';
     import DataTable from '@/components/DataTable.vue';
-    import VueSwitch from '@/components/generic/Switch';
+    import VueSwitch from '../../example-components/Switch';
     import ModalMarkdown from '../../markdown/examples/modal.md';
-    import ModalButton from '@/components/generic/ModalButton';
+    import ModalButton from '../../example-components/ModalButton';
     
     export default {
         name: 'Modal-Example',

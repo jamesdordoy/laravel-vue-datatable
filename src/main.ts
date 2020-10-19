@@ -31,8 +31,8 @@ Vue.use(VueHighlightJS);
 
 //Font Awesome
 import { faEye } from '@fortawesome/free-regular-svg-icons';
-import { faInfoCircle, faTable, faProjectDiagram, faRestroom, faHammer, faEllipsisV, faBars } from '@fortawesome/free-solid-svg-icons';
 import { faVuejs, faPhp, faLaravel, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faInfoCircle, faTable, faProjectDiagram, faRestroom, faHammer, faEllipsisV, faBars } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
     faBars,

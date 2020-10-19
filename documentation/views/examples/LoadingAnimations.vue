@@ -37,9 +37,9 @@
     import 'vue-loading-overlay/dist/vue-loading.css';
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
-    import VueSwitch from '@/components/generic/Switch';
     import LoadingAnimationsMarkdown from '../../markdown/examples/loading-animations.md';
-    import InformationAlert from '@/components/generic/InformationAlert.vue';
+    import VueSwitch from '../../example-components/Switch';
+    import InformationAlert from '../../example-components/InformationAlert';
     
     export default {
         name: 'LoadingAnimations',

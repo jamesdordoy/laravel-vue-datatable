@@ -24,19 +24,16 @@
 <script>
 
     import CorrectTextStyling from '../../../mixins/CorrectTextStyling';
-    import InformationAlert from '@/components/generic/InformationAlert.vue';
-    import RelationshipMarkdown from '../../../markdown/examples/relationships/introduction.md';
+    import InformationAlert from '../../../example-components/InformationAlert.vue';
     import MySqlConfig from '../../../markdown/examples/relationships/mysql-config.md';
+    import RelationshipMarkdown from '../../../markdown/examples/relationships/introduction.md';
     
     export default {
         name: 'Relationships-Introduction',
         mixins: [CorrectTextStyling],
         components: {
-            // eslint-disable-next-line
             RelationshipMarkdown,
-            // eslint-disable-next-line
             InformationAlert,
-            // eslint-disable-next-line
             MySqlConfig
         },
     }

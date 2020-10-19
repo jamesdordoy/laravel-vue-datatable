@@ -50,8 +50,8 @@
 <script>
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
-    import VueSwitch from '@/components/generic/Switch';
-    import InformationAlert from '@/components/generic/InformationAlert.vue';
+    import VueSwitch from '../../example-components/Switch';
+    import InformationAlert from '../../example-components/InformationAlert';
     import OverrideTableBodyMarkdown from '../../markdown/examples/override-table-body.md';
     
     export default {

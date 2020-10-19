@@ -84,10 +84,10 @@
 
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
-    import VueSwitch from '@/components/generic/Switch';
+    import VueSwitch from '../../example-components/Switch';
+    import InformationAlert from '../../example-components/InformationAlert';
     import JoinsPhpMarkdown from '../../markdown/examples/joins-php.md';
     import JoinsJsMarkdown from '../../markdown/examples/joins-js.md';
-    import InformationAlert from '@/components/generic/InformationAlert.vue';
     
     export default {
         name: 'Basic',

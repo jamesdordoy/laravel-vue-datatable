@@ -30,7 +30,8 @@
     import CodeExample from '../../mixins/CodeExample';
 
     import DataTable from '@/components/DataTable.vue';
-    import VueSwitch from '@/components/generic/Switch';
+    import VueSwitch from '../../example-components/Switch';
+    import InformationAlert from '../../example-components/InformationAlert';
     import OwnDataMarkdown from '../../markdown/examples/own-data.md';
     
     export default {

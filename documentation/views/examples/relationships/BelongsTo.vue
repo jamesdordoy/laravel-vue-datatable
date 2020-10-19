@@ -30,25 +30,20 @@
 
 <script>
 
-    import CodeExample from '../../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
-    import VueSwitch from '@/components/generic/Switch';
-    import InformationAlert from '@/components/generic/InformationAlert.vue';
+    import CodeExample from '../../../mixins/CodeExample';
+    import VueSwitch from '../../../example-components/Switch';
+    import InformationAlert from '../../../example-components/InformationAlert.vue';
     import BelongsToJsMarkdown from '../../../markdown/examples/relationships/belongs-to-js.md';
     import BelongsToPhpMarkdown from '../../../markdown/examples/relationships/belongs-to-php.md';
     
     export default {
         name: 'Basic',
         components: {
-            // eslint-disable-next-line
             DataTable,
-            // eslint-disable-next-line
             VueSwitch,
-            // eslint-disable-next-line
             InformationAlert,
-            // eslint-disable-next-line
             BelongsToJsMarkdown,
-            // eslint-disable-next-line
             BelongsToPhpMarkdown,
         },
         mixins: [CodeExample],

@@ -45,11 +45,11 @@ p, h1, h2, h3, h4, h5 {
 </style>
 
 <script>
-    import Navbar from './components/custom/Navbar.vue';
-    import PageHeader from './components/custom/Header.vue';
+    import Navbar from '../documentation/components/Navbar';
+    import PageHeader from '../documentation/components/Header';
 
     export default {
-        name: 'Documentation',
+        name: 'Laravel Vue Datatable Documentation',
         components: {
             PageHeader,
             Navbar,

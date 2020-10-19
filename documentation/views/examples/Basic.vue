@@ -27,8 +27,8 @@
 <script>
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
-    import VueSwitch from '@/components/generic/Switch';
     import BasicMarkdown from '../../markdown/examples/basic.md';
+    import VueSwitch from '../../example-components/Switch';
     
     export default {
         name: 'Basic',

@@ -34,10 +34,10 @@
 
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
-    import VueSwitch from '@/components/generic/Switch';
-    import DataTableImageCell from '@/components/generic/DataTableImageCell';
-    import InformationAlert from '@/components/generic/InformationAlert.vue';
-    import DataTableButtonCell from '@/components/generic/DataTableButtonCell.vue';
+    import VueSwitch from '../../example-components/Switch';
+    import InformationAlert from '../../example-components/InformationAlert';
+    import DataTableImageCell from '../../example-components/DataTableImageCell';
+    import DataTableButtonCell from '../../example-components/DataTableButtonCell.vue';
     import DynamicMarkdown from '../../markdown/examples/injecting-dynamic-components.md';
 
     export default {

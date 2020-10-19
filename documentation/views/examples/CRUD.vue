@@ -27,7 +27,7 @@
 <script>
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
-    import VueSwitch from '@/components/generic/Switch';
+    import VueSwitch from '../../example-components/Switch';
     import CrudMarkdown from '../../markdown/examples/crud.md';
     
     export default {

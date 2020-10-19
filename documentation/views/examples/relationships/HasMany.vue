@@ -30,31 +30,22 @@
 
 <script>
 
-    import CodeExample from '../../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
-    import VueSwitch from '@/components/generic/Switch';
-    import BasicMarkdown from '../../../markdown/examples/basic.md';
-    import InformationAlert from '@/components/generic/InformationAlert.vue';
-    import DataTableSelectCell from '@/components/generic/DataTableSelectCell.vue';
+    import CodeExample from '../../../mixins/CodeExample';
+    import VueSwitch from '../../../example-components/Switch';
+    import InformationAlert from '../../../example-components/InformationAlert.vue';
+    import DataTableSelectCell from '../../../example-components/DataTableSelectCell.vue';
     import HasManyJsMarkdown from '../../../markdown/examples/relationships/has-many-js.md';
     import HasManyPhpMarkdown from '../../../markdown/examples/relationships/has-many-php.md';
     
     export default {
         name: 'HasMany-Example',
         components: {
-            // eslint-disable-next-line
             DataTable,
-            // eslint-disable-next-line
             VueSwitch,
-            // eslint-disable-next-line
-            BasicMarkdown,
-            // eslint-disable-next-line
             InformationAlert,
-            // eslint-disable-next-line
             DataTableSelectCell,
-            // eslint-disable-next-line
             HasManyJsMarkdown,
-            // eslint-disable-next-line
             HasManyPhpMarkdown,
         },
         mixins: [CodeExample],

@@ -85,8 +85,8 @@
     import 'vue-select/dist/vue-select.css';
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
-    import VueSwitch from '@/components/generic/Switch';
-    import InformationAlert from '@/components/generic/InformationAlert.vue';
+    import VueSwitch from '../../example-components/Switch';
+    import InformationAlert from '../../example-components/InformationAlert';
     import OverrideFiltersAndPagination from '../../markdown/examples/override-filters-and-pagination.md';
 
     export default {

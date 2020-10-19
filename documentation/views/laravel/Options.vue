@@ -1,6 +1,7 @@
 <template>
     <div>
         <pre v-highlightjs>
+            <h2 class="markdown-header">Package Options</h2>
             <options-markdown>
             </options-markdown>
         </pre>

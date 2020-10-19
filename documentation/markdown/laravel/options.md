@@ -1,5 +1,3 @@
-## Package Options
-
 ```php
 [
     'models' => [

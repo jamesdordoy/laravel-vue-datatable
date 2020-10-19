@@ -1,10 +1,6 @@
 <script>
-import VueSwitch from '../generic/Switch';
 
 export default {
-    components: {
-        VueSwitch,
-    },
     methods: {
         toggleMenu() {
             document.querySelector(".nav-container").classList.toggle('hidden')
@@ -27,14 +23,6 @@ export default {
                         </button>
                         Laravel Vue Datatable
                     </span>
-                </div>
-                <div class="w-1/3">
-                    <div class="block float-right">
-                        <p class="text-sm mb-0">Show Example Code&nbsp;&nbsp;
-                            <br class="lg:hidden">
-                            <vue-switch class="float-right"></vue-switch>
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
