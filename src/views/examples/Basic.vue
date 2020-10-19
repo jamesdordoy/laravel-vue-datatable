@@ -17,12 +17,6 @@
             </basic-markdown>
         </pre>
         <data-table
-            :headers='{
-                "Authorization": `Bearer token`,
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": true,  
-            }'
-            :framework="framework"
             :url="url"
             v-show="!code"
             :columns="columns">

@@ -6,7 +6,7 @@ import moment from 'moment'
 import App from './App.vue';
 import routes from './routes.js';
 import VueRouter from 'vue-router';
-import DataTable from './plugin.js';
+import DataTable from './plugin';
 import 'highlight.js/styles/github.css';
 import VueHighlightJS from 'vue-highlightjs';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,11 +18,6 @@ import VueSweetalert2 from 'vue-sweetalert2';
 
 import './assets/styles/main.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
-
-
-import TailablePagination from 'pagination';
-
-Vue.use(TailablePagination);
 
 Vue.use(VueSweetalert2);
 
