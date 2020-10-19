@@ -2,7 +2,7 @@
     <div>
         <div class="row">
             <div class="col-md-8">
-                <h2 class="markdown-header">Using your own data and requests</h2>
+                <h2 class="markdown-header">Basic Example</h2>
             </div>
             <div class="col-md-4 relative">
                 <div class="show-code-inline">
@@ -13,46 +13,38 @@
         </div>
 
         <pre v-highlightjs v-show="code">
-            <own-data-markdown>
-            </own-data-markdown>
+            <basic-markdown>
+            </basic-markdown>
         </pre>
         <data-table
-            :data="data"
+            :url="url"
             v-show="!code"
-            :columns="columns"
-            @onTablePropsChanged="reloadTable">
+            :columns="columns">
         </data-table>
     </div>
 </template>
 
 <script>
-    import axios from 'axios';
     import CodeExample from '../../mixins/CodeExample';
-    import DataTable from '../../components/DataTable.vue';
-    import VueSwitch from '../../components/generic/Switch';
-    import OwnDataMarkdown from '../../markdown/examples/own-data.md';
+    import DataTable from '@/components/DataTable.vue';
+    import VueSwitch from '@/components/generic/Switch';
+    import BasicMarkdown from '../../markdown/examples/basic.md';
     
     export default {
         name: 'Basic',
         components: {
             // eslint-disable-next-line
+            VueSwitch,
+            // eslint-disable-next-line
             DataTable,
             // eslint-disable-next-line
-            OwnDataMarkdown,
-            // eslint-disable-next-line
-            VueSwitch,
+            BasicMarkdown,
         },
         mixins: [CodeExample],
         data() {
             return {
                 url: process.env.VUE_APP_ELOQUENT_URL,
-                data: {},
-                tableProps: {
-                    search: '',
-                    length: 10,
-                    column: 'id',
-                    dir: 'asc'
-                },
+                framework: "tailwind",
                 columns: [
                     {
                         label: 'ID',
@@ -65,6 +57,12 @@
                         orderable: true,
                     },
                     {
+                        label: 'Cost (&pound;)',
+                        name: 'cost',
+                        orderable: true,
+                        transform: ({data, name}) => `&pound;${data[name]}`,
+                    },
+                    {
                         label: 'Email',
                         name: 'email',
                         orderable: true,
@@ -72,25 +70,5 @@
                 ]
             }
         },
-        created() {
-            this.getData(this.url);
-        },
-        methods: {
-            getData(url = this.url, options = this.tableProps) {
-                axios.get(url, {
-                    params: options
-                })
-                .then(response => {
-                    this.data = response.data;
-                })
-                // eslint-disable-next-line
-                .catch(errors => {
-                    //Handle Errors
-                })
-            },
-            reloadTable(tableProps) {
-                this.getData(this.url, tableProps);
-            }
-        }
     }
 </script>

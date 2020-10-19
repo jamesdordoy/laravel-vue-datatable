@@ -41,14 +41,14 @@
 
 <script>
     import CodeExample from '../../mixins/CodeExample';
-    import DataTable from '../../components/DataTable.vue';
-    import VueSwitch from '../../components/generic/Switch';
+    import DataTable from '@/components/DataTable.vue';
+    import VueSwitch from '@/components/generic/Switch';
     import TailwindMarkdown from '../../markdown/examples/tailwind.md';
-    import InformationAlert from '../../components/generic/InformationAlert.vue';
-    import DataTableDropdownCell from '../../components/generic/DataTableDropdownCell';
-    import DataTableCurrencyCell from '../../components/generic/DataTableCurrencyCell';
-    import DataTableIsActiveCell from '../../components/generic/DataTableIsActiveCell';
-    import DataTableNameAndImageCell from '../../components/generic/DataTableNameAndImageCell';
+    import InformationAlert from '@/components/generic/InformationAlert.vue';
+    import DataTableDropdownCell from '@/components/generic/DataTableDropdownCell';
+    import DataTableCurrencyCell from '@/components/generic/DataTableCurrencyCell';
+    import DataTableIsActiveCell from '@/components/generic/DataTableIsActiveCell';
+    import DataTableNameAndImageCell from '@/components/generic/DataTableNameAndImageCell';
     
     export default {
         name: 'Tailwind',

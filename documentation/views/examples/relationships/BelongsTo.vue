@@ -31,9 +31,9 @@
 <script>
 
     import CodeExample from '../../../mixins/CodeExample';
-    import DataTable from '../../../components/DataTable.vue';
-    import VueSwitch from '../../../components/generic/Switch';
-    import InformationAlert from '../../../components/generic/InformationAlert.vue';
+    import DataTable from '@/components/DataTable.vue';
+    import VueSwitch from '@/components/generic/Switch';
+    import InformationAlert from '@/components/generic/InformationAlert.vue';
     import BelongsToJsMarkdown from '../../../markdown/examples/relationships/belongs-to-js.md';
     import BelongsToPhpMarkdown from '../../../markdown/examples/relationships/belongs-to-php.md';
     

@@ -24,9 +24,9 @@
 
 <script>
     import CodeExample from '../../mixins/CodeExample';
-    import DataTable from '../../components/DataTable.vue';
+    import DataTable from '@/components/DataTable.vue';
     import StylingMarkdown from '../../markdown/examples/styling.md';
-    import InformationAlert from '../../components/generic/InformationAlert.vue';
+    import InformationAlert from '@/components/generic/InformationAlert.vue';
     
     export default {
         name: 'Datatable-Styling',

@@ -2,7 +2,7 @@
     <div>
         <div class="row">
             <div class="col-md-8">
-                <h2 class="markdown-header">BelongsToMany Example</h2>
+                <h2 class="markdown-header">HasMany Example</h2>
             </div>
             <div class="col-md-4 relative">
                 <div class="show-code-inline">
@@ -15,10 +15,10 @@
             Note that the Datatable columnName attributes reflect their table name as well. This is to avoid integrity contraint violations caused by ambiguoius column selection.
         </information-alert>
         <pre v-highlightjs v-show="code">
-            <belongs-to-many-php-markdown>
-            </belongs-to-many-php-markdown>
-            <belongs-to-many-js-markdown>
-            </belongs-to-many-js-markdown>
+            <has-many-php-markdown>
+            </has-many-php-markdown>
+            <has-many-js-markdown>
+            </has-many-js-markdown>
         </pre>
         <data-table
             v-show="!code"
@@ -31,16 +31,16 @@
 <script>
 
     import CodeExample from '../../../mixins/CodeExample';
-    import DataTable from '../../../components/DataTable.vue';
-    import VueSwitch from '../../../components/generic/Switch';
+    import DataTable from '@/components/DataTable.vue';
+    import VueSwitch from '@/components/generic/Switch';
     import BasicMarkdown from '../../../markdown/examples/basic.md';
-    import InformationAlert from '../../../components/generic/InformationAlert.vue';
-    import DataTableSelectCell from '../../../components/generic/DataTableSelectCell.vue';
-    import BelongsToManyJsMarkdown from '../../../markdown/examples/relationships/belongs-to-many-js.md';
-    import BelongsToManyPhpMarkdown from '../../../markdown/examples/relationships/belongs-to-many-php.md';
+    import InformationAlert from '@/components/generic/InformationAlert.vue';
+    import DataTableSelectCell from '@/components/generic/DataTableSelectCell.vue';
+    import HasManyJsMarkdown from '../../../markdown/examples/relationships/has-many-js.md';
+    import HasManyPhpMarkdown from '../../../markdown/examples/relationships/has-many-php.md';
     
     export default {
-        name: 'Basic',
+        name: 'HasMany-Example',
         components: {
             // eslint-disable-next-line
             DataTable,
@@ -53,14 +53,13 @@
             // eslint-disable-next-line
             DataTableSelectCell,
             // eslint-disable-next-line
-            BelongsToManyJsMarkdown,
+            HasManyJsMarkdown,
             // eslint-disable-next-line
-            BelongsToManyPhpMarkdown,
+            HasManyPhpMarkdown,
         },
         mixins: [CodeExample],
         data() {
             return {
-                name: 'BelongsToMany-Example',
                 url: process.env.VUE_APP_ELOQUENT_URL,
                 columns: [
                     {
@@ -82,9 +81,9 @@
                         orderable: true,
                     },
                     {
-                        label: 'Departments',
-                        name: 'departments',
-                        columnName: 'departments.name',
+                        label: 'Telephone Numbers',
+                        name: 'telephone_numbers',
+                        columnName: 'telephone_numbers.name',
                         component: DataTableSelectCell,
                         orderable: true,
                     },

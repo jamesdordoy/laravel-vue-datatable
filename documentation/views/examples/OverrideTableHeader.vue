@@ -41,9 +41,9 @@
 
 <script>
     import CodeExample from '../../mixins/CodeExample';
-    import DataTable from '../../components/DataTable.vue';
-    import VueSwitch from '../../components/generic/Switch';
-    import InformationAlert from '../../components/generic/InformationAlert.vue';
+    import DataTable from '@/components/DataTable.vue';
+    import VueSwitch from '@/components/generic/Switch';
+    import InformationAlert from '@/components/generic/InformationAlert.vue';
     import OverrideTableHeaderMarkdown from '../../markdown/examples/override-table-header.md';
     
     export default {

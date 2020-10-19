@@ -4,20 +4,22 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import moment from 'moment'
 import App from './App.vue';
-import routes from './routes.js';
+import routes from './routes';
 import VueRouter from 'vue-router';
-import DataTable from './plugin';
 import 'highlight.js/styles/github.css';
+import VueSweetalert2 from 'vue-sweetalert2';
 import VueHighlightJS from 'vue-highlightjs';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'sweetalert2/dist/sweetalert2.min.css';
 import createPersistedState from 'vuex-persistedstate';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-import VueSweetalert2 from 'vue-sweetalert2';
+//Import Plugin
+import DataTable from './plugin';
 
+//Import Styles (Tailwind)
 import './assets/styles/main.css';
-import 'sweetalert2/dist/sweetalert2.min.css';
 
 Vue.use(VueSweetalert2);
 

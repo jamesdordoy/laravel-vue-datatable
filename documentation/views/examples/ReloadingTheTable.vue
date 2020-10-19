@@ -38,7 +38,7 @@
 
 <script>
     import CodeExample from '../../mixins/CodeExample';
-    import VueSwitch from '../../components/generic/Switch';
+    import VueSwitch from '@/components/generic/Switch';
     import ReloadTheTableMarkdown from '../../markdown/examples/reloading-the-table.md';
     
     export default {

@@ -57,10 +57,10 @@
 <script>
 
     import CodeExample from '../../mixins/CodeExample';
-    import DataTable from '../../components/DataTable.vue';
-    import VueSwitch from '../../components/generic/Switch';
-    import InformationAlert from '../../components/generic/InformationAlert.vue';
-    import DataTableButtonCell from '../../components/generic/DataTableButtonCell.vue';
+    import DataTable from '@/components/DataTable.vue';
+    import VueSwitch from '@/components/generic/Switch';
+    import InformationAlert from '@/components/generic/InformationAlert.vue';
+    import DataTableButtonCell from '@/components/generic/DataTableButtonCell.vue';
     import CustomFiltersMarkdown from '../../markdown/examples/custom-filters.md';
 
     export default {

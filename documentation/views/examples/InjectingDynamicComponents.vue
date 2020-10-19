@@ -33,11 +33,11 @@
 <script>
 
     import CodeExample from '../../mixins/CodeExample';
-    import DataTable from '../../components/DataTable.vue';
-    import VueSwitch from '../../components/generic/Switch';
-    import DataTableImageCell from '../../components/generic/DataTableImageCell';
-    import InformationAlert from '../../components/generic/InformationAlert.vue';
-    import DataTableButtonCell from '../../components/generic/DataTableButtonCell.vue';
+    import DataTable from '@/components/DataTable.vue';
+    import VueSwitch from '@/components/generic/Switch';
+    import DataTableImageCell from '@/components/generic/DataTableImageCell';
+    import InformationAlert from '@/components/generic/InformationAlert.vue';
+    import DataTableButtonCell from '@/components/generic/DataTableButtonCell.vue';
     import DynamicMarkdown from '../../markdown/examples/injecting-dynamic-components.md';
 
     export default {

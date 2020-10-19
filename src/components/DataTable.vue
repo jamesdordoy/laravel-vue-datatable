@@ -93,15 +93,14 @@
             
             <tailable-pagination
                 :data="tableData"
+                :showNumbers="true"
+                :framework="framework"
                 :translate="translate"
                 :size="pagination.size"
                 :limit="pagination.limit"
-                :showNumbers="true"
-                :framework="framework"
                 @page-changed="paginationChangePage">
             </tailable-pagination>
         </slot>
-        
     </div>
 </template>
 
@@ -109,7 +108,6 @@
 
 import axios from 'axios';
 import VueTable from './Table';
-
 import DataTableCell from './DataTableCell';
 import UrlFilters from '../mixins/UrlFilters';
 import MergeClasses from "../mixins/MergeClasses";
@@ -123,7 +121,7 @@ export default {
             this.getData(this.url, this.getRequestPayload);
         }
 
-        let debounce = require('lodash.debounce');
+        const debounce = require('lodash.debounce');
 
         this.debounceGetData = debounce(this.getData, this.debounceDelay ? this.debounceDelay : 0);
     },
@@ -256,7 +254,6 @@ export default {
         'laravel-vue-table': VueTable,
         'laravel-vue-data-table-cell': DataTableCell,
         'laravel-vue-data-table-filters': DataTableFilters,
-
     },
     computed: {
         bodySlot() {

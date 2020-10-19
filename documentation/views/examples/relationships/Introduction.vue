@@ -24,7 +24,7 @@
 <script>
 
     import CorrectTextStyling from '../../../mixins/CorrectTextStyling';
-    import InformationAlert from '../../../components/generic/InformationAlert.vue';
+    import InformationAlert from '@/components/generic/InformationAlert.vue';
     import RelationshipMarkdown from '../../../markdown/examples/relationships/introduction.md';
     import MySqlConfig from '../../../markdown/examples/relationships/mysql-config.md';
     
