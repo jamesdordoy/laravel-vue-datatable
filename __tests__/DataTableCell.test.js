@@ -51,7 +51,7 @@ describe('Data Table Cell', () => {
                     name: 'james',
                 },
                 name: 'name',
-                transform: (data, name) => { return data[name].charAt(0).toUpperCase() + data[name].slice(1) }
+                transform: ({data, name}) => { return data[name].charAt(0).toUpperCase() + data[name].slice(1) }
             }
         });
 

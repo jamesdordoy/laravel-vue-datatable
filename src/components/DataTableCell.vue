@@ -86,13 +86,13 @@ export default {
         if (this.transform) {
             return createElement('span', {
                 domProps:{
-                    innerHTML: this.transform(
-                        this.value,
-                        this.name,
-                        this.row,
-                        this.column,
-                        this.meta
-                    ),
+                    innerHTML: this.transform({
+                        data: this.value,
+                        name: this.name,
+                        row: this.row,
+                        column: this.column,
+                        meta: this.meta,
+                    }),
                 },
             });
         }

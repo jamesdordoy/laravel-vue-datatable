@@ -97,13 +97,13 @@
                         label: 'Status',
                         name: 'is_active',
                         orderable: true,
-                        transform: (data, name) => data[name] ? "Active" : "Inactive",
+                        transform: ({data, name}) => data[name] ? "Active" : "Inactive",
                     },
                     {
                         label: 'Cost',
                         name: 'cost',
                         orderable: true,
-                        transform: (data, name) => `£${data[name]}`,
+                        transform: ({data, name}) => `£${data[name]}`,
                     },
                     {
                         label: '',
