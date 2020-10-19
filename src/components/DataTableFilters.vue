@@ -23,6 +23,9 @@
 </template>
 
 <script>
+
+import FrameworkValidator from "@/validators/data-table-framework";
+
 export default {
     props: {
         tableData: {
@@ -42,12 +45,7 @@ export default {
         framework: {
             type: String,
             default: "bootstrap",
-            validator: function (value) {
-                return [
-                    'bootstrap',
-                    'tailwind',
-                ].indexOf(value) !== -1;
-            }
+            validator: FrameworkValidator,
         },
     },
     computed: {

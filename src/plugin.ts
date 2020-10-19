@@ -1,6 +1,6 @@
 import DataTable from "./components/DataTable.vue";
-import DataTableCell from "./components/DataTableCell.vue";
 import { TailablePagination } from 'tailable-pagination';
+import DataTableCell from "./components/DataTableCell.vue";
 
 export default {
     install(Vue) {

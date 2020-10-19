@@ -112,6 +112,9 @@ import DataTableCell from './DataTableCell';
 import UrlFilters from '../mixins/UrlFilters';
 import MergeClasses from "../mixins/MergeClasses";
 import DataTableFilters from './DataTableFilters';
+import ThemeValidator from "@/validators/data-table-theme";
+import OrderDirValidator from "@/validators/data-table-order-dir";
+import FrameworkValidator from "@/validators/data-table-framework";
 
 export default {
     created() {
@@ -382,32 +385,17 @@ export default {
         orderDir: {
             type: String,
             default: "asc",
-            validator: function (value) {
-                return [
-                    'asc',
-                    'desc'
-                ].indexOf(value) !== -1;
-            }
+            validator: OrderDirValidator
         },
         framework: {
             type: String,
             default: "bootstrap",
-            validator: function (value) {
-                return [
-                    'bootstrap',
-                    'tailwind',
-                ].indexOf(value) !== -1;
-            }
+            validator: FrameworkValidator
         },
         theme: {
             type: String,
             default: "light",
-            validator: function (value) {
-                return [
-                    'light',
-                    'dark'
-                ].indexOf(value) !== -1;
-            }
+            validator: ThemeValidator,
         },
         classes: {
             type: Object,

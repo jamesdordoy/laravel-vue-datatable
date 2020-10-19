@@ -7,16 +7,19 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 
     import InstallMarkdown from '../markdown/install.md';
+    import { Component, Vue } from 'vue-property-decorator';
     import CorrectTextStyling from '../mixins/CorrectTextStyling';
     
-    export default {
+    @Component({
         name: 'Component-Install',
         mixins: [CorrectTextStyling],
         components: {
             InstallMarkdown
         },
-    }
+    })
+
+    export default class Install extends Vue {}
 </script>
