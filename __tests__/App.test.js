@@ -1,5 +1,5 @@
 //Imports
-import App from '../src/App'
+import App from '../documentation/App'
 import { shallowMount } from '@vue/test-utils'
 
 describe('Laravel Vue Data Tables Demo', () => {

@@ -1,7 +1,6 @@
 //Imports
 import { shallowMount } from '@vue/test-utils'
 import DataTableCell from '../src/components/DataTableCell'
-import ColumnNotFoundException from '../src/exceptions/ColumnNotFoundException';
 
 describe('Data Table Cell', () => {
     test('can be mounted cleanly', () => {
