@@ -44,16 +44,6 @@ describe('Data Table Cell', () => {
         expect(wrapper.text()).toBe('test');
     });
 
-    test('can throw no column found exception', () => {
-        
-        try {
-            shallowMount(DataTableCell);
-        }
-        catch(error) {
-            expect(error).toBeInstanceOf(ColumnNotFoundException);
-        }
-    });
-
     test('can tranform values', () => {
         const wrapper = shallowMount(DataTableCell, {
             propsData: {
@@ -61,7 +51,7 @@ describe('Data Table Cell', () => {
                     name: 'james',
                 },
                 name: 'name',
-                transform: (row) => { return row.data.name.charAt(0).toUpperCase() + row.data.name.slice(1) }
+                transform: (data, name) => { return data[name].charAt(0).toUpperCase() + data[name].slice(1) }
             }
         });
 

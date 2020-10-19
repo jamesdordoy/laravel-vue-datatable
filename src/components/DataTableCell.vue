@@ -86,20 +86,15 @@ export default {
         if (this.transform) {
             return createElement('span', {
                 domProps:{
-                    innerHTML: this.transform({ 
-                        row: this.row,
-                        column: this.column,
-                        name: this.name,
-                        data: this.value,
-                        meta: this.meta,
-                    }),
+                    innerHTML: this.transform(
+                        this.value,
+                        this.name,
+                        this.row,
+                        this.column,
+                        this.meta
+                    ),
                 },
             });
-        }
-
-        //If we have no value to present and a custom component isnt being loaded
-        if (! this.getValueByDotNotation && ! this.comp) {
-            throw new ColumnNotFoundException(`The column ${this.name} was not found`);
         }
         
         //Default

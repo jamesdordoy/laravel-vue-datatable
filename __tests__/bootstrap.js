@@ -18,4 +18,6 @@ global.console = {
 
 Vue.use(VueRouter);
 
-Vue.component('laravel-pagination', require('laravel-vue-pagination'));
+import { TailablePagination } from 'tailable-pagination';
+
+Vue.component('tailable-pagination', TailablePagination);
