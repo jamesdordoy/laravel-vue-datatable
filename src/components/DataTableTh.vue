@@ -36,46 +36,50 @@
     </th>
 </template>
 
-<script>
-import MergeClasses from "../mixins/MergeClasses";
+<script lang="ts">
 
-export default {
-    mixins: [MergeClasses],
-    data() {
-        return {
-            currentSort: '',
-        };
-    },
-    props: {
-        column: {
-            type: Object,
-            default: () => ({}),
-            required: true,
-        },
-        classes: {
-            type: Object,
-            default: () => ({}),
-        },
-        dir: {
-            type: String
-        }
-    },
-    methods: {
-        headerClasses(column) {
-            return this.mergeClasses(
-                typeof column.columnClasses === "object" && column.columnClasses["!override"] ? {} : this.classes,
-                {"table-header-sorting": column.orderable},
-                column.columnClasses || {}, 
-                (column.columnClasses || {}).th || {}
-            );
-        },
-        sort(column) {
-            this.setCurrentColumnSort(column.name);
-            this.$emit('sort', column);
-        },
-        setCurrentColumnSort(columnName) {
-            this.currentSort = columnName;
-        }
-    },
+import MergeClasses from "../functions/MergeClasses";
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import OrderDirValidator from "@/validators/data-table-order-dir";
+
+@Component
+export default class DataTableTh extends Vue {
+
+    private currentSort: string = '';
+
+    @Prop({
+        type: Object,
+        default: () => ({}),
+    }) private classes: object;
+
+    @Prop({
+        type: Object,
+        required: true,
+        default: () => ({}),
+    }) private column: object;
+
+    @Prop({
+        type: String,
+        default: 'asc',
+        validator: OrderDirValidator,
+    }) private dir: string;
+
+    private headerClasses(column) {
+        return MergeClasses(
+            typeof column.columnClasses === "object" && column.columnClasses["!override"] ? {} : this.classes,
+            {"table-header-sorting": column.orderable},
+            column.columnClasses || {}, 
+            (column.columnClasses || {}).th || {}
+        );
+    }
+
+    private sort(column): void {
+        this.setCurrentColumnSort(column.name);
+        this.$emit('sort', column);
+    }
+    
+    private setCurrentColumnSort(columnName): void {
+        this.currentSort = columnName;
+    }
 }
 </script>

@@ -112,11 +112,35 @@ import DataTableCell from './DataTableCell';
 import UrlFilters from '../mixins/UrlFilters';
 import MergeClasses from "../mixins/MergeClasses";
 import DataTableFilters from './DataTableFilters';
+import TailwindTableTheme from "@/themes/Tailwind";
+import BootstrapTableTheme from "@/themes/Bootstrap";
 import ThemeValidator from "@/validators/data-table-theme";
 import OrderDirValidator from "@/validators/data-table-order-dir";
 import FrameworkValidator from "@/validators/data-table-framework";
 
 export default {
+    components: {
+        'laravel-vue-table': VueTable,
+        'laravel-vue-data-table-cell': DataTableCell,
+        'laravel-vue-data-table-filters': DataTableFilters,
+    },
+    data() {
+        return {
+            debounceGetData: () => {},
+            tableData: {},
+            sortKey: 'id',
+            sortOrders: {},
+            draw: 0,
+            page: 1,
+            tableProps: {
+                search: '',
+                dir: this.orderDir,
+                column: this.orderBy,
+                filters: this.filters,
+                length: this.perPage[0],
+            },
+        };
+    },
     created() {
         if (this.addFiltersToUrl) {
             this.checkParameters(this.tableProps);
@@ -165,23 +189,7 @@ export default {
             }
         }
     },
-    data() {
-        return {
-            debounceGetData: () => {},
-            tableData: {},
-            sortKey: 'id',
-            sortOrders: {},
-            draw: 0,
-            page: 1,
-            tableProps: {
-                search: '',
-                dir: this.orderDir,
-                column: this.orderBy,
-                filters: this.filters,
-                length: this.perPage[0],
-            },
-        };
-    },
+    
     methods: {
         async getData(url = this.url, options = this.getRequestPayload) {
 
@@ -253,11 +261,7 @@ export default {
                 column.columnClasses || {}, (column.columnClasses || {}).td || {});
         }
     },
-    components: {
-        'laravel-vue-table': VueTable,
-        'laravel-vue-data-table-cell': DataTableCell,
-        'laravel-vue-data-table-filters': DataTableFilters,
-    },
+    
     computed: {
         bodySlot() {
             if (this.$scopedSlots) {
@@ -287,54 +291,16 @@ export default {
             const defaults = require("lodash.defaultsdeep");
 
             if (this.framework === "tailwind") {
-                return defaults(this.classes, (window.LaravelVueDatatable || {}).classes || {},
-                    {
-                        "container": {
-                            "w-full": true
-                        },
-                        "table-container": {
-                            "w-full overflow-x-auto rounded-t": true
-                        },
-                        "table": {
-                            "min-w-full": true,
-                        },
-                        "t-head": {
-                            "bg-gray-100": true,
-                            "border": true,
-                        },
-                        "t-body": {
-                            "bg-white border-r border-l border-b": true,
-                        },
-                        "t-body-tr": {
-                            "bg-white even:bg-gray-100": true,
-                        },
-                        "td": {
-                            "px-4 py-3 whitespace-no-wrap border-b border-gray-200": true,
-                        },
-                        "th": {
-                            "px-4 py-4 text-xs whitespace-no-wrap hover:cursor-pointer": true,
-                        }
-                    }
-                ); 
+                return defaults(this.classes, (window.LaravelVueDatatable || {}).classes || {}, TailwindTableTheme); 
             }
 
-            return defaults(this.classes, (window.LaravelVueDatatable || {}).classes || {},
-                {
-                    "table-container": {
-                        "table-responsive": true
-                    },
-                    "table": {
-                        "table": true,
-                        'table-dark': this.theme == "dark", 
-                        "table-striped": true,
-                        "border": true
-                    },
-                    "t-head": {},
-                    "t-body": {},
-                    "td": {},
-                    "th": {}
-                }
-            ); 
+            let bootstrapTheme = BootstrapTableTheme;
+
+            if (this.theme === "dark") {
+                bootstrapTheme.table["table-dark"] = true;
+            }
+
+            return defaults(this.classes, (window.LaravelVueDatatable || {}).classes || {}, bootstrapTheme); 
         }
     },
     props: {
