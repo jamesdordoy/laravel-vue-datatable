@@ -1,9 +1,7 @@
 [![Build Status](https://travis-ci.org/jamesdordoy/Laravel-Vue-Datatable.svg?branch=master)](https://travis-ci.org/jamesdordoy/Laravel-Vue-Datatable) [![npm](https://img.shields.io/npm/v/laravel-vue-datatable.svg)](https://www.npmjs.com/package/laravel-vue-datatable) [![Downloads](https://img.shields.io/npm/dt/laravel-vue-datatable.svg)](https://www.npmjs.com/package/laravel-vue-datatable)
 
 # Laravel Vue Datatable
-A Vue.js datatable component for Laravel that works with Bootstrap.
-
-Note: this package will be moving to tailwind in the near future.
+A Vue.js datatable component for Laravel that works with Bootstrap & Tailwind by default.
 
 ## Requirements
 

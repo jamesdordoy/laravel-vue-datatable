@@ -2,7 +2,6 @@
 import 'bootstrap';
 import Vue from 'vue';
 import Vuex from 'vuex';
-import moment from 'moment'
 import App from './App.vue';
 import routes from './routes';
 import VueRouter from 'vue-router';
@@ -12,7 +11,6 @@ import createPersistedState from 'vuex-persistedstate';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-
 //Prism Code Highlighting
 import 'prismjs/components/prism-markup-templating.min.js';
 import 'prismjs/components/prism-php.min.js';
@@ -21,12 +19,10 @@ import 'prismjs/components/prism-bash.min.js';
 import 'prismjs/components/prism-json.min.js';
 
 import "prismjs/themes/prism-okaidia.css";
-import prism from "prismjs";
-
+import "prismjs";
 
 //Import Styles (Tailwind)
-
-import bootstrapStyles from 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import './assets/styles/main.css';
 
