@@ -18,6 +18,7 @@
             </pre>
             <data-table
                 :url="url"
+                framework="tailwind"
                 v-show="!code"
                 :columns="columns">
             </data-table>
