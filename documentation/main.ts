@@ -7,17 +7,11 @@ import App from './App.vue';
 import routes from './routes';
 import VueRouter from 'vue-router';
 import VueSweetalert2 from 'vue-sweetalert2';
-
 import 'sweetalert2/dist/sweetalert2.min.css';
 import createPersistedState from 'vuex-persistedstate';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-
-//Import Styles (Tailwind)
-import './assets/styles/main.css';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Prism Code Highlighting
 import 'prismjs/components/prism-markup-templating.min.js';
@@ -28,6 +22,13 @@ import 'prismjs/components/prism-json.min.js';
 
 import "prismjs/themes/prism-okaidia.css";
 import "prismjs";
+
+
+//Import Styles (Tailwind)
+
+import 'bootstrap/dist/css/bootstrap.css';
+
+import './assets/styles/main.css';
 
 //Import Plugin
 import DataTable from '../src/plugin';
