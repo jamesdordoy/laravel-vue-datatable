@@ -14,19 +14,19 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 
 //Prism Code Highlighting
-import 'prismjs/components/prism-markup-templating.min.js';
-import 'prismjs/components/prism-php.min.js';
-import 'prismjs/components/prism-php-extras.min.js';
-import 'prismjs/components/prism-bash.min.js';
-import 'prismjs/components/prism-json.min.js';
+import prismmarkup from 'prismjs/components/prism-markup-templating.min.js';
+import prismPhp from 'prismjs/components/prism-php.min.js';
+import prismPhpExtras from 'prismjs/components/prism-php-extras.min.js';
+import prismBash from 'prismjs/components/prism-bash.min.js';
+import prismJson from 'prismjs/components/prism-json.min.js';
 
-import "prismjs/themes/prism-okaidia.css";
-import "prismjs";
+import prismTheme from "prismjs/themes/prism-okaidia.css";
+import prism from "prismjs";
 
 
 //Import Styles (Tailwind)
 
-import 'bootstrap/dist/css/bootstrap.css';
+import bootstrapStyles from 'bootstrap/dist/css/bootstrap.css';
 
 import './assets/styles/main.css';
 
