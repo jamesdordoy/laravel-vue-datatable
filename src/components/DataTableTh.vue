@@ -16,8 +16,8 @@
                     border-bottom: 5px solid #ccc;
                     border-left: 5px solid transparent;
                     border-right: 5px solid transparent;"
-                :class="{'active-filter-asc': column.orderable && column.name == currentSort && dir == 'asc' }"
-                :style="{borderBottom: column.orderable && column.name == currentSort && dir == 'asc' ? '5px solid #a3a3a3' : '5px solid #ccc' }">
+                :class="{'active-filter-asc': column.orderable && column.name == currentSortColumn && dir == 'asc' }"
+                :style="{borderBottom: column.orderable && column.name == currentSortColumn && dir == 'asc' ? '5px solid #a3a3a3' : '5px solid #ccc' }">
             </div>
             <div
                 class="filter-desc"
@@ -28,58 +28,60 @@
                     border-top: 5px solid #ccc;
                     border-left: 5px solid transparent;
                     border-right: 5px solid transparent;"
-                :class="{'active-filter-desc': column.orderable && column.name == currentSort && dir == 'desc' }"
-                :style="{borderTop: column.orderable && column.name == currentSort && dir == 'desc' ? '5px solid #a3a3a3' : '5px solid #ccc' }">
+                :class="{'active-filter-desc': column.orderable && column.name == currentSortColumn && dir == 'desc' }"
+                :style="{borderTop: column.orderable && column.name == currentSortColumn && dir == 'desc' ? '5px solid #a3a3a3' : '5px solid #ccc' }">
             </div>
         </div>
         <span v-html="`&nbsp;${column.label}`"></span>
     </th>
 </template>
 
-<script lang="ts">
+<script>
 
 import MergeClasses from "../functions/MergeClasses";
-import { Component, Vue, Prop } from 'vue-property-decorator';
-import OrderDirValidator from "@/validators/data-table-order-dir";
+import OrderDirValidator from "../validators/data-table-order-dir";
 
-@Component
-export default class DataTableTh extends Vue {
-
-    private currentSort: string = '';
-
-    @Prop({
-        type: Object,
-        default: () => ({}),
-    }) private classes: object;
-
-    @Prop({
-        type: Object,
-        required: true,
-        default: () => ({}),
-    }) private column: object;
-
-    @Prop({
-        type: String,
-        default: 'asc',
-        validator: OrderDirValidator,
-    }) private dir: string;
-
-    private headerClasses(column) {
-        return MergeClasses(
-            typeof column.columnClasses === "object" && column.columnClasses["!override"] ? {} : this.classes,
-            {"table-header-sorting": column.orderable},
-            column.columnClasses || {}, 
-            (column.columnClasses || {}).th || {}
-        );
-    }
-
-    private sort(column): void {
-        this.setCurrentColumnSort(column.name);
-        this.$emit('sort', column);
-    }
-    
-    private setCurrentColumnSort(columnName): void {
-        this.currentSort = columnName;
-    }
+export default {
+    data() {
+        return {
+            currentSort: '',
+        };
+    },
+    props: {
+        column: {
+            type: Object,
+            default: () => ({}),
+            required: true,
+        },
+        classes: {
+            type: Object,
+            default: () => ({}),
+        },
+        currentSortColumn: {
+            type: String,
+            default: '',
+        },
+        dir: {
+            type: String,
+            validator: OrderDirValidator
+        }
+    },
+    methods: {
+        headerClasses(column) {
+            return MergeClasses(
+                typeof column.columnClasses === "object" && column.columnClasses["!override"] ? {} : this.classes,
+                {"table-header-sorting": column.orderable},
+                column.columnClasses || {}, 
+                (column.columnClasses || {}).th || {}
+            );
+        },
+        sort(column) {
+            this.setCurrentColumnSort(column.name);
+            this.$emit('sort', column);
+        },
+        setCurrentColumnSort(columnName) {
+            this.currentSort = columnName;
+        }
+    },
 }
 </script>

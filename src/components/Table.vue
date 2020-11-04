@@ -13,7 +13,8 @@
                             :column="column"
                             :key="column.name"
                             v-for="column in columns"
-                            :classes="tableHeadClasses">
+                            :classes="tableHeadClasses"
+                            :current-sort-column="currentSortColumn">
                         </laravel-vue-data-table-th>
                     </tr>
                 </thead>
@@ -27,10 +28,14 @@
 <script>
 
 import LaravelVueDataTableTh from './DataTableTh';
-import MergeClasses from "../mixins/MergeClasses";
+import MergeClasses from "../functions/MergeClasses";
 
 export default {
-    mixins: [MergeClasses],
+    data() {
+        return {
+            currentSortColumn: '',
+        };
+    },
     components: {
         LaravelVueDataTableTh
     },
@@ -70,13 +75,14 @@ export default {
     },
     methods: {
         headerClasses(column) {
-            return this.mergeClasses(
+            return MergeClasses(
                 this.tableHeadClasses,
                 {"table-header-sorting": column.orderable},
                 (column.columnClasses || {}).thead || {}
             );
         },
         sort(column) {
+            this.currentSortColumn = column.name;
             this.$emit('sort', column.name, column.columnName);
         },
     },
