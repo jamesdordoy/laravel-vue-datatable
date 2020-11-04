@@ -1,23 +1,22 @@
 <template>
-    <div>
-        <pre v-highlightjs>
-            <controller-resource-markdown>
-            </controller-resource-markdown>
-        </pre>
-    </div>
+    <pre>
+        <controller-resource-markdown>
+        </controller-resource-markdown>
+    </pre>
 </template>
 
 <script>
 
-    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
+    import Prism from 'prismjs';
     import ControllerResourceMarkdown from '../../markdown/laravel/controller-resource.md';
 
     export default {
         name: 'Laravel-Controller-Resources',
-        mixins: [CorrectTextStyling],
         components: {
-            // eslint-disable-next-line
             ControllerResourceMarkdown
+        },
+        mounted() {
+            Prism.highlightAll();
         },
     }
 </script>

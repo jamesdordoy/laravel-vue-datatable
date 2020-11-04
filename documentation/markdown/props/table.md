@@ -15,7 +15,7 @@
 | headers | Object | {} | Additional headers to pass route e.g. bearer token |
 <br>
 
-#### Default Classes
+### Default Classes
 ```json
 {
     "table-container": {

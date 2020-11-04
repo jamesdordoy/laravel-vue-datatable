@@ -1,24 +1,22 @@
 <template>
-    <div>
-        <pre v-highlightjs>
-            <h2 class="markdown-header">Package Options</h2>
-            <options-markdown>
-            </options-markdown>
-        </pre>
-    </div>
+    <pre>
+        <options-markdown>
+        </options-markdown>
+    </pre>
 </template>
 
 <script>
 
+    import Prism from 'prismjs';
     import OptionsMarkdown from '../../markdown/laravel/options.md';
-    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
 
     export default {
         name: 'Laravel-Options',
-        mixins: [CorrectTextStyling],
         components: {
-            // eslint-disable-next-line
             OptionsMarkdown
+        },
+        mounted() {
+            Prism.highlightAll();
         },
     }
 </script>

@@ -1,48 +1,46 @@
 <template>
     <div>
-        <div class="row">
-            <div class="col-md-8">
+        <div class="flex flex-wrap">
+            <div class="w-2/3">
                 <h2 class="markdown-header">Using your own data and requests</h2>
             </div>
-            <div class="col-md-4 relative">
+            <div class="w-1/3 relative">
                 <div class="show-code-inline">
                     <label>Show Example Code</label>&nbsp;
                     <vue-switch></vue-switch>
                 </div>
             </div>
         </div>
-
-        <pre v-highlightjs v-show="code">
-            <own-data-markdown>
-            </own-data-markdown>
-        </pre>
-        <data-table
-            :data="data"
-            v-show="!code"
-            :columns="columns"
-            @onTablePropsChanged="reloadTable">
-        </data-table>
+        <div class="w-full">
+            <pre v-show="code">
+                <own-data-markdown>
+                </own-data-markdown>
+            </pre>
+            <data-table
+                :data="data"
+                v-show="!code"
+                :columns="columns"
+                @on-table-props-changed="reloadTable">
+            </data-table>
+        </div>
     </div>
 </template>
 
 <script>
     import axios from 'axios';
+    import Prism from 'prismjs';
     import CodeExample from '../../mixins/CodeExample';
-
     import DataTable from '@/components/DataTable.vue';
     import VueSwitch from '../../example-components/Switch';
-    import InformationAlert from '../../example-components/InformationAlert';
     import OwnDataMarkdown from '../../markdown/examples/own-data.md';
-    
+    import InformationAlert from '../../example-components/InformationAlert';
+
     export default {
-        name: 'Basic',
+        name: 'Using-Your-Own-Data',
         components: {
-            // eslint-disable-next-line
-            DataTable,
-            // eslint-disable-next-line
-            OwnDataMarkdown,
-            // eslint-disable-next-line
             VueSwitch,
+            DataTable,
+            OwnDataMarkdown,
         },
         mixins: [CodeExample],
         data() {
@@ -77,6 +75,9 @@
         created() {
             this.getData(this.url);
         },
+        mounted() {
+            Prism.highlightAll();
+        },
         methods: {
             getData(url = this.url, options = this.tableProps) {
                 axios.get(url, {
@@ -85,7 +86,6 @@
                 .then(response => {
                     this.data = response.data;
                 })
-                // eslint-disable-next-line
                 .catch(errors => {
                     //Handle Errors
                 })

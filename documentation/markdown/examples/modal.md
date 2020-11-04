@@ -23,7 +23,6 @@
 ```
 
 ``` javascript
-<script>
 export default {
     props: {
         row: {
@@ -32,7 +31,6 @@ export default {
         }
     }
 }
-</script>
 ```
 <hr>
 
@@ -85,9 +83,7 @@ import ModalButton from './MyModalButton';
 
 export default {
     components: {
-        // eslint-disable-next-line
         Modal,
-        // eslint-disable-next-line
         ModalButton,
     },
     data() {

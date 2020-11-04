@@ -70,12 +70,15 @@ import 'vue-select/dist/vue-select.css';
 export default {
     data() {
         return {
+            url: "http://example.com/users",
             selectOptions: [],
         }
     },
     components: {
-        // eslint-disable-next-line
         vSelect,
+    },
+    created() {
+        this.searchUsersByName();
     },
     methods: {
         updateSelectedUser(row, tableData) {

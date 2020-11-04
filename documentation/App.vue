@@ -49,7 +49,7 @@ p, h1, h2, h3, h4, h5 {
     import PageHeader from '../documentation/components/Header';
 
     export default {
-        name: 'Laravel Vue Datatable Documentation',
+        name: 'LaravelVueDatatableDocumentation',
         components: {
             PageHeader,
             Navbar,

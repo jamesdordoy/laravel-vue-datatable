@@ -1,14 +1,15 @@
 <template>
     <div>
-        <pre v-highlightjs>
+        <pre>
             <install-markdown>
             </install-markdown>
-        </pre>
+        </pre>        
     </div>
 </template>
 
 <script lang="ts">
 
+    import Prism from 'prismjs';
     import InstallMarkdown from '../markdown/install.md';
     import { Component, Vue } from 'vue-property-decorator';
     import CorrectTextStyling from '../mixins/CorrectTextStyling';
@@ -18,6 +19,9 @@
         mixins: [CorrectTextStyling],
         components: {
             InstallMarkdown
+        },
+        mounted() {
+            Prism.highlightAll();
         },
     })
 

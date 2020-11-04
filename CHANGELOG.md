@@ -1,5 +1,11 @@
 # Release Notes
 
+## [v0.6.0 (2020-10-04)]
+
+
+### Changed
+- Updated the slot-scope name for tableData to tableFilters. the slot-scope for tableData now reflects the table data  ([#2f28d66](https://github.com/jamesdordoy/vue-datatable/commit/2f28d6646b4ed3c980d79d81f7c131c106a1aecd))
+
 
 ## [v0.3.0 (2019-07-23)]
 

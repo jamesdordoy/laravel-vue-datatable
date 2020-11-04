@@ -16,7 +16,7 @@
             If you want more control over the rendered table rows, you can use the <code>body</code> slot to override the default table HTML.
         </information-alert>
 
-        <pre v-highlightjs v-show="code">
+        <pre v-show="code">
             <override-table-body-markdown>
             </override-table-body-markdown>
         </pre>
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+    import Prism from 'prismjs';
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
     import VueSwitch from '../../example-components/Switch';
@@ -57,13 +58,9 @@
     export default {
         name: 'Override-Table-Body',
         components: {
-            // eslint-disable-next-line
             DataTable,
-            // eslint-disable-next-line
             VueSwitch,
-            // eslint-disable-next-line
             InformationAlert,
-            // eslint-disable-next-line
             OverrideTableBodyMarkdown,
         },
         mixins: [CodeExample],
@@ -94,6 +91,9 @@
             showRowNumber(id) {
                 alert(`you clicked row ${id}`);
             }
-        }
+        },
+        mounted() {
+            Prism.highlightAll();
+        },
     }
 </script>

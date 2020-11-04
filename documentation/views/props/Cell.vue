@@ -1,5 +1,5 @@
 <template>
-    <pre v-highlightjs>
+    <pre>
         <cell-props-markdown>
         </cell-props-markdown>
     </pre>
@@ -7,6 +7,7 @@
 
 <script>
 
+    import Prism from 'prismjs';
     import CellPropsMarkdown from '../../markdown/props/cell.md';
     import CorrectTextStyling from '../../mixins/CorrectTextStyling';
     import CorrectTableStyling from '../../mixins/CorrectTableStyling';
@@ -15,8 +16,10 @@
         name: 'Cell-Props',
         mixins: [CorrectTextStyling, CorrectTableStyling],
         components: {
-            // eslint-disable-next-line
             CellPropsMarkdown,
+        },
+        mounted() {
+            Prism.highlightAll();
         },
     }
 </script>

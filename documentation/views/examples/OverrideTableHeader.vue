@@ -16,7 +16,7 @@
             Note you will need to manage column sorting using your own methods.
         </information-alert>
 
-        <pre v-highlightjs v-show="code">
+        <pre v-show="code">
             <override-table-header-markdown>
             </override-table-header-markdown>
         </pre>
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+    import Prism from 'prismjs';
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
     import VueSwitch from '../../example-components/Switch';
@@ -83,6 +84,8 @@
             }
         },
         mounted() {
+            Prism.highlightAll();
+
             this.columns.forEach((column) => {
                 this.sortOrders[column.name] = -1;
             });

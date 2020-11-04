@@ -6,14 +6,22 @@ import moment from 'moment'
 import App from './App.vue';
 import routes from './routes';
 import VueRouter from 'vue-router';
-import 'highlight.js/styles/github.css';
 import VueSweetalert2 from 'vue-sweetalert2';
-import VueHighlightJS from 'vue-highlightjs';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import createPersistedState from 'vuex-persistedstate';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
+//Prism Code Highlighting
+import 'prismjs/components/prism-markup-templating.min.js';
+import 'prismjs/components/prism-php.min.js';
+import 'prismjs/components/prism-php-extras.min.js';
+import 'prismjs/components/prism-bash.min.js';
+import 'prismjs/components/prism-json.min.js';
+
+import "prismjs/themes/prism-okaidia.css";
+import "prismjs";
 
 //Import Plugin
 import DataTable from '../src/plugin';
@@ -27,7 +35,6 @@ Vue.use(VueSweetalert2);
 Vue.use(Vuex);
 Vue.use(DataTable);
 Vue.use(VueRouter);
-Vue.use(VueHighlightJS);
 
 //Font Awesome
 import { faEye } from '@fortawesome/free-regular-svg-icons';

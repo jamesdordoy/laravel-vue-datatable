@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <pre v-highlightjs v-show="code">
+        <pre v-show="code">
             <modal-markdown>
             </modal-markdown>
         </pre>
@@ -30,6 +30,7 @@
 
 <script>
 
+    import Prism from 'prismjs';
     import CodeExample from '../../mixins/CodeExample';
     import Modal from '../../example-components/Modal';
     import DataTable from '@/components/DataTable.vue';
@@ -87,6 +88,9 @@
             updateSelectedModal(data) {
                 this.selectedRow = data;
             }
-        }
+        },
+        mounted() {
+            Prism.highlightAll();
+        },
     }
 </script>

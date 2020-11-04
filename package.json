@@ -10,6 +10,7 @@
     "vue",
     "component",
     "bootstrap",
+    "tailwind.css",
     "laravel"
   ],
   "repository": {
@@ -19,7 +20,7 @@
   "scripts": {
     "serve": "vue-cli-service serve documentation/main.ts",
     "build": "vue-cli-service build --target lib src/plugin.ts",
-    "build-docs": "vue-cli-service build",
+    "build-docs": "vue-cli-service build documentation/main.ts",
     "lint": "vue-cli-service lint",
     "test": "jest"
   },
@@ -47,7 +48,6 @@
     "bili": "^4.8.0",
     "bootstrap": "^4.3.1",
     "core-js": "^3.6.5",
-    "highlight.js": "^9.15.10",
     "jest": "^24.8.0",
     "jest-localstorage-mock": "^2.4.0",
     "jest-serializer-vue": "^2.0.2",
@@ -55,12 +55,12 @@
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
     "popper.js": "^1.15.0",
+    "prismjs": "^1.22.0",
     "rollup-plugin-vue": "^5.0.0",
     "sass-loader": "^8.0.0",
     "tailwindcss": "^1.2.0",
     "typescript": "~3.8.3",
     "vue-class-component": "^7.2.3",
-    "vue-highlightjs": "^1.3.3",
     "vue-jest": "^3.0.4",
     "vue-loader": "^15.7.1",
     "vue-loading-overlay": "^3.2.0",

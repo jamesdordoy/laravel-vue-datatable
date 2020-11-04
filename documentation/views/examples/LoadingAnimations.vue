@@ -14,7 +14,7 @@
         <information-alert>
             This example makes use of the <code>vue-loading-overlay</code> Vue.js plugin which can be found <a href='https://github.com/ankurk91/vue-loading-overlay'>here</a> but you can use any loading animations you want.
         </information-alert>
-        <pre v-highlightjs v-show="code">
+        <pre v-show="code">
             <loading-animations-markdown>
             </loading-animations-markdown>
         </pre>
@@ -33,26 +33,23 @@
 </template>
 
 <script>
+
+    import Prism from 'prismjs';
     import Loading from 'vue-loading-overlay';
     import 'vue-loading-overlay/dist/vue-loading.css';
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
-    import LoadingAnimationsMarkdown from '../../markdown/examples/loading-animations.md';
     import VueSwitch from '../../example-components/Switch';
     import InformationAlert from '../../example-components/InformationAlert';
+    import LoadingAnimationsMarkdown from '../../markdown/examples/loading-animations.md';
     
     export default {
         name: 'LoadingAnimations',
         components: {
-            // eslint-disable-next-line
             DataTable,
-            // eslint-disable-next-line
             VueSwitch,
-            // eslint-disable-next-line
             Loading,
-            // eslint-disable-next-line
             InformationAlert,
-            // eslint-disable-next-line
             LoadingAnimationsMarkdown,
         },
         mixins: [CodeExample],
@@ -78,6 +75,9 @@
                     },
                 ],
             }
+        },
+        mounted() {
+            Prism.highlightAll();
         },
     }
 </script>

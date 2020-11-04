@@ -6,6 +6,19 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round&display=swap');
 
 
+h1 {
+  @apply text-4xl my-2;
+}
+
+h2 {
+  @apply text-3xl my-2;
+}
+
+
+h3 {
+  @apply text-2xl my-2;
+}
+
 .varela {
   font-family: 'Varela Round', sans-serif;
 }

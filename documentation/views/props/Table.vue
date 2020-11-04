@@ -1,5 +1,5 @@
 <template>
-    <pre v-highlightjs>
+    <pre>
         <table-markdown>
         </table-markdown>
     </pre>
@@ -7,6 +7,7 @@
 
 <script>
 
+    import Prism from 'prismjs';
     import TableMarkdown from '../../markdown/props/table.md';
     import CorrectTextStyling from '../../mixins/CorrectTextStyling';
     import CorrectTableStyling from '../../mixins/CorrectTableStyling';
@@ -15,8 +16,10 @@
         name: 'Table-Props',
         mixins: [CorrectTextStyling, CorrectTableStyling],
         components: {
-            // eslint-disable-next-line
             TableMarkdown
+        },
+        mounted() {
+            Prism.highlightAll();
         },
     }
 </script>

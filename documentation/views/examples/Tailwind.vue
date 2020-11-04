@@ -13,13 +13,10 @@
         </div>
 
         <information-alert>
-            I suggest wrapping the datatable component in your own component e.g. TailwindDatatable.vue so that the classes are limited to a single file.
-            <br><br>
-            Note, some of the styling is incorrect on the documentation such as the search box due to the css framework clashing with Bootstrap. You can see the tables design in full with more detail 
-            <a href="https://tailwindcomponents.com/component/table-responsive-with-filters">here</a>.
+            To change to the provided Tailwind UI just add framework="tailwind" to your table
         </information-alert>
 
-        <pre v-highlightjs v-show="code">
+        <pre v-show="code">
             <tailwind-markdown>
             </tailwind-markdown>
         </pre>
@@ -40,11 +37,12 @@
 
 
 <script>
+    import Prism from 'prismjs';
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
     import VueSwitch from '../../example-components/Switch';
-    import InformationAlert from '../../example-components/InformationAlert';
     import TailwindMarkdown from '../../markdown/examples/tailwind.md';
+    import InformationAlert from '../../example-components/InformationAlert';
     import DataTableDropdownCell from '../../example-components/DataTableDropdownCell';
     import DataTableCurrencyCell from '../../example-components/DataTableCurrencyCell';
     import DataTableIsActiveCell from '../../example-components/DataTableIsActiveCell';
@@ -53,22 +51,14 @@
     export default {
         name: 'Tailwind',
         components: {
-            // eslint-disable-next-line
             DataTable,
-            // eslint-disable-next-line
-            TailwindMarkdown,
-            // eslint-disable-next-line
             VueSwitch,
-            // eslint-disable-next-line
-            DataTableDropdownCell,
-            // eslint-disable-next-line
-            DataTableCurrencyCell,
-            // eslint-disable-next-line
-            DataTableIsActiveCell,
-            // eslint-disable-next-line
-            DataTableNameAndImageCell,
-            // eslint-disable-next-line
+            TailwindMarkdown,
             InformationAlert,
+            DataTableDropdownCell,
+            DataTableCurrencyCell,
+            DataTableIsActiveCell,
+            DataTableNameAndImageCell,
         },
         mixins: [CodeExample],
         data() {
@@ -115,6 +105,9 @@
                     isActive: '',
                 },
             };
+        },
+        mounted() {
+            Prism.highlightAll();
         },
     }
 </script>

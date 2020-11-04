@@ -14,15 +14,14 @@
             <styling-markdown>
             </styling-markdown>
         </pre>
-        <div class="row" v-show="!code">
-            <div class="col-md-12">
-                <img class="img-fluid" src="https://camo.githubusercontent.com/7180948a51bbf1070479820b5cd7c8abd26239f8/68747470733a2f2f7777772e6a616d6573646f72646f792e636f2e756b2f696d616765732f70726f6a656374732f7461696c77696e642d646174617461626c652e706e67">
-            </div>
+        <div class="flex flex-wrap" v-show="!code">
+            You can attach classes to each table as required using the classes prop
         </div>
     </div>
 </template>
 
 <script>
+    import Prism from 'prismjs';
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
     import StylingMarkdown from '../../markdown/examples/styling.md';
@@ -31,11 +30,8 @@
     export default {
         name: 'Datatable-Styling',
         components: {
-            // eslint-disable-next-line
             DataTable,
-            // eslint-disable-next-line
             StylingMarkdown,
-            // eslint-disable-next-line
             InformationAlert,
         },
         mixins: [CodeExample],
@@ -60,6 +56,9 @@
                     },
                 ]
             }
+        },
+        mounted() {
+            Prism.highlightAll();
         },
     }
 </script>

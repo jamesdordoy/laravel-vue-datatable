@@ -1,9 +1,12 @@
 ## Component Installation
 
+
 ```bash
 npm install laravel-vue-datatable
 ```
+
 or
+
 ```bash
 yarn add laravel-vue-datatable
 ```

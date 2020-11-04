@@ -1,6 +1,6 @@
 <template>
     <div>
-        <pre v-highlightjs>
+        <pre>
             <trait-markdown>
             </trait-markdown>
         </pre>
@@ -9,15 +9,16 @@
 
 <script>
 
-    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
+    import Prism from 'prismjs';
     import TraitMarkdown from '../../markdown/laravel/adding-trait.md';
     
     export default {
         name: 'Laravel-Adding-Trait',
-        mixins: [CorrectTextStyling],
         components: {
-            // eslint-disable-next-line
             TraitMarkdown
+        },
+        mounted() {
+            Prism.highlightAll();
         },
     }
 </script>

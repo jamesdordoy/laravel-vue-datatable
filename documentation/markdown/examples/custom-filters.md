@@ -1,6 +1,6 @@
 ### Datatable
 
-``` html
+```html
 <data-table
     :url="url"
     :filters="filters"
@@ -33,7 +33,7 @@
 </data-table>
 ```
 
-``` javascript
+```javascript
 data() {
     return {
         url: "http://example.test",
@@ -47,7 +47,7 @@ data() {
 },
 ```
 
-This added isActive filter will be send to the Laravel backend and can be used to manipulate the results:
+This added `isActive` filter will be send to the Laravel backend and can be used to manipulate the results:
 
 ```php
 $query = User::eloquentQuery(

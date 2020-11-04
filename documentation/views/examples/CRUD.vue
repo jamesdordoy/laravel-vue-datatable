@@ -12,7 +12,7 @@
             </div>
         </div>
 
-        <pre v-highlightjs v-show="code">
+        <pre v-show="code">
             <crud-markdown>
             </crud-markdown>
         </pre>
@@ -31,14 +31,11 @@
     import CrudMarkdown from '../../markdown/examples/crud.md';
     
     export default {
-        name: 'Basic',
+        name: 'CRUD',
         components: {
-            // eslint-disable-next-line
             DataTable,
-            // eslint-disable-next-line
-            CrudMarkdown,
-            // eslint-disable-next-line
             VueSwitch,
+            CrudMarkdown,
         },
         mixins: [CodeExample],
         data() {

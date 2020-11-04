@@ -1,8 +1,6 @@
 ## Use the Controller Resource
 
-<p class="wrap-text">
 The Collection Resource is expecting a paginated collection, so feel free to use your own queries and omit the provided trait query if your require more complex filtering.
-</p>
 
 ```php
 <?php

@@ -21,15 +21,15 @@
                 </button>
             </div>
             <div class="col-md-12">
-                <pre v-highlightjs v-show="code">
+                <pre v-show="code">
                     <reload-the-table-markdown>
                     </reload-the-table-markdown>
                 </pre>
                 <data-table
-                    ref="reloadingTheTable"
                     v-show="!code"
                     :url="url"
-                    :columns="columns">
+                    :columns="columns"
+                    ref="reloadingTheTable">
                 </data-table>
             </div>
         </div>
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+    import Prism from 'prismjs';
     import CodeExample from '../../mixins/CodeExample';
     import VueSwitch from '../../example-components/Switch';
     import InformationAlert from '../../example-components/InformationAlert';
@@ -45,9 +46,7 @@
     export default {
         name: 'Reloading-The-Datatable',
         components: {
-            // eslint-disable-next-line
             VueSwitch,
-            // eslint-disable-next-line
             ReloadTheTableMarkdown,
         },
         mixins: [CodeExample],
@@ -80,6 +79,9 @@
             reloadTable() {
                 this.$refs.reloadingTheTable.getData()
             }
-        }
+        },
+        mounted() {
+            Prism.highlightAll();
+        },
     }
 </script>

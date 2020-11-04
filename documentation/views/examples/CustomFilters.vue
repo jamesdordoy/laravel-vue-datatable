@@ -16,7 +16,7 @@
             You can also add your own custom filters to be sent to the Laravel backend
         </information-alert>
 
-        <pre v-highlightjs v-show="code">
+        <pre v-show="code">
             <custom-filters-markdown>
             </custom-filters-markdown>
         </pre>
@@ -34,8 +34,8 @@
                     </div>
                     <div class="col-md-4">
                         <select
-                            v-model="tableData.filters.isActive"
-                            class="form-control">
+                            class="form-control"
+                            v-model="tableData.filters.isActive">
                             <option value>All</option>
                             <option value='1'>Active</option>
                             <option value='0'>Inactive</option>
@@ -56,6 +56,7 @@
 
 <script>
 
+    import Prism from 'prismjs';
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
     import VueSwitch from '../../example-components/Switch';
@@ -67,15 +68,10 @@
         name: 'Custom-Filters',
         mixins: [CodeExample],
         components: {
-            // eslint-disable-next-line
             DataTable,
-            // eslint-disable-next-line
             VueSwitch,
-            // eslint-disable-next-line
             InformationAlert,
-            // eslint-disable-next-line
             DataTableButtonCell,
-            // eslint-disable-next-line
             CustomFiltersMarkdown,        
         },
         data() {
@@ -128,5 +124,8 @@
                 alert(`You clicked row ${data.id}`);
             }
         },
+        mounted() {
+            Prism.highlightAll();
+        }
     }
 </script>

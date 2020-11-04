@@ -1,23 +1,22 @@
 <template>
-    <div>
-        <pre v-highlightjs>
-            <install-markdown>
-            </install-markdown>
-        </pre>
-    </div>
+    <pre>
+        <install-markdown>
+        </install-markdown>
+    </pre>
 </template>
 
 <script>
 
+    import Prism from 'prismjs';
     import InstallMarkdown from '../../markdown/laravel/install.md';
-    import CorrectTextStyling from '../../mixins/CorrectTextStyling';
 
     export default {
         name: 'Laravel-Installation',
-        mixins: [CorrectTextStyling],
         components: {
-            // eslint-disable-next-line
             InstallMarkdown
+        },
+        mounted() {
+            Prism.highlightAll();
         },
     }
 </script>

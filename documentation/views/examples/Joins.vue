@@ -82,26 +82,22 @@
 
 <script>
 
+    import Prism from 'prismjs';
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
     import VueSwitch from '../../example-components/Switch';
-    import InformationAlert from '../../example-components/InformationAlert';
-    import JoinsPhpMarkdown from '../../markdown/examples/joins-php.md';
     import JoinsJsMarkdown from '../../markdown/examples/joins-js.md';
+    import JoinsPhpMarkdown from '../../markdown/examples/joins-php.md';
+    import InformationAlert from '../../example-components/InformationAlert';
     
     export default {
-        name: 'Basic',
+        name: 'Table-Joins',
         components: {
-            // eslint-disable-next-line
             DataTable,
-            // eslint-disable-next-line
             VueSwitch,
-            // eslint-disable-next-line
-            JoinsPhpMarkdown,
-            // eslint-disable-next-line
             JoinsJsMarkdown,
-            // eslint-disable-next-line
-            InformationAlert
+            InformationAlert,
+            JoinsPhpMarkdown,
         },
         mixins: [CodeExample],
         data() {
@@ -149,6 +145,9 @@
                     },
                 ]
             }
+        },
+        mounted() {
+            Prism.highlightAll();
         },
     }
 </script>

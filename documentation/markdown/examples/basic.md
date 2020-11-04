@@ -1,3 +1,5 @@
+## HTML
+
 ```html
 <template>
     <data-table
@@ -7,6 +9,7 @@
 </template>
 ```
 
+## Javascript
 ```javascript
 export default {
     data() {

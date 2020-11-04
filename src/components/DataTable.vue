@@ -6,7 +6,12 @@
             :url="url"
             name="filters"
             :per-page="perPage"
-            :table-data="tableProps">
+            :table-data="tableData"
+            :meta="tableData.meta"
+            :links="tableData.links"
+            :table-filters="tableProps"
+            :loadDiffrentPage="loadDiffrentPage">
+
             <laravel-vue-data-table-filters
                 :per-page="perPage"
                 :framework="framework"
@@ -83,13 +88,13 @@
             </template>
         </laravel-vue-table>
 
-
         <!-- Bottom Filters -->
         <slot
             :page="page"
             name="pagination"
             :meta="tableData.meta"
-            :links="tableData.links">
+            :links="tableData.links"
+            :loadDiffrentPage="loadDiffrentPage">
             
             <tailable-pagination
                 :data="tableData"
@@ -110,13 +115,13 @@ import axios from 'axios';
 import VueTable from './Table';
 import DataTableCell from './DataTableCell';
 import UrlFilters from '../mixins/UrlFilters';
-import MergeClasses from "../mixins/MergeClasses";
 import DataTableFilters from './DataTableFilters';
-import TailwindTableTheme from "@/themes/Tailwind";
-import BootstrapTableTheme from "@/themes/Bootstrap";
-import ThemeValidator from "@/validators/data-table-theme";
-import OrderDirValidator from "@/validators/data-table-order-dir";
-import FrameworkValidator from "@/validators/data-table-framework";
+import TailwindTableTheme from "../themes/Tailwind";
+import MergeClasses from "../functions/MergeClasses";
+import BootstrapTableTheme from "../themes/Bootstrap";
+import ThemeValidator from "../validators/data-table-theme";
+import OrderDirValidator from "../validators/data-table-order-dir";
+import FrameworkValidator from "../validators/data-table-framework";
 
 export default {
     components: {
@@ -157,7 +162,7 @@ export default {
            this.sortOrders[column.name] = -1;
         });
     },
-    mixins: [UrlFilters, MergeClasses],
+    mixins: [UrlFilters],
     watch: {
         url: {
             handler: function(newUrl) {
@@ -244,6 +249,10 @@ export default {
                 this.page = page;
             }
         },
+        loadDiffrentPage(page) {
+            this.page = page;
+            this.getData();
+        },
         paginationChangePage(page) {
             this.page = page;
             if (Object.keys(this.data).length) {
@@ -256,9 +265,10 @@ export default {
             }
         },
         bodyCellClasses(column) {
-            return this.mergeClasses(
+            return MergeClasses(
                 typeof column.columnClasses === "object" && column.columnClasses["!override"] ? {} : this.getClasses.td,
-                column.columnClasses || {}, (column.columnClasses || {}).td || {});
+                column.columnClasses || {}, (column.columnClasses || {}).td || {}
+            );
         }
     },
     

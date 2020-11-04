@@ -73,7 +73,7 @@ export default [
     },
     {
         path: '/laravel-vue-datatable/examples/override-filters',
-        component: require('../documentation/views/examples/OverrideFilters.vue').default,
+        component: require('../documentation/views/examples/OverrideFiltersAndPagination.vue').default,
     },
     {
         path: '/laravel-vue-datatable/examples/override-table-body',

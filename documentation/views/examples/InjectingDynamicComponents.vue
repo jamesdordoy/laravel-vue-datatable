@@ -14,11 +14,9 @@
 
         <information-alert>
             You can also inject your own components into the table such as buttons. Your buttons, links etc can also listen for events. After declaring your event type and setting a handler. You can accept the event type as you would expect in your component, e.g. <code>click</code> for click events.
-            <br><br>
-            When injecting images for users you can also sort by hair colour..
         </information-alert>
         
-        <pre v-highlightjs v-show="code">
+        <pre v-show="code">
             <dynamic-markdown>
             </dynamic-markdown>
         </pre>
@@ -32,6 +30,7 @@
 
 <script>
 
+    import Prism from 'prismjs';
     import CodeExample from '../../mixins/CodeExample';
     import DataTable from '@/components/DataTable.vue';
     import VueSwitch from '../../example-components/Switch';
@@ -44,18 +43,15 @@
         name: 'injecting-dyanmic-components',
         mixins: [CodeExample],
         components: {
-            // eslint-disable-next-line
             DataTable,
-            //eslint-disable-next-line
             VueSwitch,
-            // eslint-disable-next-line
             DynamicMarkdown,
-            // eslint-disable-next-line
-            DataTableButtonCell,
-            // eslint-disable-next-line
             InformationAlert,
-            // eslint-disable-next-line
             DataTableImageCell,
+            DataTableButtonCell,
+        },
+        mounted() {
+            Prism.highlightAll();
         },
         data() {
             return {

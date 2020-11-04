@@ -3,7 +3,7 @@
     <data-table
         :data="data"
         :columns="columns"
-        @onTablePropsChanged="reloadTable">
+        @on-table-props-changed="reloadTable">
     </data-table>
 </template>
 ```
