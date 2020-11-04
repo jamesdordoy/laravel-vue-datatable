@@ -18,7 +18,6 @@
             </pre>
             <data-table
                 :url="url"
-                framework="tailwind"
                 v-show="!code"
                 :columns="columns">
             </data-table>
@@ -47,7 +46,7 @@
             }
         },
         mounted() {
-            this.$nextTick(Prism.highlightAll());
+            this.$nextTick(Prism.highlightAll);
         },
         mixins: [CodeExample],
         data() {
