@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="w-full">
-            <pre v-show="code">
+            <pre  v-show="code">
                 <basic-markdown>
                 </basic-markdown>
             </pre>
