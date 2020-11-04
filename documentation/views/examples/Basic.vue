@@ -46,7 +46,7 @@
             }
         },
         mounted() {
-            Prism.highlightAll();
+            this.$nextTick(Prism.highlightAll());
         },
         mixins: [CodeExample],
         data() {
