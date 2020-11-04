@@ -7,7 +7,7 @@ import App from './App.vue';
 import routes from './routes';
 import VueRouter from 'vue-router';
 import VueSweetalert2 from 'vue-sweetalert2';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import 'sweetalert2/dist/sweetalert2.min.css';
 import createPersistedState from 'vuex-persistedstate';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -15,7 +15,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 
 //Import Styles (Tailwind)
-// import './assets/styles/main.css';
+import './assets/styles/main.css';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Prism Code Highlighting
 import 'prismjs/components/prism-markup-templating.min.js';
