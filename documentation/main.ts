@@ -13,6 +13,10 @@ import createPersistedState from 'vuex-persistedstate';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
+
+//Import Styles (Tailwind)
+// import './assets/styles/main.css';
+
 //Prism Code Highlighting
 import 'prismjs/components/prism-markup-templating.min.js';
 import 'prismjs/components/prism-php.min.js';
@@ -25,9 +29,6 @@ import "prismjs";
 
 //Import Plugin
 import DataTable from '../src/plugin';
-
-//Import Styles (Tailwind)
-import './assets/styles/main.css';
 
 Vue.use(VueSweetalert2);
 
@@ -58,20 +59,12 @@ library.add(
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-//Filters
-Vue.filter('formatDate', function(value, format='Do MMMM YYYY') {
-    if (value) {
-        return moment(String(value)).format(format)
-    }
-    return 'N/A'
-});
+import formatDateFilter from './filters/format-date';
+import padDigitFilter from './filters/pad-digit';
 
 //Filters
-Vue.filter('padDigit', function(num, padlen, padchar) {
-    var pad_char = typeof padchar !== 'undefined' ? padchar : '0';
-    var pad = new Array(1 + padlen).join(pad_char);
-    return (pad + num).slice(-pad.length);
-});
+Vue.filter('formatDate', formatDateFilter);
+Vue.filter('padDigit', padDigitFilter);
 
 //VueRouter
 const router = new VueRouter({
