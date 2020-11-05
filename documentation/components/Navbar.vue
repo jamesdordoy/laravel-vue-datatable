@@ -265,7 +265,7 @@ export default {
                 </ul>
             </li>
 
-            <li class="block m-0 text-sm overflow-hidden cursor-pointer">
+            <!-- <li class="block m-0 text-sm overflow-hidden cursor-pointer">
                 
                 <div class="w-full px-3 py-1 bg-gray-400 oxanium" @click="toggleMenuItem('.query-builder-menu')">
                     <font-awesome-icon :icon="['fas', 'hammer']" />&nbsp;
@@ -283,7 +283,7 @@ export default {
                         Table Joins
                     </router-link>
                 </ul>
-            </li>
+            </li> -->
         </ul>
     </nav>
 </template>
