@@ -14,7 +14,7 @@
         <information-alert>
             Note that the Datatable columnName attributes reflect their table name as well. This is to avoid integrity contraint violations caused by ambiguoius column selection.
         </information-alert>
-        <pre v-highlightjs v-show="code">
+        <pre v-show="code">
             <has-many-php-markdown>
             </has-many-php-markdown>
             <has-many-js-markdown>
@@ -30,6 +30,7 @@
 
 <script>
 
+    import Prism from 'prismjs';
     import DataTable from '@/components/DataTable.vue';
     import CodeExample from '../../../mixins/CodeExample';
     import VueSwitch from '../../../example-components/Switch';
@@ -80,6 +81,9 @@
                     },
                 ]
             }
+        },
+        mounted() {
+            this.$nextTick(Prism.highlightAll);
         },
     }
 </script>

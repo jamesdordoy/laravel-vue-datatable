@@ -21,7 +21,7 @@
 
         <div v-show="code">
 
-            <pre v-highlightjs>
+            <pre>
                 <joins-php-markdown>
                 </joins-php-markdown>
             </pre>
@@ -30,7 +30,7 @@
                 You will also need to add an additional attribute to each column as <code>columnName</code> to any column names that have been changed. This will be sent to the backend for filtering and searching. It is required you prefix these values with their table name where Integrity constraint violations may be present due to duplicated column names.
             </information-alert>
 
-            <pre v-highlightjs>
+            <pre>
                 <joins-js-markdown>
                 </joins-js-markdown>
             </pre>
@@ -41,16 +41,16 @@
             :url="url"
             :filters="filters"
             :columns="columns">
-            <div slot="filters" slot-scope="{ tableData, perPage }">
+            <div slot="filters" slot-scope="{ tableFilters, perPage }">
                 <div class="row mb-2">
                     <div class="col-md-3">
-                        <select class="form-control" v-model="tableData.length">
+                        <select class="form-control" v-model="tableFilters.length">
                             <option :key="page" v-for="page in perPage">{{ page }}</option>
                         </select>
                     </div>
                     <div class="col-md-3">
                         <select
-                            v-model="tableData.filters.isActive"
+                            v-model="tableFilters.filters.isActive"
                             class="form-control">
                             <option value>All</option>
                             <option value='1'>Active</option>
@@ -59,7 +59,7 @@
                     </div>
                     <div class="col-md-3">
                         <select
-                            v-model="tableData.filters.roleId"
+                            v-model="tableFilters.filters.roleId"
                             class="form-control">
                             <option value>All</option>
                             <option value='1'>User</option>
@@ -71,7 +71,7 @@
                         <input
                             name="name"
                             class="form-control"
-                            v-model="tableData.search"
+                            v-model="tableFilters.search"
                             placeholder="Search Table">
                     </div>
                 </div>

@@ -30,6 +30,7 @@
 
 <script>
 
+    import Prism from 'prismjs';
     import DataTable from '@/components/DataTable.vue';
     import CodeExample from '../../../mixins/CodeExample';
     import VueSwitch from '../../../example-components/Switch';
@@ -81,6 +82,9 @@
                     },
                 ]
             }
+        },
+        mounted() {
+            this.$nextTick(Prism.highlightAll);
         },
     }
 </script>
