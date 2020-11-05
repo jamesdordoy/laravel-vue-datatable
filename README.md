@@ -138,8 +138,8 @@ export default {
 | `orderable` | Boolean | false | (optional) Is the column orderable in the datatable |
 | `component` | Component | null | (optional) A dynamic component that can be injected |
 | `event` | String | "" | (optional) Event type to parse to the component e.g. click, focus etc. |
-| `handler` | Function | () => {} | (optional) Function to parse for the event handler |
-| `transform` | Function | () => {} | (optional) Function to parse to manipulate the result. e.g. add currency symbol |
+| `handler` | Function | () => {} | (optional) Callback function to parse for the event handler |
+| `transform` | Function | () => {} | (optional) Callback function to parse to manipulate the result. e.g. add currency symbol |
 | `classes` | Object | {} | (optional) Component classes to parse |
 | `meta` | Object | {} | (optional) Additional values that are parsed to component |
 
