@@ -87,6 +87,7 @@ export default {
 | `order-dir` | String | "asc" | (optional) The default order by direction |
 | `per-page` | Array | ['10','25','50'] | (optional) Amount to be displayed |
 | `theme` | String | "light" | (optional) Must be dark or light |
+| `framework` | String | "bootstrap" | (optional) Must be bootstrap or tailwind |
 | `debounce-delay` | Number | 0 | (optional) Adds a debounce delay to the get request when searching |
 | `classes` | Object | See Below | (optional) Table classes |
 | `translate` | Object | { nextButton: 'Next', previousButton: 'Previous', placeholderSearch: 'Search Table'} | (optional) used to overwrite the default pagination button text and search input placeholder |
