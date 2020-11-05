@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-datatable",
-  "version": "0.6.0-beta.10",
+  "version": "0.6.0-beta.14",
   "description": "Vue.js datatable made with Laravel and Bootstrap in mind",
   "author": "James Dordoy <jamesdordoy@gmail.com>",
   "homepage": "https://jamesdordoy.github.io/laravel-vue-datatable/",
@@ -28,7 +28,7 @@
     "axios": "^0.18.1",
     "lodash.debounce": "^4.0.8",
     "lodash.defaultsdeep": "^4.6.1",
-    "tailable-pagination": "^0.1.18",
+    "tailable-pagination": "^0.1.22",
     "vue": "^2.6.11"
   },
   "devDependencies": {

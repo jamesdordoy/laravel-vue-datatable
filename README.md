@@ -75,12 +75,6 @@ export default {
 }
 ```
 
-## Reloading the table manually
-
-If updates have been made to your dataset and you need to reload the table, you can attach a [ref](https://vuejs.org/v2/api/#vm-refs) to the table. Once the Vue.JS reference is attached, you are able to access the underlining methods of the component including the getData method.
-
-Alternatively, if you have custom filters applied and you would prefered they are retained, any adjustment to the url the table uses as a prop will reload the table.
-
 ### API
 
 #### Datatable Props
@@ -96,11 +90,11 @@ Alternatively, if you have custom filters applied and you would prefered they ar
 | `debounce-delay` | Number | 0 | (optional) Adds a debounce delay to the get request when searching |
 | `classes` | Object | See Below | (optional) Table classes |
 | `translate` | Object | { nextButton: 'Next', previousButton: 'Previous', placeholderSearch: 'Search Table'} | (optional) used to overwrite the default pagination button text and search input placeholder |
-| `pagination` | Object | {}  | (optional) props for [gilbitron/laravel-vue-pagination](https://github.com/gilbitron/laravel-vue-pagination#props) |
+| `pagination` | Object | {}  | (optional) props for [tailable/pagination](https://github.com/tailable/pagination#pagination-props) |
 | `add-filters-to-url` | Boolean | false | (optional) Will adjust the current url to keep track of used filters and will also store them in local storage. |
 | `headers` | Object | {} | Additional headers to pass route e.g. bearer token |
 
-#### Default Classes
+#### Default Table Classes
 
 ```json
 {
@@ -147,6 +141,14 @@ Alternatively, if you have custom filters applied and you would prefered they ar
 | `transform` | Function | () => {} | (optional) Function to parse to manipulate the result. e.g. add currency symbol |
 | `classes` | Object | {} | (optional) Component classes to parse |
 | `meta` | Object | {} | (optional) Additional values that are parsed to component |
+
+
+## Reloading the table manually
+
+If updates have been made to your dataset and you need to reload the table, you can attach a [ref](https://vuejs.org/v2/api/#vm-refs) to the table. Once the Vue.JS reference is attached, you are able to access the underlining methods of the component including the getData method.
+
+Alternatively, if you have custom filters applied and you would prefered they are retained, any adjustment to the url the table uses as a prop will reload the table.
+
 
 ## Further Examples
 

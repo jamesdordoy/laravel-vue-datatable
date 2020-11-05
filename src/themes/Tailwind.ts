@@ -22,6 +22,6 @@ export default {
         "px-4 py-3 whitespace-no-wrap border-b border-gray-200": true,
     },
     "th": {
-        "px-4 py-4 text-xs whitespace-no-wrap hover:cursor-pointer": true,
+        "p-4 text-xs whitespace-no-wrap hover:cursor-pointer text-left": true,
     }
 };
