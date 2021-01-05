@@ -25,7 +25,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "lodash.debounce": "^4.0.8",
     "lodash.defaultsdeep": "^4.6.1",
     "tailable-pagination": "^0.1.22",
