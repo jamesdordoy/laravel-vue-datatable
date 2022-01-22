@@ -25,11 +25,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^0.21.2",
+    "axios": "^0.25.0",
     "lodash.debounce": "^4.0.8",
     "lodash.defaultsdeep": "^4.6.1",
     "tailable-pagination": "^0.1.22",
-    "vue": "^2.6.11"
+    "vue": "^2.6.14"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
