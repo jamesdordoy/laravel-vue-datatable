@@ -25,10 +25,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "^0.25.0",
+    "axios": "^0.27.2",
     "lodash.debounce": "^4.0.8",
     "lodash.defaultsdeep": "^4.6.1",
-    "tailable-pagination": "^0.1.22",
+    "tailable-pagination": "^2.0.0",
     "vue": "^2.6.14"
   },
   "devDependencies": {
@@ -49,7 +49,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^3.6.5",
     "jest": "^24.8.0",
-    "jest-localstorage-mock": "^2.4.0",
+    "jest-localstorage-mock": "^2.4.21",
     "jest-serializer-vue": "^2.0.2",
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
@@ -59,9 +59,9 @@
     "rollup-plugin-vue": "^5.0.0",
     "sass-loader": "^8.0.0",
     "tailwindcss": "^1.2.0",
-    "typescript": "~3.8.3",
-    "vue-class-component": "^7.2.3",
-    "vue-jest": "^3.0.4",
+    "typescript": "~4.7.2",
+    "vue-class-component": "^7.2.6",
+    "vue-jest": "^3.0.7",
     "vue-loader": "^15.7.1",
     "vue-loading-overlay": "^3.2.0",
     "vue-markdown-loader": "^2.4.1",
@@ -69,7 +69,7 @@
     "vue-router": "^3.1.3",
     "vue-select": "^3.2.0",
     "vue-sweetalert2": "^3.0.1",
-    "vue-template-compiler": "^2.6.11",
+    "vue-template-compiler": "^2.6.14",
     "vuex": "^3.1.1",
     "vuex-persistedstate": "^2.5.4"
   },
