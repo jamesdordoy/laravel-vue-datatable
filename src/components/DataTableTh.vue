@@ -33,6 +33,9 @@
             </div>
         </div>
         <span v-html="`&nbsp;${column.label}`"></span>
+        <div class="bi-vue-datatable-search" v-if="column.search">
+            <input type="text" v-model="search[column.name]" @input="searchText(column.name)">
+        </div>
     </th>
 </template>
 
@@ -45,6 +48,7 @@ export default {
     data() {
         return {
             currentSort: '',
+            search: []
         };
     },
     props: {
@@ -81,6 +85,11 @@ export default {
         },
         setCurrentColumnSort(columnName) {
             this.currentSort = columnName;
+        },
+        searchText(columnName){
+            if(search[search].length){
+                this.$emit('search',search);
+            }
         }
     },
 }
